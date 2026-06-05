@@ -1,0 +1,19 @@
+*
+
+# ------------------------------------------- #
+# Include the following files and directories #
+# ------------------------------------------- #
+
+# git files
+!.git/
+!.github/
+!.gitignore
+
+# docs
+!docs/
+!*/README.md
+!LICENSE
+
+# Design files
+!digital/
+!analog/
