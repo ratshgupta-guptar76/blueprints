@@ -17,3 +17,6 @@
 # Design files
 !digital/
 !analog/
+
+# Verification
+!test/
