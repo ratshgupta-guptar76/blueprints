@@ -21,3 +21,10 @@
 # Verification
 !test/
 !test/**
+
+# Temp Sandbox
+!sandbox/
+!sandbox/**
+
+sandbox/__pycache__/
+sandbox/sim_build/
