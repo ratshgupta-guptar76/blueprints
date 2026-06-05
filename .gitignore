@@ -19,4 +19,4 @@
 !analog/
 
 # Verification
-!test/
+!test/**
