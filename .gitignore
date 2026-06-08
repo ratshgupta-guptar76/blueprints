@@ -14,6 +14,10 @@
 !*/README.md
 !LICENSE
 
+# Containers
+!docker-compose.yml
+!eda.sh
+
 # Design files
 !digital/
 !analog/
