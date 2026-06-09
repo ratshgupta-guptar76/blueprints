@@ -1,23 +1,45 @@
-*
+# Ignore everything by default
+/*
 
-# ------------------------------------------- #
-# Include the following files and directories #
-# ------------------------------------------- #
-
-# git files
+# Keep git metadata and CI config
 !.git/
 !.github/
+
+# Keep top-level project files
 !.gitignore
-
-# docs
-!docs/
-!*/README.md
+!README.md
 !LICENSE
+!CONTRIBUTORS.md
+!Makefile
+!.env.example
 
-# Containers
-!docker-compose.yml
-!eda.sh
+# Keep important top-level directories
+!/docs/
+!/src/
+!/sim/
+!/scripts/
+!/verification/
+!/config/
+!/liberlane/
+!/pdk/
+!/.docker/
 
-# Design files
-!digital/
-!analog/
+# Allow any README.md anywhere
+!**/README.md
+
+# Ignore common build and binary artifacts
+*.o
+*.so
+*.a
+*.pyc
+__pycache__/
+*.tar.gz
+*.zip
+
+
+# Remove once resolved
+*.pdf
+*.pptx
+
+# Everything else remains ignored
+
