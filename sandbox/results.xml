@@ -1,6 +1,7 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1780673420" />
-    <testcase name="test_mac_random_math" classname="test_mac" file="/home/adiabliu/chipathon/blueprints/sandbox/test_mac.py" lineno="17" time="0.004597902297973633" sim_time_ns="530.0" ratio_time="115269.95696136894" />
+    <property name="random_seed" value="1780782858" />
+    <testcase name="test_mac_random_math" classname="test_mac" file="/home/adiabliu/chipathon/blueprints/sandbox/test_mac.py" lineno="17" time="0.005063295364379883" sim_time_ns="530.0" ratio_time="104674.9126524462" />
+    <testcase name="test_mac_smoke" classname="test_mac" file="/home/adiabliu/chipathon/blueprints/sandbox/test_mac.py" lineno="57" time="0.0014233589172363281" sim_time_ns="50.0" ratio_time="35128.174204355106" />
   </testsuite>
 </testsuites>

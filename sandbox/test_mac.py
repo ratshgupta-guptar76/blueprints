@@ -52,3 +52,27 @@ async def test_mac_random_math(dut):
         assert actual_acc == expected_acc, f"FAIL on cycle {i}: Expected {expected_acc}, got {actual_acc}"
         
     dut._log.info("SUCCESS: All 50 MAC cycles matched the Python golden model!")
+
+
+@cocotb.test()
+async def test_mac_smoke(dut):
+    """Barebones smoke test: one simple, deterministic multiplication."""
+    cocotb.start_soon(Clock(dut.clk, 10, unit="ns").start())
+    
+    await reset_dut(dut)
+    
+    # 1. Drive known, hardcoded values on the falling edge
+    await FallingEdge(dut.clk)
+    dut.a.value = 2
+    dut.b.value = 3
+    dut.valid_in.value = 1
+    
+    # 2. Trigger the clock
+    await RisingEdge(dut.clk)
+    await ReadOnly()
+    
+    # 3. Read and assert the single expected outcome
+    actual_acc = dut.acc.value.to_signed()
+    assert actual_acc == 6, f"FAIL: Expected 6 (2 * 3), got {actual_acc}"
+    
+    dut._log.info("SUCCESS: Basic 2x3 math smoke test passed!")
