@@ -4,6 +4,7 @@ services:
   eda:
     image: hpretl/iic-osic-tools:chipathon26
     container_name: blueprints-eda
+    working_dir: /foss/blueprints
 
     environment:
       VNC_PW: "${VNC_PW:-abc123}"
