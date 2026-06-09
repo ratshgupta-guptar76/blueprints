@@ -1,0 +1,10 @@
+# Hardware verification framework
+cocotb>=2.0.0
+
+# Mathematical golden models
+numpy>=1.26.0
+
+# Test runner
+pytest>=8.0.0
+
+iverilog

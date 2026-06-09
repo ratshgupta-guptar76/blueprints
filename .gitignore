@@ -9,19 +9,36 @@
 !.gitignore
 !README.md
 !LICENSE
+!CONTRIBUTORS.md
+!Makefile
+!.env.example
 
-# Design files
-!digital/
-!analog/
+# Keep important top-level directories
+!/docs/
+!/src/
+!/sim/
+!/scripts/
+!/verification/
+!/config/
+!/liberlane/
+!/pdk/
+!/.docker/
 
-# Verification
-!test/
-!test/**
+# Allow any README.md anywhere
+!**/README.md
 
-# Temp Sandbox
-!sandbox/
-!sandbox/**
+# Ignore common build and binary artifacts
+*.o
+*.so
+*.a
+*.pyc
+__pycache__/
+*.tar.gz
+*.zip
 
-sandbox/__pycache__/
-sandbox/sim_build/
-sandbox/results.xml
+
+# TODO: Remove once resolved
+*.pdf
+*.pptx
+
+# Everything else remains ignored
