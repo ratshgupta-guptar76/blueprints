@@ -9,7 +9,7 @@ VERILOG_SOURCES += $(PWD)/mac.sv
 TOPLEVEL = mac
 
 # The name of your Python test file (without the .py extension)
-MODULE = test_mac
+MODULE = test_test_array
 
 # Include cocotb's standard makefile rules
 include $(shell cocotb-config --makefiles)/Makefile.sim
