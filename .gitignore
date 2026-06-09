@@ -37,7 +37,7 @@ __pycache__/
 *.zip
 
 
-# Remove once resolved
+# TODO: Remove once resolved
 *.pdf
 *.pptx
 
