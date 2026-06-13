@@ -9,8 +9,8 @@ container.
 ## Layout
 
 ```
-analog/
-  start_vnc.sh        # launch IIC-OSIC-TOOLS (Xschem/ngspice/Magic/KLayout/Netgen + GF180 PDK)
+scripts/start_vnc.sh  # launcher (at repo root): IIC-OSIC-TOOLS + GF180 PDK
+analog/               # this folder — mounted to /foss/designs in the container
   xschem/       # schematics (.sch) and symbols (.sym): 8T cell, array, WL/BL drivers
   spice/        # extracted netlists + SPICE testbenches (.spice, .meas)
   magic/        # layout (.mag) + .magicrc
@@ -19,13 +19,32 @@ analog/
 
 ## Start the environment
 
+Run from the repo root:
+
 ```bash
-./start_vnc.sh                 # docker (default)
-ENGINE=podman ./start_vnc.sh   # podman instead
+scripts/start_vnc.sh                 # docker (default)
+ENGINE=podman scripts/start_vnc.sh   # podman instead
 ```
 
 Then open **http://localhost:80** (password `abc123`) in a browser, or connect a
-VNC client to `vnc://localhost:5901`. Stop with `./start_vnc.sh stop`.
+VNC client to `vnc://localhost:5901`. Stop with `scripts/start_vnc.sh stop`.
+
+### Display options
+
+Override via environment variables (set at launch; restart to change):
+
+| Var | Default | Effect |
+|-----|---------|--------|
+| `VNC_RESOLUTION` | `1920x1080` | Desktop resolution, `WIDTHxHEIGHT`. |
+| `SCALE` | `1` | Pixel scale: framebuffer = `VNC_RESOLUTION * SCALE`. Smaller = bigger UI. Must be > 0. |
+| `VNC_PW` | `abc123` | VNC password. |
+| `ENGINE` | `docker` | Container engine (`docker` or `podman`). |
+
+```bash
+VNC_RESOLUTION=2560x1440 scripts/start_vnc.sh            # higher resolution
+SCALE=0.5 scripts/start_vnc.sh                           # 2x bigger UI
+VNC_RESOLUTION=2560x1440 SCALE=0.5 scripts/start_vnc.sh  # -> 1280x720
+```
 
 Inside the container this folder is mounted directly at `/foss/designs`.
 
