@@ -28,9 +28,9 @@ N 950 -580 950 -520 {lab=vss}
 N 580 -520 950 -520 {lab=vss}
 N 580 -580 580 -520 {lab=vss}
 N 760 -520 760 -500 {lab=vss}
-N 880 -770 910 -770 {lab=Q}
-N 880 -770 880 -620 {lab=Q}
-N 880 -620 910 -620 {lab=Q}
+N 880 -770 910 -770 {lab=Vin}
+N 880 -770 880 -620 {lab=Vin}
+N 880 -620 910 -620 {lab=Vin}
 N 620 -770 650 -770 {lab=Vin}
 N 620 -620 650 -620 {lab=Vin}
 N 560 -590 560 -520 {lab=vss}
@@ -46,9 +46,8 @@ N 1540 -740 1540 -720 {lab=0}
 N 950 -520 970 -520 {lab=vss}
 N 560 -520 580 -520 {lab=vss}
 N 650 -770 650 -620 {lab=Vin}
-N 1610 -800 1610 -790 {lab=Vin}
+N 1240 -810 1240 -800 {lab=Vin}
 N 650 -770 690 -770 {lab=Vin}
-N 580 -680 880 -680 {lab=Q}
 N 310 -860 310 -510 {lab=BL}
 N 310 -680 380 -680 {lab=BL}
 N 410 -680 410 -660 {lab=vss}
@@ -68,9 +67,13 @@ N 1680 -820 1680 -800 {lab=WL}
 N 1680 -740 1680 -720 {lab=0}
 N 950 -710 1050 -710 {lab=Qb}
 N 440 -680 580 -680 {lab=Q}
+N 1230 -620 1230 -610 {lab=E1}
+N 1370 -620 1370 -610 {lab=E2}
+N 1310 -810 1310 -800 {lab=Ein}
+N 830 -620 880 -620 {lab=Vin}
 C {symbols/nfet_03v3.sym} 600 -620 0 1 {name=M1
 L=0.28u
-W=0.88u
+W=0.22u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -84,7 +87,7 @@ spiceprefix=X
 }
 C {symbols/pfet_03v3.sym} 600 -770 0 1 {name=M2
 L=0.28u
-W=0.22u
+W=0.44u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -100,7 +103,7 @@ C {ipin.sym} 750 -900 3 1 {name=p1 lab=vdd
 W=0.22u}
 C {symbols/nfet_03v3.sym} 930 -620 0 0 {name=M3
 L=0.28u
-W=0.88u
+W=0.22u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -114,7 +117,7 @@ spiceprefix=X
 }
 C {symbols/pfet_03v3.sym} 930 -770 0 0 {name=M4
 L=0.28u
-W=0.22u
+W=0.44u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -152,25 +155,22 @@ value="
 save all
 
 ** DC analysis 
-dc VIN 0 3.3 0.001
+dc Vin 0 3.3 0.001
 
 let v = v(Q)
 let vb = v(Qb)
+let vin = v(Vin)
 ** Plot the waveforms
-plot v vs vb vb vs v
-
-** Measure Seevbick
-let diff = v(Q)-v(Qb)
-meas dc snm_high MAX diff
-meas dc snm_low MIN diff
+plot v vs vin vin vs vb
 
 write 6t_sram_03v3_snm_tb.raw
 .endc
 
+.end
 "}
-C {vsource.sym} 1610 -760 0 0 {name=Vin value=0 savecurrent=false}
-C {gnd.sym} 1610 -730 0 0 {name=l4 lab=0}
-C {opin.sym} 1610 -800 3 0 {name=p9 lab=Vin
+C {vsource.sym} 1240 -770 0 0 {name=Vin value=0 savecurrent=false}
+C {gnd.sym} 1240 -740 0 0 {name=l4 lab=0}
+C {opin.sym} 1240 -810 3 0 {name=p9 lab=Vin
 W=0.22u}
 C {ipin.sym} 690 -770 0 1 {name=p7 lab=Vin
 W=0.22u}
@@ -178,7 +178,7 @@ C {iopin.sym} 310 -860 1 1 {name=p18 sig_type=std_logic lab=BL
 W=0.22u}
 C {symbols/nfet_03v3.sym} 410 -700 1 0 {name=M11
 L=0.28u
-W=0.44u
+W=0.32u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -196,7 +196,7 @@ C {iopin.sym} 1160 -860 3 0 {name=p20 sig_type=std_logic lab=BLB
 W=0.22u}
 C {symbols/nfet_03v3.sym} 1080 -730 1 0 {name=M12
 L=0.28u
-W=0.44u
+W=0.32u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -208,7 +208,22 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {vsource.sym} 1680 -770 0 0 {name=VWL1 value=3.3 savecurrent=false}
+C {vsource.sym} 1680 -770 0 0 {name=VWL1 value=0 savecurrent=false}
 C {gnd.sym} 1680 -720 0 0 {name=l6 lab=0}
 C {opin.sym} 1680 -820 3 0 {name=p17 sig_type=std_logic lab=WL
+W=0.22u}
+C {vsource_arith.sym} 1230 -580 0 0 {name=E1 VOL=V(Vin)/2+V(Ein)}
+C {gnd.sym} 1230 -550 0 0 {name=l5 lab=0}
+C {opin.sym} 1230 -620 3 0 {name=p10 lab=E1
+W=0.22u}
+C {vsource_arith.sym} 1370 -580 0 0 {name=E2 VOL=-V(Vin)/2+V(Ein)}
+C {gnd.sym} 1370 -550 0 0 {name=l3 lab=0}
+C {opin.sym} 1370 -620 3 0 {name=p12 lab=E2
+W=0.22u}
+C {vsource_arith.sym} 1310 -770 0 0 {name=Ein VOL=(V(Q)+V(Qb))/2}
+C {gnd.sym} 1310 -740 0 0 {name=p11 lab=0
+W=0.22u}
+C {opin.sym} 1310 -810 3 0 {name=p8 lab=Ein
+W=0.22u}
+C {ipin.sym} 830 -620 2 1 {name=p13 lab=Vin
 W=0.22u}
