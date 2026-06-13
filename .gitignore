@@ -1,44 +1,9 @@
-# Ignore everything by default
-/*
-
-# Keep git metadata and CI config
-!.git/
-!.github/
-
-# Keep top-level project files
-!.gitignore
-!README.md
-!LICENSE
-!CONTRIBUTORS.md
-!Makefile
-!.env.example
-
-# Keep important top-level directories
-!/docs/
-!/src/
-!/sim/
-!/scripts/
-!/verification/
-!/config/
-!/liberlane/
-!/pdk/
-!/.docker/
-
-# Allow any README.md anywhere
-!**/README.md
-
-# Ignore common build and binary artifacts
-*.o
-*.so
-*.a
-*.pyc
+runs/
 __pycache__/
-*.tar.gz
-*.zip
-
-
-# TODO: Remove once resolved
-*.pdf
-*.pptx
-
-# Everything else remains ignored
+gf180mcu/
+gf180_drc.lyrdb
+sim_build/
+final/
+img/
+*.lyrdb
+generated_defines.svh
