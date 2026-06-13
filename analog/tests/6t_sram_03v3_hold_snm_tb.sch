@@ -5,6 +5,7 @@ V {}
 S {}
 F {}
 E {}
+T {Hold SNM} 350 -1160 0 0 1.2 1.2 {}
 N 580 -740 580 -700 {lab=Q}
 N 580 -810 580 -800 {lab=vdd}
 N 580 -590 580 -580 {lab=vss}
@@ -148,6 +149,8 @@ value="
 "}
 C {devices/code_shown.sym} 1810 -930 0 0 {name=NGSPICE only_toplevel=true
 value="
+.options savecurrents
+
 .control
 save all
 
