@@ -2,9 +2,9 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-COMPOSE_FILE="$SCRIPT_DIR/../.docker/docker-compose.yml"
+COMPOSE_FILE="$SCRIPT_DIR/../.docker/compose.yml"
 if [ ! -f "$COMPOSE_FILE" ]; then
-  echo "Error: docker-compose file not found at $COMPOSE_FILE" >&2
+  echo "Error: compose file not found at $COMPOSE_FILE" >&2
   exit 1
 fi
 COMPOSE="docker compose -f $COMPOSE_FILE"
