@@ -6,4 +6,10 @@ All categories arranged alphabetically.
 > significant portions of the code. See the contributors graph for a full list of
 > human authors.
 
+## Project Authors
+
+* Ratish Gupta \<guptar76@mcmaster.ca\>
+
+## Template authors
+
 * Leo Moser \<leo.moser@pm.me\>
