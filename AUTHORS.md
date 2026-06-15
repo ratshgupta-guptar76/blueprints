@@ -17,3 +17,7 @@ All categories arranged alphabetically.
 ## Fork-specific additions (chipathon-2026 workshop slot)
 
 * Mauricio Montanares \<mauricio.xmontanares@gmail.com\>
+
+## Project
+
+* Ratish Gupta \<guptar76@mcmaster.ca\>
