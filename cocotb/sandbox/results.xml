@@ -1,0 +1,7 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1781889463" />
+    <testcase name="test_mac_random_math" classname="test_mac" file="/home/adiabliu/chipathon/blueprints/cocotb/sandbox/test_mac.py" lineno="17" time="0.004669666290283203" sim_time_ns="530.0" ratio_time="113498.47442050444" />
+    <testcase name="test_mac_smoke" classname="test_mac" file="/home/adiabliu/chipathon/blueprints/cocotb/sandbox/test_mac.py" lineno="57" time="0.00046706199645996094" sim_time_ns="50.0" ratio_time="107052.16947422155" />
+  </testsuite>
+</testsuites>
