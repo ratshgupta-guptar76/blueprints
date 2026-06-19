@@ -85,8 +85,8 @@ model=pfet_03v3
 spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 840 -390 1 0 {name=AX1
-L='W_AX'
-W='L_AX'
+L='L_AX'
+W='W_AX'
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -144,8 +144,8 @@ model=nfet_03v3
 spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 320 -390 3 1 {name=AX2
-L='W_AX'
-W='L_AX'
+L='L_AX'
+W='W_AX'
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
