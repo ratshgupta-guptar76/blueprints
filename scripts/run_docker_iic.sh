@@ -21,6 +21,7 @@
 #   IIC_MODE      - vnc (default) | x11    GUI transport
 #   IIC_VNC_PORT  - host port for noVNC web UI (default: 80)
 #   IIC_RFB_PORT  - host port for raw VNC/RFB, for KRDC etc. (default: 5901)
+#   IIC_VNC_RESOLUTION - VNC framebuffer geometry, WxH (default: 1280x720)
 #   DISPLAY       - host X display (only used when IIC_MODE=x11)
 #   EXTRA_VOLS    - extra --volume args to pass through
 
@@ -31,6 +32,7 @@ IMAGE="${IIC_IMAGE:-hpretl/iic-osic-tools:latest}"
 MODE="${IIC_MODE:-vnc}"
 VNC_PORT="${IIC_VNC_PORT:-80}"
 RFB_PORT="${IIC_RFB_PORT:-5901}"
+VNC_RESOLUTION="${IIC_VNC_RESOLUTION:-1280x720}"
 
 if ! command -v docker >/dev/null 2>&1; then
     echo "docker not found in PATH" >&2
@@ -47,10 +49,12 @@ USER_ARGS=(--user "$(id -u):$(id -g)")
 case "${MODE}" in
     vnc)
         GUI_ARGS+=(-p "${VNC_PORT}:80" -p "${RFB_PORT}:5901")
+        GUI_ARGS+=(-e "VNC_RESOLUTION=${VNC_RESOLUTION}")
         USER_ARGS=()
         echo "[run_docker_iic] VNC mode:" >&2
         echo "  browser (noVNC): http://localhost:${VNC_PORT}" >&2
         echo "  VNC viewer/KRDC: localhost:${RFB_PORT}  (password: abc123)" >&2
+        echo "  resolution:      ${VNC_RESOLUTION}" >&2
         ;;
     x11)
         if [[ -z "${DISPLAY:-}" ]]; then
@@ -81,6 +85,7 @@ set -x
 docker run --rm -it \
     --name chipathon-2026-iic \
     "${USER_ARGS[@]}" \
+    -e XSCHEM_PREINIT="set local_netlist_dir 1" \
     -v "${REPO_ROOT}:/workspace" \
     -w /workspace \
     "${GUI_ARGS[@]}" \
