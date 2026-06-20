@@ -25,7 +25,7 @@ CWBLB wblb 0 20f                                ; BLB load capacitance
 .control
   save all
   
-  tran 0.01n 50n uic
+  tran 0.1n 50n uic
 
   * plot v(q) v(qb)
 
