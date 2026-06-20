@@ -1,23 +1,24 @@
 * ============================================
 * Test: hold_snm.spice
-* Cell: 6T_03v3
+* Cell: 8T_03v3
 * PDK: GF180mcuD
 * Author: R. Gupta
 * Date: 2026-06-19
 * ============================================
 
 * -- includes --
-.include /workspace/analog/tests/6T_open_tb.spice
+.include /workspace/analog/tests/8T_open_tb.spice
 
 * -- stimulus --
 VVDD vdd 0 3.3                      ; supply
 VVSS vss 0 0                        ; source
 VWL  wl  0 0                        ; hold: OFF
 VU   u   0 0                        ; input voltage to be swept
+VA   a   0 0                        ; set Activation = HI
 
 * -- initial conditions --
 .ic v(q)=3.3 v(qb)=0        ; initial state: Q=1, QB=0
-.ic v(bl)=0.1 v(blb)=0.1    ; initial state pre-charged to 0.1V - common for idle power reduction
+.ic v(wbl)=0.1 v(wblb)=0.1    ; initial state pre-charged to 0.1V - common for idle power reduction
 
 * -- SNM rotation transformation --
 BV1 v1   0 v= sqrt(2)*v(q)+v(u)
@@ -45,7 +46,7 @@ BQB qbin 0 v=(v(v2)-v(u))* 1/sqrt(2)  ; input to inverter QB
   print hold_snm
   echo
   * --- save .raw for python parsing ---
-  write /workspace/analog/sim/6t/results/hold_snm.raw all
+  write /workspace/analog/sim/8t/results/hold_snm.raw all
 
 .endc
 
