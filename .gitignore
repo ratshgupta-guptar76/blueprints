@@ -10,7 +10,8 @@ img/
 .ipynb_checkpoints/
 .vscode/
 
-analog/sim/6t/results/*.raw
+# Remove simulation results
+analog/sim/6t/results
 
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Remove if updates are to be made to run_docker_iic.sh
