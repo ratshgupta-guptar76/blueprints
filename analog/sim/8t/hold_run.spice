@@ -16,6 +16,8 @@ VWL  wl   0 0     ; hold: OFF
 VBL  wbl  0 0     ; bitlines parked (or floating)
 VBLB wblb 0 0     ; bitlines parked (or floating)
 VRBL rbl  0 0     ; bitline parked
+VA   a   0 3.3    ; set Activation = HI
+
 
 * -- initial conditions --
 .ic v(q)=3.3 v(qb)=0       ; initial state: Q=1, QB=0

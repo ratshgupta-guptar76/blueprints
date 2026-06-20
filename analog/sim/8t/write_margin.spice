@@ -12,6 +12,7 @@
 * -- stimulus --
 VVDD vdd 0 3.3                      ; supply
 VVSS vss 0 0                        ; source
+VA   a   0 3.3                      ; set Activation = HI
 
 ** Parameters
 .param V1=0

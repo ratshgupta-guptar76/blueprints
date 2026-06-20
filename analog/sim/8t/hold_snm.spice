@@ -14,7 +14,7 @@ VVDD vdd 0 3.3                      ; supply
 VVSS vss 0 0                        ; source
 VWL  wl  0 0                        ; hold: OFF
 VU   u   0 0                        ; input voltage to be swept
-VA   a   0 0                        ; set Activation = HI
+VA   a   0 3.3                      ; set Activation = HI
 
 * -- initial conditions --
 .ic v(q)=3.3 v(qb)=0        ; initial state: Q=1, QB=0

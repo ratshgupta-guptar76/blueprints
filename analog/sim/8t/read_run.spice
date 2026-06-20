@@ -14,8 +14,9 @@
 VVDD vdd 0 3.3                                ; supply
 VVSS vss 0 0                                  ; source
 VWL  wl  0 PULSE(0 3.3 5n 0.1n 0.1n 20n 50n)  ; read: ON - Pulsed
-CWBL  wbl  0 20f                                ; BL load capacitance
-CWBLB wblb 0 20f                                ; BLB load capacitance
+VA   a   0 3.3                                ; set Activation = HI
+CWBL  wbl  0 20f                              ; BL load capacitance
+CWBLB wblb 0 20f                              ; BLB load capacitance
 
 * -- initial conditions --
 .ic v(q)=0.0 v(qb)=3.3        ; initial state: Q=1, QB=0
