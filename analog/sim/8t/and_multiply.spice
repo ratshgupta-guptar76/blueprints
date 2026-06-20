@@ -1,0 +1,106 @@
+* ============================================
+* Test: and_multiply.spice
+* Cell: 8T_03v3
+* PDK: GF180mcuD
+* Author: R. Gupta
+* Date: 2026-06-19
+* ============================================
+
+* -- includes --
+.include /workspace/analog/tests/8T_tb.spice
+
+* -- stimulus --
+VVDD vdd  0 3.3   ; supply
+VVSS vss  0 0     ; source
+VWL  wl   0 0     ; hold: OFF
+VBL  wbl  0 0     ; bitlines parked (or floating)
+VBLB wblb 0 0     ; bitlines parked (or floating)
+VQ   q    0 0     ; output node
+VA   a    0 0     ; set Activation = HI
+CRBL rbl  0 20f   ; capacitive load on bitline
+
+
+* -- initial conditions --
+  .ic v(rbl)=3.3               ; initial state: A=0
+
+* -- sim --
+.control
+  save all
+
+  * --- initial conditions (Q, A) == (0, 0) ---
+  alter VA = 0
+  alter VQ = 0
+
+  * --- start transient analysis --- 
+  tran 0.1n 50n uic
+
+  * --- validate data ---
+  echo
+  meas tran q_init    FIND v(q)   AT=15n
+  meas tran a_init    FIND v(a)   AT=15n
+  meas tran mult_init FIND v(rbl) AT=15n
+  echo
+  meas tran q_final    FIND v(q)   AT=50n
+  meas tran a_final    FIND v(a)   AT=50n
+  meas tran mult_final FIND v(rbl) AT=50n
+  echo
+
+  * --- initial conditions (Q, A) == (1, 0) ---
+  alter VA = 3.3
+  alter VQ = 0
+  
+  * --- start transient analysis --- 
+  tran 0.1n 50n uic
+
+  * --- validate data ---
+  echo
+  meas tran q_init    FIND v(q)   AT=15n
+  meas tran a_init    FIND v(a)   AT=15n
+  meas tran mult_init FIND v(rbl) AT=15n
+  echo
+  meas tran q_final    FIND v(q)   AT=50n
+  meas tran a_final    FIND v(a)   AT=50n
+  meas tran mult_final FIND v(rbl) AT=50n
+  echo
+
+    * --- initial conditions (Q, A) == (0, 1) ---
+  alter VA = 0
+  alter VQ = 3.3
+  
+  * --- start transient analysis --- 
+  tran 0.1n 50n uic
+
+  * --- validate data ---
+  echo
+  meas tran q_init    FIND v(q)   AT=15n
+  meas tran a_init    FIND v(a)   AT=15n
+  meas tran mult_init FIND v(rbl) AT=15n
+  echo
+  meas tran q_final    FIND v(q)   AT=50n
+  meas tran a_final    FIND v(a)   AT=50n
+  meas tran mult_final FIND v(rbl) AT=50n
+  echo
+
+    * --- initial conditions (Q, A) == (1, 1) ---
+  alter VA = 3.3
+  alter VQ = 3.3
+  
+  * --- start transient analysis --- 
+  tran 0.1n 50n uic
+
+  * --- validate data ---
+  echo
+  meas tran q_init    FIND v(q)   AT=15n
+  meas tran a_init    FIND v(a)   AT=15n
+  meas tran mult_init FIND v(rbl) AT=15n
+  echo
+  meas tran q_final    FIND v(q)   AT=50n
+  meas tran a_final    FIND v(a)   AT=50n
+  meas tran mult_final FIND v(rbl) AT=50n
+  echo
+  * --- save .raw for python parsing ---
+  write /workspace/analog/sim/8t/results/and_multiply.raw all
+
+.endc
+
+.end
