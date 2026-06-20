@@ -14,7 +14,10 @@ x1 wl vdd bl blb qin qb qbin vss q 6T_03v3
 
 .include /workspace/analog/designs/params.spice
 
-?
+
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+
 **** end user architecture code
 **.ends
 
@@ -31,12 +34,18 @@ x1 wl vdd bl blb qin qb qbin vss q 6T_03v3
 *.ipin QIN
 *.opin Q
 *.opin QB
-*  PD1 -  nfet_03v3  IS MISSING !!!!
-*  PU1 -  pfet_03v3  IS MISSING !!!!
-*  AX1 -  nfet_03v3  IS MISSING !!!!
-*  PU2 -  pfet_03v3  IS MISSING !!!!
-*  PD2 -  nfet_03v3  IS MISSING !!!!
-*  AX2 -  nfet_03v3  IS MISSING !!!!
+XPD1 QB QBIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPU1 QB QBIN VDD VDD pfet_03v3 L='L_PU' W='W_PU' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XAX1 BLB WL QB VSS nfet_03v3 L='L_AX' W='W_AX' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPU2 Q QIN VDD VDD pfet_03v3 L='L_PU' W='W_PU' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPD2 Q QIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XAX2 BL WL Q VSS nfet_03v3 L='L_AX' W='W_AX' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
 .ends
 
 .end
