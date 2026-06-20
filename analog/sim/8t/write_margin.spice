@@ -1,13 +1,13 @@
 * ============================================
 * Test: write_margin.spice
-* Cell: 6T_03v3
+* Cell: 8T_03v3
 * PDK: GF180mcuD
 * Author: R. Gupta
 * Date: 2026-06-19
 * ============================================
 
 * -- includes --
-.include /workspace/analog/tests/6T_tb.spice
+.include /workspace/analog/tests/8T_tb.spice
 
 * -- stimulus --
 VVDD vdd 0 3.3                      ; supply
@@ -23,9 +23,9 @@ VVSS vss 0 0                        ; source
 .param NP=1
 
 ** Sources
-VBLB BLB 0 DC 3.3
-VBL  BL  0 DC 0
-VWL  WL  0 PULSE({V1} 3.3 {Td} {Tr} {Tf} {PW} {PER} {NP})
+VWBLB WBLB 0 DC 3.3
+VWBL  WBL  0 DC 0
+VWL   WL  0 PULSE({V1} 3.3 {Td} {Tr} {Tf} {PW} {PER} {NP})
 
 ** Initial States
 .ic v(q)=3.3 v(qb)=0
@@ -138,6 +138,6 @@ else
   echo
 end
 
-write /workspace/analog/sim/6t/results/write_margin.raw all
+write /workspace/analog/sim/8t/results/write_margin.raw all
 .endc
 .end
