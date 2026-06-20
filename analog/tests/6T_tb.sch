@@ -19,9 +19,9 @@ C {ipin.sym} 620 -380 1 0 {name=p2 lab=vss}
 C {ipin.sym} 640 -380 1 0 {name=p3 lab=vdd}
 C {ipin.sym} 640 -200 3 0 {name=p4 lab=blb}
 C {ipin.sym} 540 -200 3 0 {name=p5 lab=bl}
-C {ipin.sym} 690 -290 2 0 {name=p6 lab=qb
+C {opin.sym} 690 -290 0 0 {name=p6 lab=qb
 }
-C {ipin.sym} 490 -290 2 1 {name=p7 lab=q}
+C {opin.sym} 490 -290 0 1 {name=p7 lab=q}
 C {devices/code_shown.sym} 20 -170 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="

@@ -8,8 +8,8 @@ E {}
 N 840 -310 900 -310 {lab=Q}
 N 940 -380 940 -340 {lab=#net1}
 N 940 -380 1060 -380 {lab=#net1}
-N 940 -280 940 -240 {lab=vss}
-N 890 -240 990 -240 {lab=vss}
+N 940 -280 940 -240 {lab=VSS}
+N 890 -240 990 -240 {lab=VSS}
 N 1090 -450 1090 -420 {lab=A}
 N 1060 -450 1090 -450 {lab=A}
 N 1120 -380 1170 -380 {lab=RBL}
@@ -67,7 +67,7 @@ N 420 -340 430 -340 {lab=QIN}
 N 430 -350 430 -340 {lab=QIN}
 N 940 -310 1090 -310 {lab=VSS}
 N 1090 -380 1090 -280 {lab=VSS}
-C {symbols/nfet_03v3.sym} 920 -310 0 0 {name=AX4
+C {symbols/nfet_03v3.sym} 920 -310 0 0 {name=M1
 L='L_M1'
 W='W_M1'
 nf=1
@@ -81,7 +81,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/nfet_03v3.sym} 1090 -400 1 0 {name=AX3
+C {symbols/nfet_03v3.sym} 1090 -400 1 0 {name=M2
 L='L_M2'
 W='W_M2'
 nf=1
@@ -96,8 +96,8 @@ model=nfet_03v3
 spiceprefix=X
 }
 C {ipin.sym} 1060 -450 0 0 {name=p9 lab=A}
-C {ipin.sym} 1170 -330 3 0 {name=p11 lab=RBL}
-C {lab_pin.sym} 890 -240 0 0 {name=p8 sig_type=std_logic lab=vss}
+C {opin.sym} 1170 -330 1 0 {name=p11 lab=RBL}
+C {lab_pin.sym} 890 -240 0 0 {name=p8 sig_type=std_logic lab=VSS}
 C {devices/code_shown.sym} 595.625 -141.875 0 0 {name=PARAMS only_toplevel=true
 format="tcleval( @value )"
 value="

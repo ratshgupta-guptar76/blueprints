@@ -5,8 +5,8 @@
 *.ipin vdd
 *.ipin blb
 *.ipin bl
-*.ipin qb
-*.ipin q
+*.opin qb
+*.opin q
 x1 wl vdd bl blb qb qb q vss q 6T_03v3
 **** begin user architecture code
 
