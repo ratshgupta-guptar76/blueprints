@@ -1,0 +1,44 @@
+* ============================================
+* Test: hold_run.spice
+* Cell: 8T_03v3
+* PDK: GF180mcuD
+* Author: R. Gupta
+* Date: 2026-06-19
+* ============================================
+
+* -- includes --
+.include /workspace/analog/tests/8T_tb.spice
+
+* -- stimulus --
+VVDD vdd  0 3.3   ; supply
+VVSS vss  0 0     ; source
+VWL  wl   0 0     ; hold: OFF
+VBL  wbl  0 0     ; bitlines parked (or floating)
+VBLB wblb 0 0     ; bitlines parked (or floating)
+VRBL rbl  0 0     ; bitline parked
+
+* -- initial conditions --
+.ic v(q)=3.3 v(qb)=0       ; initial state: Q=1, QB=0
+
+* -- sim --
+.control
+  save all
+  
+  tran 0.01n 50n uic
+
+  * plot v(q) v(qb)
+
+  * --- validate data ---
+  echo
+  meas tran q_init  FIND v(q)  AT=5n
+  meas tran qb_init FIND v(qb) AT=5n
+  echo
+  meas tran q_final FIND v(q) AT=50n
+  meas tran qb_final FIND v(qb) AT=50n
+  echo
+  * --- save .raw for python parsing ---
+  write /workspace/analog/sim/8t/results/hold_run.raw all
+
+.endc
+
+.end

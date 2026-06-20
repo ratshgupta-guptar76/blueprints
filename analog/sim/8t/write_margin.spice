@@ -1,0 +1,143 @@
+* ============================================
+* Test: write_margin.spice
+* Cell: 6T_03v3
+* PDK: GF180mcuD
+* Author: R. Gupta
+* Date: 2026-06-19
+* ============================================
+
+* -- includes --
+.include /workspace/analog/tests/6T_tb.spice
+
+* -- stimulus --
+VVDD vdd 0 3.3                      ; supply
+VVSS vss 0 0                        ; source
+
+** Parameters
+.param V1=0
+.param Td=2n
+.param Tr=0.1n
+.param Tf=0.1n
+.param PW=3n
+.param PER=50n
+.param NP=1
+
+** Sources
+VBLB BLB 0 DC 3.3
+VBL  BL  0 DC 0
+VWL  WL  0 PULSE({V1} 3.3 {Td} {Tr} {Tf} {PW} {PER} {NP})
+
+** Initial States
+.ic v(q)=3.3 v(qb)=0
+
+** Control Section Params
+.csparam V_H=3.3
+.csparam V_L=0
+.csparam V1={V1}
+.csparam Td={Td}
+.csparam Tr={Tr}
+.csparam Tf={Tf}
+.csparam PW={PW}
+.csparam PER={PER}
+.csparam NP={NP}
+.csparam tran_time=0.1u
+
+* -- verbose toggle: 1 = debug, 0 = quiet --
+.csparam verbose=1
+
+.control
+save all
+
+
+
+let WL_H = V_H
+let WL_L = V_L
+let max_err = 0.01
+let v_trip  = V_H/2
+
+echo
+echo ==========================================
+echo   WORD-LINE WRITE MARGIN  (bisection)
+echo ==========================================
+
+* =========================================================
+*  ENDPOINT CHECKS  (bisection is only valid if both pass)
+* =========================================================
+* -- Endpoint 1: WL = VDD must FLIP --
+let flip_b = 0
+alter @vwl[pulse] = [ $&V1 $&V_H $&Td $&Tr $&Tf $&PW $&PER $&NP ]
+tran 0.1n $&tran_time uic
+let final_q = v(q)[length(v(q))-1]
+if final_q le v_trip
+    let flip_b = 1
+    echo "  [PASS]  WL=VDD  -> flipped     (endpoint 1/2)"
+else
+    echo "  [FAIL]  WL=VDD  -> NOT flipped (endpoint 1/2)"
+end
+
+* -- Endpoint 2: WL = 0 must NOT flip --
+let noflip_b = 0
+alter @vwl[pulse] = [ $&V1 $&V_L $&Td $&Tr $&Tf $&PW $&PER $&NP ]
+tran 0.1n $&tran_time uic
+let final_q = v(q)[length(v(q))-1]
+if final_q le v_trip
+    echo "  [FAIL]  WL=0    -> flipped     (endpoint 2/2)"
+else
+    let noflip_b = 1
+    echo "  [PASS]  WL=0    -> not flipped (endpoint 2/2)"
+end
+
+* =========================================================
+*  BISECTION
+* =========================================================
+let bool_b = flip_b * noflip_b
+if bool_b = 0
+  echo
+  echo "  >> ENDPOINTS FAILED - check schematic / .ic / sizing"
+  echo "  >> bisection skipped (result invalid)"
+  echo
+else
+  setplot const
+  echo
+  echo "  Endpoints OK - running bisection..."
+  echo
+
+  let WL_H = V_H
+  let WL_L = V_L
+  let WL_m = 0
+  let iter = 0
+
+  while WL_H-WL_L > max_err
+    let WL_m = (WL_H + WL_L)/2
+    alter @vwl[pulse] = [ 0 $&WL_m $&Td $&Tr $&Tf $&PW $&PER $&NP ]
+    tran 0.1n $&tran_time uic
+    let final_q = v(q)[length(v(q))-1]
+    let iter = iter + 1
+
+    if final_q < v_trip
+      let WL_H = WL_m
+      if $&verbose = 1
+        echo "  iter $&iter : WL_m=$&WL_m  -> flip      [hi=$&WL_H lo=$&WL_L]"
+      end
+    else
+      let WL_L = WL_m
+      if $&verbose = 1
+        echo "  iter $&iter : WL_m=$&WL_m  -> no-flip   [hi=$&WL_H lo=$&WL_L]"
+      end
+    end
+  end
+
+  let WL_crit = WL_H
+  let margin  = V_H - WL_H
+  echo
+  echo ------------------------------------------
+  echo "  iterations : $&iter"
+  echo "  WL_crit    : $&WL_crit V"
+  echo "  WLWM_RESULT : $&margin V"
+  echo ------------------------------------------
+  echo
+end
+
+write /workspace/analog/sim/6t/results/write_margin.raw all
+.endc
+.end

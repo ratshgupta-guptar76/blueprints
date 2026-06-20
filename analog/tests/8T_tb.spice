@@ -9,7 +9,7 @@
 *.ipin rbl
 *.ipin wlb
 *.ipin blb
-x1 vss wlb blb vdd wl a qb q qb rbl q 8T_03v3
+x1 vdd wlb blb vss wl a qb q qb rbl q 8T_03v3
 **** begin user architecture code
 
 .include /workspace/analog/designs/params_6T.spice

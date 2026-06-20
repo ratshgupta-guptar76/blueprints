@@ -1,4 +1,4 @@
 * File: params_8T.spice
 * Transistor Width & Length parameters for 8T_03v3 cell
-.param W_M1=0.44u  L_M1=0.28u
-.param W_m2=0.44u  L_m2=0.28u
+.param W_M1=0.32u  L_M1=0.28u
+.param W_M2=0.44u  L_M2=0.28u
