@@ -1,4 +1,4 @@
-* File: params.spice
+* File: params_6T.spice
 * Transistor Width & Length parameters for 6T_03v3 cell
 .param W_PU=0.44u	L_PU=0.28u
 .param W_PD=0.44u	L_PD=0.28u

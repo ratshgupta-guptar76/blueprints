@@ -107,7 +107,7 @@ C {title.sym} 180 -50 0 0 {name=l1 author="Ratish V. Gupta"}
 C {devices/code_shown.sym} 20 -750 0 0 {name=PARAMS only_toplevel=true
 format="tcleval( @value )"
 value="
-.include /workspace/analog/designs/params.spice
+.include /workspace/analog/designs/params_6T.spice
 "}
 C {devices/code_shown.sym} 20 -160 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
