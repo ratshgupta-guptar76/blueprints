@@ -22,10 +22,11 @@ C {ipin.sym} 610 -160 3 0 {name=p8 lab=rbl}
 C {ipin.sym} 740 -330 2 0 {name=p3 lab=wlb}
 C {ipin.sym} 740 -200 2 0 {name=p9 lab=blb}
 C {title.sym} 180 -40 0 0 {name=l1 author="Ratish V. Gupta"}
-C {devices/code_shown.sym} 40 -460 0 0 {name=PARAMS only_toplevel=true
+C {devices/code_shown.sym} 25 -465 0 0 {name=PARAMS only_toplevel=true
 format="tcleval( @value )"
 value="
-.include /workspace/analog/designs/params.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
 "}
 C {devices/code_shown.sym} 20 -140 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"

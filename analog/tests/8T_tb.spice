@@ -12,7 +12,8 @@
 x1 vss wlb blb vdd wl a qb q qb rbl q 8T_03v3
 **** begin user architecture code
 
-.include /workspace/analog/designs/params.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
 
 
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
