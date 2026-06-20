@@ -1,0 +1,42 @@
+** sch_path: /workspace/analog/tests/6T_open_tb.sch
+**.subckt 6T_open_tb wl vss vdd blb bl qb q qbin qin
+*.ipin wl
+*.ipin vss
+*.ipin vdd
+*.ipin blb
+*.ipin bl
+*.ipin qb
+*.ipin q
+*.ipin qbin
+*.ipin qin
+x1 wl vdd bl blb qin qb qbin vss q 6T_03v3
+**** begin user architecture code
+
+.include /workspace/analog/designs/params.spice
+
+?
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  analog/designs/6T_03v3.sym # of pins=9
+** sym_path: /workspace/analog/designs/6T_03v3.sym
+** sch_path: /workspace/analog/designs/6T_03v3.sch
+.subckt 6T_03v3 WL VDD BL BLB QIN QB QBIN VSS Q
+*.ipin VSS
+*.ipin VDD
+*.ipin WL
+*.ipin BL
+*.ipin BLB
+*.ipin QBIN
+*.ipin QIN
+*.opin Q
+*.opin QB
+*  PD1 -  nfet_03v3  IS MISSING !!!!
+*  PU1 -  pfet_03v3  IS MISSING !!!!
+*  AX1 -  nfet_03v3  IS MISSING !!!!
+*  PU2 -  pfet_03v3  IS MISSING !!!!
+*  PD2 -  nfet_03v3  IS MISSING !!!!
+*  AX2 -  nfet_03v3  IS MISSING !!!!
+.ends
+
+.end

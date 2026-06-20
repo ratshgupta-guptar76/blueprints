@@ -1,0 +1,49 @@
+** sch_path: /workspace/analog/tests/6t/6T_tb.sch
+**.subckt 6T_tb wl vss vdd blb bl qb q
+*.ipin wl
+*.ipin vss
+*.ipin vdd
+*.ipin blb
+*.ipin bl
+*.ipin qb
+*.ipin q
+x1 wl vdd bl blb qb qb q vss q 6T_03v3
+**** begin user architecture code
+
+.include /workspace/analog/designs/params.spice
+
+
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  analog/designs/6T_03v3.sym # of pins=9
+** sym_path: /workspace/analog/designs/6T_03v3.sym
+** sch_path: /workspace/analog/designs/6T_03v3.sch
+.subckt 6T_03v3 WL VDD BL BLB QIN QB QBIN VSS Q
+*.ipin VSS
+*.ipin VDD
+*.ipin WL
+*.ipin BL
+*.ipin BLB
+*.ipin QBIN
+*.ipin QIN
+*.opin Q
+*.opin QB
+XPD1 QB QBIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPU1 QB QBIN VDD VDD pfet_03v3 L='L_PU' W='W_PU' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XAX1 BLB WL QB VSS nfet_03v3 L='L_AX' W='W_AX' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPU2 Q QIN VDD VDD pfet_03v3 L='L_PU' W='W_PU' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPD2 Q QIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XAX2 BL WL Q VSS nfet_03v3 L='L_AX' W='W_AX' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+.ends
+
+.end
