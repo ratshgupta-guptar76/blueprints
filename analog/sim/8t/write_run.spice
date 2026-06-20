@@ -1,20 +1,20 @@
 * ============================================
 * Test: write_run.spice
-* Cell: 6T_03v3
+* Cell: 8T_03v3
 * PDK: GF180mcuD
 * Author: R. Gupta
 * Date: 2026-06-19
 * ============================================
 
 * -- includes --
-.include /workspace/analog/tests/6T_tb.spice
+.include /workspace/analog/tests/8T_tb.spice
 
 * -- stimulus --
-VVDD vdd 0 3.3                                ; supply
-VVSS vss 0 0                                  ; source
-VWL  wl  0 PULSE(0 3.3 5n 0.1n 0.1n 20n 50n)  ; write: ON - Pulsed
-VBL  bl  0 0                                  ; BL LOW pulls Q down
-VBLB blb 0 3.3                                ; BLB HIGH pulls QB up
+VVDD  vdd 0 3.3                                 ; supply
+VVSS  vss 0 0                                   ; source
+VWL   wl  0 PULSE(0 3.3 5n 0.1n 0.1n 20n 50n)   ; write: ON - Pulsed
+VWBL  wbl  0 0                                  ; WBL LOW pulls Q down
+VWBLB wblb 0 3.3                                ; WBLB HIGH pulls QB up
 
 * -- initial conditions --
 .ic v(q)=3.3 v(qb)=0    ; initial state: Q=1, QB=0
@@ -23,7 +23,7 @@ VBLB blb 0 3.3                                ; BLB HIGH pulls QB up
 .control
   save all
   
-  tran 0.01n 50n uic
+  tran 0.1n 50n uic
 
   * plot v(q) v(qb)
 
@@ -36,7 +36,7 @@ VBLB blb 0 3.3                                ; BLB HIGH pulls QB up
   meas tran qb_final FIND v(qb) AT=50n
   echo
   * --- save .raw for python parsing ---
-  write /workspace/analog/sim/6t/results/write_run.raw all
+  write /workspace/analog/sim/8t/results/write_run.raw all
 
 .endc
 
