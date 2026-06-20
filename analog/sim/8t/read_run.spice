@@ -1,25 +1,25 @@
 
 * ============================================
 * Test: read_run.spice
-* Cell: 6T_03v3
+* Cell: 8T_03v3
 * PDK: GF180mcuD
 * Author: R. Gupta
 * Date: 2026-06-19
 * ============================================
 
 * -- includes --
-.include /workspace/analog/tests/6T_tb.spice
+.include /workspace/analog/tests/8T_tb.spice
 
 * -- stimulus --
 VVDD vdd 0 3.3                                ; supply
 VVSS vss 0 0                                  ; source
 VWL  wl  0 PULSE(0 3.3 5n 0.1n 0.1n 20n 50n)  ; read: ON - Pulsed
-CBL  bl  0 20f                                ; BL load capacitance
-CBLB blb 0 20f                                ; BLB load capacitance
+CWBL  wbl  0 20f                                ; BL load capacitance
+CWBLB wblb 0 20f                                ; BLB load capacitance
 
 * -- initial conditions --
-.ic v(q)=3.3 v(qb)=0        ; initial state: Q=1, QB=0
-.ic v(bl)=3.3 v(blb)=3.3    ; precharged lines: BL=HI, BLB=HI
+.ic v(q)=0.0 v(qb)=3.3        ; initial state: Q=1, QB=0
+.ic v(wbl)=3.3 v(wblb)=3.3    ; precharged lines: BL=HI, BLB=HI
 
 * -- sim --
 .control
@@ -37,14 +37,14 @@ CBLB blb 0 20f                                ; BLB load capacitance
   meas tran q_final  FIND v(q)  AT=50n
   meas tran qb_final FIND v(qb) AT=50n
   echo
-  meas tran bl_init  FIND v(bl)  AT=5n
-  meas tran blb_init FIND v(blb) AT=5n
+  meas tran wbl_init  FIND v(wbl)  AT=5n
+  meas tran wblb_init FIND v(wblb) AT=5n
   echo
-  meas tran bl_final  FIND v(bl)  AT=50n
-  meas tran blb_final FIND v(blb) AT=50n
+  meas tran wbl_final  FIND v(wbl)  AT=50n
+  meas tran wblb_final FIND v(wblb) AT=50n
   echo
   * --- save .raw for python parsing ---
-  write /workspace/analog/sim/6t/results/read_run.raw all
+  write /workspace/analog/sim/8t/results/read_run.raw all
 
 .endc
 
