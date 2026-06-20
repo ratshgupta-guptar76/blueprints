@@ -1,5 +1,5 @@
 ** sch_path: /workspace/analog/tests/8T_tb.sch
-**.subckt 8T_tb vdd vss wl q qb a rbl wlb blb
+**.subckt 8T_tb vdd vss wl q qb a rbl wbl wblb
 *.ipin vdd
 *.ipin vss
 *.ipin wl
@@ -7,9 +7,9 @@
 *.ipin qb
 *.ipin a
 *.ipin rbl
-*.ipin wlb
-*.ipin blb
-x1 vdd wlb blb vss wl a qb q qb rbl q 8T_03v3
+*.ipin wbl
+*.ipin wblb
+x1 vdd wbl wblb vss wl a qb q qb rbl q 8T_03v3
 **** begin user architecture code
 
 .include /workspace/analog/designs/params_6T.spice

@@ -20,7 +20,7 @@ C {ipin.sym} 740 -260 2 0 {name=p6 lab=qb}
 C {ipin.sym} 570 -160 3 0 {name=p7 lab=a}
 C {ipin.sym} 610 -160 3 0 {name=p8 lab=rbl}
 C {ipin.sym} 740 -330 2 0 {name=p3 lab=wbl}
-C {ipin.sym} 740 -200 2 0 {name=p9 lab=blb}
+C {ipin.sym} 740 -200 2 0 {name=p9 lab=wblb}
 C {title.sym} 180 -40 0 0 {name=l1 author="Ratish V. Gupta"}
 C {devices/code_shown.sym} 25 -465 0 0 {name=PARAMS only_toplevel=true
 format="tcleval( @value )"
