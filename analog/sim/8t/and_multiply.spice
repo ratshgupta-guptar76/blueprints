@@ -12,7 +12,7 @@
 * -- stimulus --
 VVDD vdd  0 3.3   ; supply
 VVSS vss  0 0     ; source
-VWL  wl   0 0     ; hold: OFF
+VWL  wl   0 0     ; reads: OFF
 VBL  wbl  0 0     ; bitlines parked (or floating)
 VBLB wblb 0 0     ; bitlines parked (or floating)
 VQ   q    0 0     ; output node
