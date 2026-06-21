@@ -14,7 +14,7 @@
 MKEEP rbl vss vdd vdd pfet_03v3 L=0.32u W=0.22u
 
 * -- stimulus --
-VVDD vdd  0 3.3   ; supply
+VVDD vdd  0 {VDD_CORNER}   ; supply
 VVSS vss  0 0     ; source
 VWL  wl   0 0     ; read: OFF
 VBL  wbl  0 0     ; bitlines parked (or floating)

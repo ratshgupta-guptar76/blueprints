@@ -11,7 +11,7 @@
 .include /workspace/analog/designs/pvt.spice
 
 * -- stimulus --
-VVDD vdd  0 3.3   ; supply
+VVDD vdd  0 {VDD_CORNER}   ; supply
 VVSS vss  0 0     ; source
 VWL  wl   0 0     ; hold: OFF
 VBL  wbl  0 0     ; bitlines parked (or floating)
