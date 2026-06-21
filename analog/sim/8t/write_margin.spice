@@ -8,6 +8,7 @@
 
 * -- includes --
 .include /workspace/analog/tests/8T_tb.spice
+.include /workspace/analog/designs/pvt.spice
 
 * -- stimulus --
 VVDD vdd 0 3.3                      ; supply
