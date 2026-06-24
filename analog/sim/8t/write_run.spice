@@ -7,19 +7,21 @@
 * ============================================
 
 * -- includes --
-.include /workspace/analog/tests/8T_tb.spice
 .include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tests/8T_tb.spice
 
 * -- stimulus --
 VVDD  vdd 0 {VDD_CORNER}                        ; supply
 VVSS  vss 0 0                                   ; source
-VWL   wl  0 PULSE(0 3.3 5n 0.1n 0.1n 20n 50n)   ; write: ON - Pulsed
+VWL   wl  0 PULSE(0 {VDD_CORNER} 5n 0.1n 0.1n 20n 50n)   ; write: ON - Pulsed
 VWBL  wbl  0 0                                  ; WBL LOW pulls Q down
-VWBLB wblb 0 3.3                                ; WBLB HIGH pulls QB up
-VA    a   0 3.3                                 ; set Activation = HI
+VWBLB wblb 0 {VDD_CORNER}                                ; WBLB HIGH pulls QB up
+VA    a   0 {VDD_CORNER}                                 ; set Activation = HI
 
 * -- initial conditions --
-.ic v(q)=3.3 v(qb)=0    ; initial state: Q=1, QB=0
+.ic v(q)={VDD_CORNER} v(qb)=0    ; initial state: Q=1, QB=0
 
 * -- sim --
 .control
