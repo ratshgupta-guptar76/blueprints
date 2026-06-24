@@ -7,30 +7,29 @@
 * ============================================
 
 * -- includes --
-.include /workspace/analog/tests/8T_tb.spice
 .include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tests/8T_tb.spice
 
 * -- stimulus --
-VVDD vdd  0 {VDD_CORNER}   ; supply
-VVSS vss  0 0     ; source
-VWL  wl   0 0     ; hold: OFF
-VBL  wbl  0 0     ; bitlines parked (or floating)
-VBLB wblb 0 0     ; bitlines parked (or floating)
-VRBL rbl  0 0     ; bitline parked
-VA   a   0 3.3    ; set Activation = HI
-
+VVDD vdd  0 {VDD_CORNER}  ; supply
+VVSS vss  0 0             ; gnd
+VWL  wl   0 0             ; hold: OFF
+VBL  wbl  0 0             ; bitlines parked (or floating)
+VBLB wblb 0 0             ; bitlines parked (or floating)
+VRBL rbl  0 0             ; bitline parked
+VA   a    0 {VDD_CORNER}        ; set Activation = HI
 
 * -- initial conditions --
-.ic v(q)=3.3 v(qb)=0       ; initial state: Q=1, QB=0
+.ic v(q)={VDD_CORNER} v(qb)=0       ; initial state: Q=1, QB=0
 
 * -- sim --
 .control
   save all
   
   tran 0.1n 50n uic
-
-  * plot v(q) v(qb)
-
+  
   * --- validate data ---
   echo
   meas tran q_init  FIND v(q)  AT=5n
