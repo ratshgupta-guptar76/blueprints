@@ -32,9 +32,6 @@ XAX2 WBL WL Q VSS nfet_03v3 L='L_AX' W='W_AX' nf=1 ad='int((nf+1)/2) * W/nf * 0.
 .include /workspace/analog/designs/params_6T.spice
 .include /workspace/analog/designs/params_8T.spice
 
-
-.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
-
 **** end user architecture code
 **.ends
 .end

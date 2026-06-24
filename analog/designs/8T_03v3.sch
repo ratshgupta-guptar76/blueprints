@@ -5,69 +5,69 @@ V {}
 S {}
 F {}
 E {}
-N 840 -310 900 -310 {lab=Q}
-N 940 -380 940 -340 {lab=#net1}
-N 940 -380 1060 -380 {lab=#net1}
-N 940 -280 940 -240 {lab=VSS}
-N 890 -240 990 -240 {lab=VSS}
-N 1090 -450 1090 -420 {lab=A}
-N 1060 -450 1090 -450 {lab=A}
-N 1120 -380 1170 -380 {lab=RBL}
-N 1170 -430 1170 -330 {lab=RBL}
-N 470 -410 510 -410 {lab=QBIN}
-N 470 -410 470 -270 {lab=QBIN}
-N 470 -270 510 -270 {lab=QBIN}
-N 550 -380 550 -300 {lab=QB}
-N 550 -340 670 -340 {lab=QB}
-N 550 -240 550 -220 {lab=VSS}
-N 450 -220 550 -220 {lab=VSS}
-N 440 -220 450 -220 {lab=VSS}
-N 700 -340 700 -220 {lab=VSS}
-N 550 -220 700 -220 {lab=VSS}
-N 550 -460 550 -440 {lab=VDD}
-N 440 -460 550 -460 {lab=VDD}
-N 700 -570 700 -380 {lab=WL}
-N 550 -270 570 -270 {lab=VSS}
-N 570 -270 570 -220 {lab=VSS}
-N 550 -460 570 -460 {lab=VDD}
-N 570 -460 570 -410 {lab=VDD}
-N 550 -410 570 -410 {lab=VDD}
-N 370 -410 410 -410 {lab=QIN}
-N 410 -410 410 -270 {lab=QIN}
-N 370 -270 410 -270 {lab=QIN}
-N 330 -380 330 -300 {lab=Q}
-N 330 -240 330 -220 {lab=VSS}
-N 330 -220 430 -220 {lab=VSS}
-N 430 -220 440 -220 {lab=VSS}
-N 180 -340 180 -220 {lab=VSS}
-N 180 -220 330 -220 {lab=VSS}
-N 330 -460 330 -440 {lab=VDD}
-N 330 -460 440 -460 {lab=VDD}
-N 180 -510 180 -380 {lab=WL}
-N 310 -270 330 -270 {lab=VSS}
-N 310 -270 310 -220 {lab=VSS}
-N 310 -460 330 -460 {lab=VDD}
-N 310 -460 310 -410 {lab=VDD}
-N 310 -410 330 -410 {lab=VDD}
-N 440 -220 440 -190 {lab=VSS}
-N 440 -490 440 -460 {lab=VDD}
-N 210 -340 330 -340 {lab=Q}
-N 120 -340 150 -340 {lab=WBL}
-N 100 -340 120 -340 {lab=WBL}
-N 730 -340 780 -340 {lab=WBLB}
-N 100 -440 100 -240 {lab=WBL}
-N 780 -440 780 -240 {lab=WBLB}
-N 180 -590 180 -510 {lab=WL}
-N 180 -570 700 -570 {lab=WL}
-N 460 -330 470 -330 {lab=QBIN}
-N 450 -330 460 -330 {lab=QBIN}
-N 450 -330 450 -320 {lab=QBIN}
-N 410 -340 420 -340 {lab=QIN}
-N 420 -340 430 -340 {lab=QIN}
-N 430 -350 430 -340 {lab=QIN}
-N 940 -310 1090 -310 {lab=VSS}
-N 1090 -380 1090 -280 {lab=VSS}
-C {symbols/nfet_03v3.sym} 920 -310 0 0 {name=M1
+N 820 -250 880 -250 {lab=Q}
+N 920 -320 920 -280 {lab=#net1}
+N 920 -320 1040 -320 {lab=#net1}
+N 920 -220 920 -180 {lab=VSS}
+N 870 -180 970 -180 {lab=VSS}
+N 1070 -390 1070 -360 {lab=A}
+N 1040 -390 1070 -390 {lab=A}
+N 1100 -320 1150 -320 {lab=RBL}
+N 1150 -370 1150 -270 {lab=RBL}
+N 450 -350 490 -350 {lab=QBIN}
+N 450 -350 450 -210 {lab=QBIN}
+N 450 -210 490 -210 {lab=QBIN}
+N 530 -320 530 -240 {lab=QB}
+N 530 -280 650 -280 {lab=QB}
+N 530 -180 530 -160 {lab=VSS}
+N 430 -160 530 -160 {lab=VSS}
+N 420 -160 430 -160 {lab=VSS}
+N 680 -280 680 -160 {lab=VSS}
+N 530 -160 680 -160 {lab=VSS}
+N 530 -400 530 -380 {lab=VDD}
+N 420 -400 530 -400 {lab=VDD}
+N 680 -510 680 -320 {lab=WL}
+N 530 -210 550 -210 {lab=VSS}
+N 550 -210 550 -160 {lab=VSS}
+N 530 -400 550 -400 {lab=VDD}
+N 550 -400 550 -350 {lab=VDD}
+N 530 -350 550 -350 {lab=VDD}
+N 350 -350 390 -350 {lab=QIN}
+N 390 -350 390 -210 {lab=QIN}
+N 350 -210 390 -210 {lab=QIN}
+N 310 -320 310 -240 {lab=Q}
+N 310 -180 310 -160 {lab=VSS}
+N 310 -160 410 -160 {lab=VSS}
+N 410 -160 420 -160 {lab=VSS}
+N 160 -280 160 -160 {lab=VSS}
+N 160 -160 310 -160 {lab=VSS}
+N 310 -400 310 -380 {lab=VDD}
+N 310 -400 420 -400 {lab=VDD}
+N 160 -450 160 -320 {lab=WL}
+N 290 -210 310 -210 {lab=VSS}
+N 290 -210 290 -160 {lab=VSS}
+N 290 -400 310 -400 {lab=VDD}
+N 290 -400 290 -350 {lab=VDD}
+N 290 -350 310 -350 {lab=VDD}
+N 420 -160 420 -130 {lab=VSS}
+N 420 -430 420 -400 {lab=VDD}
+N 190 -280 310 -280 {lab=Q}
+N 100 -280 130 -280 {lab=WBL}
+N 80 -280 100 -280 {lab=WBL}
+N 710 -280 760 -280 {lab=WBLB}
+N 80 -380 80 -180 {lab=WBL}
+N 760 -380 760 -180 {lab=WBLB}
+N 160 -530 160 -450 {lab=WL}
+N 160 -510 680 -510 {lab=WL}
+N 440 -270 450 -270 {lab=QBIN}
+N 430 -270 440 -270 {lab=QBIN}
+N 430 -270 430 -260 {lab=QBIN}
+N 390 -280 400 -280 {lab=QIN}
+N 400 -280 410 -280 {lab=QIN}
+N 410 -290 410 -280 {lab=QIN}
+N 920 -250 1070 -250 {lab=VSS}
+N 1070 -320 1070 -220 {lab=VSS}
+C {symbols/nfet_03v3.sym} 900 -250 0 0 {name=M1
 L='L_M1'
 W='W_M1'
 nf=1
@@ -81,7 +81,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/nfet_03v3.sym} 1090 -400 1 0 {name=M2
+C {symbols/nfet_03v3.sym} 1070 -340 1 0 {name=M2
 L='L_M2'
 W='W_M2'
 nf=1
@@ -95,22 +95,17 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {ipin.sym} 1060 -450 0 0 {name=p9 lab=A}
-C {opin.sym} 1170 -330 1 0 {name=p11 lab=RBL}
-C {lab_pin.sym} 890 -240 0 0 {name=p8 sig_type=std_logic lab=VSS}
-C {devices/code_shown.sym} 595.625 -141.875 0 0 {name=PARAMS only_toplevel=true
+C {ipin.sym} 1040 -390 0 0 {name=p9 lab=A}
+C {opin.sym} 1150 -270 1 0 {name=p11 lab=RBL}
+C {lab_pin.sym} 870 -180 0 0 {name=p8 sig_type=std_logic lab=VSS}
+C {devices/code_shown.sym} 35.625 -711.875 0 0 {name=PARAMS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include /workspace/analog/designs/params_6T.spice
 .include /workspace/analog/designs/params_8T.spice
 "}
-C {devices/code_shown.sym} 20 -150 0 0 {name=MODELS only_toplevel=true
-format="tcleval( @value )"
-value="
-.include $::180MCU_MODELS/design.ngspice
-"}
 C {title.sym} 180 -40 0 0 {name=l1 author="Ratish V. Gupta"}
-C {symbols/nfet_03v3.sym} 530 -270 0 0 {name=PD1
+C {symbols/nfet_03v3.sym} 510 -210 0 0 {name=PD1
 L='L_PD'
 W='W_PD'
 nf=1
@@ -124,7 +119,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/pfet_03v3.sym} 530 -410 0 0 {name=PU1
+C {symbols/pfet_03v3.sym} 510 -350 0 0 {name=PU1
 L='L_PU'
 W='W_PU'
 nf=1
@@ -138,7 +133,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {symbols/nfet_03v3.sym} 700 -360 1 0 {name=AX1
+C {symbols/nfet_03v3.sym} 680 -300 1 0 {name=AX1
 L='L_AX'
 W='W_AX'
 nf=1
@@ -152,12 +147,12 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {ipin.sym} 440 -190 3 0 {name=p10 lab=VSS}
-C {ipin.sym} 440 -490 1 0 {name=p12 lab=VDD}
-C {ipin.sym} 180 -590 1 0 {name=p13 lab=WL}
-C {ipin.sym} 100 -440 1 0 {name=p14 lab=WBL}
-C {ipin.sym} 780 -440 1 0 {name=p15 lab=WBLB}
-C {symbols/pfet_03v3.sym} 350 -410 0 1 {name=PU2
+C {ipin.sym} 420 -130 3 0 {name=p10 lab=VSS}
+C {ipin.sym} 420 -430 1 0 {name=p12 lab=VDD}
+C {ipin.sym} 160 -530 1 0 {name=p13 lab=WL}
+C {ipin.sym} 80 -380 1 0 {name=p14 lab=WBL}
+C {ipin.sym} 760 -380 1 0 {name=p15 lab=WBLB}
+C {symbols/pfet_03v3.sym} 330 -350 0 1 {name=PU2
 L='L_PU'
 W='W_PU'
 nf=1
@@ -171,7 +166,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {symbols/nfet_03v3.sym} 350 -270 0 1 {name=PD2
+C {symbols/nfet_03v3.sym} 330 -210 0 1 {name=PD2
 L='L_PD'
 W='W_PD'
 nf=1
@@ -185,7 +180,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/nfet_03v3.sym} 180 -360 3 1 {name=AX2
+C {symbols/nfet_03v3.sym} 160 -300 3 1 {name=AX2
 L='L_AX'
 W='W_AX'
 nf=1
@@ -199,9 +194,9 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {ipin.sym} 450 -320 3 0 {name=p16 lab=QBIN}
-C {ipin.sym} 430 -350 1 0 {name=p17 lab=QIN}
-C {opin.sym} 330 -340 2 1 {name=p18 lab=Q}
-C {opin.sym} 550 -340 2 0 {name=p19 lab=QB}
-C {lab_pin.sym} 840 -310 0 0 {name=p1 sig_type=std_logic lab=Q}
-C {lab_pin.sym} 1090 -280 3 0 {name=p2 sig_type=std_logic lab=VSS}
+C {ipin.sym} 430 -260 3 0 {name=p16 lab=QBIN}
+C {ipin.sym} 410 -290 1 0 {name=p17 lab=QIN}
+C {opin.sym} 310 -280 2 1 {name=p18 lab=Q}
+C {opin.sym} 530 -280 2 0 {name=p19 lab=QB}
+C {lab_pin.sym} 820 -250 0 0 {name=p1 sig_type=std_logic lab=Q}
+C {lab_pin.sym} 1070 -220 3 0 {name=p2 sig_type=std_logic lab=VSS}
