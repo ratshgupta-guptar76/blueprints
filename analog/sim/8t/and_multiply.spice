@@ -7,8 +7,10 @@
 * ============================================
 
 * -- includes --
-.include /workspace/analog/tests/8T_tb.spice
 .include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tests/8T_tb.spice
 
 * -- stimulus --
 VVDD vdd  0 {VDD_CORNER}   ; supply
@@ -22,7 +24,10 @@ CRBL rbl  0 20f   ; capacitive load on bitline
 
 
 * -- initial conditions --
-  .ic v(rbl)=3.3               ; initial state: A=0
+  .ic v(rbl)={VDD_CORNER}               ; initial state: A=0
+
+* .control params
+.csparam VDD_CORNER={VDD_CORNER}
 
 * -- sim --
 .control
@@ -47,7 +52,7 @@ CRBL rbl  0 20f   ; capacitive load on bitline
   echo
 
   * --- initial conditions (Q, A) == (1, 0) ---
-  alter VA = 3.3
+  alter VA = {VDD_CORNER}
   alter VQ = 0
   
   * --- start transient analysis --- 
@@ -66,7 +71,7 @@ CRBL rbl  0 20f   ; capacitive load on bitline
 
     * --- initial conditions (Q, A) == (0, 1) ---
   alter VA = 0
-  alter VQ = 3.3
+  alter VQ = {VDD_CORNER}
   
   * --- start transient analysis --- 
   tran 0.1n 50n uic
@@ -83,8 +88,8 @@ CRBL rbl  0 20f   ; capacitive load on bitline
   echo
 
     * --- initial conditions (Q, A) == (1, 1) ---
-  alter VA = 3.3
-  alter VQ = 3.3
+  alter VA = {VDD_CORNER}
+  alter VQ = {VDD_CORNER}
   
   * --- start transient analysis --- 
   tran 0.1n 50n uic
