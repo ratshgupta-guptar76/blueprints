@@ -8,20 +8,22 @@
 * ============================================
 
 * -- includes --
-.include /workspace/analog/tests/8T_tb.spice
 .include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tests/8T_tb.spice
 
 * -- stimulus --
 VVDD vdd 0 {VDD_CORNER}                       ; supply
 VVSS vss 0 0                                  ; source
-VWL  wl  0 PULSE(0 3.3 5n 0.1n 0.1n 20n 50n)  ; read: ON - Pulsed
-VA   a   0 3.3                                ; set Activation = HI
+VWL  wl  0 PULSE(0 {VDD_CORNER} 5n 0.1n 0.1n 20n 50n)  ; read: ON - Pulsed
+VA   a   0 {VDD_CORNER}                                ; set Activation = HI
 CWBL  wbl  0 20f                              ; BL load capacitance
 CWBLB wblb 0 20f                              ; BLB load capacitance
 
 * -- initial conditions --
-.ic v(q)=0.0 v(qb)=3.3        ; initial state: Q=1, QB=0
-.ic v(wbl)=3.3 v(wblb)=3.3    ; precharged lines: BL=HI, BLB=HI
+.ic v(q)=0.0 v(qb)={VDD_CORNER}        ; initial state: Q=1, QB=0
+.ic v(wbl)={VDD_CORNER} v(wblb)={VDD_CORNER}    ; precharged lines: BL=HI, BLB=HI
 
 * -- sim --
 .control
