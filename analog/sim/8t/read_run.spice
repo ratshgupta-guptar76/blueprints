@@ -22,7 +22,7 @@ CWBL  wbl  0 20f                              ; BL load capacitance
 CWBLB wblb 0 20f                              ; BLB load capacitance
 
 * -- initial conditions --
-.ic v(q)=0.0 v(qb)={VDD_CORNER}        ; initial state: Q=1, QB=0
+.ic v(q)=0.0 v(qb)={VDD_CORNER}        ; initial state: Q=0, QB=1
 .ic v(wbl)={VDD_CORNER} v(wblb)={VDD_CORNER}    ; precharged lines: BL=HI, BLB=HI
 
 * -- sim --
