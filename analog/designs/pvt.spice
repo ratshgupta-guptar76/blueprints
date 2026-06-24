@@ -1,5 +1,7 @@
 * File: pvt.spice
 * Process/Voltage/Temperature conditions - set by python script
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
+
 .temp 125
 .param VDD_CORNER=2.97
