@@ -7,13 +7,15 @@
 * ============================================
 
 * -- includes --
-.include /workspace/analog/tests/8T_tb.spice
 .include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tests/8T_tb.spice
 
 * -- stimulus --
 VVDD vdd 0 {VDD_CORNER}             ; supply
 VVSS vss 0 0                        ; source
-VA   a   0 3.3                      ; set Activation = HI
+VA   a   0 {VDD_CORNER}             ; set Activation = HI
 
 ** Parameters
 .param V1=0
@@ -25,15 +27,15 @@ VA   a   0 3.3                      ; set Activation = HI
 .param NP=1
 
 ** Sources
-VWBLB WBLB 0 DC 3.3
+VWBLB WBLB 0 DC {VDD_CORNER}
 VWBL  WBL  0 DC 0
-VWL   WL  0 PULSE({V1} 3.3 {Td} {Tr} {Tf} {PW} {PER} {NP})
+VWL   WL  0 PULSE({V1} {VDD_CORNER} {Td} {Tr} {Tf} {PW} {PER} {NP})
 
 ** Initial States
-.ic v(q)=3.3 v(qb)=0
+.ic v(q)={VDD_CORNER} v(qb)=0
 
 ** Control Section Params
-.csparam V_H=3.3
+.csparam V_H={VDD_CORNER}
 .csparam V_L=0
 .csparam V1={V1}
 .csparam Td={Td}

@@ -8,22 +8,24 @@
 
 * -- includes --
 .include /workspace/analog/tests/8T_tb.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
 .include /workspace/analog/designs/pvt.spice
 
 * weak keeper: PMOS, gate=VSS (always weakly on), holds RBL high
 MKEEP rbl vss vdd vdd pfet_03v3 L=0.32u W=0.22u
 
 * -- stimulus --
-VVDD vdd  0 {VDD_CORNER}   ; supply
-VVSS vss  0 0     ; source
-VWL  wl   0 0     ; read: OFF
-VBL  wbl  0 0     ; bitlines parked (or floating)
-VBLB wblb 0 0     ; bitlines parked (or floating)
-CRBL rbl  0 5f   ; capacitive load on bitline
-VA   a    0 PULSE(0 3.3 2n 0.1n 0.1n 5n 10n)     ; set Activation = HI
+VVDD vdd  0 {VDD_CORNER}                        ; supply
+VVSS vss  0 0                                   ; source
+VWL  wl   0 0                                   ; read: OFF
+VBL  wbl  0 0                                   ; bitlines parked (or floating)
+VBLB wblb 0 0                                   ; bitlines parked (or floating)
+CRBL rbl  0 5f                                  ; capacitive load on bitline 
+VA   a    0 PULSE(0 {VDD_CORNER} 2n 0.1n 0.1n 5n 10n)    ; set Activation = HI
 * -- initial conditions --
-.ic v(rbl)=3.3
-.ic v(q)=3.3 v(qb)=0
+.ic v(rbl)={VDD_CORNER}
+.ic v(q)={VDD_CORNER} v(qb)=0
 
 
 * -- sim --
