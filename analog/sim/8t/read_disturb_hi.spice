@@ -1,0 +1,50 @@
+* ============================================
+* Test: read_disturb_hi.spice
+* Cell: 8T_03v3
+* PDK: GF180mcuD
+* Author: R. Gupta
+* Date: 2026-06-19
+* ============================================
+
+* -- includes --
+.include /workspace/analog/tests/8T_tb.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/designs/pvt.spice
+
+* weak keeper: PMOS, gate=VSS (always weakly on), holds RBL high
+MKEEP rbl vss vdd vdd pfet_03v3 L=0.32u W=0.22u
+
+* -- stimulus --
+VVDD vdd  0 {VDD_CORNER}                        ; supply
+VVSS vss  0 0                                   ; source
+VWL  wl   0 0                                   ; read: OFF
+VBL  wbl  0 0                                   ; bitlines parked (or floating)
+VBLB wblb 0 0                                   ; bitlines parked (or floating)
+CRBL rbl  0 5f                                  ; capacitive load on bitline 
+VA   a    0 PULSE(0 {VDD_CORNER} 2n 0.1n 0.1n 5n 10n)    ; set Activation = HI
+* -- initial conditions --
+.ic v(rbl)={VDD_CORNER}
+.ic v(q)={VDD_CORNER} v(qb)=0
+
+
+* -- sim --
+.control
+  save all
+
+  * --- start transient analysis --- 
+  tran 0.01n 100n uic
+
+  * --- validate data ---
+  echo
+  meas tran q_init    FIND v(q) AT= 2n
+  meas tran q_mid     FIND v(q) AT=50n
+  meas tran q_final   FIND v(q) AT=99n
+  echo
+  meas tran q_min MIN v(q) FROM=2n TO=100n
+  
+  * --- save .raw for python parsing ---
+  write /workspace/analog/sim/8t/results/read_disturb_hi.raw all
+.endc
+
+.end

@@ -11,7 +11,7 @@ img/
 .vscode/
 
 # Remove simulation results
-analog/sim/6t/results
+analog/sim/*/results
 
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Remove if updates are to be made to run_docker_iic.sh

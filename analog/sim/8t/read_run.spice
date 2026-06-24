@@ -1,0 +1,55 @@
+
+* ============================================
+* Test: read_run.spice
+* Cell: 8T_03v3
+* PDK: GF180mcuD
+* Author: R. Gupta
+* Date: 2026-06-19
+* ============================================
+
+* -- includes --
+.include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tests/8T_tb.spice
+
+* -- stimulus --
+VVDD vdd 0 {VDD_CORNER}                       ; supply
+VVSS vss 0 0                                  ; source
+VWL  wl  0 PULSE(0 {VDD_CORNER} 5n 0.1n 0.1n 20n 50n)  ; read: ON - Pulsed
+VA   a   0 {VDD_CORNER}                                ; set Activation = HI
+CWBL  wbl  0 20f                              ; BL load capacitance
+CWBLB wblb 0 20f                              ; BLB load capacitance
+
+* -- initial conditions --
+.ic v(q)=0.0 v(qb)={VDD_CORNER}        ; initial state: Q=0, QB=1
+.ic v(wbl)={VDD_CORNER} v(wblb)={VDD_CORNER}    ; precharged lines: BL=HI, BLB=HI
+
+* -- sim --
+.control
+  save all
+  
+  tran 0.1n 50n uic
+
+  * plot v(q) v(qb)
+
+  * --- validate data ---
+  echo
+  meas tran q_init  FIND v(q)  AT=5n
+  meas tran qb_init FIND v(qb) AT=5n
+  echo
+  meas tran q_final  FIND v(q)  AT=50n
+  meas tran qb_final FIND v(qb) AT=50n
+  echo
+  meas tran wbl_init  FIND v(wbl)  AT=5n
+  meas tran wblb_init FIND v(wblb) AT=5n
+  echo
+  meas tran wbl_final  FIND v(wbl)  AT=50n
+  meas tran wblb_final FIND v(wblb) AT=50n
+  echo
+  * --- save .raw for python parsing ---
+  write /workspace/analog/sim/8t/results/read_run.raw all
+
+.endc
+
+.end

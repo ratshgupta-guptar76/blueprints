@@ -113,7 +113,6 @@ C {devices/code_shown.sym} 20 -160 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
-.lib $::180MCU_MODELS/sm141064.ngspice typical
 "}
 C {symbols/pfet_03v3.sym} 490 -440 0 1 {name=PU2
 L='L_PU'
