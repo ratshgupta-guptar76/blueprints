@@ -70,6 +70,9 @@
                 # Verification
                 cocotb
 
+                # Golden model / numerics
+                numpy
+
                 # For KLayout Python DRC runner
                 docopt
 
