@@ -59,7 +59,6 @@ def rand_activation(rng: np.random.Generator) -> np.ndarray:
     dtype = np.int8 if A_SIGN else np.uint8
     return rng.integers(lo, hi + 1, size=(ROWS,), dtype=dtype)
 
-
 '''
 %%%%%%%%%%
 % models %
@@ -92,33 +91,53 @@ def golden_bit_serial(W, a, P):
     r""" Bit-serial matrix-multiplication golden model.
 
     Args:
-        W: weight matrix of shape`(M K)`
-        a: activation/input matrix`(K, N)`
+        W: weight matrix of shape `(M K)`
+        a: activation/input matrix `(K, N)`
+        P: bit-plane under test 
 
     Returns:
-        out: Output matrix of shape`(M, N)` after matrix multiplication.
+        out: Output matrix of shape `(M, N)` after matrix multiplication.
+        trace[b] = accumulator after processing bit-planes 0..b.
 
     Raises:
-        AssertionError: If the inner dimension`K` does not match between`W` and`a`.
+        AssertionError: If the inner dimension `K` does not match between `W` and `a`.
+        ValueError: If the bit-plane `P` is invalid (not in `[0, A_MAX_BITS-1]`).
     """
 
-    assert (W.shape == (ROWS, N_WEIGHTS)) & (a.shape == (ROWS, )), f"Matrix shape mismatch:\n{W.shape}\n{a.shape}"
+    assert (W.shape == (ROWS, N_WEIGHTS)) and (a.shape == (ROWS, )), f"Matrix shape mismatch:\n{W.shape}\n{a.shape}"
 
     # Enforce signedness as per package description
     # NOTE: Must match `dcim_pkg.sv`
     W = W.astype(np.int8) if W_SIGN else W.astype(np.uint8)
     a = a.astype(np.uint8) if not A_SIGN else a.astype(np.int8)
-    for i in range(P):
-        W[i] = i*a;
-    return W@a;
+
+    # Check for invalid bit-plane
+    if P < 0 or P > A_MAX_BITS:
+        raise ValueError(f"Invalid bit-plane {P}. Must be in [0, {A_MAX_BITS-1}]")
+    
+    out = np.zeros((N_WEIGHTS,), dtype=np.int64)
+    trace = []
+    for bit in range(P): # LSB to MSB
+        a_b = (a >> bit) & 1                                    # Bit-plane of each activation
+        partial = W.astype(np.int64).T @ a_b.astype(np.int64)   # Weight Matrix-vector multiplication against the activation in bit-plane
+        
+        # Accumulate partial result based on signedness and bit-plane
+        if A_SIGN and (bit ==  A_MAX_BITS-1):
+            out -= partial << bit
+        else:
+            out += partial << bit
+
+        trace.append(out.copy())
+    return out, trace
 
 if __name__ == '__main__':
     rng = np.random.default_rng()
 
     W = rand_weights(rng)
     a = rand_activation(rng)
-    out = golden_model(W, a)
+    out1 = golden_model(W, a)
+    out2, trace = golden_bit_serial(W, a, 8)
 
     print(f"W {W.shape} {W.dtype}:\n{W}")
     print(f"a {a.shape} {a.dtype}:\n{a}")
-    print(f"out {out.shape} {out.dtype}:\n{out}")
+    assert np.array_equal(out1, out2), f"Mismatch between golden_model and golden_bit_serial:\n{out1}\n{out2}"
