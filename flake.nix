@@ -69,6 +69,7 @@
               ps: with ps; [
                 # Verification
                 cocotb
+                pytest
 
                 # Golden model / numerics
                 numpy
