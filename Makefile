@@ -10,7 +10,7 @@ SIM_BUILD ?= sim_build/$(FUNC)
 
 VERILOG_SOURCES += $(MAKEFILE_DIR)/src/$(FUNC).sv
 TOPLEVEL = $(FUNC)
-COCOTB_TEST_MODULES = functional.$(FUNC)_test
+COCOTB_TEST_MODULES = functional.$(FUNC)_tb
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
 
@@ -27,7 +27,7 @@ AVAILABLE_SLOTS = 1x1 0p5x1 1x0p5 0p5x0p5 workshop
 DEFAULT_SLOT = 1x1
 
 # ADDED FOR FUNCTIONAL TESTS
-FUNCTIONAL_TESTS := $(patsubst cocotb/functional/%_test.py,%,$(wildcard cocotb/functional/*_test.py))
+FUNCTIONAL_TESTS := $(patsubst cocotb/functional/%_tb.py,%,$(wildcard cocotb/functional/*_tb.py))
 
 # Slot can be any of AVAILABLE_SLOTS
 SLOT ?= $(DEFAULT_SLOT)
