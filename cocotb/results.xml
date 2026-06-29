@@ -1,0 +1,9 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1782758281" />
+    <testcase name="full_sweep" classname="row_decoder_test" file="/home/adiabliu/chipathon/project/blueprints/cocotb/row_decoder_test.py" lineno="31" time="0.0022063255310058594" sim_time_ns="64.0" ratio_time="29007.505511130323" />
+    <testcase name="deactivated" classname="row_decoder_test" file="/home/adiabliu/chipathon/project/blueprints/cocotb/row_decoder_test.py" lineno="48" time="0.0016224384307861328" sim_time_ns="64.0" ratio_time="39446.79735488611" />
+    <testcase name="transition1" classname="row_decoder_test" file="/home/adiabliu/chipathon/project/blueprints/cocotb/row_decoder_test.py" lineno="65" time="0.006277799606323242" sim_time_ns="256.0" ratio_time="40778.61927006191" />
+    <testcase name="transition2" classname="row_decoder_test" file="/home/adiabliu/chipathon/project/blueprints/cocotb/row_decoder_test.py" lineno="86" time="0.004703998565673828" sim_time_ns="195.00000000000006" ratio_time="41454.094272681206" />
+  </testsuite>
+</testsuites>

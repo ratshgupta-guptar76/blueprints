@@ -9,7 +9,7 @@ img/
 *.lyrdb
 .ipynb_checkpoints/
 .vscode/
-
+.github/
 # Remove simulation results
 analog/sim/*/results
 
@@ -17,3 +17,4 @@ analog/sim/*/results
 # Remove if updates are to be made to run_docker_iic.sh
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 scripts/
+.venv/
