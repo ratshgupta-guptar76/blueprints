@@ -47,6 +47,23 @@
         let
           pkgs = (self.legacyPackages.${system});
           callPackage = lib.callPackageWith pkgs;
+
+          # cocotb-coverage isn't in nixpkgs; build it from the PyPI wheel.
+          cocotb-coverage = pkgs.python3.pkgs.buildPythonPackage rec {
+            pname = "cocotb-coverage";
+            version = "2.0";
+            format = "wheel";
+            src = pkgs.fetchurl {
+              url = "https://files.pythonhosted.org/packages/ae/cf/c49f7a475f2d0303007f8a5aaf9e3cbe098179c6bb956d770e881e88735a/cocotb_coverage-2.0-py3-none-any.whl";
+              sha256 = "1f65a15f7431b254bcb5f5a5d1b4676c5e89919546de4faaa4dbfda86f8300cb";
+            };
+            propagatedBuildInputs = with pkgs.python3.pkgs; [
+              cocotb
+              python-constraint
+              pyyaml
+            ];
+            doCheck = false;
+          };
         in
         {
           default = pkgs.librelane-shell.override ({
@@ -69,6 +86,7 @@
               ps: with ps; [
                 # Verification
                 cocotb
+                cocotb-coverage
                 pytest
 
                 # Golden model / numerics
