@@ -1,5 +1,5 @@
 // ==================================================================================
-// adder_tree.sv — single column reduction (vertical sum, combinational)
+// col_adder.sv — single column reduction (vertical sum, combinational)
 // ==================================================================================
 // Sums the ROWS=64 partial-product bits of ONE bit-column -> one column-sum.
 // 64 instances (one per column) live in the parent. Plain unsigned addition:
@@ -10,7 +10,7 @@
 // TEST: sum == popcount(pp_col) for random vectors + all-0 + all-1 (=64).
 // ==================================================================================
 
-module adder_tree_behavioural #(
+module col_adder_behavioural #(
     parameter int ROWS = dcim_pkg::ROWS
 ) (
     input logic [ROWS-1:0] pp_col,      // AND-multiply bits
