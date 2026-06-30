@@ -31,7 +31,7 @@ module row_decoder #(
     always_comb begin : DECODER
         wl = '0;
         if (en) begin
-            wl = (OUT_WIDTH'(1) << addr);
+            wl[addr] = 1'b1;
         end
     end
 
