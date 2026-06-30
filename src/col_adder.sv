@@ -15,7 +15,7 @@ module col_adder_behavioural #(
 ) (
     input logic [ROWS-1:0] pp_col,      // AND-multiply bits
 
-    output logic [$clog2(ROWS):0] sum
+    output logic [$clog2(ROWS+1)-1:0] sum
 );
 
     always_comb begin : COL_ADDER_TREE
