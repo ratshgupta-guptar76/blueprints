@@ -9,11 +9,17 @@ img/
 *.lyrdb
 .ipynb_checkpoints/
 .vscode/
-
+.github/
 # Remove simulation results
 analog/sim/*/results
+cocotb/results.xml
+
+# cocotb functional coverage reports (<module>_coverage.{yml,xml})
+cocotb/*_coverage.yml
+cocotb/*_coverage.xml
 
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Remove if updates are to be made to run_docker_iic.sh
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 scripts/
+.venv/
