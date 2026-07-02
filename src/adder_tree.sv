@@ -31,13 +31,12 @@ module adder_tree #(
                 assign col[r] = pp[r][c];
             end
             
-            col_adder_behavioural #(
+            col_adder #(
                 .ROWS(ROWS)
-            ) COL_ADDER (
+            ) col_adder (
                 .pp_col (col),
                 .sum    (sum[c])
             );
         end
     endgenerate
-
 endmodule

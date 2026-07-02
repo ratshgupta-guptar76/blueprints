@@ -8,6 +8,9 @@ TOPLEVEL_LANG ?= verilog
 FUNC ?= row_decoder
 SIM_BUILD ?= sim_build/$(FUNC)
 
+VERILOG_SOURCES += $(MAKEFILE_DIR)/src/dcim_pkg.sv
+VERILOG_SOURCES += $(MAKEFILE_DIR)/src/col_adder.sv
+VERILOG_SOURCES += $(MAKEFILE_DIR)/src/shift_reg.sv
 VERILOG_SOURCES += $(MAKEFILE_DIR)/src/$(FUNC).sv
 TOPLEVEL = $(FUNC)
 COCOTB_TEST_MODULES = functional.$(FUNC)_tb
