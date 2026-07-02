@@ -3,7 +3,7 @@
 OVERVIEW of shift_reg.sv
 - Serial-In/Serial-Out (SISO) shift register
 - Stores value of data width dw (typically 8-bits)
-- Shifts data from MSB to LSB
+- serial_in data enters MSB, and shifts towards LSB
 
 Inputs
 - Clock (clk):
@@ -27,13 +27,6 @@ Outputs:
     - Connected to LSB, routed to either compute array or serial_in
     - Possible Values: 0, 1
 
-STIMULUS GENERATION
-- Reset: Assert rst_n for >10 cycles to ensure clean known-0 state
-- LOAD Mode (en=1, c_en=0): Stream in an N-bit integer (ex: INT8) LSB-first to fill the register
-- HOLD/IDLE Mode (en=0): Disable the register mid-shift and ensure state is perfectly retained
-- COMPUTE Mode (en=1, c_en=1): Run clock cycles and ensure the register shifts correctly while zero-filling the MSB
-- Transitions: Randomly toggle between LOAD, COMPUTE, and HOLD to test for edge-case corruption
-
 FUNCTIONAL COVERAGE IMPLEMENTATION
 - Modes:
     - Hold (en=0): Freezes current state and ignores inputs
@@ -42,18 +35,6 @@ FUNCTIONAL COVERAGE IMPLEMENTATION
 - Data Variations: All 1s, All 0s, and alternating patterns on serial_in
 - Reset Coverage: Asserting rst_n during HOLD, LOAD, and COMPUTE modes
 - Cross Coverage: Cross en, c_en, and serial_in across consecutive clock cycles
-
-CHECKING MECHANISM
-- Output Equivalence: serial_out and compute_bit must always be logically identical
-- Reset State: post-reset, serial_out must equal 0 without X-propagation
-- Cycle-Accurate Shifting: A golden model (Python list/deque) must mirror the expected shift behavior every rising clock edge, verifying serial_out against model[0]
-
-TESTS
-- Reset test
-- Each mode (Hold/Load/Compute) simple individual run (all values)
-- Transitional states (6)
-- Reset interruption
-- Thorough stress test (many mode transitions + reset interrutions + all values)
 """
 
 import cocotb
@@ -69,16 +50,27 @@ def sample_coverage(dut):
     """Sample the current (en, addr) point into the coverage database."""
     global _sampler
     if _sampler is None:
-        dw = dut.DW.value.integer
+        def get_mode(dut):
+            en_val = int(dut.en.value)
+            c_en_val = int(dut.c_en.value)
+            
+            if en_val == 0:
+                return "HOLD"
+            elif en_val == 1 and c_en_val == 0:
+                return "LOAD"
+            elif en_val == 1 and c_en_val == 1:
+                return "COMPUTE"
 
         @CoverPoint("top.rst_n", xf=lambda dut: int(dut.rst_n.value), bins=[0, 1])
         @CoverPoint("top.en", xf=lambda dut: int(dut.en.value), bins=[0,1])
         @CoverPoint("top.c_en", xf=lambda dut: int(dut.c_en.value), bins=[0,1])
-        @CoverPoint("top.clk", xf=lambda dut: int(dut.clk.value), bins=[0,1])
         @CoverPoint("top.serial_in", xf=lambda dut: int(dut.serial_in.value), bins=[0,1])
-        
+        @CoverPoint("top.mode", xf=get_mode, bins=["HOLD", "LOAD", "COMPUTE"])
+        @CoverCross("top.cross_mode_serial_in", items=["top.mode", "top.serial_in"])
         def _sample(dut):
             pass
+
+
 
         _sampler = _sample
     _sampler(dut)
@@ -92,8 +84,8 @@ async def reset_dut(dut):
     dut.serial_in.value = 0
     
     # Hold reset for 10 cycles as specified in verification plan
+    await Timer(1, "ps")
     for _ in range(10):
-        await RisingEdge(dut.clk)
         sample_coverage(dut)
         
     dut.rst_n.value = 1
@@ -113,71 +105,90 @@ async def reset_test(dut):
 
     await reset_dut(dut)
 
-    # Check that outputs are firmly 0
-    assert dut.en.value == 0, f"FAIL: en not 0 after reset. Got {dut.en.value}"
-    assert dut.c_en.value == 0, f"FAIL: c_en not 0 after reset. Got {dut.c_en.value}"
-    assert dut.serial_in.value == 0, f"FAIL: serial_in not 0 after reset. Got {dut.serial_in.value}"
+    # Check that outputs are firmly 0 and not 'X' or 'Z'
+    assert dut.compute_bit.value.is_resolvable, "FAIL: compute_bit is 'X' or 'Z' after reset!"
     assert dut.compute_bit.value == 0, f"FAIL: compute_bit not 0 after reset. Got {dut.compute_bit.value}"
+    
+    assert dut.serial_out.value.is_resolvable, "FAIL: serial_out is 'X' or 'Z' after reset!"
     assert dut.serial_out.value == 0, f"FAIL: serial_out not 0 after reset. Got {dut.serial_out.value}"
 
-
-from cocotb.triggers import FallingEdge
-
 @cocotb.test()
-async def test_clock_coverage(dut):
-    """Verify clock toggling and capture both high and low clock states for coverage."""
-    cocotb.start_soon(Clock(dut.clk, 10, unit="ns").start())
-    dut._log.info("Starting test_clock_coverage")
-
-    # Monitor 10 full clock cycles
-    for i in range(10):
-        # Wait for the clock to go low
-        await FallingEdge(dut.clk)
-        assert dut.clk.value == 0, f"FAIL: Clock is not 0 on FallingEdge. Got {dut.clk.value}"
-        sample_coverage(dut)  # Hits BIN 0
-
-        # Wait for the clock to go high
-        await RisingEdge(dut.clk)
-        assert dut.clk.value == 1, f"FAIL: Clock is not 1 on RisingEdge. Got {dut.clk.value}"
-        sample_coverage(dut)  # Hits BIN 1
-
-
-@cocotb.test()
-async def test_load(dut):
-    """Test LOAD mode (en=1, c_en=0)"""
+async def test_async_reset(dut):
+    """Verify that reset clears outputs instantly, completely independent of the clock edge."""
     cocotb.start_soon(Clock(dut.clk, 10, unit="ns").start())
     dw = dut.DW.value.integer
-    dut._log.info(f"Starting test_load_mode with DW={dw}")
-
+    
+    # 1. Load the register with 1s so we have something to clear
     await reset_dut(dut)
-
     dut.en.value = 1
     dut.c_en.value = 0
+    dut.serial_in.value = 1
+    
+    for _ in range(dw):
+        await RisingEdge(dut.clk)
+        
+    # Let the hardware delta-cycles settle before reading the pin!
+    await Timer(1, "ps") 
+        
+    assert dut.serial_out.value == 1, "Failed to load 1s for setup."
+
+    # 2. Wait for HALF a clock cycle (mid-cycle, no rising edge)
+    await Timer(5, "ns")
+    
+    # 3. Assert reset asynchronously
+    dut.rst_n.value = 0
+    
+    # 4. Wait 1 picosecond for the logic to physically settle (NO clock edge!)
+    await Timer(1, "ps")
+    
+    # 5. Verify outputs dropped to 0 instantly
+    assert dut.serial_out.value == 0, f"FAIL: Async reset failed. serial_out is {dut.serial_out.value}"
+    assert dut.compute_bit.value == 0, f"FAIL: Async reset failed. compute_bit is {dut.compute_bit.value}"
+
+@cocotb.test()
+async def test_load_golden(dut):
+    """Test isolated LOAD mode using a dynamic Golden Model."""
+    cocotb.start_soon(Clock(dut.clk, 10, unit="ns").start())
+    dw = dut.DW.value.integer
+    dut._log.info(f"Starting test_load_golden with DW={dw}")
+
+    await reset_dut(dut)
+    
+    dut.en.value = 1
+    dut.c_en.value = 0 # Force into LOAD mode
+
+    # 1. Initialize the Golden Mirror
+    # Index 0 is the LSB (output). Index dw-1 is the MSB (input).
+    golden_sr = [0] * dw 
 
     random.seed(42)
-    for i in range(10):
-        random_int = random.getrandbits(dw)
+    
+    # Continuously stream 50 random bits through the pipeline
+    for i in range(50):
+        in_bit = random.choice([0, 1])
 
-        # Convert to a binary string
-        binary_string = f"{random_int:0{dw}b}"
-        input_val = binary_string[::-1]
+        # 2. Drive the physical hardware
+        dut.serial_in.value = in_bit
 
-        for j in range(dw):
-            dut.serial_in.value = int(input_val[j])
-            await RisingEdge(dut.clk)
-            sample_coverage(dut)
+        # 3. Update the logical Golden Mirror
+        # Hardware shifts toward LSB. The old LSB drops off, and in_bit fills the MSB.
+        golden_sr = golden_sr[1:] + [in_bit]
 
-        for k in range(dw):
-            dut.serial_in.value = 0
-            await RisingEdge(dut.clk)
-            sample_coverage(dut)
+        # Wait for the hardware to clock in the state
+        await RisingEdge(dut.clk)
+        sample_coverage(dut)
+        await Timer(1, "ps") # Settle time
 
-            expected = int(input_val[k])
-            assert dut.serial_out.value == expected, f"FAIL: Expected serial_out value {expected}, instead read {dut.serial_out.value}"
+        # 4. Compare the Mirrors
+        expected_out = golden_sr[0]
+        
+        assert dut.serial_out.value == expected_out, \
+            f"FAIL Cycle {i}: Expected {expected_out}, got {dut.serial_out.value}"
+
 
 @cocotb.test()
 async def test_hold(dut):
-    """Test HOLD mode (en=0)"""
+    """Test isolated HOLD mode (en=0)"""
     cocotb.start_soon(Clock(dut.clk, 10, unit="ns").start())
 
     dw = dut.DW.value.integer
@@ -199,43 +210,68 @@ async def test_hold(dut):
         dut.serial_in.value = 0
         await RisingEdge(dut.clk)
         sample_coverage(dut)
-        assert dut.serial_out.value == 1, f"FAIL: Expected HOLD value 0, received 1"
+        assert dut.serial_out.value == 1, f"FAIL: Expected HOLD value 1, received 0"
     
 
 @cocotb.test()
-async def test_compute(dut):
-    """Test COMPUTE Mode (en=1, c_en=1)"""
+async def test_compute_golden(dut):
+    """Test isolated COMPUTE Mode """
     cocotb.start_soon(Clock(dut.clk, 10, unit="ns").start())
     dw = dut.DW.value.integer
-    dut._log.info(f"Starting test_load_mode with DW={dw}")
+    dut._log.info(f"Starting test_compute with DW={dw}")
 
     await reset_dut(dut)
 
+    # 1. INITIALIZE THE GOLDEN MIRROR
+    # A simple Python list perfectly mirrors the hardware's internal register.
+    # Index 0 is the LSB (output), Index dw-1 is the MSB.
+    golden_sr = [0] * dw 
+
     random.seed(42)
-    for i in range(10):
+    
+    # We will run 10 blocks of Load -> Compute
+    for _ in range(10):
+        
+        # --- PHASE 1: LOAD ---
         dut.en.value = 1
         dut.c_en.value = 0
-
-        random_int = random.getrandbits(dw)
-
-        # Convert to a binary string
-        binary_string = f"{random_int:0{dw}b}"
-        input_val = binary_string[::-1]
-
-        for j in range(dw):
-            dut.serial_in.value = int(input_val[j])
+        
+        for _ in range(dw):
+            # Generate random stimulus
+            in_bit = random.choice([0, 1])
+            dut.serial_in.value = in_bit
+            
+            # 2. UPDATE THE GOLDEN MIRROR
+            # Mirror the exact logical behavior of LOAD mode in Python
+            golden_sr = golden_sr[1:] + [in_bit] 
+            
             await RisingEdge(dut.clk)
-            sample_coverage(dut)
+            await Timer(1, "ps") # Settle time
+            
+            # 3. ASSERT AGAINST THE MIRROR
+            # We don't check an array index; we check the mirror's current LSB
+            assert dut.serial_out.value == golden_sr[0], \
+                f"LOAD mismatch: expected {golden_sr[0]}, got {dut.serial_out.value}"
 
-        dut.c_en.value = 1
+        # --- PHASE 2: COMPUTE ---
         dut.en.value = 1
-
-        for k in range(dw):
+        dut.c_en.value = 1
+        
+        for _ in range(dw):
+            # serial_in is ignored during compute, but we randomize it to prove that
+            dut.serial_in.value = random.choice([0, 1])
+            
+            # 2. UPDATE THE GOLDEN MIRROR
+            # Mirror the exact logical behavior of COMPUTE mode (shifting in 0s)
+            golden_sr = golden_sr[1:] + [0]
+            
             await RisingEdge(dut.clk)
-            sample_coverage(dut)
-
-            expected = int(input_val[k])
-            assert dut.serial_out.value == expected, f"FAIL: Expected serial_out value {expected}, instead read {dut.serial_out.value}"
+            await Timer(1, "ps") # Settle time
+            
+            # 3. ASSERT AGAINST THE MIRROR
+            assert dut.serial_out.value == golden_sr[0], \
+                f"COMPUTE mismatch: expected {golden_sr[0]}, got {dut.serial_out.value}"
+            
 
 @cocotb.test()
 async def test_transitions(dut):
