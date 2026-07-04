@@ -1,10 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram name="DCIM Macro Architecture" id="0">
-        <mxGraphModel dx="630" dy="434" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1075" dy="570" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="macro" value=" " style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;dashed=1;fillColor=none;strokeWidth=2;" parent="1" vertex="1">
+                <mxCell id="4" value="DCIM macro boundary" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;dashed=1;fillColor=none;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=6;fontSize=11;fontColor=#888888;" vertex="1" parent="1">
                     <mxGeometry x="205" y="190" width="1200" height="640" as="geometry"/>
                 </mxCell>
                 <mxCell id="w_bit" value="w_bit" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;" parent="1" vertex="1">
@@ -39,7 +39,7 @@
                 <mxCell id="1HYrG322IdCjEMsv3LXA-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="array" target="adder" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="array" value="dcim_array 64×64" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" parent="1" vertex="1">
+                <mxCell id="array" value="&lt;b&gt;dcim_array 64×64&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" parent="1" vertex="1">
                     <mxGeometry x="450" y="360" width="280" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="adder" value="adder_tree" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" parent="1" vertex="1">
@@ -69,7 +69,7 @@
                 <mxCell id="ucsd4Uuv_09g0xMcgrOr-7" style="edgeStyle=none;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fsm" target="ucsd4Uuv_09g0xMcgrOr-4" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="fsm" value="control_fsm IDLE → WRITE_W → WRITE_A → COMPUTE → DONE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;" parent="1" vertex="1">
+                <mxCell id="fsm" value="&lt;b style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;control_fsm&lt;/b&gt;&lt;br style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;IDLE → WRITE_W → WRITE_A → COMPUTE → DONE → SHIFT_OUT&lt;/span&gt;&lt;br style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;&lt;font style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); font-size: 10px;&quot;&gt;one-hot + counters (row_cnt, load_cnt, bp_cnt) · cont loops SHIFT_OUT → WRITE_A&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;" parent="1" vertex="1">
                     <mxGeometry x="910" y="270" width="420" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeWidth=2;" parent="1" source="w_bit" target="weight_load" edge="1">
@@ -87,7 +87,9 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="e4" value="act_bp[63:0]" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeWidth=2;" parent="1" source="act_shift" target="array" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="e5" value="pp[63:0][63:0]" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeWidth=2;" parent="1" source="array" target="adder" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -112,7 +114,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="c2" value="a_en" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#666666;" parent="1" source="fsm" target="act_shift" edge="1">
+                <mxCell id="c2" value="a_en · c_en" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#666666;" parent="1" source="fsm" target="act_shift" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="980" y="250"/>
@@ -120,7 +122,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="c3" value="w_en / row_addr" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#666666;" parent="1" source="fsm" target="array" edge="1">
+                <mxCell id="c3" value="w_en · row_addr[5:0]" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#666666;" parent="1" source="fsm" target="array" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint as="offset"/>
                         <Array as="points">
@@ -128,7 +130,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="c4" value="comp_en / clr / bp_idx" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#666666;" parent="1" source="fsm" target="accum" edge="1">
+                <mxCell id="c4" value="comp_en · clr · bp_idx[2:0]" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#666666;" parent="1" source="fsm" target="accum" edge="1">
                     <mxGeometry y="5" relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="1050" y="550"/>
@@ -137,7 +139,7 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="c5" value="y_load / y_en" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#666666;" parent="1" source="fsm" target="stream" edge="1">
+                <mxCell id="c5" value="y_load · y_en" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#666666;" parent="1" source="fsm" target="stream" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="1120" y="480"/>
@@ -212,6 +214,9 @@
                 </mxCell>
                 <mxCell id="ucsd4Uuv_09g0xMcgrOr-25" value="done" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;horizontal=1;" parent="1" vertex="1">
                     <mxGeometry x="1390" y="325" width="60" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="▬▬ data (thick solid) &amp;nbsp;&amp;nbsp;&amp;nbsp; ┄┄ control (dashed, FSM) &amp;nbsp;&amp;nbsp;&amp;nbsp; clk/rst_n: global to all sequential blocks&lt;span style=&quot;color: rgb(136, 136, 136);&quot;&gt;)&amp;nbsp; &amp;nbsp; &amp;lt;sig_1&amp;gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 11px; text-align: center; background-color: rgb(255, 255, 255);&quot;&gt;&amp;nbsp;· &lt;/span&gt;&amp;lt;sig_2&amp;gt;&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 11px; text-align: center; background-color: rgb(255, 255, 255);&quot;&gt;·&lt;/span&gt;&amp;nbsp;... : multiple signals&amp;nbsp;&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#888888;" vertex="1" parent="1">
+                    <mxGeometry x="455" y="880" width="610" height="20" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
