@@ -91,6 +91,10 @@ librelane-padring: ## Only create the padring
 	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/padring.py librelane/slots/slot_${SLOT}.yaml librelane/config.yaml
 .PHONY: librelane-padring
 
+lint: ## Lint RTL sources with Verilator
+	cd $(MAKEFILE_DIR)/src && verilator --lint-only -Wall -f files.f
+.PHONY: lint
+
 sim: ## Run RTL simulation with cocotb
 	cd cocotb; PDK_ROOT=${PDK_ROOT} PDK=${PDK} SLOT=${SLOT} python3 chip_top_tb.py
 .PHONY: sim
