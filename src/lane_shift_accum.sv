@@ -79,7 +79,7 @@ module lane_shift_accum #(
                 y <= '0;
             end else begin
                 if (en) begin
-                    if (A_SIGN && (bp_idx == DW-1)) y <= y - (lane_signed_val <<< bp_idx);      // Subtract MSB lane value (if A_SIGN)
+                    if (A_SIGN & (bp_idx == DW-1)) y <= y - (lane_signed_val <<< bp_idx);      // Subtract MSB lane value (if A_SIGN)
                     else                            y <= y + (lane_signed_val <<< bp_idx);      // Add lane value at all other bits
                 end
             end 

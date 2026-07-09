@@ -1,21 +1,21 @@
 // ==================================================================================
 // shift_accum.sv — 8-lane parent (horizontal combine + temporal accumulate)
 // ==================================================================================
-// Takes the 64 column-sums from adder_tree, slices into N_WEIGHTS=8 lanes (one per
+// Takes the 64 column-sums from sum, slices into N_WEIGHTS=8 lanes (one per
 // weight, DW=8 contiguous columns each), instantiates one lane_shift_accum per lane.
 // All lane math (weight-bit combine, MSB-subtract, temporal accumulate) lives in the
 // unit — this module only reshapes and replicates.
 //
-// SLICE: col_adders[i] = adder_tree[i*DW +: DW] via packed-array reshape (MSB-aligned
-//   bit-flatten equality). Contiguous per lane (unlike adder_tree's row/col transpose)
-//   -> lower bug risk. Verify: col_adders[i][0] = weight i's LSB column = adder_tree
-//   [i*DW]; col_adders[i][DW-1] = weight i's MSB column = adder_tree[i*DW+DW-1].
+// SLICE: col_adders[i] = sum[i*DW +: DW] via packed-array reshape (MSB-aligned
+//   bit-flatten equality). Contiguous per lane (unlike sum's row/col transpose)
+//   -> lower bug risk. Verify: col_adders[i][0] = weight i's LSB column = sum
+//   [i*DW]; col_adders[i][DW-1] = weight i's MSB column = sum[i*DW+DW-1].
 //
-// Ports: adder_tree[COLS][SUM_W] in -> y[N_WEIGHTS][ACC_WIDTH] out. bp_idx/en/clr
+// Ports: sum[COLS][SUM_W] in -> y[N_WEIGHTS][ACC_WIDTH] out. bp_idx/en/clr
 //   FSM-driven, shared across all 8 lanes (same plane, same cycle, independent accs).
 //
 // TEST: each lane's y independently matches golden_bit_serial's per-weight trace;
-//   confirm slice boundaries (lane 0 = adder_tree[7:0], lane 7 = adder_tree[63:56]).
+//   confirm slice boundaries (lane 0 = sum[7:0], lane 7 = sum[63:56]).
 // ==================================================================================
 
 module shift_accum #(
@@ -33,14 +33,14 @@ module shift_accum #(
     input logic                                en,
     input logic                                clr,
     input logic [$clog2(DW)-1:0]               bp_idx,
-    input logic [COLS-1:0][$clog2(ROWS+1)-1:0] adder_tree,
+    input logic [COLS-1:0][$clog2(ROWS+1)-1:0] sum,
 
     output logic [N_WEIGHTS-1:0][ACC_WIDTH-1:0] y
 );
 
     logic [N_WEIGHTS-1:0][DW-1:0][$clog2(ROWS+1)-1:0] col_adders;
 
-    assign col_adders = adder_tree;
+    assign col_adders = sum;
 
     genvar i;
     generate
