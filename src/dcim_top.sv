@@ -4,8 +4,8 @@ module dcim_top #(
     parameter int N_WEIGHTS = dcim_pkg::N_WEIGHTS,
     parameter int DW        = dcim_pkg::DW,
     parameter int ACC_WIDTH = dcim_pkg::ACC_WIDTH,
-    parameter int A_SIGN    = dcim_pkg::A_SIGN,
-    parameter int W_SIGN    = dcim_pkg::W_SIGN
+    parameter bit A_SIGN    = dcim_pkg::A_SIGN,
+    parameter bit W_SIGN    = dcim_pkg::W_SIGN
 ) (
     input logic clk,
     input logic rst_n,

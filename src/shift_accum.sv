@@ -24,8 +24,8 @@ module shift_accum #(
     parameter int N_WEIGHTS = dcim_pkg::N_WEIGHTS,
     parameter int DW        = dcim_pkg::DW,
     parameter int ACC_WIDTH = dcim_pkg::ACC_WIDTH,
-    parameter int A_SIGN    = dcim_pkg::A_SIGN,
-    parameter int W_SIGN    = dcim_pkg::W_SIGN
+    parameter bit A_SIGN    = dcim_pkg::A_SIGN,
+    parameter bit W_SIGN    = dcim_pkg::W_SIGN
 ) (
     input logic clk,
     input logic rst_n,
@@ -39,8 +39,9 @@ module shift_accum #(
 );
 
     logic [N_WEIGHTS-1:0][DW-1:0][$clog2(ROWS+1)-1:0] col_adders;
+    typedef logic [N_WEIGHTS-1:0][DW-1:0][$clog2(ROWS+1)-1:0] col_adders_t;
 
-    assign col_adders = sum;
+    assign col_adders = col_adders_t'(sum);
 
     genvar i;
     generate
