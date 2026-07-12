@@ -44,7 +44,7 @@ logic [YW-1:0]  counter;
             done    <= 1'b0;
         end else begin
             if (load) begin
-                piso    <= acc;
+                piso    <= TOT'(acc);
                 counter <= '0;
                 done    <= '0;
             end else if (en) begin
