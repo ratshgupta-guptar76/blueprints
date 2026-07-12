@@ -10,7 +10,7 @@
 // TEST: sum == popcount(pp_col) for random vectors + all-0 + all-1 (=64).
 // ==================================================================================
 
-module col_adder_behavioural #(
+module col_adder #(
     parameter int ROWS = dcim_pkg::ROWS
 ) (
     input logic [ROWS-1:0] pp_col,      // AND-multiply bits
