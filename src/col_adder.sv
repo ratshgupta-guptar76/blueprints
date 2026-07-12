@@ -21,7 +21,7 @@ module col_adder_behavioural #(
     always_comb begin : COL_ADDER_TREE
         sum = '0;
         for (int i = 0; i < ROWS; i++) begin
-            sum += pp_col[i];
+            sum += ($clog2(ROWS+1))'(pp_col[i]);
         end
     end
 
