@@ -9,6 +9,7 @@ img/
 *.lyrdb
 .ipynb_checkpoints/
 .vscode/
+.slang
 .github/
 # Remove simulation results
 analog/sim/*/results

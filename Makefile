@@ -10,7 +10,7 @@ SIM_BUILD ?= sim_build/$(FUNC)
 
 VERILOG_SOURCES += $(MAKEFILE_DIR)/src/$(FUNC).sv
 TOPLEVEL = $(FUNC)
-COCOTB_TEST_MODULES = functional.$(FUNC)_test
+COCOTB_TEST_MODULES = functional.$(FUNC)_tb
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
 
@@ -27,7 +27,7 @@ AVAILABLE_SLOTS = 1x1 0p5x1 1x0p5 0p5x0p5 workshop
 DEFAULT_SLOT = 1x1
 
 # ADDED FOR FUNCTIONAL TESTS
-FUNCTIONAL_TESTS := $(patsubst cocotb/functional/%_test.py,%,$(wildcard cocotb/functional/*_test.py))
+FUNCTIONAL_TESTS := $(patsubst cocotb/functional/%_tb.py,%,$(wildcard cocotb/functional/*_tb.py))
 
 # Slot can be any of AVAILABLE_SLOTS
 SLOT ?= $(DEFAULT_SLOT)
@@ -90,6 +90,10 @@ librelane-klayout: ## Open the last run in KLayout
 librelane-padring: ## Only create the padring
 	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/padring.py librelane/slots/slot_${SLOT}.yaml librelane/config.yaml
 .PHONY: librelane-padring
+
+lint: ## Lint RTL sources with Verilator
+	cd $(MAKEFILE_DIR)/src && verilator --lint-only -Wall -f files.f
+.PHONY: lint
 
 sim: ## Run RTL simulation with cocotb
 	cd cocotb; PDK_ROOT=${PDK_ROOT} PDK=${PDK} SLOT=${SLOT} python3 chip_top_tb.py
