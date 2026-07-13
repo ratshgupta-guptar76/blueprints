@@ -98,6 +98,9 @@
 
                 # For logo generation
                 pillow
+
+                # For scripting
+                ipykernel
               ];
           });
         }
