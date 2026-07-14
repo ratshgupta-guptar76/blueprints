@@ -91,6 +91,7 @@
 
                 # Golden model / numerics
                 numpy
+                pandas
                 matplotlib
 
                 # For KLayout Python DRC runner
@@ -98,6 +99,9 @@
 
                 # For logo generation
                 pillow
+
+                # For scripting
+                ipykernel
               ];
           });
         }
