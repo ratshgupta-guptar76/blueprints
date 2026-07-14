@@ -22,6 +22,10 @@
 #   IIC_VNC_PORT  - host port for noVNC web UI (default: 80)
 #   IIC_RFB_PORT  - host port for raw VNC/RFB, for KRDC etc. (default: 5901)
 #   IIC_VNC_RESOLUTION - VNC framebuffer geometry, WxH (default: 1280x720)
+#   IIC_DETACH    - 1 to run detached (-d) instead of interactive (-it), for
+#                   non-interactive launchers (e.g. the PVT sweep notebook)
+#                   that need the container to keep running in the background
+#                   (default: 0, interactive)
 #   DISPLAY       - host X display (only used when IIC_MODE=x11)
 #   EXTRA_VOLS    - extra --volume args to pass through
 
@@ -33,10 +37,19 @@ MODE="${IIC_MODE:-vnc}"
 VNC_PORT="${IIC_VNC_PORT:-80}"
 RFB_PORT="${IIC_RFB_PORT:-5901}"
 VNC_RESOLUTION="${IIC_VNC_RESOLUTION:-1280x720}"
+DETACH="${IIC_DETACH:-0}"
 
 if ! command -v docker >/dev/null 2>&1; then
     echo "docker not found in PATH" >&2
     exit 1
+fi
+
+# -it requires a real controlling terminal; non-interactive launchers must
+# use -d instead or `docker run` fails with "the input device is not a TTY".
+if [[ "${DETACH}" == "1" ]]; then
+    RUN_MODE_ARGS=(-d)
+else
+    RUN_MODE_ARGS=(-it)
 fi
 
 # Build the display-transport args. In VNC mode we deliberately do NOT set
@@ -82,7 +95,7 @@ if [[ -n "${EXTRA_VOLS:-}" ]]; then
 fi
 
 set -x
-docker run --rm -it \
+docker run --rm "${RUN_MODE_ARGS[@]}" \
     --name chipathon-2026-iic \
     "${USER_ARGS[@]}" \
     -e XSCHEM_PREINIT="set local_netlist_dir 1" \
