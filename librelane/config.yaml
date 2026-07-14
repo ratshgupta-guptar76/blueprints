@@ -26,12 +26,25 @@ meta:
 
 DESIGN_NAME: chip_top
 VERILOG_FILES:
-- dir::../src/chip_top.sv
+- dir::../src/dcim_pkg.sv
+- dir::../src/shift_reg.sv
+- dir::../src/act_shift_chain.sv
+- dir::../src/row_decoder.sv
+- dir::../src/dcim_array.sv
+- dir::../src/col_adder.sv
+- dir::../src/adder_tree.sv
+- dir::../src/lane_shift_accum.sv
+- dir::../src/shift_accum.sv
+- dir::../src/weight_load.sv
+- dir::../src/stream_out.sv
+- dir::../src/control_fsm.sv
+- dir::../src/dcim_top.sv
 - dir::../src/chip_core.sv
+- dir::../src/chip_top.sv
 
 # Enable plugin for better SystemVerilog support
-# USE_SLANG: True
-# SLANG_ARGUMENTS: ['--keep-hierarchy']
+USE_SLANG: True
+SLANG_ARGUMENTS: ['--keep-hierarchy']
 
 # Slightly smaller file sizes
 PRIMARY_GDSII_STREAMOUT_TOOL: klayout

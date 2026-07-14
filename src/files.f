@@ -1,0 +1,15 @@
+dcim_pkg.sv
+shift_reg.sv
+act_shift_chain.sv
+row_decoder.sv
+dcim_array.sv
+col_adder.sv
+adder_tree.sv
+lane_shift_accum.sv
+shift_accum.sv
+weight_load.sv
+stream_out.sv
+control_fsm.sv
+dcim_top.sv
+chip_core.sv
+chip_top.sv

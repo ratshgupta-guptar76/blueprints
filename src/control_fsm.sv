@@ -55,6 +55,7 @@ module control_fsm #(
     output logic busy,
     output logic done,
     output logic w_en,
+    output logic wshift_en,
     output logic [$clog2(ROWS)-1:0] row_addr,
     output logic a_en,
     output logic clr,
@@ -103,12 +104,12 @@ module control_fsm #(
             end
 
             WRITE_W: begin
-                if (row_cnt == ROWS-1 && wfull)
+                if (row_cnt == unsigned'(RW'(ROWS-1)) && wfull)
                     next_state = WRITE_A;
             end
 
             WRITE_A: begin
-                if (load_cnt == DW*ROWS-1)
+                if (load_cnt == unsigned'(LW'(DW*ROWS-1)))
                     next_state = COMPUTE;
             end
 
@@ -144,28 +145,29 @@ module control_fsm #(
             bp_cnt   <= '0;
 
             if (state == WRITE_W)
-                row_cnt <= wfull ? row_cnt + RW'(1)
+                row_cnt <= wfull ? row_cnt + unsigned'(RW'(1))
                                  : '0;
             
             if (state == WRITE_A)
-                load_cnt <= load_cnt + LW'(1);
+                load_cnt <= load_cnt + unsigned'(LW'(1));
 
             if (state == COMPUTE)
-                bp_cnt <= bp_cnt + PW'(1);
+                bp_cnt <= bp_cnt + unsigned'(PW'(1));
         end
     end
 
     always_comb begin : STATE_OUTPUTS
-        busy     = (state != IDLE);
-        done     = (state == DONE);
-        w_en     = (state == WRITE_W) && wfull;
-        row_addr = row_cnt;
-        a_en     = (state == WRITE_A) || (state == COMPUTE);
-        comp_en  = (state == COMPUTE);
-        clr      = (state == WRITE_A) && (load_cnt == DW*ROWS-1);
-        bp_idx   = bp_cnt;
-        y_load   = (state == DONE);
-        y_en     = (state == SHIFT_OUT);
+        busy      = (state != IDLE);
+        done      = (state == DONE);
+        w_en      = (state == WRITE_W) && wfull;
+        wshift_en = (state == WRITE_W);
+        row_addr  = row_cnt;
+        a_en      = (state == WRITE_A) || (state == COMPUTE);
+        comp_en   = (state == COMPUTE);
+        clr       = (state == WRITE_A) && (load_cnt == unsigned'(LW'(DW*ROWS-1)));
+        bp_idx    = bp_cnt;
+        y_load    = (state == DONE);
+        y_en      = (state == SHIFT_OUT);
     end
 
 endmodule

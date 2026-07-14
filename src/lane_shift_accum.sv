@@ -36,8 +36,8 @@ module lane_shift_accum #(
     parameter int ROWS       = dcim_pkg::ROWS,
     parameter int DW         = dcim_pkg::DW,
     parameter int ACC_WIDTH  = dcim_pkg::ACC_WIDTH,
-    parameter int A_SIGN     = dcim_pkg::A_SIGN,
-    parameter int W_SIGN     = dcim_pkg::W_SIGN
+    parameter bit A_SIGN     = dcim_pkg::A_SIGN,
+    parameter bit W_SIGN     = dcim_pkg::W_SIGN
 ) (
     input logic clk,
     input logic rst_n,
@@ -47,7 +47,7 @@ module lane_shift_accum #(
     input logic [$clog2(DW)-1:0]             bp_idx,
     input logic [DW-1:0][$clog2(ROWS+1)-1:0] col_adder, 
 
-    output logic [ACC_WIDTH-1:0] y
+    output logic signed [ACC_WIDTH-1:0] y
 );
 
     localparam int LANE_W = $clog2(ROWS+1) + DW;
@@ -68,7 +68,7 @@ module lane_shift_accum #(
 
     logic signed [ACC_WIDTH-1:0] lane_signed_val;
     always_comb begin : SIGN_EXT
-        lane_signed_val = {{(ACC_WIDTH-LANE_W){lane_val[LANE_W-1]}}, lane_val};
+        lane_signed_val = signed'({{(ACC_WIDTH-LANE_W){lane_val[LANE_W-1]}}, lane_val});
     end
 
     always_ff @(posedge clk or negedge rst_n) begin : SIGNED_ACT_ACCUM
@@ -79,8 +79,10 @@ module lane_shift_accum #(
                 y <= '0;
             end else begin
                 if (en) begin
-                    if (A_SIGN && (bp_idx == DW-1)) y <= y - (lane_signed_val <<< bp_idx);      // Subtract MSB lane value (if A_SIGN)
-                    else                            y <= y + (lane_signed_val <<< bp_idx);      // Add lane value at all other bits
+                    if (A_SIGN & (bp_idx == unsigned'(($clog2(DW))'(DW-1)))) 
+                        y <= y - (lane_signed_val <<< bp_idx);      // Subtract MSB lane value (if A_SIGN)
+                    else
+                        y <= y + (lane_signed_val <<< bp_idx);      // Add lane value at all other bits
                 end
             end 
         end
