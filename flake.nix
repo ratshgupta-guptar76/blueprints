@@ -93,6 +93,7 @@
                 numpy
                 pandas
                 matplotlib
+                scipy
 
                 # For KLayout Python DRC runner
                 docopt
