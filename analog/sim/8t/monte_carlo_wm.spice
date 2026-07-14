@@ -1,0 +1,204 @@
+* ============================================
+* Test: monte_carlo_wm.spice
+* Cell: 8T_03v3
+* PDK: GF180mcuD
+* Author: R. Gupta
+* Date: 2026-07-14
+* Monte Carlo mismatch-only word-line write margin (WLWM) yield sweep.
+* Corner/temp/VDD come entirely from pvt.spice (driven by the Python
+* PVT sweep) - this deck does not hardcode a corner.
+* ============================================
+
+* -- includes --
+.include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tb/8T_tb.spice
+
+* -- mismatch-only MC --
+* Global process variation is already fixed by the PVT corner .lib call
+* above (in pvt.spice) - enabling sw_stat_global too would double-count
+* it, so only per-instance mismatch is turned on here.
+.param sw_stat_mismatch=1
+.param sw_stat_global=0
+
+* -- stimulus --
+VVDD vdd 0 {VDD_CORNER}             ; supply
+VVSS vss 0 0                        ; source
+VA   a   0 {VDD_CORNER}             ; set Activation = HI
+
+** Parameters
+.param V1=0
+.param Td=2n
+.param Tr=0.1n
+.param Tf=0.1n
+.param PW=3n
+.param PER=50n
+.param NP=1
+
+** Sources
+VWBLB WBLB 0 DC {VDD_CORNER}
+VWBL  WBL  0 DC 0
+VWL   WL  0 PULSE({V1} {VDD_CORNER} {Td} {Tr} {Tf} {PW} {PER} {NP})
+
+** Initial States
+.ic v(q)={VDD_CORNER} v(qb)=0
+
+** Control Section Params
+.csparam V_H={VDD_CORNER}
+.csparam V_L=0
+.csparam V1={V1}
+.csparam Td={Td}
+.csparam Tr={Tr}
+.csparam Tf={Tf}
+.csparam PW={PW}
+.csparam PER={PER}
+.csparam NP={NP}
+.csparam tran_time=0.1u
+
+* -- per-iteration bisection chatter: off by default for 1000-run MC
+*    (the "WORD-LINE WRITE MARGIN" banner + per-iter echoes from
+*    write_margin.spice are dropped here for the same reason
+*    monte_carlo_hold.spice dropped hold_snm.spice's banners - not useful
+*    at MC scale). Flip to 1 for debugging a single run. --
+.csparam verbose=0
+
+.control
+save all
+
+  * --- Monte Carlo loop ---
+  * each pass: reset (forces every agauss()-based mismatch term in the
+  * PDK subckts to redraw) ONCE, then run the full endpoint-check +
+  * bisection sequence identical to write_margin.spice on that single
+  * mismatch draw. Resetting mid-bisection would redraw the mismatch
+  * between tran calls and corrupt the bisection for that sample, so
+  * reset happens only at the top of the outer loop.
+  * Skips are split into two buckets so we know whether failures were
+  * solver (non-convergence) or setup (bad endpoints):
+  *   n_skipped_conv     - a tran call did not converge
+  *   n_skipped_endpoint - WL=VDD didn't flip and/or WL=0 did flip
+  *
+  * Each tran call creates a new ngspice plot; ngspice never frees old
+  * plots on its own (reset reloads the circuit, it does not destroy
+  * plot history) and "save all" keeps every node's full waveform for
+  * every plot. Over 1000 runs x up to 11 trans/run that accumulates
+  * without bound - RSS grows continuously and per-iteration bookkeeping
+  * (plot/vector lookups) slows down as the plot list grows. So every
+  * tran below is followed by "destroy $curplot" once its result
+  * (final_q) has been consumed - never sooner, since final_q is itself
+  * a vector living in that same plot and destroying it before use
+  * leaves final_q undefined.
+  let nruns = 1000
+  let n = 0
+  let n_skipped_conv = 0
+  let n_skipped_endpoint = 0
+
+  dowhile n < nruns
+
+    reset
+
+    let WL_H = V_H
+    let WL_L = V_L
+    let max_err = 0.01
+    let v_trip  = V_H/2
+    let run_ok = 1
+
+    * =========================================================
+    *  ENDPOINT CHECKS  (bisection is only valid if both pass)
+    * =========================================================
+    * -- Endpoint 1: WL = VDD must FLIP --
+    let flip_b = 0
+    alter @vwl[pulse] = [ $&V1 $&V_H $&Td $&Tr $&Tf $&PW $&PER $&NP ]
+    tran 0.1n $&tran_time uic
+    if $sim_status <> 0
+      let run_ok = 0
+    else
+      let final_q = v(q)[length(v(q))-1]
+      if final_q le v_trip
+        let flip_b = 1
+      end
+    end
+    destroy $curplot
+
+    * -- Endpoint 2: WL = 0 must NOT flip --
+    let noflip_b = 0
+    if run_ok = 1
+      alter @vwl[pulse] = [ $&V1 $&V_L $&Td $&Tr $&Tf $&PW $&PER $&NP ]
+      tran 0.1n $&tran_time uic
+      if $sim_status <> 0
+        let run_ok = 0
+      else
+        let final_q = v(q)[length(v(q))-1]
+        if final_q gt v_trip
+          let noflip_b = 1
+        end
+      end
+      destroy $curplot
+    end
+
+    if run_ok = 0
+      echo "run $&n: tran did not converge (endpoint check) - skipped"
+      let n_skipped_conv = n_skipped_conv + 1
+    else
+      let bool_b = flip_b * noflip_b
+      if bool_b = 0
+        echo "run $&n: [FAIL] endpoints invalid - skipped"
+        let n_skipped_endpoint = n_skipped_endpoint + 1
+      else
+        * =========================================================
+        *  BISECTION
+        * =========================================================
+        setplot const
+        let WL_H = V_H
+        let WL_L = V_L
+        let iter = 0
+
+        while WL_H-WL_L > max_err
+          let WL_m = (WL_H + WL_L)/2
+          alter @vwl[pulse] = [ 0 $&WL_m $&Td $&Tr $&Tf $&PW $&PER $&NP ]
+          tran 0.1n $&tran_time uic
+          if $sim_status <> 0
+            let run_ok = 0
+            destroy $curplot
+            break
+          end
+          let final_q = v(q)[length(v(q))-1]
+          let iter = iter + 1
+
+          if final_q < v_trip
+            let WL_H = WL_m
+            if $&verbose = 1
+              echo "  iter $&iter : WL_m=$&WL_m  -> flip      [hi=$&WL_H lo=$&WL_L]"
+            end
+          else
+            let WL_L = WL_m
+            if $&verbose = 1
+              echo "  iter $&iter : WL_m=$&WL_m  -> no-flip   [hi=$&WL_H lo=$&WL_L]"
+            end
+          end
+          destroy $curplot
+        end
+
+        if run_ok = 0
+          echo "run $&n: tran did not converge (bisection) - skipped"
+          let n_skipped_conv = n_skipped_conv + 1
+        else
+          let WL_crit = WL_H
+          let mc_wlwm = V_H - WL_H
+
+          * --- greppable per-run sample: "mc_wlwm = <value>" ---
+          print mc_wlwm
+        end
+      end
+    end
+
+    let n = n + 1
+  end
+
+  let n_skipped = n_skipped_conv + n_skipped_endpoint
+  let n_valid = nruns - n_skipped
+  echo
+  echo "Monte Carlo done: nruns=$&nruns  skipped=$&n_skipped (solver=$&n_skipped_conv endpoint=$&n_skipped_endpoint)  effective_samples=$&n_valid"
+
+.endc
+.end
