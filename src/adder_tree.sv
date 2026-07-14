@@ -7,7 +7,7 @@
 //
 //   GATHER: col[r] = pp[r][c] transposes a COLUMN out of row-major pp. The whole
 //           point of the module — pp[c][r] here would sum the wrong axis (bug).
-//   col_adder swap point: replace col_adder_behavioural with a CSA/pipelined
+//   col_adder swap point: replace col_adder with a CSA/pipelined
 //           variant at STA without touching this parent (ports fixed).
 //
 // TEST: sum[c] == popcount of column c, for random pp + a single-1 + all-1 columns.
@@ -31,7 +31,7 @@ module adder_tree #(
                 assign col[r] = pp[r][c];
             end
             
-            col_adder_behavioural #(
+            col_adder #(
                 .ROWS(ROWS)
             ) COL_ADDER (
                 .pp_col (col),

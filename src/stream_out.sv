@@ -49,8 +49,8 @@ logic [YW-1:0]  counter;
                 done    <= '0;
             end else if (en) begin
                 piso    <= {1'b0, piso[TOT-1:1]};
-                counter <= counter + YW'(1);
-                done    <= (counter == TOT-1);
+                counter <= counter + unsigned'(YW'(1));
+                done    <= (counter == unsigned'(YW'(TOT-1)));
             end
         end
     end
