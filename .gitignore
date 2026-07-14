@@ -12,6 +12,7 @@ img/
 .github/
 # Remove simulation results
 analog/sim/*/results
+analog/flow/results
 cocotb/results.xml
 
 # cocotb functional coverage reports (<module>_coverage.{yml,xml})
