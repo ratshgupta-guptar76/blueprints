@@ -20,7 +20,7 @@ VU   u   0 0              ; input voltage to be swept
 VA   a   0 {VDD_CORNER}   ; set Activation = HI
 
 * -- initial conditions --
-.ic v(q)=3.3 v(qb)=0         ; initial state: Q=1, QB=0
+.ic v(q)={VDD_CORNER} v(qb)=0         ; initial state: Q=1, QB=0
 .ic v(wbl)=0.1 v(wblb)=0.1   ; initial state pre-charged to 0.1V - common for idle power reduction
 
 * -- SNM rotation transformation --
