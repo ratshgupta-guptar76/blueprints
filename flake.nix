@@ -91,6 +91,7 @@
 
                 # Golden model / numerics
                 numpy
+                pandas
                 matplotlib
 
                 # For KLayout Python DRC runner
