@@ -10,7 +10,7 @@
 .include /workspace/analog/designs/pvt.spice
 .include /workspace/analog/designs/params_6T.spice
 .include /workspace/analog/designs/params_8T.spice
-.include /workspace/analog/tests/8T_tb.spice
+.include /workspace/analog/tb/8T_tb.spice
 
 * weak keeper: PMOS, gate=VSS (always weakly on), holds RBL high
 MKEEP rbl vss vdd vdd pfet_03v3 L=0.32u W=0.22u

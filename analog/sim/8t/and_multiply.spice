@@ -10,7 +10,7 @@
 .include /workspace/analog/designs/pvt.spice
 .include /workspace/analog/designs/params_6T.spice
 .include /workspace/analog/designs/params_8T.spice
-.include /workspace/analog/tests/8T_tb.spice
+.include /workspace/analog/tb/8T_tb.spice
 
 * -- stimulus --
 VVDD vdd  0 {VDD_CORNER}   ; supply

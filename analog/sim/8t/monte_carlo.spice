@@ -1,9 +1,10 @@
+Monte Carlo Simulation on 8T SRAM (AND) bitcell
 * ============================================
-* Test: hold_snm.spice
+* Test: monte_carlo.spice
 * Cell: 8T_03v3
 * PDK: GF180mcuD
 * Author: R. Gupta
-* Date: 2026-06-19
+* Date: 2026-07-14
 * ============================================
 
 * -- includes --
@@ -32,6 +33,7 @@ BQB qbin 0 v=(v(v2)-v(u))* 1/sqrt(2)  ; input to inverter QB
 * .control params
 .csparam VDD_CORNER={VDD_CORNER}
 
+.option noacct
 * -- analysis --
 .control
   save all

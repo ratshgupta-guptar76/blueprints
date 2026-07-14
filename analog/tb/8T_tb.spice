@@ -1,4 +1,4 @@
-** sch_path: /workspace/analog/tests/8T_tb.sch
+** sch_path: /workspace/analog/tb/8T_tb.sch
 **.subckt 8T_tb vdd vss wl q qb a rbl wbl wblb
 *.ipin vdd
 *.ipin vss
