@@ -1,0 +1,56 @@
+NOR Multiply Testbench
+* ============================================
+* Test: mult_w1a1.spice
+* Cell: 8T_03v3
+* PDK: GF180mcuD
+* Author: R. Gupta
+* Date: 2026-06-19
+* ============================================
+
+* -- includes --
+.include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tb/8T_tb.spice
+
+* -- stimulus --
+VVDD vdd  0 {VDD_CORNER}  ; supply
+VVSS vss  0 0             ; source
+VWL  wl   0 0             ; reads: OFF
+VBL  wbl  0 0             ; bitlines parked (or floating)
+VBLB wblb 0 0             ; bitlines parked (or floating)
+VA   a    0 {VDD_CORNER}  ; set Activation = HI
+
+* -- initial conditions --
+.ic v(q)={VDD_CORNER} v(qb)=0
+
+* -- sim --
+.control
+  save all
+
+  * --- start transient analysis --- 
+  tran 0.01n 50n uic
+
+  * --- validate data ---
+  echo
+  meas tran w_init FIND v(q)   AT=15n
+  meas tran a_init FIND v(a)   AT=15n
+  meas tran o_init FIND v(rbl) AT=15n
+  echo
+  meas tran w_final FIND v(q)   AT=50n
+  meas tran a_final FIND v(a)   AT=50n
+  meas tran o_final FIND v(rbl) AT=50n
+  echo
+
+  * -- display results ---
+  plot q a rbl
+  + title "(W, A) == (1, 1)"
+  + xlabel "time (s)"
+  + ylabel "voltage (V)"
+
+  * --- save .raw for python parsing ---
+  write /workspace/analog/sim/8t/results/mult_w1a1.raw all
+
+.endc
+
+.end
