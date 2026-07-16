@@ -33,7 +33,7 @@ VA   a    0 PULSE(0 {VDD_CORNER} 2n 0.1n 0.1n 5n 10n)     ; set Activation = HI
   save all
 
   * --- start transient analysis --- 
-  tran 0.01n 100n uic
+  tran 0.1n 10000n uic
 
   * --- validate data ---
   echo
