@@ -1,6 +1,6 @@
-NOR Multiply Testbench
+Multiply Test for W=0 & A=1
 * ============================================
-* Test: mult_w0a0.spice
+* Test: mult_w0a1_test.spice
 * Cell: 8T_03v3
 * PDK: GF180mcuD
 * Author: R. Gupta
@@ -19,7 +19,7 @@ VVSS vss  0 0             ; source
 VWL  wl   0 0             ; reads: OFF
 VBL  wbl  0 0             ; bitlines parked (or floating)
 VBLB wblb 0 0             ; bitlines parked (or floating)
-VA   a    0 0             ; set Activation = LO
+VA   a    0 {VDD_CORNER}  ; set Activation = HI
 
 * -- initial conditions --
 .ic v(q)=0 v(qb)={VDD_CORNER}
@@ -44,12 +44,12 @@ VA   a    0 0             ; set Activation = LO
 
   * -- display results ---
   plot q a rbl
-  + title "(W, A) == (0, 0)"
+  + title "(W, A) == (0, 1)"
   + xlabel "time (s)"
   + ylabel "voltage (V)"
 
   * --- save .raw for python parsing ---
-  write /workspace/analog/sim/8t/results/mult_w0a0.raw all
+  write /workspace/analog/sim/8t/results/mult_w0a1_test.raw all
 
 .endc
 

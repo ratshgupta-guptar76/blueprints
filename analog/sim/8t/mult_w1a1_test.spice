@@ -1,6 +1,6 @@
-NOR Multiply Testbench
+Multiply Test for W=1 & A=1
 * ============================================
-* Test: mult_w1a1.spice
+* Test: mult_w1a1_test.spice
 * Cell: 8T_03v3
 * PDK: GF180mcuD
 * Author: R. Gupta
@@ -49,7 +49,7 @@ VA   a    0 {VDD_CORNER}  ; set Activation = HI
   + ylabel "voltage (V)"
 
   * --- save .raw for python parsing ---
-  write /workspace/analog/sim/8t/results/mult_w1a1.raw all
+  write /workspace/analog/sim/8t/results/mult_w1a1_test.raw all
 
 .endc
 
