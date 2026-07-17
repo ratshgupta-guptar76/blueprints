@@ -1,5 +1,5 @@
 * ============================================
-* Test: read_disturb_lo.spice
+* Test: compute_disturb_lo.spice
 * Cell: 8T_03v3
 * PDK: GF180mcuD
 * Author: R. Gupta
@@ -12,8 +12,11 @@
 .include /workspace/analog/designs/params_8T.spice
 .include /workspace/analog/tb/8T_tb.spice
 
-* weak keeper: PMOS, gate=VSS (always weakly on), holds RBL high
-MKEEP rbl vss vdd vdd pfet_03v3 L=0.32u W=0.22u
+*----------------------------------
+* CMOS inverter load
+*----------------------------------
+MPINV out rbl vdd vdd pfet_03v3 W=0.44u L=0.28u
+MNINV out rbl vss vss nfet_03v3 W=0.22u L=0.28u
 
 * -- stimulus --
 VVDD vdd  0 {VDD_CORNER}   ; supply
@@ -21,8 +24,8 @@ VVSS vss  0 0     ; source
 VWL  wl   0 0     ; read: OFF
 VBL  wbl  0 0     ; bitlines parked (or floating)
 VBLB wblb 0 0     ; bitlines parked (or floating)
-CRBL rbl  0 5f   ; capacitive load on bitline
 VA   a    0 PULSE(0 {VDD_CORNER} 2n 0.1n 0.1n 5n 10n)     ; set Activation = HI
+
 * -- initial conditions --
 .ic v(rbl)={VDD_CORNER}
 .ic v(q)=0 v(qb)={VDD_CORNER}
@@ -37,11 +40,16 @@ VA   a    0 PULSE(0 {VDD_CORNER} 2n 0.1n 0.1n 5n 10n)     ; set Activation = HI
 
   * --- validate data ---
   echo
-  meas tran q_init    FIND v(q) AT= 2n
-  meas tran q_mid     FIND v(q) AT=50n
-  meas tran q_final   FIND v(q) AT=99n
+  meas tran o_init    FIND v(rbl) AT= 2n
+  meas tran o_mid     FIND v(rbl) AT=50n
+  meas tran o_final   FIND v(rbl) AT=99n
   echo
-  meas tran q_max MAX v(q) FROM=2n TO=100n
+  meas tran o_min MIN v(rbl) FROM=2n TO=100n
+  meas tran o_max MAX v(rbl) FROM=2n TO=100n
+  echo
+  meas tran out_min MIN v(out) FROM=2n TO=100n
+  meas tran out_max MAX v(out) FROM=2n TO=100n
+  echo
   
   * --- save .raw for python parsing ---
   write /workspace/analog/sim/8t/results/read_disturb_lo.raw all
