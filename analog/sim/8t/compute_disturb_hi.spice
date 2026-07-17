@@ -28,7 +28,6 @@ VA   a    0 PULSE(0 {VDD_CORNER} 2n 0.1n 0.1n 5n 10n)    ; set Activation = HI
 * -- initial conditions --
 .ic v(q)={VDD_CORNER} v(qb)=0
 
-VDD_SENSE vdd vdd_src 0
 * -- sim --
 .control
   save all
@@ -48,15 +47,6 @@ VDD_SENSE vdd vdd_src 0
   meas tran out_min MIN v(out) FROM=2n TO=100n
   meas tran out_max MAX v(out) FROM=2n TO=100n
   echo
-  meas tran tphl \
-  TRIG v(rbl) VAL={VDD_CORNER/2} FALL=1 \
-  TARG v(out) VAL={VDD_CORNER/2} FALL=1
-
-  meas tran tplh \
-  TRIG v(rbl) VAL={VDD_CORNER/2} RISE=1 \
-  TARG v(out) VAL={VDD_CORNER/2} RISE=1
-  echo
-  meas tran IDD AVG I(VDD_SENSE) FROM=20n TO=100n
 
   * --- save .raw for python parsing ---
   write /workspace/analog/sim/8t/results/read_disturb_hi.raw all
