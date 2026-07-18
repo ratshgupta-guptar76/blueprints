@@ -13,6 +13,15 @@ Multiply Test for W=1 & A=0
 .include /workspace/analog/designs/params_8T.spice
 .include /workspace/analog/tb/8T_tb.spice
 
+*----------------------------------
+* CMOS inverter load
+*----------------------------------
+* stdcell library
+.include /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/spice/gf180mcu_fd_sc_mcu7t5v0.spice
+* isolated supply so i(vddi) is only the receiver
+VDDI vddi 0 {VDD_CORNER}
+XINV rbl out vddi vddi vss vss gf180mcu_fd_sc_mcu7t5v0__inv_1
+
 * -- stimulus --
 VVDD vdd  0 {VDD_CORNER}  ; supply
 VVSS vss  0 0             ; source
@@ -24,12 +33,35 @@ VA   a    0 0             ; set Activation = LO
 * -- initial conditions --
 .ic v(q)={VDD_CORNER} v(qb)=0
 
+.csparam VDD_CORNER={VDD_CORNER}
+
 * -- sim --
 .control
   save all
+  save i(vvdd)
 
   * --- start transient analysis --- 
   tran 0.01n 50n uic
+
+  let i_abs = abs(i(vddi))
+  * ========================================================
+  * NEW: Crowbar Current and Energy Measurements
+  * ========================================================
+  
+  * 1. Measure the Peak Crowbar Current (Max current during the cycle)
+  meas tran max_crowbar_current MAX i_abs from=2n to=50n
+  
+  * 2. Measure the Average Crowbar Current across the evaluation window
+  meas tran avg_crowbar_current AVG i_abs from=2n to=50n
+  
+  * 3. Calculate Total Energy Consumed per cycle (Time integral of VDD * I_vdd)
+  * Since VDD_CORNER is a static scalar parameter, we integrate the current 
+  * and then multiply by the voltage level.
+  meas tran total_charge INTEG i_abs from=2n to=50n
+  let total_energy = total_charge * const.VDD_CORNER
+  print total_energy
+  echo "Total Cycle Energy: $&total_energy Joules"
+  echo ========================================================
 
   * --- validate data ---
   echo
@@ -45,8 +77,14 @@ VA   a    0 0             ; set Activation = LO
   * -- display results ---
   plot q a rbl
   + title "(W, A) == (1, 0)"
-  + xlabel "time (s)"
-  + ylabel "voltage (V)"
+  + xlabel "time"
+  + ylabel "voltage"
+
+  plot i(vvdd)
+  + title "(W, A) == (1, 0)"
+  + xlabel "time"
+  + ylabel "current"
+
 
   * --- save .raw for python parsing ---
   write /workspace/analog/sim/8t/results/mult_w1a0_test.raw all
