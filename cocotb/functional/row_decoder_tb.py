@@ -45,7 +45,7 @@ def golden_ref(addr: int, en: int) -> int:
         disabled: returs 0 (all wordlines de-asserted)
 
     Args:
-        en (`int`) : Enable signal for Row Decoder
+        en (`int`)      : Enable signal for Row Decoder
         addr (`int`)    : Binary row address input to decode
 
     Returns:
