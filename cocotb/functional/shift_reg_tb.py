@@ -5,7 +5,7 @@
 # Date      : Jul-18-2026
 # --------------------------------------------------------------------------------------
 # DUT       : shift_reg.sv
-# Type      : Sequential, async reset
+# Type      : Sequential, SISO, async reset
 # Latency   : 1 Clk Cycle
 # Framework : cocotb / Verilator
 # 
