@@ -43,14 +43,16 @@ logic [YW-1:0]  counter;
             counter <= '0;
             done    <= 1'b0;
         end else begin
-            if (load) begin
-                piso    <= TOT'(acc);
-                counter <= '0;
-                done    <= '0;
-            end else if (en) begin
-                piso    <= {1'b0, piso[TOT-1:1]};
-                counter <= counter + unsigned'(YW'(1));
-                done    <= (counter == unsigned'(YW'(TOT-1)));
+            if (en) begin
+                if (load) begin
+                    piso    <= TOT'(acc);
+                    counter <= '0;
+                    done    <= '0;
+                end else begin
+                    piso    <= {1'b0, piso[TOT-1:1]};
+                    counter <= counter + unsigned'(YW'(1));
+                    done    <= (counter == unsigned'(YW'(TOT-1)));
+                end
             end
         end
     end

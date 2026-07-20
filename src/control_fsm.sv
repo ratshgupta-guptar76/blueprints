@@ -146,7 +146,7 @@ module control_fsm #(
 
             if (state == WRITE_W)
                 row_cnt <= wfull ? row_cnt + unsigned'(RW'(1))
-                                 : row_cnt;
+                                 : '0;
             
             if (state == WRITE_A)
                 load_cnt <= load_cnt + unsigned'(LW'(1));
@@ -167,7 +167,7 @@ module control_fsm #(
         clr       = (state == WRITE_A) && (load_cnt == unsigned'(LW'(DW*ROWS-1)));
         bp_idx    = bp_cnt;
         y_load    = (state == DONE);
-        y_en      = (state == SHIFT_OUT);
+        y_en      = (state == SHIFT_OUT) || (state == DONE);
     end
 
 endmodule
