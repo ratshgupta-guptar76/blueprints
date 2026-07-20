@@ -21,7 +21,9 @@
 # SPECIFICATION
 # *************
 #   @ negedge rst_n
-#       w_buf = '0
+#       w_buf     = '0
+#       wload_cnt = '0
+#       wfull     =  0
 #   @ posedge clk && en == 1:
 #       w_buf     <- {w_bit, w_buf[COLS-1:1]}                   (MSB fill, LSB shift)
 #       wload_cnt <- (wload_cnt == COLS-1) ? 0 : wload_cnt + 1
