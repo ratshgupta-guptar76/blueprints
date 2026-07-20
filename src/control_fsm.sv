@@ -146,7 +146,7 @@ module control_fsm #(
 
             if (state == WRITE_W)
                 row_cnt <= wfull ? row_cnt + unsigned'(RW'(1))
-                                 : '0;
+                                 : row_cnt;
             
             if (state == WRITE_A)
                 load_cnt <= load_cnt + unsigned'(LW'(1));
