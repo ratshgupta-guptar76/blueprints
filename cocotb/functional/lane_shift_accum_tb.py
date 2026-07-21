@@ -38,7 +38,7 @@
 # PARAMETERS
 # **********
 #   ROWS: # of rows summed per column-sum (adopted from dcim_pkg::ROWS)
-#   DW: data-width of activations a.k.a. depth of lane_shift_accum (adopted from dcim_pkg::DW)
+#   DW: data-width of activations (adopted from dcim_pkg::DW)
 #   ACC_WIDTH: data-width of accumulator/output (adopted from dcim_pkg::ACC_WIDTH)
 #   A_SIGN: activation signedness (adopted from dcim_pkg::A_SIGN)
 #   W_SIGN: weight signedness (adopted from dcim_pkg::W_SIGN)
