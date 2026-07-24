@@ -73,7 +73,7 @@ async def test_en_low_no_write(dut) -> None:
             f"en=0 addr={addr}: wl={int(dut.wl.value):#x} — stray wordline"
 
 @cocotb.test()
-async def test_no_latch(dut):
+async def test_no_latch(dut) -> None:
     """wl must fully re-evaluate each time — no held bits from prior addresses.
 
     Without the `wl = '0` default in the RTL, wl[addr]=1'b1 infers a latch and
@@ -98,7 +98,7 @@ async def test_no_latch(dut):
         f"en 1->0 did not clear wl: {int(dut.wl.value):#x}"
 
 @cocotb.test(skip=(os.environ.get("SIM") != "icarus"))
-async def test_x_prop(dut):
+async def test_x_prop(dut) -> None:
     """4-state only: X on addr/en must not silently produce a plausible wl."""
     ROWS = int(dut.ROWS.value)
     RW = (ROWS-1).bit_length()
