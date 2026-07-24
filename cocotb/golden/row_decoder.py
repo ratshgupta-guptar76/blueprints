@@ -1,8 +1,5 @@
 # Golden Model for src/row_decoder.sv
 
-from typing import Literal
-
-
 ROWS : int = 32     # Default value for golden_tb(). 
                     # Value overwritten during actual testing.
 
