@@ -6,7 +6,7 @@ TOT       : int | None = None
 
 # ---------- Golden Reference ----------
 def golden_ref(piso: int, counter: int, done: int, en: int, load: int, acc: int) -> tuple[int, int, int, int]:
-    """Golden reference output — Stream Out Register
+    """Computes the golden reference output for Stream Out Register
 
     Behaviour:
        piso, counter, and done are registered. done is a registered flag, so it is returned
