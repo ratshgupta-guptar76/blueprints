@@ -5,7 +5,7 @@ COLS : int | None = None        # Value overwritten during actual testing.
 
 # ---------- Golden Reference ----------
 def golden_ref(pp: list[int]) -> list[int]:
-    """Golden reference output — Vertical Reduction Tree per-column vector
+    """Computes the golden reference output for a per-column vector Vertical Reduction Tree 
 
     Behaviour:
        Computes sum[c] as the popcount of c across all rows.
