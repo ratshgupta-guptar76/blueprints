@@ -30,6 +30,7 @@
 # Date        | Engineer      | Version  | Description
 # ------------+---------------+----------+----------------------------------------------
 # Jul-18-2026 | R. Gupta      | * v1.0   | Initial Testbench Environment Setup
+# Jul-24-2026 | R. Gupta      | * v1.1   | Move Golden-Ref to cocotb/golden/row_decoder
 # ======================================================================================
 
 import os
@@ -42,11 +43,21 @@ from golden.row_decoder import golden_ref
 ROWS : int = 32     # Default value for golden_tb(). 
                     # Value overwritten during actual testing.
 
+import math
+
+def clog2(n: int) -> int:
+    if n <= 1:
+        return 0
+    return math.ceil(math.log2(n))
+
 @cocotb.test()
 async def test_exhaustive(dut) -> None:
     """All ROWS addresses x {en=0,1} — full input space, proof-equivalent."""
+    ROWS = int(dut.ROWS.value)
+
+    RW = clog2(ROWS)
     for en in (0, 1):
-        for addr in range(ROWS):
+        for addr in range(RW):
             dut.en.value = en
             dut.addr.value = addr
             await Timer(1, "ns")                    # combinational settle
@@ -80,6 +91,7 @@ async def test_no_latch(dut) -> None:
     old bits persist. Walk consecutive addresses and confirm only the current
     one is set.
     """
+    ROWS = int(dut.ROWS.value)
     prev = None
     for addr in (5, 7, 5, 0, ROWS - 1, 12):
         dut.en.value = 1
