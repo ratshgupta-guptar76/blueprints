@@ -1,9 +1,7 @@
-
 runs/
 __pycache__/
 gf180mcu/
 gf180_drc.lyrdb
-sim_build/
 final/
 img/
 *.lyrdb
@@ -11,17 +9,25 @@ img/
 .vscode/
 .slang
 .github/
-# Remove simulation results
-analog/sim/*/results
-analog/flow/results
-cocotb/results.xml
 
-# cocotb functional coverage reports (<module>_coverage.{yml,xml})
+# Cocotb build artifacts
+cocotb/sim_build/
+cocotb/results/
+cocotb/cov_annotated/
+
+# Cocotb waveform viewer state
+cocotb/waves/
+cocotb/*.fst
+cocotb/*.vcd
+
+# Cocotb coverage reports`
 cocotb/*_coverage.yml
 cocotb/*_coverage.xml
 
-# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Analog simulation results
+analog/sim/*/results
+analog/flow/results
+
 # Remove if updates are to be made to run_docker_iic.sh
-# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 scripts/
 .venv/
