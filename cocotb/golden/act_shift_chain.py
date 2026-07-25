@@ -84,4 +84,5 @@ def golden_tb() -> None:
     print("act_shift_chain golden_ref self-check passed")
 
 
-golden_tb()
+if __name__ == '__main__':
+    golden_tb()
