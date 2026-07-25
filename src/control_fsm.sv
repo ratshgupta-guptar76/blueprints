@@ -167,7 +167,7 @@ module control_fsm #(
         clr       = (state == WRITE_A) && (load_cnt == unsigned'(LW'(DW*ROWS-1)));
         bp_idx    = bp_cnt;
         y_load    = (state == DONE);
-        y_en      = (state == SHIFT_OUT);
+        y_en      = (state == SHIFT_OUT) || (state == DONE);
     end
 
 endmodule
