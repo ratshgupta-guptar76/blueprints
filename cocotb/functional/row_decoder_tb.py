@@ -31,6 +31,7 @@
 # ------------+---------------+----------+----------------------------------------------
 # Jul-18-2026 | R. Gupta      | * v1.0   | Initial Testbench Environment Setup
 # Jul-24-2026 | R. Gupta      | * v1.1   | Move Golden-Ref to cocotb/golden/row_decoder
+# Jul-25-2026 | R. Gupta      | * v1.2   | Sync Golden-Ref params and dut params
 # ======================================================================================
 
 import os
@@ -38,26 +39,19 @@ import cocotb
 from cocotb.triggers import Timer
 from cocotb.types import LogicArray
 
+import golden.row_decoder as ref
 from golden.row_decoder import golden_ref
-
-ROWS : int = 32     # Default value for golden_tb(). 
-                    # Value overwritten during actual testing.
-
-import math
-
-def clog2(n: int) -> int:
-    if n <= 1:
-        return 0
-    return math.ceil(math.log2(n))
 
 @cocotb.test()
 async def test_exhaustive(dut) -> None:
     """All ROWS addresses x {en=0,1} — full input space, proof-equivalent."""
     ROWS = int(dut.ROWS.value)
 
-    RW = clog2(ROWS)
+    # params for golden_ref
+    ref.ROWS = ROWS
+
     for en in (0, 1):
-        for addr in range(RW):
+        for addr in range(ROWS):
             dut.en.value = en
             dut.addr.value = addr
             await Timer(1, "ns")                    # combinational settle
@@ -76,6 +70,10 @@ async def test_exhaustive(dut) -> None:
 async def test_en_low_no_write(dut) -> None:
     """Safety: en=0 silences wl for every addr — no stray SRAM write."""
     ROWS = int(dut.ROWS.value)
+
+    # params for golden_ref
+    ref.ROWS = ROWS
+
     for addr in range(ROWS):
         dut.en.value = 0
         dut.addr.value = addr
@@ -92,6 +90,10 @@ async def test_no_latch(dut) -> None:
     one is set.
     """
     ROWS = int(dut.ROWS.value)
+    
+    # params for golden_ref
+    ref.ROWS = ROWS
+
     prev = None
     for addr in (5, 7, 5, 0, ROWS - 1, 12):
         dut.en.value = 1
@@ -113,6 +115,9 @@ async def test_no_latch(dut) -> None:
 async def test_x_prop(dut) -> None:
     """4-state only: X on addr/en must not silently produce a plausible wl."""
     ROWS = int(dut.ROWS.value)
+    # params for golden_ref
+    ref.ROWS = ROWS
+
     RW = (ROWS-1).bit_length()
     dut.en.value = 1
     dut.addr.value = LogicArray("x" * RW)
