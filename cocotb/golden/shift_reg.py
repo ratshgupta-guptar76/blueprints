@@ -56,7 +56,7 @@ def golden_tb() -> None:
 
     # LOAD 0b10110001 LSB-first over DW cycles, then COMPUTE it out
     sr = 0
-    bits_in = [1,0,0,0,1,1,0,1]          # LSB first
+    bits_in = [1,0,0,0,1,1,0,1]          # LSB first (8-bits)
     for b in bits_in:
         _, sr = golden_ref(sr, en=1, c_en=0, serial_in=b)
     assert sr == 0b10110001, f"loaded {sr:#010b}, expected 0b10110001"
