@@ -28,7 +28,7 @@ def golden_ref(piso: int, counter: int, done: int, en: int, load: int, acc: int)
             - next_counter : stream-out counter after the clk edge
 
     Raises:
-        RuntimeError : If ACC_WIDTH, N_WEIGHTS or N_WEIGHTS has not been set by the testbench before use.
+        RuntimeError : If ACC_WIDTH, N_WEIGHTS or TOT has not been set by the testbench before use.
     """
     if ACC_WIDTH is None:
         raise RuntimeError("golden.row_decoder.ACC_WIDTH not set")
