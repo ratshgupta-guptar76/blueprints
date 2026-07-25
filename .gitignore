@@ -31,3 +31,6 @@ analog/flow/results
 # Remove if updates are to be made to run_docker_iic.sh
 scripts/
 .venv/
+
+# -- Files to keep
+!scripts/
