@@ -145,21 +145,19 @@ sim: ## Run RTL simulation with cocotb
 func: ## Run a functional cocotb test with func=<module name>
 	@if [ -z "$(func)" ]; then echo "Usage: make func=<module name>"; exit 2; fi
 	@mkdir -p $(RESULTS_DIR) $(SIM_BUILD_DIR)
-	
 	@rm -f $(COCOTB_DIR)/dump.fst
-	
+	@status=0; \
 	$(MAKE) -C $(COCOTB_DIR) -f $(MAKEFILE_DIR)/Makefile \
 		COCOTB_FUNC_RUN=1 \
 		FUNC=$(func) \
 		SIM_BUILD=$(SIM_BUILD_DIR)/$(func) \
 		VERILATOR_COVERAGE=$(VERILATOR_COVERAGE) \
-		sim
-		
-	@if [ -f "$(COCOTB_DIR)/dump.fst" ]; then \
+		sim || status=$$?; \
+	if [ -f "$(COCOTB_DIR)/dump.fst" ]; then \
 		mv $(COCOTB_DIR)/dump.fst $(SIM_BUILD_DIR)/$(func)/$(func).fst; \
-		echo "Waveform cleanly relocated to: $(SIM_BUILD_DIR)/$(func)/$(func).fst"; \
-	fi
-
+		echo "Waveform relocated to: $(SIM_BUILD_DIR)/$(func)/$(func).fst"; \
+	fi; \
+	exit $$status
 ifeq ($(VERILATOR_COVERAGE),1)
 	@mkdir -p $(COV_DIR)/$(func)
 	@if [ -f "$(SIM_BUILD_DIR)/$(func)/coverage.dat" ]; then \
