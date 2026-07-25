@@ -5,7 +5,7 @@ DW   : int | None = None       # Value overwritten during actual testing.
 
 # ---------- Golden Reference ----------
 def golden_ref(cells: list[int], en: int, c_en: int, a_b: int) -> tuple[list[int], int, list[int]]:
-    """Golden reference — one clock step of act_shift_chain
+    """Computes the golden reference output for One clock step of act_shift_chain
 
     Behaviour:
        Models ROWS cascaded DW-bit shift cells. LOAD cascades a_b through cell 0
