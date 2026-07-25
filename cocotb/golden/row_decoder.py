@@ -1,7 +1,7 @@
 # Golden Model for src/row_decoder.sv
 
-ROWS : int = 32     # Default value for golden_tb(). 
-                    # Value overwritten during actual testing.
+ROWS : int | None = None    # Default Null value for golden_tb(). 
+                            # Value overwritten during actual testing.
 
 # ---------- Golden Reference ----------
 def golden_ref(addr: int, en: int) -> int:
@@ -19,15 +19,20 @@ def golden_ref(addr: int, en: int) -> int:
         out (`int`) : The one-hot wordline (wl) decoded bit-vector representation
     
     Raises:
-        AssertionError : If `addr` is less than 0 or greater than or equal to `ROWS`
+        RuntimeError   : If ROWS has not been set by the testbench before use.
+        AssertionError : If addr is out of range [0, ROWS) while en is high.
     """
-
+    if ROWS is None:
+        raise RuntimeError("golden.row_decoder.ROWS not set")
+    
     if en == 0:
         return 0
     assert 0 <= addr < ROWS, f"`addr` {addr} out of range [0,{ROWS})"
     return 1 << addr
 
 def golden_tb() -> None:
+    global ROWS
+    ROWS = 32       # Simulate setting the golden.row_decoder.ROWS from tb
     assert golden_ref(5, 1) == 0b100000
     assert golden_ref(5, 0) == 0b000000
     assert golden_ref(0, 1) == 0b000001
