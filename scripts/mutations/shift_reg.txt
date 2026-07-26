@@ -1,0 +1,49 @@
+# =============================================================================
+# shift_reg mutations
+#
+# Format:  description|sed expression (verbatim to sed -i)
+#
+# Reference RTL:
+#   if (~rst_n)          sr <= '0;
+#   else if (en & c_en)  sr <= {1'b0, sr[DW-1:1]};      // COMPUTE
+#   else if (en & ~c_en) sr <= {serial_in, sr[DW-1:1]}; // LOAD
+#   else                 sr <= sr;                       // hold
+#   compute_bit = serial_out = sr[0];
+# =============================================================================
+
+# COMPUTE shifts the wrong direction (toward MSB). Anchored to the compute
+# branch's full RHS so it does not also hit the LOAD branch's sr[DW-1:1].
+# Caught by load_then_compute drain order + crv.
+compute shifts wrong direction|s/{1'b0, sr\[DW-1:1\]}/{sr[DW-2:0], 1'b0}/
+
+# LOAD shifts the wrong direction (toward MSB), serial_in into LSB.
+# Caught by load_then_compute (loaded state wrong) + crv.
+load shifts wrong direction|s/{serial_in, sr\[DW-1:1\]}/{sr[DW-2:0], serial_in}/
+
+# LOAD drops serial_in, fills MSB with 0 -> nothing ever loads.
+# Caught by load_then_compute (register stays 0) + crv.
+load drops serial_in|s/{serial_in, sr\[DW-1:1\]}/{1'b0, sr[DW-1:1]}/
+
+# COMPUTE leaks serial_in into the MSB instead of 0.
+# This is the mutation test_compute_ignores_serial_in exists for.
+compute leaks serial_in|s/{1'b0, sr\[DW-1:1\]}/{serial_in, sr[DW-1:1]}/
+
+# en ignored in COMPUTE: shifts even when disabled.
+# Caught by test_interrupt (register moves during hold) + crv.
+compute ignores enable|s/if (en & c_en)/if (c_en)/
+
+# en ignored in LOAD: loads even when disabled.
+# Caught by test_interrupt + crv.
+load ignores enable|s/else if (en & ~c_en)/else if (~c_en)/
+
+# c_en polarity flipped: LOAD and COMPUTE swap.
+# Caught by load_then_compute (loads when it should compute) + crv.
+c_en inverted compute|s/if (en & c_en)/if (en \& ~c_en)/
+
+# Reset polarity inverted: resets on high instead of low.
+# Caught by test_async_reset (reset asserted -> no clear, or clears when released).
+reset polarity inverted|s/if (~rst_n)/if (rst_n)/
+
+# Hold branch shifts instead of holding: en=0 no longer preserves state.
+# Caught by test_interrupt (hold assertion) + crv.
+hold branch shifts|s/sr <= sr;/sr <= {1'b0, sr[DW-1:1]};/
