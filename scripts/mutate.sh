@@ -40,6 +40,14 @@ TABLE="scripts/mutations/${MODULE}.txt"
 [ -f "$RTL" ]   || { echo "No such RTL file: $RTL"; exit 2; }
 [ -f "$TABLE" ] || { echo "No mutation table: $TABLE"; exit 2; }
 
+if command -v git >/dev/null && git rev-parse --git-dir >/dev/null 2>&1; then
+    if ! git diff --quiet "$RTL" 2>/dev/null; then
+        echo "ERROR: $RTL has uncommitted changes — a prior mutation may not have been restored."
+        echo "Restore first:  git checkout $RTL"
+        exit 2
+    fi
+fi
+
 BACKUP="$(mktemp)"
 cp "$RTL" "$BACKUP"
 restore() { cp "$BACKUP" "$RTL"; rm -f "$BACKUP"; }
