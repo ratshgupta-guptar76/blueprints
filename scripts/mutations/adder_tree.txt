@@ -1,0 +1,35 @@
+# =============================================================================
+# adder_tree mutations
+#
+# Format:  description|sed expression (verbatim to sed -i)
+#
+# Scope: this module's WIRING only — the gather transpose, loop bounds/starts,
+# and output mapping. col_adder's arithmetic is covered by col_adder's own
+# suite (9/9); mutating it here would test the wrong module.
+#
+# Reference RTL:
+#   for (c=0; c<COLS; c++) begin : ADDER_TREES
+#       logic [ROWS-1:0] col;
+#       for (r=0; r<ROWS; r++) begin : ROW_GATHER
+#           assign col[r] = pp[r][c];
+#       col_adder ... .pp_col(col), .sum(sum[c])
+# =============================================================================
+
+# Gather transposes to the wrong axis — THE bug the RTL header names.
+# Caught by the off-diagonal single-bit walk (diagonal cannot distinguish it).
+gather transposes to wrong axis|s/pp\[r\]\[c\]/pp[c][r]/
+
+# Column loop drops the last tree -> sum[COLS-1] undriven.
+column loop drops last tree|s/c<COLS/c<COLS-1/
+
+# Column loop skips the first tree -> sum[0] undriven, trees shifted.
+column loop skips first tree|s/c=0/c=1/
+
+# Row gather drops the last row -> every column-sum short by pp[ROWS-1][c].
+row gather drops last row|s/r<ROWS/r<ROWS-1/
+
+# Row gather skips the first row -> every column-sum short by pp[0][c].
+row gather skips first row|s/r=0/r=1/
+
+# Column output misrouted by one -> sum[c] carries the wrong column's total.
+output column mismapped|s/\.sum    (sum\[c\])/.sum(sum[(c+1)%COLS])/
