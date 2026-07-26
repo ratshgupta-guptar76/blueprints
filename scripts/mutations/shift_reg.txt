@@ -47,3 +47,7 @@ reset polarity inverted|s/if (~rst_n)/if (rst_n)/
 # Hold branch shifts instead of holding: en=0 no longer preserves state.
 # Caught by test_interrupt (hold assertion) + crv.
 hold branch shifts|s/sr <= sr;/sr <= {1'b0, sr[DW-1:1]};/
+
+# Reset made synchronous: only acts on the clock edge, not asynchronously.
+# Caught by test_async_reset (between-edges assertion — rst_n=0 with no edge).
+reset made synchronous|s/@(posedge clk or negedge rst_n)/@(posedge clk)/
