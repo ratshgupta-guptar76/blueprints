@@ -3,5 +3,5 @@
 .include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
 .lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
 
-.temp 125
-.param VDD_CORNER=2.97
+.temp -40
+.param VDD_CORNER=3.67

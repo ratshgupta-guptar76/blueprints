@@ -1,0 +1,39 @@
+# =============================================================================
+# row_decoder mutations
+#
+# Format:  description|sed expression
+# Blank lines and # comments ignored. The sed expression is passed to `sed -i`
+# verbatim, so SystemVerilog literals (1'b1, '0) need no escaping.
+#
+# Each mutation should be a realistic typo, not an absurdity. Absurd mutations
+# are caught trivially and measure nothing.
+#
+# Reference RTL body:
+#     always_comb begin : DECODER
+#         wl = '0;
+#         if (en) begin
+#             wl[addr] = 1'b1;
+#         end
+#     end
+# =============================================================================
+
+# Latch inference: without the default, previously-set bits persist across
+# address changes. Should be caught by test_no_latch and by the one-hot check
+# in test_exhaustive.
+drop the wl='0 default (infers a latch)|/wl = '0;/d
+
+# Value check: output stays zero-hot for every input. Caught only by a check
+# that compares wl against the expected VALUE, not just its bit count.
+write 0 instead of 1 to the selected line|s/wl\[addr\] = 1'b1;/wl[addr] = 1'b0;/
+
+# Enable path inverted. Caught by test_exhaustive and test_en_low_no_write.
+invert the enable|s/if (en) begin/if (!en) begin/
+
+# The interesting one: output is still perfectly one-hot, just the WRONG bit.
+# A suite that only asserts $onehot passes this. Requires the value comparison
+# against golden_ref to catch.
+off-by-one on the decoded address|s/wl\[addr\]/wl[(addr + 1) % ROWS]/
+
+# Safety property: decode happens regardless of enable -> stray SRAM writes.
+# test_en_low_no_write exists specifically for this.
+ignore the enable entirely|s/if (en) begin/if (1'b1) begin/
