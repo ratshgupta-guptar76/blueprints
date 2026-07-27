@@ -178,7 +178,7 @@ func-sim: ## View functional cocotb waveforms in Surfer
 	@if [ -z "$(func-sim)" ]; then echo "Usage: make func-sim=<module name>"; exit 2; fi
 	@w=$(SIM_BUILD_DIR)/$(func-sim)/$(func-sim).fst; \
 	if [ ! -f "$$w" ]; then echo "No waveform for $(func-sim). Run: make func=$(func-sim)"; exit 2; fi; \
-	surfer -s $(COCOTB_DIR)/surfer/$(func-sim).surfer.ron $$w
+	surfer -s $(COCOTB_DIR)/surfer/$(func-sim).surf.ron $$w
 
 func-all: ## Run all functional cocotb tests
 	@if [ -z "$(FUNCTIONAL_TESTS)" ]; then \
