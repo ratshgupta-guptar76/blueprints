@@ -7,12 +7,15 @@ RTL_MODULES := \
     dcim_array control_fsm dcim_top
 
 RTL_SOURCES := $(addprefix $(MAKEFILE_DIR)/src/,$(addsuffix .sv,$(RTL_MODULES)))
+MUTATION_READY := $(patsubst $(MUTATION_DIR)/%.txt,%,$(wildcard $(MUTATION_DIR)/*.txt))
 
 # --- Project paths -------------------------------
-COCOTB_DIR    := $(MAKEFILE_DIR)/cocotb
-RESULTS_DIR   := $(COCOTB_DIR)/results
-SIM_BUILD_DIR := $(COCOTB_DIR)/sim_build
-COV_DIR       := $(COCOTB_DIR)/cov_annotated
+COCOTB_DIR     := $(MAKEFILE_DIR)/cocotb
+RESULTS_DIR    := $(COCOTB_DIR)/results
+SIM_BUILD_DIR  := $(COCOTB_DIR)/sim_build
+COV_DIR        := $(COCOTB_DIR)/cov_annotated
+MUTATION_DIR   := $(MAKEFILE_DIR)/scripts/mutations
+
 
 # --- Simulation configuration --------------------
 SIM                ?= verilator
@@ -84,11 +87,13 @@ ifeq ($(filter $(SLOT),$(AVAILABLE_SLOTS)),)
 endif
 
 ifneq ($(func-sim),)
-.DEFAULT_GOAL := func-sim
+    .DEFAULT_GOAL := func-sim
+else ifneq ($(func-mut),)
+    .DEFAULT_GOAL := func-mut
 else ifneq ($(func),)
-.DEFAULT_GOAL := func
+    .DEFAULT_GOAL := func
 else
-.DEFAULT_GOAL := help
+    .DEFAULT_GOAL := help
 endif
 
 help: ## Show this help message
@@ -193,6 +198,52 @@ func-all: ## Run all functional cocotb tests
 	if [ -n "$$failed" ]; then echo "FAILED:$$failed"; exit 1; \
 	else echo "All $(words $(FUNCTIONAL_TESTS)) functional tests passed."; fi
 .PHONY: func-all
+
+func-mut: ## Run functional + mutation for one module with func-mut=<module>
+	@if [ -z "$(func-mut)" ]; then echo "Usage: make func-mut=<module name>"; exit 2; fi
+	@m="$(func-mut)"; \
+	if [ ! -f "$(COCOTB_DIR)/functional/$${m}_tb.py" ]; then \
+		echo "ERROR: no testbench functional/$${m}_tb.py"; exit 2; fi; \
+	if [ ! -f "$(MUTATION_DIR)/$${m}.txt" ]; then \
+		echo "ERROR: no mutation table scripts/mutations/$${m}.txt"; exit 2; fi; \
+	echo "=== func-mut: $$m ==="; \
+	status=0; \
+	echo "--- functional ($$m) ---"; \
+	$(MAKE) --no-print-directory -f $(MAKEFILE_DIR)/Makefile func-mut= func=$$m || status=1; \
+	echo "--- mutation ($$m) ---"; \
+	( cd $(MAKEFILE_DIR) && MAKEFLAGS= ./scripts/mutate.sh $$m ) || status=1; \
+	echo ""; \
+	if [ $$status -eq 0 ]; then echo "func-mut $$m: PASS"; \
+	else echo "func-mut $$m: FAIL"; fi; \
+	exit $$status
+.PHONY: func-mut
+
+func-mut-all: ## Run functional + mutation for every module with both a tb and a mutation table
+	@if [ -z "$(MUTATION_READY)" ]; then \
+		echo "ERROR: no mutation tables in $(MUTATION_DIR)/"; exit 2; fi
+	@failed=""; passed=""; \
+	for m in $(MUTATION_READY); do \
+		if [ ! -f "$(COCOTB_DIR)/functional/$${m}_tb.py" ]; then \
+			echo "=== $$m: SKIP (mutation table but no testbench) ==="; \
+			continue; \
+		fi; \
+		echo "=============================================="; \
+		echo "=== func-mut-all: $$m ==="; \
+		echo "=============================================="; \
+		mstatus=0; \
+		$(MAKE) --no-print-directory -f $(MAKEFILE_DIR)/Makefile func=$$m || mstatus=1; \
+		( cd $(MAKEFILE_DIR) && ./scripts/mutate.sh $$m ) || mstatus=1; \
+		if [ $$mstatus -eq 0 ]; then passed="$$passed $$m"; \
+		else failed="$$failed $$m"; fi; \
+	done; \
+	echo ""; \
+	echo "=============================================="; \
+	echo "func-mut-all summary"; \
+	echo "=============================================="; \
+	echo "PASS:$$passed"; \
+	if [ -n "$$failed" ]; then echo "FAIL:$$failed"; exit 1; \
+	else echo "All modules passed functional + mutation."; fi
+.PHONY: func-mut-all
 
 sim-gl: ## Run gate-level simulation with cocotb (after copy-final)
 	cd $(COCOTB_DIR) && GL=1 PDK_ROOT=${PDK_ROOT} PDK=${PDK} SLOT=${SLOT} python3 chip_top_tb.py
