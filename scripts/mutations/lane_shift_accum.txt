@@ -1,0 +1,46 @@
+# =============================================================================
+# lane_shift_accum mutations
+#
+# Format:  description|sed expression (verbatim to sed -i)
+#
+# Signed lane reducer. Mutations target the LIVE config paths (W_SIGN=1,
+# A_SIGN=0): the MSB-subtract, per-bit weighting, sign-extend, accumulate,
+# clr priority, reset. The W_SIGN=0-add and A_SIGN=1-subtract branches are
+# config-dead (unreachable) — NOT mutated (a mutation there survives by
+# config, not by a suite hole).
+# =============================================================================
+
+# MSB not subtracted: weight sign lost. lane_val = add_bin + MSB instead of - MSB.
+# THE weight-sign mutation. Caught by test_combine ([1]*DW -> +255 not -1) and
+# full_accumulate (negative-weight vectors).
+MSB not subtracted|s/lane_val = add_bin - /lane_val = add_bin + /
+
+# Per-bit weight shift wrong: col_adder[b] weighted 2^(b+1) instead of 2^b.
+# Caught by full_accumulate (wrong magnitude) + crv.
+per-bit weight shift wrong|s/(LANE_W'(col_adder\[b\])) <<< b/(LANE_W'(col_adder[b])) <<< (b+1)/
+
+# Sign-extend replaced by ZERO-extend: negative lane_val corrupts to large
+# positive. THE documented SIGN_EXT hazard. Caught by any negative-result vector.
+sign-extend becomes zero-extend|s/{(ACC_WIDTH-LANE_W){lane_val\[LANE_W-1\]}}/{(ACC_WIDTH-LANE_W){1'b0}}/
+
+# Accumulate shift wrong: lane value shifted by bp_idx+1 -> wrong plane weight.
+# Caught by full_accumulate (per-cycle trace diverges) + crv.
+accumulate shift wrong|s/(lane_signed_val <<< bp_idx)/(lane_signed_val <<< (bp_idx+1))/
+
+# Accumulate subtracts instead of adds (live add branch -> subtract).
+# Caught by full_accumulate (sign flips) + crv + the W*A product oracle.
+accumulate subtracts|s/y <= y + (lane_signed_val <<< bp_idx)/y <= y - (lane_signed_val <<< bp_idx)/
+
+# clr loses priority: en checked before clr -> accumulate can override clear.
+# Caught by test_clr_priority (clr with en=1 must zero).
+clr loses priority|s/if (clr) begin/if (clr \&\& ~en) begin/
+
+# Combine loop drops the last add column (b < DW-2): a weight bit uncounted.
+# Caught by full_accumulate (magnitude short) + crv.
+combine loop off-by-one|s/for (int b=0; b<DW-1; b++)/for (int b=0; b<DW-2; b++)/
+
+# Reset polarity inverted.
+reset polarity inverted|s/if (~rst_n) begin/if (rst_n) begin/
+
+# Reset made synchronous.
+reset made synchronous|s/@(posedge clk or negedge rst_n)/@(posedge clk)/

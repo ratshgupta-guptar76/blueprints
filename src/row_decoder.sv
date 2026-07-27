@@ -12,20 +12,20 @@
 // during COMPUTE or IDLE. en is driven by we from control_fsm. Never let wl
 // float high outside an active write.
 //
-// Params: OUT_WIDTH = ROWS = 64 (one-hot width); IN_WIDTH = $clog2(OUT_WIDTH) = 6
-// (derived — declare OUT_WIDTH first so IN_WIDTH can reference it).
-// OUT_WIDTH'(1) << addr is width-sized so the shift literal can't truncate.
+// Params: ROWS = dcim_pkg::ROWS (one-hot width); RW = $clog2(ROWS) (address
+// width, derived — declare ROWS first so RW can reference it).
+// en is driven by w_en from control_fsm. Never let wl assert outside a write.
 // =============================================================================
 
 module row_decoder #(
-    parameter int OUT_WIDTH = 64,
-    parameter int IN_WIDTH  = $clog2(OUT_WIDTH)
+    parameter int ROWS = dcim_pkg::ROWS,
+    parameter int RW  = $clog2(ROWS)
 ) (
     input logic en,         // Enable decoder
 
-    input logic [IN_WIDTH-1:0] addr,        // Binary Input bits
+    input logic [RW-1:0] addr,        // Binary Input bits
 
-    output logic [OUT_WIDTH-1:0] wl         // One-Hot outupt bits (decoded)
+    output logic [ROWS-1:0] wl         // One-Hot outupt bits (decoded)
 );
 
     always_comb begin : DECODER

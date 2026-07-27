@@ -38,8 +38,8 @@ module dcim_array #(
 
     logic [ROWS-1:0] wl;
     row_decoder #(
-        .OUT_WIDTH (ROWS),
-        .IN_WIDTH  ($clog2(ROWS))
+        .ROWS (ROWS),
+        .RW   ($clog2(ROWS))
     ) ROW_DECODER (
         .en   (w_en),
         .addr (row_addr),

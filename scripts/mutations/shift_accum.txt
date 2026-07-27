@@ -1,0 +1,29 @@
+# =============================================================================
+# shift_accum mutations
+#
+# Format:  description|sed expression (verbatim to sed -i)
+#
+# Pure wrapper: bitcast slice + N_WEIGHTS lane_shift_accum instances. The signed
+# arithmetic is lane_shift_accum's (verified separately) — NOT re-mutated here.
+# Mutations target the slice-to-lane routing and shared-control passthrough.
+# =============================================================================
+
+# Lane input slice mis-routed: lane i fed col_adders[i+1] -> wrong columns per lane,
+# cross-lane shift. Caught by slice_isolation (wrong lane responds) + all_lanes_matvec.
+lane input off-by-one|s/.col_adder(col_adders\[i\])/.col_adder(col_adders[(i+1)%N_WEIGHTS])/
+
+# Lane output mis-routed: lane i drives y[i+1] -> results land in wrong lane.
+# Caught by slice_isolation + all_lanes_matvec (each lane's product wrong).
+lane output off-by-one|s/.y(y\[i\])/.y(y[(i+1)%N_WEIGHTS])/
+
+# en not passed (tied high): lanes accumulate when disabled.
+# Caught by crv (en=0 cycles accumulate) — note: needs a hold check to fire.
+en tied high|s/.en(en)/.en(1'b1)/
+
+# clr not passed (tied low): clr never reaches lanes.
+# Caught by clr_all_lanes (lanes not zeroed) + reset (if clr path shared).
+clr tied low|s/.clr(clr)/.clr(1'b0)/
+
+# bp_idx tied to 0: every plane accumulates at shift 0 -> no bit-plane weighting.
+# Caught by slice_isolation / all_lanes_matvec (wrong magnitude, planes not weighted).
+bp_idx tied zero|s/.bp_idx(bp_idx)/.bp_idx('0)/
