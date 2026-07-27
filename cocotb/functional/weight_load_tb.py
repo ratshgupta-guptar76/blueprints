@@ -49,6 +49,7 @@
 # Date        | Engineer      | Version  | Description
 # ------------+---------------+----------+----------------------------------------------
 # Jul-18-2026 | R. Gupta      | * v1.0   | Initial Testbench Environment Setup
+# Jul-18-2026 | R. Gupta      | * v1.0   | Move Golden-Ref to cocotb/golden/weight_load
 # ======================================================================================
 
 import os
