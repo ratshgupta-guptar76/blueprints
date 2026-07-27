@@ -1,5 +1,5 @@
 # Golden Model for src/lane__shift_accum.sv
-from helpers import _combine, to_signed
+from golden.helpers import _combine, to_signed
 
 ROWS      : int | None = None        # Default Null value for golden_tb(). 
 DW        : int | None = None        # Value overwritten during actual testing.
