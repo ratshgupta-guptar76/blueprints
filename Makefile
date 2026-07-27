@@ -167,6 +167,7 @@ ifeq ($(VERILATOR_COVERAGE),1)
 		echo "====================================="; \
 		verilator_coverage \
 			--annotate $(COV_DIR)/$(func) \
+			--annotate-min 1 \
 			$(SIM_BUILD_DIR)/$(func)/coverage.dat; \
 	else \
 		echo "Warning: No coverage.dat found in $(SIM_BUILD_DIR)/$(func)/"; \
