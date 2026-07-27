@@ -1,0 +1,40 @@
+# =============================================================================
+# act_shift_chain mutations
+#
+# Format:  description|sed expression (verbatim to sed -i)
+#
+# Composition of shift_reg (verified 10/10). Mutations target ONLY the chain's
+# additions: cascade wiring, head/tail, act_bp mapping, enable pass-through.
+# Per-cell shift behavior is NOT re-tested (covered by shift_reg's own suite).
+#
+# NOTE: some cascade mutations create feedback/multidriver -> caught at ELABORATION
+# (failed build), not by a test firing. Both count as caught; note which per row.
+# =============================================================================
+
+# Head mis-wired: a_b enters cell 1 instead of cell 0 -> reversal shifted, cell 0
+# never loaded. Caught by cascade_connectivity (bit timing) + load_reversal.
+head wire off-by-one|s/sr_connect_wire\[0\] = a_b/sr_connect_wire[1] = a_b/
+
+# Tail taps the second-last cell instead of the last.
+# Caught by cascade_connectivity (bit exits one cycle early).
+tail taps wrong cell|s/tail_out           = sr_connect_wire\[ROWS\]/tail_out           = sr_connect_wire[ROWS-1]/
+
+# Cascade input mis-wired: cell i reads sr_connect_wire[i+1] (its own output) ->
+# feedback loop. Likely ELABORATION error; if it builds, cascade breaks entirely.
+cascade input off-by-one|s/.serial_in(sr_connect_wire\[i\])/.serial_in(sr_connect_wire[i+1])/
+
+# act_bp tap reversed: act_bp[i] <- cell (ROWS-1-i) -> plane permuted.
+# Caught by load_reversal (cell i holds the wrong byte).
+act_bp tap reversed|s/.compute_bit(act_bp\[i\])/.compute_bit(act_bp[ROWS-1-i])/
+
+# Enable forced high: cells shift even when disabled.
+# Caught by test_interrupt (chain moves during the gap) + crv.
+enable forced high|s/.en(en)/.en(1'b1)/
+
+# c_en forced high: always COMPUTE, never LOAD -> nothing ever loads.
+# Caught by load_reversal (chain stays empty) + crv.
+c_en forced high|s/.c_en(c_en)/.c_en(1'b1)/
+
+# c_en forced low: always LOAD, never COMPUTE -> act_bp never drains cleanly,
+# a_b leaks into MSB during "compute". Caught by compute_zero_fill + load_reversal.
+c_en forced low|s/.c_en(c_en)/.c_en(1'b0)/
