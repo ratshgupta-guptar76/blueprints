@@ -45,7 +45,7 @@
 # Date        | Engineer      | Version  | Description
 # ------------+---------------+----------+----------------------------------------------
 # Jul-19-2026 | R. Gupta      | * v1.0   | Initial Testbench Environment Setup
-# Jul-18-2026 | R. Gupta      | * v1.0   | Move Golden-Ref to cocotb/golden/act_shift_chain
+# Jul-27-2026 | R. Gupta      | * v1.1   | Move Golden-Ref to cocotb/golden/act_shift_chain
 # ======================================================================================
 
 import os
