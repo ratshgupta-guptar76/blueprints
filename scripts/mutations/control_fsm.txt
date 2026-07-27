@@ -1,0 +1,68 @@
+# =============================================================================
+# control_fsm mutations
+#
+# Format:  description|sed expression (verbatim to sed -i)
+#
+# One-hot FSM. Mutations target transition conditions, the row_cnt hold (fixed
+# hang bug), SHIFT_OUT exit routing, counter compares, and state outputs.
+# load_cnt==MAX_LOAD appears in 2 sites (WRITE_A exit + clr); reset appears in
+# 2 always_ff blocks (global mutations).
+# =============================================================================
+
+# WRITE_W exits one row early (ROWS-2).
+# Caught by full_sequence (wrong exit row) + all_arcs.
+WRITE_W exit off-by-one|s/row_cnt == unsigned'(RW'(ROWS-1)) && wfull/row_cnt == unsigned'(RW'(ROWS-2)) \&\& wfull/
+
+# WRITE_W exit ignores wfull: exits on count alone.
+# Caught by full_sequence (exits mid-assembly) + input_gating.
+WRITE_W exit ignores wfull|s/unsigned'(RW'(ROWS-1)) && wfull/unsigned'(RW'(ROWS-1))/
+
+# COMPUTE exit off-by-one (bp < P_minus1): underflows at P_minus1=0 -> never exits.
+# Caught by compute_precision (plane count wrong; never-exit guard at P=0).
+COMPUTE exit off-by-one|s/if (bp_cnt == P_minus1)/if (bp_cnt == P_minus1 - 1)/
+
+# SHIFT_OUT exit inverted: cont routes to IDLE not WRITE_A.
+# THE weight-stationary mutation — caught by all_arcs (both exits tracked).
+SHIFT_OUT exit inverted|s/next_state = cont ? WRITE_A/next_state = cont ? IDLE/
+
+# start ignored in IDLE: FSM never leaves IDLE.
+# Caught by full_sequence + all_arcs.
+IDLE ignores start|s/if (start)/if (1'b0)/
+
+# clr loses its load_cnt gate: asserts throughout WRITE_A (drops last-cycle-only).
+# Caught by full_sequence (per-cycle clr check).
+clr always in WRITE_A|s/clr       = (state == WRITE_A) && (load_cnt == unsigned'(LW'(DW\*ROWS-1)))/clr       = (state == WRITE_A)/
+
+# WRITE_A exit off-by-one: exits one activation-bit early.
+# Anchored to the WRITE_A transition (not the clr line) via the if-context.
+WRITE_A exit off-by-one|s/if (load_cnt == unsigned'(LW'(DW\*ROWS-1)))/if (load_cnt == unsigned'(LW'(DW\*ROWS-2)))/
+
+# y_en drops DONE: capture cycle loses y_en -> stream_out won't capture.
+# Caught by full_sequence (DONE output check).
+y_en drops DONE|s/y_en      = (state == SHIFT_OUT) || (state == DONE)/y_en      = (state == SHIFT_OUT)/
+
+# a_en drops COMPUTE: chain not in compute mode during accumulate.
+# Caught by full_sequence (COMPUTE output check).
+a_en drops COMPUTE|s/a_en      = (state == WRITE_A) || (state == COMPUTE)/a_en      = (state == WRITE_A)/
+
+# row_cnt default-clear removed: row_cnt no longer resets outside WRITE_W.
+# Caught by full_sequence (row_addr nonzero in WRITE_A) + input_gating.
+row_cnt no default clear|s/            row_cnt  <= '0;//
+
+# w_en drops wfull gate: asserts every WRITE_W cycle, not just on assembled rows.
+# Caught by full_sequence (w_en output) + input_gating.
+w_en drops wfull|s/w_en      = (state == WRITE_W) && wfull/w_en      = (state == WRITE_W)/
+
+# Reset polarity inverted (both always_ff blocks — global).
+reset polarity inverted|s/if (~rst_n) begin/if (rst_n) begin/
+
+# Reset made synchronous (both blocks — global).
+reset made synchronous|s/@(posedge clk or negedge rst_n)/@(posedge clk)/
+
+# row_cnt HOLD broken: false branch clears instead of holding (THE historical hang bug).
+# Validates full_sequence's row_cnt-hold guard specifically.
+row_cnt hold broken|s/: row_cnt;/: '0;/
+
+# row_cnt ADVANCE broken: true branch clears instead of incrementing (stuck at 0).
+# Validates that the advance path is exercised.
+row_cnt advance broken|s/wfull ? row_cnt + unsigned'(RW'(1))/wfull ? '0/

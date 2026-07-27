@@ -49,7 +49,7 @@ always_ff @(posedge clk or negedge rst_n) begin : LOAD_COUNTER
     if (~rst_n) begin
         wload_cnt <= '0;
     end else begin
-        if (en) wload_cnt <= (wload_cnt == COLS-1) ? '0 : wload_cnt + CW'(1);
+        if (en) wload_cnt <= (wload_cnt == unsigned'(CW'(COLS-1))) ? '0 : wload_cnt + unsigned'(CW'(1));
     end
 end
 
@@ -57,7 +57,7 @@ always_ff @(posedge clk or negedge rst_n) begin : LOAD_DONE
     if (~rst_n) begin
         wfull <= '0;
     end else begin
-        if (en) wfull <= (wload_cnt == COLS - 1) ? 1'b1 : 1'b0;
+        if (en) wfull <= (wload_cnt == unsigned'(CW'(COLS-1))) ? 1'b1 : 1'b0;
         else    wfull <= 1'b0;
     end
 end
