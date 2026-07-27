@@ -219,10 +219,11 @@ func-mut: ## Run functional + mutation for one module with func-mut=<module>
 .PHONY: func-mut
 
 func-mut-all: ## Run functional + mutation for every module with both a tb and a mutation table
-	@if [ -z "$(MUTATION_READY)" ]; then \
-		echo "ERROR: no mutation tables in $(MUTATION_DIR)/"; exit 2; fi
-	@failed=""; passed=""; \
-	for m in $(MUTATION_READY); do \
+	@modules=$$(ls $(MUTATION_DIR)/*.txt 2>/dev/null | sed 's|.*/||; s|\.txt$$||'); \
+	if [ -z "$$modules" ]; then \
+		echo "ERROR: no mutation tables in $(MUTATION_DIR)/"; exit 2; fi; \
+	failed=""; passed=""; \
+	for m in $$modules; do \
 		if [ ! -f "$(COCOTB_DIR)/functional/$${m}_tb.py" ]; then \
 			echo "=== $$m: SKIP (mutation table but no testbench) ==="; \
 			continue; \
@@ -231,8 +232,8 @@ func-mut-all: ## Run functional + mutation for every module with both a tb and a
 		echo "=== func-mut-all: $$m ==="; \
 		echo "=============================================="; \
 		mstatus=0; \
-		$(MAKE) --no-print-directory -f $(MAKEFILE_DIR)/Makefile func=$$m || mstatus=1; \
-		( cd $(MAKEFILE_DIR) && ./scripts/mutate.sh $$m ) || mstatus=1; \
+		$(MAKE) --no-print-directory -f $(MAKEFILE_DIR)/Makefile func-mut= func=$$m || mstatus=1; \
+		( cd $(MAKEFILE_DIR) && MAKEFLAGS= ./scripts/mutate.sh $$m ) || mstatus=1; \
 		if [ $$mstatus -eq 0 ]; then passed="$$passed $$m"; \
 		else failed="$$failed $$m"; fi; \
 	done; \
