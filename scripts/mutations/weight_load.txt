@@ -1,0 +1,54 @@
+# =============================================================================
+# weight_load mutations
+#
+# Format:  description|sed expression (verbatim to sed -i)
+#
+# Serial-to-parallel assembler. Targets shift/column-mapping, counter wrap,
+# registered wfull timing, and the ~en guard. Counter-compare appears in 2
+# blocks and reset in 3 — timing seds anchored to unique ternary tails; reset
+# seds are intentional module-wide (all-3-site) mutations.
+# =============================================================================
+
+# Shift wrong direction: w_bit into LSB, buffer toward MSB (flips column map).
+# Caught by load_full_row (w_buf assembly) + crv.
+shift wrong direction|s/{w_bit, w_buf\[COLS-1:1\]}/{w_buf[COLS-2:0], w_bit}/
+
+# LOAD drops w_bit: buffer fills 0, nothing assembles.
+# Caught by load_full_row (w_buf stays 0) + crv.
+buffer drops w_bit|s/{w_bit, w_buf\[COLS-1:1\]}/{1'b0, w_buf[COLS-1:1]}/
+
+# Counter wraps one early (COLS-2) -> short row. Anchored to LOAD_COUNTER tail.
+# Caught by crv (wload_cnt peek) + wfull_single_pulse (pulse spacing).
+counter wrap off-by-one|s/(CW'(COLS-1))) ? '0/(CW'(COLS-2))) ? '0/
+
+# wfull fires one cycle early (COLS-2). Anchored to LOAD_DONE tail.
+# THE timing mutation — load_full_row coincidence + wfull_single_pulse.
+wfull fires one cycle early|s/(CW'(COLS-1))) ? 1'b1/(CW'(COLS-2))) ? 1'b1/
+
+# wfull true/false swapped: high every cycle except completion.
+# Caught by load_full_row + wfull_single_pulse.
+wfull polarity swapped|s/? 1'b1 : 1'b0/? 1'b0 : 1'b1/
+
+# ~en guard dropped: wfull no longer forced low when disabled -> stale pulse.
+# THE guard mutation — should be UNIQUELY caught by en_gates_wfull.
+drop ~en wfull guard|s/        else    wfull <= 1'b0;//
+
+# en ignored in WEIGHT_BUFFER: buffer shifts when disabled.
+# Caught by interrupt (w_buf moves in gap) + crv.
+buffer ignores enable|s/if (en) w_buf/if (1'b1) w_buf/
+
+# en ignored in LOAD_COUNTER: counter advances when disabled.
+# Caught by interrupt + en_gates_wfull + crv.
+counter ignores enable|s/if (en) wload_cnt/if (1'b1) wload_cnt/
+
+# en ignored in LOAD_DONE: wfull evaluates when disabled.
+# Caught by en_gates_wfull + crv.
+wfull ignores enable|s/if (en) wfull/if (1'b1) wfull/
+
+# Reset polarity inverted (all 3 blocks — coherent module-wide flip).
+# Caught by test_reset.
+reset polarity inverted|s/if (~rst_n) begin/if (rst_n) begin/
+
+# Reset made synchronous (all 3 sensitivity lists — drops async clear).
+# Caught by test_reset (between-edges assertion).
+reset made synchronous|s/@(posedge clk or negedge rst_n)/@(posedge clk)/

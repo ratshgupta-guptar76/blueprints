@@ -1,6 +1,5 @@
 ** sch_path: /workspace/analog/designs/8T_03v3.sch
 **.subckt 8T_03v3 VDD WBL WBLB VSS WL A QIN Q QB RBL QBIN
-*.ipin A
 *.opin RBL
 *.ipin VSS
 *.ipin VDD
@@ -11,9 +10,8 @@
 *.ipin QIN
 *.opin Q
 *.opin QB
-XM1 net1 Q VSS VSS nfet_03v3 L='L_M1' W='W_M1' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
-XM2 RBL A net1 VSS nfet_03v3 L='L_M2' W='W_M2' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
+*.ipin A
+XM1 RBL QB VSS VSS nfet_03v3 L='L_M1' W='W_M1' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
 XPD1 QB QBIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
@@ -26,6 +24,8 @@ XPU2 Q QIN VDD VDD pfet_03v3 L='L_PU' W='W_PU' nf=1 ad='int((nf+1)/2) * W/nf * 0
 XPD2 Q QIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
 XAX2 WBL WL Q VSS nfet_03v3 L='L_AX' W='W_AX' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM2 RBL QB A VSS pfet_03v3 L='L_M2' W='W_M2' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
 **** begin user architecture code
 

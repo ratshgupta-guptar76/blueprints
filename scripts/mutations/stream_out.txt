@@ -1,0 +1,44 @@
+# =============================================================================
+# stream_out mutations
+#
+# Format:  description|sed expression (verbatim to sed -i)
+#
+# PISO streamer. Targets the en&load capture gate, drain direction, counter
+# wrap, and registered done timing. Single always_ff -> all targets unique.
+# =============================================================================
+
+# Capture on load alone (drop the en gate): a stray load captures without en.
+# THE gate mutation — should be caught by capture_gating (en=0/load=1 case).
+capture ignores enable|s/if (en) begin/if (1'b1) begin/
+
+# Drain never happens (load stuck high): every en cycle recaptures, no shift.
+# Caught by capture_and_drain (no bits drain) + crv.
+load stuck high|s/if (load) begin/if (1'b1) begin/
+
+# Drain shifts wrong direction (toward MSB, 0 into LSB).
+# Caught by capture_and_drain (wrong bit order) + crv.
+drain wrong direction|s/{1'b0, piso\[TOT-1:1\]}/{piso[TOT-2:0], 1'b0}/
+
+# Counter increments by 2: drain miscounts, done mistimed.
+# Caught by crv (counter peek) + done_single_pulse (spacing).
+counter increments by two|s/counter + unsigned'(YW'(1))/counter + unsigned'(YW'(2))/
+
+# done fires one cycle early (TOT-2 instead of TOT-1).
+# THE timing mutation — capture_and_drain coincidence + done_single_pulse.
+done fires one cycle early|s/counter == unsigned'(YW'(TOT-1))/counter == unsigned'(YW'(TOT-2))/
+
+# Capture drops acc, loads 0: nothing to stream.
+# Caught by capture_and_drain (piso stays 0) + crv.
+capture drops acc|s/piso    <= TOT'(acc);/piso    <= '0;/
+
+# Output taps wrong bit (piso[1] not piso[0]): drain order shifted.
+# Caught by capture_and_drain (wrong bits) + crv.
+output taps wrong bit|s/assign y_bit = piso\[0\];/assign y_bit = piso[1];/
+
+# Reset polarity inverted.
+# Caught by test_reset.
+reset polarity inverted|s/if (~rst_n) begin/if (rst_n) begin/
+
+# Reset made synchronous (drops async clear).
+# Caught by test_reset (between-edges assertion).
+reset made synchronous|s/@(posedge clk or negedge rst_n)/@(posedge clk)/

@@ -1,0 +1,100 @@
+<mxfile host="65bd71144e">
+    <diagram name="control_fsm" id="fsm-1">
+        <mxGraphModel dx="411" dy="342" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="700" background="none" math="0" shadow="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="s_idle" value="IDLE" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="300" width="90" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_ww" value="WRITE_W" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="300" width="90" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_wa" value="WRITE_A" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="300" width="90" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_comp" value="COMPUTE" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="300" width="90" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_done" value="DONE" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="770" y="300" width="90" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="s_so" value="SHIFT_OUT" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="930" y="300" width="90" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="reset_dot" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="95" y="240" width="12" height="12" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_reset" value="rst_n" style="endArrow=classic;html=1;rounded=0;fontSize=10;" parent="1" source="reset_dot" target="s_idle" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_idle_ww" value="start" style="endArrow=classic;html=1;rounded=0;fontSize=11;" parent="1" source="s_idle" target="s_ww" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_ww_wa" value="row_cnt==63 &amp; wfull" style="endArrow=classic;html=1;rounded=0;fontSize=10;" parent="1" source="s_ww" target="s_wa" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_wa_comp" value="load_cnt==511&lt;br&gt;(clr pulse)" style="endArrow=classic;html=1;rounded=0;fontSize=10;" parent="1" source="s_wa" target="s_comp" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_comp_done" value="bp_cnt==P_minus1" style="endArrow=classic;html=1;rounded=0;fontSize=10;" parent="1" source="s_comp" target="s_done" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_done_so" value="(1 cycle)&lt;br&gt;y_load" style="endArrow=classic;html=1;rounded=0;fontSize=10;" parent="1" source="s_done" target="s_so" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_so_wa" value="y_done &amp; cont&lt;br&gt;(weight-stationary:&lt;br&gt;reuse weights)" style="endArrow=classic;html=1;rounded=1;fontSize=10;strokeColor=#82b366;strokeWidth=2;fontColor=#5d8a3a;edgeStyle=orthogonalEdgeStyle;" parent="1" source="s_so" target="s_wa" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="975" y="200"/>
+                            <mxPoint x="445" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_so_idle" value="y_done &amp; !cont" style="endArrow=classic;html=1;rounded=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;" parent="1" source="s_so" target="s_idle" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="975" y="480"/>
+                            <mxPoint x="95" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sl_ww" value="!wfull ||&lt;br&gt;row_cnt&lt;63" style="endArrow=classic;html=1;rounded=1;fontSize=9;curved=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="s_ww" target="s_ww" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="218" y="270"/>
+                            <mxPoint x="252" y="270"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sl_wa" value="load_cnt&lt;511" style="endArrow=classic;html=1;rounded=1;fontSize=9;curved=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="s_wa" target="s_wa" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="428" y="270"/>
+                            <mxPoint x="462" y="270"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sl_comp" value="bp_cnt&lt;P_minus1&lt;br&gt;(accumulate plane)" style="endArrow=classic;html=1;rounded=1;fontSize=9;curved=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="s_comp" target="s_comp" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="608" y="265"/>
+                            <mxPoint x="642" y="265"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sl_so" value="!y_done&lt;br&gt;(drain 176b)" style="endArrow=classic;html=1;rounded=1;fontSize=9;curved=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="s_so" target="s_so" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="958" y="420"/>
+                            <mxPoint x="992" y="420"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="legend" value="&lt;b&gt;One-hot FSM&lt;/b&gt; (6 states). Counters: row_cnt (weight rows), load_cnt (activation bits), bp_cnt (bit-planes).&lt;br&gt;&lt;br&gt;&lt;b&gt;Per-state outputs:&lt;/b&gt;&lt;br&gt;WRITE_W: w_en (on wfull), row_addr&lt;br&gt;WRITE_A: a_en; clr pulses on last bit (511)&lt;br&gt;COMPUTE: comp_en, a_en, bp_idx&lt;br&gt;DONE: y_load (capture result)&lt;br&gt;SHIFT_OUT: y_en (serial drain)&lt;br&gt;&lt;br&gt;&lt;b&gt;Green loop:&lt;/b&gt; weight-stationary — cont reuses loaded weights, skips WRITE_W." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;spacing=6;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="500" width="450" height="180" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

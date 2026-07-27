@@ -1,0 +1,63 @@
+# =============================================================================
+# col_adder mutations
+#
+# Format:  description|sed expression
+# Blank lines and # comments ignored. The sed expression is passed to `sed -i`
+# verbatim, so SystemVerilog literals (1'b1, '0) need no escaping.
+#
+# Each mutation should be a realistic typo, not an absurdity. Absurd mutations
+# are caught trivially and measure nothing.
+#
+# Reference RTL body:
+#     always_comb begin : COL_ADDER_TREE
+#         sum = '0;
+#         for (int i = 0; i < ROWS; i++) begin
+#             sum += ($clog2(ROWS+1))'(pp_col[i]);
+#         end
+#     end
+# =============================================================================
+
+# --- bounds ------------------------------------------------------------------
+
+# Loop upper bound drops the last row: pp_col[ROWS-1] never counted.
+# Caught by all-ones (=ROWS-1 not ROWS), MSB walking bit (->0), top-bit randoms.
+off-by-one loop bound (skips last row)|s/i < ROWS/i < ROWS-1/
+
+# Loop starts at 1: pp_col[0] never counted. Symmetric at the LSB.
+# Caught by LSB walking bit (->0), all-ones (->ROWS-1), bit-0-set randoms.
+off-by-one loop start (skips first row)|s/int i = 0/int i = 1/
+
+# Stride 2: every other row skipped, sum ~= ROWS/2.
+# Caught by all-ones (->ROWS/2) and half of all walking-bit positions.
+loop stride skips every other row|s/i++/i += 2/
+
+# --- the accumulate operation (the module's actual job) ----------------------
+
+# Non-accumulating assignment: sum ends as just the last bit pp_col[ROWS-1].
+# The single most likely real typo (dropped '+'). sum in {0,1} always.
+# Caught by all-ones (->1 not ROWS) and nearly every nonzero vector.
+accumulate overwrites instead of adds|s/sum +=/sum =/
+
+# Subtract instead of add: sum goes negative and wraps mod 2^width.
+# Distinct mechanism from term-drop (wrong OP, not wrong operand).
+# Caught by any nonzero vector.
+accumulate subtracts instead of adds|s/sum +=/sum -=/
+
+# --- operand / reset / width -------------------------------------------------
+
+# Term dropped: constant 0 accumulated instead of the input bit. sum always 0.
+# Caught by all-ones, walking bit (->0), any nonzero crv vector.
+drop the input term (accumulate 0)|s/(pp_col\[i\])/(1'b0)/
+
+# Accumulator reset dropped -> latch inference; sum carries across evaluations.
+# Caught by any test driving a second vector after a nonzero one (corners run
+# in sequence; crv drives 10k consecutively).
+drop the sum='0 default (infers a latch)|/sum = '0;/d
+
+# Output width truncated one bit: all-ones (sum=ROWS) loses the MSB.
+# This is the truncation catch the all-ones corner exists for.
+narrow the output width by one bit|s/$clog2(ROWS+1)-1/$clog2(ROWS+1)-2/
+
+# Loop bound reads one past the array: pp_col[ROWS] out of range -> X.
+# Caught when the X reaches sum (int() on an X sum fails the test).
+loop bound reads one past the array|s/i < ROWS/i <= ROWS/
