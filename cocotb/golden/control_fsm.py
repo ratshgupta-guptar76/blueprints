@@ -89,15 +89,19 @@ def golden_ref(state: int,
     elif state == SHIFT_OUT : next_state = (WRITE_A if cont else IDLE) if y_done else SHIFT_OUT
     else: next_state = IDLE # default state (one-hot failsafe)
 
+    # Width Params
+    RW = (ROWS-1).bit_length()  # ceil(log2(ROWS))
+    LW = (MAX_LOAD-1).bit_length()  # ceil(log2(MAX_LOAD+1))
+    PW = (DW-1).bit_length()  # ceil(log2(DW))
     # Next Counters
-    next_row_cnt = (row_cnt + 1) if (state == WRITE_W and wfull) \
+    next_row_cnt  = ((row_cnt + 1) & ((1 << RW) - 1)) if (state == WRITE_W and wfull) \
                                  else row_cnt if state == WRITE_W \
                                  else 0
 
-    next_load_cnt = (load_cnt + 1) if state == WRITE_A \
+    next_load_cnt = ((load_cnt + 1) & ((1 << LW) - 1)) if state == WRITE_A \
                                    else 0
 
-    next_bp_cnt  = (bp_cnt + 1) if state == COMPUTE \
+    next_bp_cnt   = ((bp_cnt + 1) & ((1 << PW) - 1)) if state == COMPUTE \
                                 else 0
 
 
