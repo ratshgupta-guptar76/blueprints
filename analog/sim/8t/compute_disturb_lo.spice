@@ -52,7 +52,7 @@ VA   a    0 PULSE(0 {VDD_CORNER} 2n 0.1n 0.1n 5n 10n)     ; set Activation = HI
   echo
   
   * --- save .raw for python parsing ---
-  write /workspace/analog/sim/8t/results/read_disturb_lo.raw all
+  write /workspace/analog/sim/8t/results/compute_disturb_lo.raw all
 .endc
 
 .end
