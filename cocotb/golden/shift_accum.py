@@ -1,6 +1,6 @@
 # Golden Model for src/shift_accum.sv
 
-from helpers import to_signed
+from golden.helpers import to_signed
 
 ROWS       : int | None = None        # Default Null value for golden_tb(). 
 N_WEIGHTS  : int | None = None        # Value overwritten during actual testing.
