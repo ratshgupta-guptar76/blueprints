@@ -166,7 +166,7 @@
                 display_name: "clk",
                 display_name_type: Unique,
                 manual_name: None,
-                format: None,
+                format: Some("Clock"),
                 field_formats: [],
                 height_scaling_factor: None,
                 analog: None,
