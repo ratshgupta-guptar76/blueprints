@@ -29,7 +29,7 @@ VA   a    0 0             ; set Activation = LO
   save all
 
   * --- start transient analysis --- 
-  tran 0.01n 50n uic
+  tran 0.1n 200n uic
 
   * --- validate data ---
   echo
@@ -37,9 +37,9 @@ VA   a    0 0             ; set Activation = LO
   meas tran a_init FIND v(a)   AT=15n
   meas tran o_init FIND v(rbl) AT=15n
   echo
-  meas tran w_final FIND v(q)   AT=50n
-  meas tran a_final FIND v(a)   AT=50n
-  meas tran o_final FIND v(rbl) AT=50n
+  meas tran w_final FIND v(q)   AT=200n
+  meas tran a_final FIND v(a)   AT=200n
+  meas tran o_final FIND v(rbl) AT=200n
   echo
 
   * -- display results ---
