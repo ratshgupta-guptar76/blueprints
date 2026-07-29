@@ -139,8 +139,20 @@ librelane-padring: ## Only create the padring
 	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/padring.py librelane/slots/slot_${SLOT}.yaml librelane/config.yaml
 .PHONY: librelane-padring
 
-lint: ## Lint RTL sources with Verilator
-	verilator --lint-only -Wall --top-module dcim_top $(RTL_SOURCES)
+lint: ## Lint RTL sources
+	@if [ "$(SIM)" = "verilator" ]; then \
+		verilator --lint-only -Wall \
+			--top-module dcim_top \
+			$(RTL_SOURCES); \
+	elif [ "$(SIM)" = "icarus" ]; then \
+		iverilog -g2012 -Wall \
+			-s dcim_top \
+			-o /tmp/lint.vvp \
+			$(RTL_SOURCES); \
+	else \
+		echo "Unsupported SIM='$(SIM)'. Supported: verilator, icarus."; \
+		exit 1; \
+	fi
 .PHONY: lint
 
 sim: ## Run RTL simulation with cocotb
