@@ -1,0 +1,303 @@
+** sch_path: /workspace/analog/tb/col_64.spice.sch
+**.subckt col_64.spice vdd vss wbl wblb
+*.ipin vdd
+*.ipin vss
+*.ipin wbl
+*.ipin wblb
+*.ipin wl_63
+*.ipin a_63
+*.opin rbl_63
+*.ipin wl_62
+*.ipin a_62
+*.opin rbl_62
+*.ipin wl_61
+*.ipin a_61
+*.opin rbl_61
+*.ipin wl_60
+*.ipin a_60
+*.opin rbl_60
+*.ipin wl_59
+*.ipin a_59
+*.opin rbl_59
+*.ipin wl_58
+*.ipin a_58
+*.opin rbl_58
+*.ipin wl_57
+*.ipin a_57
+*.opin rbl_57
+*.ipin wl_56
+*.ipin a_56
+*.opin rbl_56
+*.ipin wl_55
+*.ipin a_55
+*.opin rbl_55
+*.ipin wl_54
+*.ipin a_54
+*.opin rbl_54
+*.ipin wl_53
+*.ipin a_53
+*.opin rbl_53
+*.ipin wl_52
+*.ipin a_52
+*.opin rbl_52
+*.ipin wl_51
+*.ipin a_51
+*.opin rbl_51
+*.ipin wl_50
+*.ipin a_50
+*.opin rbl_50
+*.ipin wl_49
+*.ipin a_49
+*.opin rbl_49
+*.ipin wl_48
+*.ipin a_48
+*.opin rbl_48
+*.ipin wl_47
+*.ipin a_47
+*.opin rbl_47
+*.ipin wl_46
+*.ipin a_46
+*.opin rbl_46
+*.ipin wl_45
+*.ipin a_45
+*.opin rbl_45
+*.ipin wl_44
+*.ipin a_44
+*.opin rbl_44
+*.ipin wl_43
+*.ipin a_43
+*.opin rbl_43
+*.ipin wl_42
+*.ipin a_42
+*.opin rbl_42
+*.ipin wl_41
+*.ipin a_41
+*.opin rbl_41
+*.ipin wl_40
+*.ipin a_40
+*.opin rbl_40
+*.ipin wl_39
+*.ipin a_39
+*.opin rbl_39
+*.ipin wl_38
+*.ipin a_38
+*.opin rbl_38
+*.ipin wl_37
+*.ipin a_37
+*.opin rbl_37
+*.ipin wl_36
+*.ipin a_36
+*.opin rbl_36
+*.ipin wl_35
+*.ipin a_35
+*.opin rbl_35
+*.ipin wl_34
+*.ipin a_34
+*.opin rbl_34
+*.ipin wl_33
+*.ipin a_33
+*.opin rbl_33
+*.ipin wl_32
+*.ipin a_32
+*.opin rbl_32
+*.ipin wl_31
+*.ipin a_31
+*.opin rbl_31
+*.ipin wl_30
+*.ipin a_30
+*.opin rbl_30
+*.ipin wl_29
+*.ipin a_29
+*.opin rbl_29
+*.ipin wl_28
+*.ipin a_28
+*.opin rbl_28
+*.ipin wl_27
+*.ipin a_27
+*.opin rbl_27
+*.ipin wl_26
+*.ipin a_26
+*.opin rbl_26
+*.ipin wl_25
+*.ipin a_25
+*.opin rbl_25
+*.ipin wl_24
+*.ipin a_24
+*.opin rbl_24
+*.ipin wl_23
+*.ipin a_23
+*.opin rbl_23
+*.ipin wl_22
+*.ipin a_22
+*.opin rbl_22
+*.ipin wl_21
+*.ipin a_21
+*.opin rbl_21
+*.ipin wl_20
+*.ipin a_20
+*.opin rbl_20
+*.ipin wl_19
+*.ipin a_19
+*.opin rbl_19
+*.ipin wl_18
+*.ipin a_18
+*.opin rbl_18
+*.ipin wl_17
+*.ipin a_17
+*.opin rbl_17
+*.ipin wl_16
+*.ipin a_16
+*.opin rbl_16
+*.ipin wl_15
+*.ipin a_15
+*.opin rbl_15
+*.ipin wl_14
+*.ipin a_14
+*.opin rbl_14
+*.ipin wl_13
+*.ipin a_13
+*.opin rbl_13
+*.ipin wl_12
+*.ipin a_12
+*.opin rbl_12
+*.ipin wl_11
+*.ipin a_11
+*.opin rbl_11
+*.ipin wl_10
+*.ipin a_10
+*.opin rbl_10
+*.ipin wl_9
+*.ipin a_9
+*.opin rbl_9
+*.ipin wl_8
+*.ipin a_8
+*.opin rbl_8
+*.ipin wl_7
+*.ipin a_7
+*.opin rbl_7
+*.ipin wl_6
+*.ipin a_6
+*.opin rbl_6
+*.ipin wl_5
+*.ipin a_5
+*.opin rbl_5
+*.ipin wl_4
+*.ipin a_4
+*.opin rbl_4
+*.ipin wl_3
+*.ipin a_3
+*.opin rbl_3
+*.ipin wl_2
+*.ipin a_2
+*.opin rbl_2
+*.ipin wl_1
+*.ipin a_1
+*.opin rbl_1
+*.ipin wl_0
+*.ipin a_0
+*.opin rbl_0
+x_63 vdd wbl wblb vss wl_63 a_63 qb_63 q_63 qb_63 rbl_63 q_63 8T_03v3
+x_62 vdd wbl wblb vss wl_62 a_62 qb_62 q_62 qb_62 rbl_62 q_62 8T_03v3
+x_61 vdd wbl wblb vss wl_61 a_61 qb_61 q_61 qb_61 rbl_61 q_61 8T_03v3
+x_60 vdd wbl wblb vss wl_60 a_60 qb_60 q_60 qb_60 rbl_60 q_60 8T_03v3
+x_59 vdd wbl wblb vss wl_59 a_59 qb_59 q_59 qb_59 rbl_59 q_59 8T_03v3
+x_58 vdd wbl wblb vss wl_58 a_58 qb_58 q_58 qb_58 rbl_58 q_58 8T_03v3
+x_57 vdd wbl wblb vss wl_57 a_57 qb_57 q_57 qb_57 rbl_57 q_57 8T_03v3
+x_56 vdd wbl wblb vss wl_56 a_56 qb_56 q_56 qb_56 rbl_56 q_56 8T_03v3
+x_55 vdd wbl wblb vss wl_55 a_55 qb_55 q_55 qb_55 rbl_55 q_55 8T_03v3
+x_54 vdd wbl wblb vss wl_54 a_54 qb_54 q_54 qb_54 rbl_54 q_54 8T_03v3
+x_53 vdd wbl wblb vss wl_53 a_53 qb_53 q_53 qb_53 rbl_53 q_53 8T_03v3
+x_52 vdd wbl wblb vss wl_52 a_52 qb_52 q_52 qb_52 rbl_52 q_52 8T_03v3
+x_51 vdd wbl wblb vss wl_51 a_51 qb_51 q_51 qb_51 rbl_51 q_51 8T_03v3
+x_50 vdd wbl wblb vss wl_50 a_50 qb_50 q_50 qb_50 rbl_50 q_50 8T_03v3
+x_49 vdd wbl wblb vss wl_49 a_49 qb_49 q_49 qb_49 rbl_49 q_49 8T_03v3
+x_48 vdd wbl wblb vss wl_48 a_48 qb_48 q_48 qb_48 rbl_48 q_48 8T_03v3
+x_47 vdd wbl wblb vss wl_47 a_47 qb_47 q_47 qb_47 rbl_47 q_47 8T_03v3
+x_46 vdd wbl wblb vss wl_46 a_46 qb_46 q_46 qb_46 rbl_46 q_46 8T_03v3
+x_45 vdd wbl wblb vss wl_45 a_45 qb_45 q_45 qb_45 rbl_45 q_45 8T_03v3
+x_44 vdd wbl wblb vss wl_44 a_44 qb_44 q_44 qb_44 rbl_44 q_44 8T_03v3
+x_43 vdd wbl wblb vss wl_43 a_43 qb_43 q_43 qb_43 rbl_43 q_43 8T_03v3
+x_42 vdd wbl wblb vss wl_42 a_42 qb_42 q_42 qb_42 rbl_42 q_42 8T_03v3
+x_41 vdd wbl wblb vss wl_41 a_41 qb_41 q_41 qb_41 rbl_41 q_41 8T_03v3
+x_40 vdd wbl wblb vss wl_40 a_40 qb_40 q_40 qb_40 rbl_40 q_40 8T_03v3
+x_39 vdd wbl wblb vss wl_39 a_39 qb_39 q_39 qb_39 rbl_39 q_39 8T_03v3
+x_38 vdd wbl wblb vss wl_38 a_38 qb_38 q_38 qb_38 rbl_38 q_38 8T_03v3
+x_37 vdd wbl wblb vss wl_37 a_37 qb_37 q_37 qb_37 rbl_37 q_37 8T_03v3
+x_36 vdd wbl wblb vss wl_36 a_36 qb_36 q_36 qb_36 rbl_36 q_36 8T_03v3
+x_35 vdd wbl wblb vss wl_35 a_35 qb_35 q_35 qb_35 rbl_35 q_35 8T_03v3
+x_34 vdd wbl wblb vss wl_34 a_34 qb_34 q_34 qb_34 rbl_34 q_34 8T_03v3
+x_33 vdd wbl wblb vss wl_33 a_33 qb_33 q_33 qb_33 rbl_33 q_33 8T_03v3
+x_32 vdd wbl wblb vss wl_32 a_32 qb_32 q_32 qb_32 rbl_32 q_32 8T_03v3
+x_31 vdd wbl wblb vss wl_31 a_31 qb_31 q_31 qb_31 rbl_31 q_31 8T_03v3
+x_30 vdd wbl wblb vss wl_30 a_30 qb_30 q_30 qb_30 rbl_30 q_30 8T_03v3
+x_29 vdd wbl wblb vss wl_29 a_29 qb_29 q_29 qb_29 rbl_29 q_29 8T_03v3
+x_28 vdd wbl wblb vss wl_28 a_28 qb_28 q_28 qb_28 rbl_28 q_28 8T_03v3
+x_27 vdd wbl wblb vss wl_27 a_27 qb_27 q_27 qb_27 rbl_27 q_27 8T_03v3
+x_26 vdd wbl wblb vss wl_26 a_26 qb_26 q_26 qb_26 rbl_26 q_26 8T_03v3
+x_25 vdd wbl wblb vss wl_25 a_25 qb_25 q_25 qb_25 rbl_25 q_25 8T_03v3
+x_24 vdd wbl wblb vss wl_24 a_24 qb_24 q_24 qb_24 rbl_24 q_24 8T_03v3
+x_23 vdd wbl wblb vss wl_23 a_23 qb_23 q_23 qb_23 rbl_23 q_23 8T_03v3
+x_22 vdd wbl wblb vss wl_22 a_22 qb_22 q_22 qb_22 rbl_22 q_22 8T_03v3
+x_21 vdd wbl wblb vss wl_21 a_21 qb_21 q_21 qb_21 rbl_21 q_21 8T_03v3
+x_20 vdd wbl wblb vss wl_20 a_20 qb_20 q_20 qb_20 rbl_20 q_20 8T_03v3
+x_19 vdd wbl wblb vss wl_19 a_19 qb_19 q_19 qb_19 rbl_19 q_19 8T_03v3
+x_18 vdd wbl wblb vss wl_18 a_18 qb_18 q_18 qb_18 rbl_18 q_18 8T_03v3
+x_17 vdd wbl wblb vss wl_17 a_17 qb_17 q_17 qb_17 rbl_17 q_17 8T_03v3
+x_16 vdd wbl wblb vss wl_16 a_16 qb_16 q_16 qb_16 rbl_16 q_16 8T_03v3
+x_15 vdd wbl wblb vss wl_15 a_15 qb_15 q_15 qb_15 rbl_15 q_15 8T_03v3
+x_14 vdd wbl wblb vss wl_14 a_14 qb_14 q_14 qb_14 rbl_14 q_14 8T_03v3
+x_13 vdd wbl wblb vss wl_13 a_13 qb_13 q_13 qb_13 rbl_13 q_13 8T_03v3
+x_12 vdd wbl wblb vss wl_12 a_12 qb_12 q_12 qb_12 rbl_12 q_12 8T_03v3
+x_11 vdd wbl wblb vss wl_11 a_11 qb_11 q_11 qb_11 rbl_11 q_11 8T_03v3
+x_10 vdd wbl wblb vss wl_10 a_10 qb_10 q_10 qb_10 rbl_10 q_10 8T_03v3
+x_9 vdd wbl wblb vss wl_9 a_9 qb_9 q_9 qb_9 rbl_9 q_9 8T_03v3
+x_8 vdd wbl wblb vss wl_8 a_8 qb_8 q_8 qb_8 rbl_8 q_8 8T_03v3
+x_7 vdd wbl wblb vss wl_7 a_7 qb_7 q_7 qb_7 rbl_7 q_7 8T_03v3
+x_6 vdd wbl wblb vss wl_6 a_6 qb_6 q_6 qb_6 rbl_6 q_6 8T_03v3
+x_5 vdd wbl wblb vss wl_5 a_5 qb_5 q_5 qb_5 rbl_5 q_5 8T_03v3
+x_4 vdd wbl wblb vss wl_4 a_4 qb_4 q_4 qb_4 rbl_4 q_4 8T_03v3
+x_3 vdd wbl wblb vss wl_3 a_3 qb_3 q_3 qb_3 rbl_3 q_3 8T_03v3
+x_2 vdd wbl wblb vss wl_2 a_2 qb_2 q_2 qb_2 rbl_2 q_2 8T_03v3
+x_1 vdd wbl wblb vss wl_1 a_1 qb_1 q_1 qb_1 rbl_1 q_1 8T_03v3
+x_0 vdd wbl wblb vss wl_0 a_0 qb_0 q_0 qb_0 rbl_0 q_0 8T_03v3
+**.ends
+
+**** begin user architecture code
+
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+
+**** end user architecture code
+* expanding   symbol:  /workspace/analog/designs/8T_03v3.sym # of pins=11
+** sym_path: /workspace/analog/designs/8T_03v3.sym
+.subckt 8T_03v3 VDD WBL WBLB VSS WL A QIN Q QB RBL QBIN
+*.opin RBL
+*.ipin VSS
+*.ipin VDD
+*.ipin WL
+*.ipin WBL
+*.ipin WBLB
+*.ipin QBIN
+*.ipin QIN
+*.opin Q
+*.opin QB
+*.ipin A
+XM1 RBL QB VSS VSS nfet_03v3 L='L_M1' W='W_M1' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPD1 QB QBIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPU1 QB QBIN VDD VDD pfet_03v3 L='L_PU' W='W_PU' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XAX1 WBLB WL QB VSS nfet_03v3 L='L_AX' W='W_AX' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPU2 Q QIN VDD VDD pfet_03v3 L='L_PU' W='W_PU' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XPD2 Q QIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XAX2 WBL WL Q VSS nfet_03v3 L='L_AX' W='W_AX' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM2 RBL QB A VSS pfet_03v3 L='L_M2' W='W_M2' nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+.ends
+
+.end

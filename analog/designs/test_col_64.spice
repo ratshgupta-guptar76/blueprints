@@ -1,0 +1,410 @@
+* col_64 compute testbench — 3 activation phases vs known weights
+.include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/col_64.spice
+
+VVDD vdd 0 {VDD_CORNER}
+VVSS vss 0 0
+VWBL  wbl  0 0
+VWBLB wblb 0 0
+
+* --- WL off (no access; storage held) ---
+VWL0 wl_0 0 0
+VWL1 wl_1 0 0
+VWL2 wl_2 0 0
+VWL3 wl_3 0 0
+VWL4 wl_4 0 0
+VWL5 wl_5 0 0
+VWL6 wl_6 0 0
+VWL7 wl_7 0 0
+VWL8 wl_8 0 0
+VWL9 wl_9 0 0
+VWL10 wl_10 0 0
+VWL11 wl_11 0 0
+VWL12 wl_12 0 0
+VWL13 wl_13 0 0
+VWL14 wl_14 0 0
+VWL15 wl_15 0 0
+VWL16 wl_16 0 0
+VWL17 wl_17 0 0
+VWL18 wl_18 0 0
+VWL19 wl_19 0 0
+VWL20 wl_20 0 0
+VWL21 wl_21 0 0
+VWL22 wl_22 0 0
+VWL23 wl_23 0 0
+VWL24 wl_24 0 0
+VWL25 wl_25 0 0
+VWL26 wl_26 0 0
+VWL27 wl_27 0 0
+VWL28 wl_28 0 0
+VWL29 wl_29 0 0
+VWL30 wl_30 0 0
+VWL31 wl_31 0 0
+VWL32 wl_32 0 0
+VWL33 wl_33 0 0
+VWL34 wl_34 0 0
+VWL35 wl_35 0 0
+VWL36 wl_36 0 0
+VWL37 wl_37 0 0
+VWL38 wl_38 0 0
+VWL39 wl_39 0 0
+VWL40 wl_40 0 0
+VWL41 wl_41 0 0
+VWL42 wl_42 0 0
+VWL43 wl_43 0 0
+VWL44 wl_44 0 0
+VWL45 wl_45 0 0
+VWL46 wl_46 0 0
+VWL47 wl_47 0 0
+VWL48 wl_48 0 0
+VWL49 wl_49 0 0
+VWL50 wl_50 0 0
+VWL51 wl_51 0 0
+VWL52 wl_52 0 0
+VWL53 wl_53 0 0
+VWL54 wl_54 0 0
+VWL55 wl_55 0 0
+VWL56 wl_56 0 0
+VWL57 wl_57 0 0
+VWL58 wl_58 0 0
+VWL59 wl_59 0 0
+VWL60 wl_60 0 0
+VWL61 wl_61 0 0
+VWL62 wl_62 0 0
+VWL63 wl_63 0 0
+
+* --- weights via .ic (alternating) ---
+.ic v(q_0)=0 v(qb_0)={VDD_CORNER}
+.ic v(q_1)={VDD_CORNER} v(qb_1)=0
+.ic v(q_2)=0 v(qb_2)={VDD_CORNER}
+.ic v(q_3)={VDD_CORNER} v(qb_3)=0
+.ic v(q_4)=0 v(qb_4)={VDD_CORNER}
+.ic v(q_5)={VDD_CORNER} v(qb_5)=0
+.ic v(q_6)=0 v(qb_6)={VDD_CORNER}
+.ic v(q_7)={VDD_CORNER} v(qb_7)=0
+.ic v(q_8)=0 v(qb_8)={VDD_CORNER}
+.ic v(q_9)={VDD_CORNER} v(qb_9)=0
+.ic v(q_10)=0 v(qb_10)={VDD_CORNER}
+.ic v(q_11)={VDD_CORNER} v(qb_11)=0
+.ic v(q_12)=0 v(qb_12)={VDD_CORNER}
+.ic v(q_13)={VDD_CORNER} v(qb_13)=0
+.ic v(q_14)=0 v(qb_14)={VDD_CORNER}
+.ic v(q_15)={VDD_CORNER} v(qb_15)=0
+.ic v(q_16)=0 v(qb_16)={VDD_CORNER}
+.ic v(q_17)={VDD_CORNER} v(qb_17)=0
+.ic v(q_18)=0 v(qb_18)={VDD_CORNER}
+.ic v(q_19)={VDD_CORNER} v(qb_19)=0
+.ic v(q_20)=0 v(qb_20)={VDD_CORNER}
+.ic v(q_21)={VDD_CORNER} v(qb_21)=0
+.ic v(q_22)=0 v(qb_22)={VDD_CORNER}
+.ic v(q_23)={VDD_CORNER} v(qb_23)=0
+.ic v(q_24)=0 v(qb_24)={VDD_CORNER}
+.ic v(q_25)={VDD_CORNER} v(qb_25)=0
+.ic v(q_26)=0 v(qb_26)={VDD_CORNER}
+.ic v(q_27)={VDD_CORNER} v(qb_27)=0
+.ic v(q_28)=0 v(qb_28)={VDD_CORNER}
+.ic v(q_29)={VDD_CORNER} v(qb_29)=0
+.ic v(q_30)=0 v(qb_30)={VDD_CORNER}
+.ic v(q_31)={VDD_CORNER} v(qb_31)=0
+.ic v(q_32)=0 v(qb_32)={VDD_CORNER}
+.ic v(q_33)={VDD_CORNER} v(qb_33)=0
+.ic v(q_34)=0 v(qb_34)={VDD_CORNER}
+.ic v(q_35)={VDD_CORNER} v(qb_35)=0
+.ic v(q_36)=0 v(qb_36)={VDD_CORNER}
+.ic v(q_37)={VDD_CORNER} v(qb_37)=0
+.ic v(q_38)=0 v(qb_38)={VDD_CORNER}
+.ic v(q_39)={VDD_CORNER} v(qb_39)=0
+.ic v(q_40)=0 v(qb_40)={VDD_CORNER}
+.ic v(q_41)={VDD_CORNER} v(qb_41)=0
+.ic v(q_42)=0 v(qb_42)={VDD_CORNER}
+.ic v(q_43)={VDD_CORNER} v(qb_43)=0
+.ic v(q_44)=0 v(qb_44)={VDD_CORNER}
+.ic v(q_45)={VDD_CORNER} v(qb_45)=0
+.ic v(q_46)=0 v(qb_46)={VDD_CORNER}
+.ic v(q_47)={VDD_CORNER} v(qb_47)=0
+.ic v(q_48)=0 v(qb_48)={VDD_CORNER}
+.ic v(q_49)={VDD_CORNER} v(qb_49)=0
+.ic v(q_50)=0 v(qb_50)={VDD_CORNER}
+.ic v(q_51)={VDD_CORNER} v(qb_51)=0
+.ic v(q_52)=0 v(qb_52)={VDD_CORNER}
+.ic v(q_53)={VDD_CORNER} v(qb_53)=0
+.ic v(q_54)=0 v(qb_54)={VDD_CORNER}
+.ic v(q_55)={VDD_CORNER} v(qb_55)=0
+.ic v(q_56)=0 v(qb_56)={VDD_CORNER}
+.ic v(q_57)={VDD_CORNER} v(qb_57)=0
+.ic v(q_58)=0 v(qb_58)={VDD_CORNER}
+.ic v(q_59)={VDD_CORNER} v(qb_59)=0
+.ic v(q_60)=0 v(qb_60)={VDD_CORNER}
+.ic v(q_61)={VDD_CORNER} v(qb_61)=0
+.ic v(q_62)=0 v(qb_62)={VDD_CORNER}
+.ic v(q_63)={VDD_CORNER} v(qb_63)=0
+
+* --- activations: PWL through 3 phases ---
+VA0 a_0 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA1 a_1 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA2 a_2 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA3 a_3 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA4 a_4 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA5 a_5 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA6 a_6 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA7 a_7 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA8 a_8 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA9 a_9 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA10 a_10 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA11 a_11 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA12 a_12 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA13 a_13 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA14 a_14 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA15 a_15 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA16 a_16 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA17 a_17 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA18 a_18 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA19 a_19 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA20 a_20 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA21 a_21 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA22 a_22 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA23 a_23 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA24 a_24 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA25 a_25 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA26 a_26 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA27 a_27 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA28 a_28 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA29 a_29 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA30 a_30 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA31 a_31 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA32 a_32 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA33 a_33 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA34 a_34 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA35 a_35 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA36 a_36 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA37 a_37 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA38 a_38 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA39 a_39 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA40 a_40 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA41 a_41 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA42 a_42 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA43 a_43 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA44 a_44 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA45 a_45 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA46 a_46 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA47 a_47 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA48 a_48 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA49 a_49 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA50 a_50 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA51 a_51 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA52 a_52 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA53 a_53 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA54 a_54 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA55 a_55 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA56 a_56 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA57 a_57 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA58 a_58 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA59 a_59 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA60 a_60 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA61 a_61 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+VA62 a_62 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n {VDD_CORNER}  60n {VDD_CORNER})
+VA63 a_63 0 PWL(0 {VDD_CORNER}  19n {VDD_CORNER}  20n 0  39n 0  40n 0  60n 0)
+
+.control
+  tran 0.01n 60n uic
+
+  * --- phase 1 rbl levels (measure near end of window) ---
+  meas tran rbl0_p1 FIND v(rbl_0) AT=19n
+  meas tran rbl1_p1 FIND v(rbl_1) AT=19n
+  meas tran rbl2_p1 FIND v(rbl_2) AT=19n
+  meas tran rbl3_p1 FIND v(rbl_3) AT=19n
+  meas tran rbl4_p1 FIND v(rbl_4) AT=19n
+  meas tran rbl5_p1 FIND v(rbl_5) AT=19n
+  meas tran rbl6_p1 FIND v(rbl_6) AT=19n
+  meas tran rbl7_p1 FIND v(rbl_7) AT=19n
+  meas tran rbl8_p1 FIND v(rbl_8) AT=19n
+  meas tran rbl9_p1 FIND v(rbl_9) AT=19n
+  meas tran rbl10_p1 FIND v(rbl_10) AT=19n
+  meas tran rbl11_p1 FIND v(rbl_11) AT=19n
+  meas tran rbl12_p1 FIND v(rbl_12) AT=19n
+  meas tran rbl13_p1 FIND v(rbl_13) AT=19n
+  meas tran rbl14_p1 FIND v(rbl_14) AT=19n
+  meas tran rbl15_p1 FIND v(rbl_15) AT=19n
+  meas tran rbl16_p1 FIND v(rbl_16) AT=19n
+  meas tran rbl17_p1 FIND v(rbl_17) AT=19n
+  meas tran rbl18_p1 FIND v(rbl_18) AT=19n
+  meas tran rbl19_p1 FIND v(rbl_19) AT=19n
+  meas tran rbl20_p1 FIND v(rbl_20) AT=19n
+  meas tran rbl21_p1 FIND v(rbl_21) AT=19n
+  meas tran rbl22_p1 FIND v(rbl_22) AT=19n
+  meas tran rbl23_p1 FIND v(rbl_23) AT=19n
+  meas tran rbl24_p1 FIND v(rbl_24) AT=19n
+  meas tran rbl25_p1 FIND v(rbl_25) AT=19n
+  meas tran rbl26_p1 FIND v(rbl_26) AT=19n
+  meas tran rbl27_p1 FIND v(rbl_27) AT=19n
+  meas tran rbl28_p1 FIND v(rbl_28) AT=19n
+  meas tran rbl29_p1 FIND v(rbl_29) AT=19n
+  meas tran rbl30_p1 FIND v(rbl_30) AT=19n
+  meas tran rbl31_p1 FIND v(rbl_31) AT=19n
+  meas tran rbl32_p1 FIND v(rbl_32) AT=19n
+  meas tran rbl33_p1 FIND v(rbl_33) AT=19n
+  meas tran rbl34_p1 FIND v(rbl_34) AT=19n
+  meas tran rbl35_p1 FIND v(rbl_35) AT=19n
+  meas tran rbl36_p1 FIND v(rbl_36) AT=19n
+  meas tran rbl37_p1 FIND v(rbl_37) AT=19n
+  meas tran rbl38_p1 FIND v(rbl_38) AT=19n
+  meas tran rbl39_p1 FIND v(rbl_39) AT=19n
+  meas tran rbl40_p1 FIND v(rbl_40) AT=19n
+  meas tran rbl41_p1 FIND v(rbl_41) AT=19n
+  meas tran rbl42_p1 FIND v(rbl_42) AT=19n
+  meas tran rbl43_p1 FIND v(rbl_43) AT=19n
+  meas tran rbl44_p1 FIND v(rbl_44) AT=19n
+  meas tran rbl45_p1 FIND v(rbl_45) AT=19n
+  meas tran rbl46_p1 FIND v(rbl_46) AT=19n
+  meas tran rbl47_p1 FIND v(rbl_47) AT=19n
+  meas tran rbl48_p1 FIND v(rbl_48) AT=19n
+  meas tran rbl49_p1 FIND v(rbl_49) AT=19n
+  meas tran rbl50_p1 FIND v(rbl_50) AT=19n
+  meas tran rbl51_p1 FIND v(rbl_51) AT=19n
+  meas tran rbl52_p1 FIND v(rbl_52) AT=19n
+  meas tran rbl53_p1 FIND v(rbl_53) AT=19n
+  meas tran rbl54_p1 FIND v(rbl_54) AT=19n
+  meas tran rbl55_p1 FIND v(rbl_55) AT=19n
+  meas tran rbl56_p1 FIND v(rbl_56) AT=19n
+  meas tran rbl57_p1 FIND v(rbl_57) AT=19n
+  meas tran rbl58_p1 FIND v(rbl_58) AT=19n
+  meas tran rbl59_p1 FIND v(rbl_59) AT=19n
+  meas tran rbl60_p1 FIND v(rbl_60) AT=19n
+  meas tran rbl61_p1 FIND v(rbl_61) AT=19n
+  meas tran rbl62_p1 FIND v(rbl_62) AT=19n
+  meas tran rbl63_p1 FIND v(rbl_63) AT=19n
+
+  * --- phase 2 rbl levels (measure near end of window) ---
+  meas tran rbl0_p2 FIND v(rbl_0) AT=39n
+  meas tran rbl1_p2 FIND v(rbl_1) AT=39n
+  meas tran rbl2_p2 FIND v(rbl_2) AT=39n
+  meas tran rbl3_p2 FIND v(rbl_3) AT=39n
+  meas tran rbl4_p2 FIND v(rbl_4) AT=39n
+  meas tran rbl5_p2 FIND v(rbl_5) AT=39n
+  meas tran rbl6_p2 FIND v(rbl_6) AT=39n
+  meas tran rbl7_p2 FIND v(rbl_7) AT=39n
+  meas tran rbl8_p2 FIND v(rbl_8) AT=39n
+  meas tran rbl9_p2 FIND v(rbl_9) AT=39n
+  meas tran rbl10_p2 FIND v(rbl_10) AT=39n
+  meas tran rbl11_p2 FIND v(rbl_11) AT=39n
+  meas tran rbl12_p2 FIND v(rbl_12) AT=39n
+  meas tran rbl13_p2 FIND v(rbl_13) AT=39n
+  meas tran rbl14_p2 FIND v(rbl_14) AT=39n
+  meas tran rbl15_p2 FIND v(rbl_15) AT=39n
+  meas tran rbl16_p2 FIND v(rbl_16) AT=39n
+  meas tran rbl17_p2 FIND v(rbl_17) AT=39n
+  meas tran rbl18_p2 FIND v(rbl_18) AT=39n
+  meas tran rbl19_p2 FIND v(rbl_19) AT=39n
+  meas tran rbl20_p2 FIND v(rbl_20) AT=39n
+  meas tran rbl21_p2 FIND v(rbl_21) AT=39n
+  meas tran rbl22_p2 FIND v(rbl_22) AT=39n
+  meas tran rbl23_p2 FIND v(rbl_23) AT=39n
+  meas tran rbl24_p2 FIND v(rbl_24) AT=39n
+  meas tran rbl25_p2 FIND v(rbl_25) AT=39n
+  meas tran rbl26_p2 FIND v(rbl_26) AT=39n
+  meas tran rbl27_p2 FIND v(rbl_27) AT=39n
+  meas tran rbl28_p2 FIND v(rbl_28) AT=39n
+  meas tran rbl29_p2 FIND v(rbl_29) AT=39n
+  meas tran rbl30_p2 FIND v(rbl_30) AT=39n
+  meas tran rbl31_p2 FIND v(rbl_31) AT=39n
+  meas tran rbl32_p2 FIND v(rbl_32) AT=39n
+  meas tran rbl33_p2 FIND v(rbl_33) AT=39n
+  meas tran rbl34_p2 FIND v(rbl_34) AT=39n
+  meas tran rbl35_p2 FIND v(rbl_35) AT=39n
+  meas tran rbl36_p2 FIND v(rbl_36) AT=39n
+  meas tran rbl37_p2 FIND v(rbl_37) AT=39n
+  meas tran rbl38_p2 FIND v(rbl_38) AT=39n
+  meas tran rbl39_p2 FIND v(rbl_39) AT=39n
+  meas tran rbl40_p2 FIND v(rbl_40) AT=39n
+  meas tran rbl41_p2 FIND v(rbl_41) AT=39n
+  meas tran rbl42_p2 FIND v(rbl_42) AT=39n
+  meas tran rbl43_p2 FIND v(rbl_43) AT=39n
+  meas tran rbl44_p2 FIND v(rbl_44) AT=39n
+  meas tran rbl45_p2 FIND v(rbl_45) AT=39n
+  meas tran rbl46_p2 FIND v(rbl_46) AT=39n
+  meas tran rbl47_p2 FIND v(rbl_47) AT=39n
+  meas tran rbl48_p2 FIND v(rbl_48) AT=39n
+  meas tran rbl49_p2 FIND v(rbl_49) AT=39n
+  meas tran rbl50_p2 FIND v(rbl_50) AT=39n
+  meas tran rbl51_p2 FIND v(rbl_51) AT=39n
+  meas tran rbl52_p2 FIND v(rbl_52) AT=39n
+  meas tran rbl53_p2 FIND v(rbl_53) AT=39n
+  meas tran rbl54_p2 FIND v(rbl_54) AT=39n
+  meas tran rbl55_p2 FIND v(rbl_55) AT=39n
+  meas tran rbl56_p2 FIND v(rbl_56) AT=39n
+  meas tran rbl57_p2 FIND v(rbl_57) AT=39n
+  meas tran rbl58_p2 FIND v(rbl_58) AT=39n
+  meas tran rbl59_p2 FIND v(rbl_59) AT=39n
+  meas tran rbl60_p2 FIND v(rbl_60) AT=39n
+  meas tran rbl61_p2 FIND v(rbl_61) AT=39n
+  meas tran rbl62_p2 FIND v(rbl_62) AT=39n
+  meas tran rbl63_p2 FIND v(rbl_63) AT=39n
+
+  * --- phase 3 rbl levels (measure near end of window) ---
+  meas tran rbl0_p3 FIND v(rbl_0) AT=59n
+  meas tran rbl1_p3 FIND v(rbl_1) AT=59n
+  meas tran rbl2_p3 FIND v(rbl_2) AT=59n
+  meas tran rbl3_p3 FIND v(rbl_3) AT=59n
+  meas tran rbl4_p3 FIND v(rbl_4) AT=59n
+  meas tran rbl5_p3 FIND v(rbl_5) AT=59n
+  meas tran rbl6_p3 FIND v(rbl_6) AT=59n
+  meas tran rbl7_p3 FIND v(rbl_7) AT=59n
+  meas tran rbl8_p3 FIND v(rbl_8) AT=59n
+  meas tran rbl9_p3 FIND v(rbl_9) AT=59n
+  meas tran rbl10_p3 FIND v(rbl_10) AT=59n
+  meas tran rbl11_p3 FIND v(rbl_11) AT=59n
+  meas tran rbl12_p3 FIND v(rbl_12) AT=59n
+  meas tran rbl13_p3 FIND v(rbl_13) AT=59n
+  meas tran rbl14_p3 FIND v(rbl_14) AT=59n
+  meas tran rbl15_p3 FIND v(rbl_15) AT=59n
+  meas tran rbl16_p3 FIND v(rbl_16) AT=59n
+  meas tran rbl17_p3 FIND v(rbl_17) AT=59n
+  meas tran rbl18_p3 FIND v(rbl_18) AT=59n
+  meas tran rbl19_p3 FIND v(rbl_19) AT=59n
+  meas tran rbl20_p3 FIND v(rbl_20) AT=59n
+  meas tran rbl21_p3 FIND v(rbl_21) AT=59n
+  meas tran rbl22_p3 FIND v(rbl_22) AT=59n
+  meas tran rbl23_p3 FIND v(rbl_23) AT=59n
+  meas tran rbl24_p3 FIND v(rbl_24) AT=59n
+  meas tran rbl25_p3 FIND v(rbl_25) AT=59n
+  meas tran rbl26_p3 FIND v(rbl_26) AT=59n
+  meas tran rbl27_p3 FIND v(rbl_27) AT=59n
+  meas tran rbl28_p3 FIND v(rbl_28) AT=59n
+  meas tran rbl29_p3 FIND v(rbl_29) AT=59n
+  meas tran rbl30_p3 FIND v(rbl_30) AT=59n
+  meas tran rbl31_p3 FIND v(rbl_31) AT=59n
+  meas tran rbl32_p3 FIND v(rbl_32) AT=59n
+  meas tran rbl33_p3 FIND v(rbl_33) AT=59n
+  meas tran rbl34_p3 FIND v(rbl_34) AT=59n
+  meas tran rbl35_p3 FIND v(rbl_35) AT=59n
+  meas tran rbl36_p3 FIND v(rbl_36) AT=59n
+  meas tran rbl37_p3 FIND v(rbl_37) AT=59n
+  meas tran rbl38_p3 FIND v(rbl_38) AT=59n
+  meas tran rbl39_p3 FIND v(rbl_39) AT=59n
+  meas tran rbl40_p3 FIND v(rbl_40) AT=59n
+  meas tran rbl41_p3 FIND v(rbl_41) AT=59n
+  meas tran rbl42_p3 FIND v(rbl_42) AT=59n
+  meas tran rbl43_p3 FIND v(rbl_43) AT=59n
+  meas tran rbl44_p3 FIND v(rbl_44) AT=59n
+  meas tran rbl45_p3 FIND v(rbl_45) AT=59n
+  meas tran rbl46_p3 FIND v(rbl_46) AT=59n
+  meas tran rbl47_p3 FIND v(rbl_47) AT=59n
+  meas tran rbl48_p3 FIND v(rbl_48) AT=59n
+  meas tran rbl49_p3 FIND v(rbl_49) AT=59n
+  meas tran rbl50_p3 FIND v(rbl_50) AT=59n
+  meas tran rbl51_p3 FIND v(rbl_51) AT=59n
+  meas tran rbl52_p3 FIND v(rbl_52) AT=59n
+  meas tran rbl53_p3 FIND v(rbl_53) AT=59n
+  meas tran rbl54_p3 FIND v(rbl_54) AT=59n
+  meas tran rbl55_p3 FIND v(rbl_55) AT=59n
+  meas tran rbl56_p3 FIND v(rbl_56) AT=59n
+  meas tran rbl57_p3 FIND v(rbl_57) AT=59n
+  meas tran rbl58_p3 FIND v(rbl_58) AT=59n
+  meas tran rbl59_p3 FIND v(rbl_59) AT=59n
+  meas tran rbl60_p3 FIND v(rbl_60) AT=59n
+  meas tran rbl61_p3 FIND v(rbl_61) AT=59n
+  meas tran rbl62_p3 FIND v(rbl_62) AT=59n
+  meas tran rbl63_p3 FIND v(rbl_63) AT=59n
+
+.endc
+.end
