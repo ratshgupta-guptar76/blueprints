@@ -1,0 +1,53 @@
+* ============================================
+* Test: access_energy.spice
+* Cell: 8T_03v3
+* PDK: GF180mcuD
+* ============================================
+* One transient covering a write (WL high 5n-20n, mirrors write_run.spice:
+* Q 1->0) followed by a read/compute access (A high 25n-45n, mirrors
+* read_delay.spice). A sits low through the write phase so read-port
+* current doesn't leak into the write energy integral, then pulses high
+* once WL has already fallen. Reports dynamic energy per operation,
+* integrated from the VDD supply.
+
+* -- includes --
+.include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tb/8T_tb.spice
+
+* -- stimulus --
+VVDD  vdd  0 {VDD_CORNER}
+VVSS  vss  0 0
+VWL   wl   0 PULSE(0 {VDD_CORNER} 5n 0.1n 0.1n 15n 50n)     ; write pulse: high 5n-20n
+VWBL  wbl  0 0                                              ; WBL LOW pulls Q down
+VWBLB wblb 0 {VDD_CORNER}                                   ; WBLB HIGH pulls QB up
+VA    a    0 PULSE(0 {VDD_CORNER} 25n 0.1n 0.1n 20n 50n)    ; read pulse: high 25n-45n
+CRBL  rbl  0 20f
+
+* instantaneous power drawn FROM the supply -- ngspice's i(vsource) measures
+* current INTO the source's positive terminal, opposite of delivered current,
+* hence the negation (so energy_write/energy_read come out positive).
+Bpwr pwr 0 v = -v(vdd)*i(vvdd)
+
+* -- initial conditions --
+.ic v(q)={VDD_CORNER} v(qb)=0    ; initial state: Q=1, QB=0
+
+* -- sim --
+.control
+  save all
+
+  tran 0.1n 50n uic
+
+  * --- dynamic energy per operation, integrated from the VDD rail ---
+  echo
+  meas tran energy_write INTEG v(pwr) FROM=0  TO=20n
+  meas tran energy_read  INTEG v(pwr) FROM=20n TO=50n
+  echo
+
+  * --- save .raw for python parsing ---
+  write /workspace/analog/sim/8t/results/access_energy.raw all
+
+.endc
+
+.end
