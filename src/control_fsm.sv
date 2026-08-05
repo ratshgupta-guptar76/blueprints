@@ -123,9 +123,12 @@ module control_fsm #(
             end
 
             SHIFT_OUT: begin
-                if (y_done)
-                    next_state = cont ? WRITE_A
-                                      : IDLE;
+                if (y_done) begin
+                    if (cont)
+                        next_state = WRITE_A;
+                    else
+                        next_state = IDLE;
+                end
             end
 
             default: begin : ONE_HOT_FAILSAFE       // case for when illegal state occurs.
