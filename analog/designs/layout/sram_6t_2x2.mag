@@ -1,0 +1,21 @@
+magic
+tech gf180mcuD
+magscale 1 10
+timestamp 1785848438
+<< error_s >>
+rect 88 766 166 806
+rect 421 766 499 806
+rect 88 737 217 766
+rect 409 734 499 766
+rect 673 766 751 806
+rect 1006 766 1084 806
+rect 673 737 802 766
+rect 994 734 1084 766
+rect 421 726 499 734
+rect 1006 726 1084 734
+use sram_6t  sram_6t_0
+array 0 1 585 0 1 720
+timestamp 1785848438
+transform 1 0 109 0 1 52
+box -110 -46 475 668
+<< end >>

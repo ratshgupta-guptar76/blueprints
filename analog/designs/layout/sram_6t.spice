@@ -1,0 +1,11 @@
+* NGSPICE file created from sram_6t.ext - technology: gf180mcuD
+
+.subckt sram_6t
+X0 a_123_502# a_67_186# a_n26_225# w_n109_400# pfet_03v3 ad=0.112p pd=0.96u as=0.178p ps=1.69u w=0.4u l=0.28u
+X1 a_67_186# a_n62_78# a_312_n52# VSUBS nfet_03v3 ad=0.15267p pd=1.3u as=0.2409p ps=2.08u w=0.32u l=0.3u
+X2 a_123_230# a_67_186# a_n26_225# VSUBS nfet_03v3 ad=86.72499f pd=0.92u as=0.14977p ps=1.28u w=0.22u l=0.28u
+X3 a_67_186# a_n26_225# a_123_502# w_n109_400# pfet_03v3 ad=0.178p pd=1.69u as=0.112p ps=0.96u w=0.4u l=0.31u
+X4 a_67_186# a_n26_225# a_123_230# VSUBS nfet_03v3 ad=0.15267p pd=1.3u as=86.72499f ps=0.92u w=0.22u l=0.31u
+X5 a_n26_225# a_n62_78# a_n21_n38# VSUBS nfet_03v3 ad=0.14977p pd=1.28u as=0.2107p ps=1.94u w=0.32u l=0.3u
+.ends
+
