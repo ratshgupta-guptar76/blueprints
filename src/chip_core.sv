@@ -12,9 +12,12 @@
 `default_nettype none
 
 module chip_core #(
-    parameter NUM_INPUT_PADS,
-    parameter NUM_BIDIR_PADS,
-    parameter NUM_ANALOG_PADS
+    // Defaults match the workshop slot so chip_core lints/elaborates
+    // standalone (e.g. for a padring-less LibreLane run); chip_top
+    // always overrides these explicitly, so this has no effect there.
+    parameter NUM_INPUT_PADS  = 1,
+    parameter NUM_BIDIR_PADS  = 20,
+    parameter NUM_ANALOG_PADS = 60
     )(
     `ifdef USE_POWER_PINS
     inout  wire VDD,
