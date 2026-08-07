@@ -7,9 +7,9 @@ F {}
 E {}
 N 830 -240 870 -240 {lab=QB}
 N 940 -160 940 -120 {lab=VSS}
-N 450 -350 490 -350 {lab=QBIN}
-N 450 -270 450 -210 {lab=QBIN}
-N 450 -210 490 -210 {lab=QBIN}
+N 450 -350 490 -350 {lab=Q}
+N 450 -270 450 -210 {lab=Q}
+N 450 -210 490 -210 {lab=Q}
 N 530 -280 530 -240 {lab=QB}
 N 530 -280 650 -280 {lab=QB}
 N 530 -180 530 -160 {lab=VSS}
@@ -22,9 +22,9 @@ N 550 -210 550 -160 {lab=VSS}
 N 530 -400 550 -400 {lab=VDD}
 N 550 -400 550 -350 {lab=VDD}
 N 530 -350 550 -350 {lab=VDD}
-N 350 -350 390 -350 {lab=QIN}
-N 390 -280 390 -210 {lab=QIN}
-N 350 -210 390 -210 {lab=QIN}
+N 350 -350 390 -350 {lab=QB}
+N 390 -280 390 -210 {lab=QB}
+N 350 -210 390 -210 {lab=QB}
 N 310 -280 310 -240 {lab=Q}
 N 310 -180 310 -160 {lab=VSS}
 N 310 -160 420 -160 {lab=VSS}
@@ -45,10 +45,10 @@ N 80 -280 80 -180 {lab=WBL}
 N 760 -280 760 -180 {lab=WBLB}
 N 160 -510 160 -320 {lab=WL}
 N 160 -510 680 -510 {lab=WL}
-N 430 -270 450 -270 {lab=QBIN}
-N 430 -270 430 -260 {lab=QBIN}
-N 390 -280 410 -280 {lab=QIN}
-N 410 -290 410 -280 {lab=QIN}
+N 430 -270 450 -270 {lab=Q}
+N 430 -270 430 -260 {lab=Q}
+N 390 -280 410 -280 {lab=QB}
+N 410 -290 410 -280 {lab=QB}
 N 940 -390 940 -320 {lab=A}
 N 920 -390 940 -390 {lab=A}
 N 870 -190 900 -190 {lab=QB}
@@ -62,8 +62,8 @@ N 310 -320 310 -280 {lab=Q}
 N 80 -380 80 -280 {lab=WBL}
 N 760 -380 760 -280 {lab=WBLB}
 N 160 -530 160 -510 {lab=WL}
-N 450 -350 450 -270 {lab=QBIN}
-N 390 -350 390 -280 {lab=QIN}
+N 450 -350 450 -270 {lab=Q}
+N 390 -350 390 -280 {lab=QB}
 N 940 -290 980 -290 {lab=A}
 N 940 -240 1080 -240 {lab=RBL}
 N 980 -330 980 -290 {lab=A}
@@ -84,6 +84,8 @@ N 940 -260 1080 -260 {lab=RBL}
 N 1080 -300 1180 -300 {lab=VSS}
 N 1180 -300 1180 -120 {lab=VSS}
 N 940 -120 1180 -120 {lab=VSS}
+N 410 -290 530 -290 {lab=QB}
+N 310 -260 430 -260 {lab=Q}
 C {symbols/nfet_03v3.sym} 920 -190 0 0 {name=M1
 L=0.28
 W=0.22
@@ -189,8 +191,6 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {ipin.sym} 430 -260 3 0 {name=p16 lab=QBIN}
-C {ipin.sym} 410 -290 1 0 {name=p17 lab=QIN}
 C {opin.sym} 310 -280 2 1 {name=p18 lab=Q}
 C {opin.sym} 530 -280 2 0 {name=p19 lab=QB}
 C {lab_pin.sym} 830 -240 0 0 {name=p1 sig_type=std_logic lab=QB}
