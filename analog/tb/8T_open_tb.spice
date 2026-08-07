@@ -1,0 +1,22 @@
+** sch_path: /workspace/analog/tb/8T_open_tb.sch
+.subckt 8T_open_tb vdd vss wl q qb a rbl wbl wblb qin qbin
+*.PININFO vdd:I vss:I wl:I q:O qb:O a:I rbl:O wbl:I wblb:I qin:I qbin:I
+x1 vdd wbl wblb vss wl a qin q qb rbl qbin 8T_03v3
+.ends
+
+* expanding   symbol:  /workspace/analog/designs/8T_03v3.sym # of pins=11
+** sym_path: /workspace/analog/designs/8T_03v3.sym
+** sch_path: /workspace/analog/designs/8T_03v3.sch
+.subckt 8T_03v3 VDD WBL WBLB VSS WL A QIN Q QB RBL QBIN
+*.PININFO RBL:O VSS:I VDD:I WL:I WBL:I WBLB:I QBIN:I QIN:I Q:O QB:O A:I
+M1 RBL QB VSS VSS nfet_03v3 L='L_M1' W='W_M1' nf=1
+PD1 QB QBIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1
+PU1 QB QBIN VDD VDD pfet_03v3 L='L_PU' W='W_PU' nf=1
+AX1 WBLB WL QB VSS nfet_03v3 L='L_AX' W='W_AX' nf=1
+PU2 Q QIN VDD VDD pfet_03v3 L='L_PU' W='W_PU' nf=1
+PD2 Q QIN VSS VSS nfet_03v3 L='L_PD' W='W_PD' nf=1
+AX2 WBL WL Q VSS nfet_03v3 L='L_AX' W='W_AX' nf=1
+M2 RBL QB A VDD pfet_03v3 L='L_M2' W='W_M2' nf=1
+M3 RBL Q A VSS pfet_03v3 L='L_M2' W='W_M2' nf=1
+.ends
+
