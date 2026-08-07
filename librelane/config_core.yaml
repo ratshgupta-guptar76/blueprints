@@ -1,0 +1,190 @@
+meta:
+  version: 3
+  # No `flow` key -> defaults to LibreLane's Classic flow.
+  # (chip_top's config.yaml sets `flow: Chip`, which inserts padring /
+  # sealring / pad-aware steps. chip_core has no physical pads, so the
+  # plain Classic flow -- ordinary IOPlacement instead of a padring --
+  # is what we want here.)
+  substituting_steps:
+
+    # chip_core has no pads/bond points, so OpenROAD's PSM (power grid)
+    # analysis has no terminal to treat as a power source and flags
+    # PSM-0025 ("VDD/VSS does not contain any terminals") on every net
+    # -- not a real defect, just structurally guaranteed by having no
+    # padring. The checker's own metric description says "you may
+    # ignore these if LVS passes", which it now does.
+    Checker.PowerGridViolations: null
+
+    # Disable KLayout DRC
+    #KLayout.DRC: null
+    #Checker.KLayoutDRC: null
+
+    # Disable KLayout antenna check
+    #KLayout.Antenna: null
+    #Checker.KLayoutAntenna: null
+
+    # Disable KLayout density check
+    #KLayout.Density: null
+    #Checker.KLayoutDensity: null
+
+    # Save time during development
+    # Enable for sign-off
+    #OpenROAD.IRDropReport: null
+    #Magic.DRC: null
+    #Checker.MagicDRC: null
+    #KLayout.XOR: null
+    #Netgen.LVS: null
+    #Checker.LVS: null
+
+DESIGN_NAME: chip_core
+VERILOG_FILES:
+- dir::../src/dcim_pkg.sv
+- dir::../src/shift_reg.sv
+- dir::../src/act_shift_chain.sv
+- dir::../src/row_decoder.sv
+- dir::../src/dcim_array.sv
+- dir::../src/col_adder.sv
+- dir::../src/adder_tree.sv
+- dir::../src/lane_shift_accum.sv
+- dir::../src/shift_accum.sv
+- dir::../src/weight_load.sv
+- dir::../src/stream_out.sv
+- dir::../src/control_fsm.sv
+- dir::../src/dcim_top.sv
+- dir::../src/chip_core.sv
+
+# chip_core's NUM_INPUT_PADS / NUM_BIDIR_PADS / NUM_ANALOG_PADS
+# parameters have no defaults (chip_top normally supplies them from
+# slot_defines.svh). Match the workshop slot's values here so this
+# is a like-for-like core of what chip_top builds.
+SYNTH_PARAMETERS:
+- NUM_INPUT_PADS=1
+- NUM_BIDIR_PADS=20
+- NUM_ANALOG_PADS=60
+
+# Enable plugin for better SystemVerilog support
+USE_SLANG: True
+SLANG_ARGUMENTS: ['--keep-hierarchy']
+
+# Slightly smaller file sizes
+PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+
+# chip_core has no VDD/VSS ports in the netlist (they're gated behind
+# `ifdef USE_POWER_PINS, which nothing here defines) -- power is still
+# connected via VDD_NETS/GND_NETS + set_global_connections in
+# pdn_cfg.tcl. Checker.DisconnectedPins otherwise flags the top design
+# itself as a critical "no power pins" violation.
+IGNORE_DISCONNECTED_MODULES:
+- chip_core
+
+# SDC files
+PNR_SDC_FILE: dir::chip_core.sdc
+SIGNOFF_SDC_FILE: dir::chip_core.sdc
+FALLBACK_SDC: dir::chip_core.sdc
+
+# Power / ground nets
+VDD_NETS:
+- VDD
+GND_NETS:
+- VSS
+
+# Clock (plain port, no physical pad instance)
+CLOCK_PORT: clk
+CLOCK_NET: clk
+CLOCK_PERIOD: 40 # 25 MHz
+
+# Fix hold violations
+PL_RESIZER_HOLD_SLACK_MARGIN: 0.35
+GRT_RESIZER_HOLD_SLACK_MARGIN: 0.3
+
+# chip_core's constant-driven pad-control buses (bidir_cs/sl/pu/ie/oe/pd
+# are all fixed masks, not dynamic signals) get their tie-hi/lo cells
+# shared across multiple output ports by default, collapsing what
+# should be distinct top-level nets and making LVS unable to match
+# ports 1:1 (Netgen: "Circuit 1 contains N nets, Circuit 2 contains
+# N+8 nets"). Force each tie to its own cell/net instead.
+DESIGN_REPAIR_TIE_SEPARATION: True
+
+# Increase for more logic
+# on your die
+PL_TARGET_DENSITY_PCT: 35
+GRT_ALLOW_CONGESTION: true
+
+# chip_core's die is auto-sized (~786x805um) with only ~6.7-16.6um of
+# core-to-die margin by default (MULT * site dimension: 0.56 x 3.92um
+# for this library) -- nowhere near enough for a 25um-wide PDN core
+# ring (needs offset 6 + width 25 + spacing 1.7 + width 25 ~= 58um).
+# Widen the margins to fit the same ring size chip_top uses, instead
+# of shrinking the ring to a nonstandard width.
+LEFT_MARGIN_MULT: 110
+RIGHT_MARGIN_MULT: 110
+TOP_MARGIN_MULT: 16
+BOTTOM_MARGIN_MULT: 16
+
+# Fix antenna violations after DRT
+DRT_ANTENNA_REPAIR_ITERS: 10
+DRT_ANTENNA_REPAIR_MARGIN: 10 # %
+
+# PDN - Straps
+PDN_VWIDTH: 5
+PDN_HWIDTH: 5
+PDN_VSPACING: 1
+PDN_HSPACING: 1
+PDN_VPITCH: 75
+PDN_HPITCH: 75
+
+# PDN - Core ring (no pads to connect to at this level)
+PDN_CORE_RING: True
+PDN_CORE_RING_VWIDTH: 25
+PDN_CORE_RING_HWIDTH: 25
+PDN_ENABLE_PINS: False
+PDN_CORE_VERTICAL_LAYER: Metal2
+PDN_CORE_HORIZONTAL_LAYER: Metal3
+
+# Do not error on magic DRC violations
+# Note: Passing magic DRC is not required for the submission.
+# However, it is recommended to fix or carefully review all violations.
+ERROR_ON_MAGIC_DRC: False
+
+# Prevent false positive DRC errors
+MAGIC_GDS_FLATGLOB:
+# For contacts
+- "*_CDNS_*"
+# Foundry provided SRAMs
+- "*$$*"
+- "M1_N*"
+- "M1_P*"
+- "M2_M1*"
+- "M3_M2*"
+- "nmos_5p0*"
+- "nmos_1p2*"
+- "pmos_5p0*"
+- "pmos_1p2*"
+- "via1_*"
+- "ypass_gate*"
+- "G_ring_*"
+# These additional cells must be flattened to get rid of 3.3V devices
+# (DUALGATE drawn into high-level cells)
+- "dcap_103*"
+- "din_*"
+- "mux821_*"
+- "rdummy_*"
+- "pmoscap_*"
+- "xdec_*"
+- "ypredec*"
+- "xpredec*"
+- "prexdec_*"
+- "xdec8_*"
+- "xdec16_*"
+- "xdec32_*"
+- "sa_*"
+
+# Since we cannot meet the minimum density limit on Metal2,
+# ignore active metal on previous and subsequent layers
+# (DM.5_DM.7 and DM.4_DM.6). Dummy metal is moved to active
+# metal during the precheck.
+KLAYOUT_FILLER_OPTIONS:
+  Metal2_ignore_active: true
+
+# Because we have multiple power pads for one power domain
+MAGIC_EXT_UNIQUE: notopports
