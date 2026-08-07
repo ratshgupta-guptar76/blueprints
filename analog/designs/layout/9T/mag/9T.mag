@@ -1,9 +1,9 @@
 magic
 tech gf180mcuD
 magscale 1 10
-timestamp 1786109494
+timestamp 1786125233
 << error_p >>
-rect -57 163 947 165
+rect -57 163 220 165
 rect 92 -23 103 -20
 rect 106 -36 138 -31
 rect 133 -72 138 -36
@@ -29,21 +29,7 @@ rect -78 -394 -72 -392
 rect -118 -400 -72 -394
 rect -118 -411 -107 -407
 << nwell >>
-rect -100 -78 1022 170
-<< psubdiff >>
-rect 749 -474 869 -420
-rect 749 -520 769 -474
-rect 815 -520 869 -474
-rect 749 -540 869 -520
-<< nsubdiff >>
-rect 865 97 985 140
-rect 865 51 901 97
-rect 947 51 985 97
-rect 865 20 985 51
-<< psubdiffcont >>
-rect 769 -520 815 -474
-<< nsubdiffcont >>
-rect 901 51 947 97
+rect -100 -78 740 170
 << sramnfet >>
 rect 63 -256 119 -212
 rect 223 -256 279 -212
@@ -181,9 +167,8 @@ rect 204 -179 250 -133
 rect 516 -309 562 -263
 rect -118 -400 -72 -354
 << metal1 >>
-rect -57 119 947 163
+rect -57 119 220 163
 rect 148 73 194 119
-rect 901 97 947 119
 rect -19 23 -12 69
 rect 34 23 42 69
 rect 141 27 148 73
@@ -206,22 +191,15 @@ rect 204 -187 250 -179
 rect 308 -211 354 -77
 rect 432 -171 478 23
 rect 600 -171 646 23
-rect 901 20 947 51
 rect 759 -171 821 -158
 rect -20 -257 -12 -211
 rect 34 -257 42 -211
 rect -20 -258 42 -257
-rect 140 -245 202 -233
+rect 137 -245 206 -233
 rect -118 -354 -72 -287
-rect 140 -291 148 -245
-rect 194 -291 202 -245
-rect -72 -400 -65 -354
-rect -118 -407 -72 -400
-rect -21 -434 66 -414
-rect -21 -480 -12 -434
-rect 34 -480 66 -434
-rect -21 -487 66 -480
-rect 140 -534 202 -291
+rect 137 -291 148 -245
+rect 194 -291 206 -245
+rect 137 -324 206 -291
 rect 300 -257 308 -211
 rect 354 -257 361 -211
 rect 419 -217 432 -171
@@ -232,31 +210,27 @@ rect 759 -217 767 -171
 rect 813 -217 821 -171
 rect 300 -263 361 -257
 rect 516 -263 562 -256
+rect 759 -261 821 -217
 rect 300 -309 516 -263
 rect 516 -319 562 -309
+rect -72 -400 -65 -354
+rect -118 -407 -72 -400
+rect -21 -434 66 -414
+rect -21 -480 -12 -434
+rect 34 -480 66 -434
+rect -21 -487 66 -480
 rect 275 -434 363 -414
 rect 275 -480 308 -434
 rect 354 -480 363 -434
 rect 275 -487 363 -480
-rect 759 -474 821 -217
-rect 759 -520 769 -474
-rect 815 -520 821 -474
-rect 759 -534 821 -520
-rect 140 -595 821 -534
 << labels >>
-rlabel polysilicon 91 112 91 112 4 PU2^
 rlabel polysilicon 91 -278 91 -278 4 PD2^
 rlabel polysilicon 251 -278 251 -278 4 PD1^
-rlabel polysilicon 251 112 251 112 4 PU1^
 rlabel polysilicon 539 112 539 112 4 M2^
 rlabel polysilicon 707 -238 707 -238 4 M1^
 rlabel polysilicon 539 -149 539 -149 4 M3^
 rlabel polysilicon -46 -377 -46 -377 4 AX2^
 rlabel polysilicon 387 -377 387 -377 4 AX1^
-rlabel metal1 s -57 119 387 163 4 VDD
-port 3 nsew
-rlabel metal1 140 -595 821 -534 1 VSS
-port 6 n
 rlabel metal1 -118 -354 -72 -287 1 WL
 port 11 n
 rlabel metal1 600 -171 646 23 1 RBL
@@ -271,4 +245,6 @@ rlabel metal1 138 -77 354 -31 1 Q
 port 8 n
 rlabel metal1 -12 -179 204 -133 1 QB
 port 12 n
+rlabel metal1 148 73 194 163 1 VDD
+port 13 n
 << end >>
