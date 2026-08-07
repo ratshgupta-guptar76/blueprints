@@ -1,0 +1,17 @@
+| units: 0.5 tech: gf180mcuD format: MIT
+x QB VDD Q VDD s=4576,192 d=7216,340 l=56 w=88 x=223 y=2 pfet_03v3
+x QB A RBL VDD s=8096,360 d=8096,360 l=56 w=88 x=511 y=2 pfet_03v3
+x WL WBL Q VSS s=5248,292 d=5144,231 l=56 w=64 x=299 y=-404 nfet_03v3
+x Q QB VSS VSS s=5144,231 d=3528,188 l=56 w=44 x=63 y=-255 nfet_03v3
+x QB VSS Q VSS s=3528,188 d=5144,231 l=56 w=44 x=223 y=-255 nfet_03v3
+x QB RBL VSS VSS s=3436,183 d=5520,316 l=56 w=44 x=679 y=-215 nfet_03v3
+x Q A RBL VSS s=6064,328 d=3436,183 l=56 w=44 x=511 y=-215 nfet_03v3
+x Q QB VDD VDD s=7216,340 d=4576,192 l=56 w=88 x=63 y=2 pfet_03v3
+x WL WBLB QB VSS s=5248,292 d=5144,231 l=56 w=64 x=-20 y=-404 nfet_03v3
+R WL 71
+R RBL 24
+R A 20
+R QB 203
+R Q 128
+R VDD 4541
+R VSS 56

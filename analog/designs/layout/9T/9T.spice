@@ -1,14 +1,43 @@
-* NGSPICE file created from 9T.ext - technology: gf180mcuD
+* SPICE3 file created from 9T.ext - technology: gf180mcuD
+.subckt 9T_03v3 A Q QB RBL VDD VSS WBL WBLB WL
+.option scale=5n
 
-.subckt x9T VSS Q QB GND A RBL WBL WBLB WL
-X0 Q QB VSS w_n100_n78# pfet_03v3 ad=0.1804p pd=1.7u as=0.1144p ps=0.96u w=0.44u l=0.28u
-X1 RBL QB A w_n100_n78# pfet_03v3 ad=0.2024p pd=1.8u as=0.2024p ps=1.8u w=0.44u l=0.28u
-X2 Q WL WBLB VSUBS nfet_03v3 ad=0.1286p pd=1.155u as=0.1312p ps=1.46u w=0.32u l=0.28u
-X3 GND Q QB VSUBS nfet_03v3 ad=88.2f pd=0.94u as=0.1286p ps=1.155u w=0.22u l=0.28u
-X4 Q QB GND VSUBS nfet_03v3 ad=0.1286p pd=1.155u as=88.2f ps=0.94u w=0.22u l=0.28u
-X5 GND QB RBL VSUBS nfet_03v3 ad=0.138p pd=1.58u as=85.89999f ps=0.915u w=0.22u l=0.28u
-X6 RBL Q A VSUBS nfet_03v3 ad=85.89999f pd=0.915u as=0.1516p ps=1.64u w=0.22u l=0.28u
-X7 VSS Q QB w_n100_n78# pfet_03v3 ad=0.1144p pd=0.96u as=0.1804p ps=1.7u w=0.44u l=0.28u
-X8 QB WL WBL VSUBS nfet_03v3 ad=0.1286p pd=1.155u as=0.1312p ps=1.46u w=0.32u l=0.28u
+X0 Q QB VDD VDD pfet_03v3 ad=7.216n pd=0.34m as=4.576n ps=0.192m w=88 l=56
+X1 RBL QB A VDD pfet_03v3 ad=8.096n pd=0.36m as=8.096n ps=0.36m w=88 l=56
+X2 Q WL WBL VSS nfet_03v3 ad=5.144n pd=0.231m as=5.248n ps=0.292m w=64 l=56
+X3 VSS Q QB VSS nfet_03v3 ad=3.528n pd=0.188m as=5.144n ps=0.231m w=44 l=56
+X4 Q QB VSS VSS nfet_03v3 ad=5.144n pd=0.231m as=3.528n ps=0.188m w=44 l=56
+X5 VSS QB RBL VSS nfet_03v3 ad=5.52n pd=0.316m as=3.436n ps=0.183m w=44 l=56
+X6 RBL Q A VSS nfet_03v3 ad=3.436n pd=0.183m as=6.064n ps=0.328m w=44 l=56
+X7 VDD Q QB VDD pfet_03v3 ad=4.576n pd=0.192m as=7.216n ps=0.34m w=88 l=56
+X8 QB WL WBLB VSS nfet_03v3 ad=5.144n pd=0.231m as=5.248n ps=0.292m w=64 l=56
+C0 Q WBLB 0
+C1 WL QB 0.02838f
+C2 WL VDD 0.00598f
+C3 QB VDD 0.39156f
+C4 Q WL 0.02325f
+C5 Q QB 0.42649f
+C6 Q VDD 0.29815f
+C7 RBL QB 0.02564f
+C8 RBL VDD 0.09671f
+C9 Q RBL 0.00442f
+C10 A QB 0.01941f
+C11 A VDD 0.07806f
+C12 A Q 0.27592f
+C13 A RBL 0.11388f
+C14 WBL WL 0.0041f
+C15 WBL QB 0
+C16 WBL VDD 0
+C17 Q WBL 0.03151f
+C18 WBLB WL 0.00409f
+C19 WBLB QB 0.02424f
+C20 WBLB VDD 0
+C21 WBL VSS 0.16527f
+C22 WBLB VSS 0.0821f
+C23 WL VSS 0.37209f
+C24 RBL VSS 0.07412f
+C25 A VSS 0.01169f
+C26 QB VSS 0.51978f
+C27 Q VSS 0.38737f
+C28 VDD VSS 1.09191f
 .ends
-
