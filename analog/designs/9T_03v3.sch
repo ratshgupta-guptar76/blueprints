@@ -130,7 +130,7 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 680 -300 1 0 {name=AX1
 L=0.28
-W=0.22
+W=0.32
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -177,7 +177,7 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 160 -300 3 1 {name=AX2
 L=0.28
-W=0.22
+W=0.32
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
