@@ -1,0 +1,40 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 07/08/2026 15:37
+
+* cell 9T
+* pin A
+* pin Q
+* pin QB
+* pin RBL
+* pin VDD
+* pin VSS
+* pin WBL
+* pin WBLB
+* pin WL
+.SUBCKT 9T A Q QB RBL VDD VSS WBL WBLB WL
+* device instance $1 r0 *1 2.695,0.23 pfet_03v3
+M$1 RBL QB A VDD pfet_03v3 L=0.28U W=0.44U AS=0.2024P AD=0.2024P PS=1.8U PD=1.8U
+* device instance $2 r0 *1 0.455,0.23 pfet_03v3
+M$2 VDD Q QB VDD pfet_03v3 L=0.28U W=0.44U AS=0.1804P AD=0.1144P PS=1.7U
++ PD=0.96U
+* device instance $3 r0 *1 1.255,0.23 pfet_03v3
+M$3 Q QB VDD VDD pfet_03v3 L=0.28U W=0.44U AS=0.1144P AD=0.1804P PS=0.96U
++ PD=1.7U
+* device instance $4 r0 *1 2.695,-0.97 nfet_03v3
+M$4 RBL Q A VSS nfet_03v3 L=0.28U W=0.22U AS=0.1516P AD=0.0859P PS=1.64U
++ PD=0.915U
+* device instance $5 r0 *1 3.535,-0.97 nfet_03v3
+M$5 RBL QB VSS VSS nfet_03v3 L=0.28U W=0.22U AS=0.138P AD=0.0859P PS=1.58U
++ PD=0.915U
+* device instance $6 r0 *1 0.055,-1.885 nfet_03v3
+M$6 QB WL WBLB VSS nfet_03v3 L=0.28U W=0.32U AS=0.1312P AD=0.1286P PS=1.46U
++ PD=1.155U
+* device instance $7 r0 *1 1.655,-1.885 nfet_03v3
+M$7 Q WL WBL VSS nfet_03v3 L=0.28U W=0.32U AS=0.1312P AD=0.1286P PS=1.46U
++ PD=1.155U
+* device instance $8 r0 *1 0.455,-1.17 nfet_03v3
+M$8 VSS Q QB VSS nfet_03v3 L=0.28U W=0.22U AS=0.1286P AD=0.0882P PS=1.155U
++ PD=0.94U
+* device instance $9 r0 *1 1.255,-1.17 nfet_03v3
+M$9 VSS QB Q VSS nfet_03v3 L=0.28U W=0.22U AS=0.1286P AD=0.0882P PS=1.155U
++ PD=0.94U
+.ENDS 9T

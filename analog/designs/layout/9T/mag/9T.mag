@@ -1,9 +1,9 @@
 magic
 tech gf180mcuD
 magscale 1 10
-timestamp 1786068985
+timestamp 1786109494
 << error_p >>
-rect -57 163 387 165
+rect -57 163 947 165
 rect 92 -23 103 -20
 rect 106 -36 138 -31
 rect 133 -72 138 -36
@@ -29,7 +29,21 @@ rect -78 -394 -72 -392
 rect -118 -400 -72 -394
 rect -118 -411 -107 -407
 << nwell >>
-rect -100 -78 796 170
+rect -100 -78 1022 170
+<< psubdiff >>
+rect 749 -474 869 -420
+rect 749 -520 769 -474
+rect 815 -520 869 -474
+rect 749 -540 869 -520
+<< nsubdiff >>
+rect 865 97 985 140
+rect 865 51 901 97
+rect 947 51 985 97
+rect 865 20 985 51
+<< psubdiffcont >>
+rect 769 -520 815 -474
+<< nsubdiffcont >>
+rect 901 51 947 97
 << sramnfet >>
 rect 63 -256 119 -212
 rect 223 -256 279 -212
@@ -167,8 +181,9 @@ rect 204 -179 250 -133
 rect 516 -309 562 -263
 rect -118 -400 -72 -354
 << metal1 >>
-rect -57 119 387 163
+rect -57 119 947 163
 rect 148 73 194 119
+rect 901 97 947 119
 rect -19 23 -12 69
 rect 34 23 42 69
 rect 141 27 148 73
@@ -191,6 +206,7 @@ rect 204 -187 250 -179
 rect 308 -211 354 -77
 rect 432 -171 478 23
 rect 600 -171 646 23
+rect 901 20 947 51
 rect 759 -171 821 -158
 rect -20 -257 -12 -211
 rect 34 -257 42 -211
@@ -222,7 +238,10 @@ rect 275 -434 363 -414
 rect 275 -480 308 -434
 rect 354 -480 363 -434
 rect 275 -487 363 -480
-rect 759 -534 821 -217
+rect 759 -474 821 -217
+rect 759 -520 769 -474
+rect 815 -520 821 -474
+rect 759 -534 821 -520
 rect 140 -595 821 -534
 << labels >>
 rlabel polysilicon 91 112 91 112 4 PU2^
@@ -234,23 +253,22 @@ rlabel polysilicon 707 -238 707 -238 4 M1^
 rlabel polysilicon 539 -149 539 -149 4 M3^
 rlabel polysilicon -46 -377 -46 -377 4 AX2^
 rlabel polysilicon 387 -377 387 -377 4 AX1^
-rlabel polycontact -95 -377 -95 -377 4 WL
-port 9 se
-rlabel sramndc 11 -457 11 -457 4 WBL
-port 7 se
-rlabel sramndc 331 -457 331 -457 4 WBLB
-port 8 se
-rlabel srampdc 455 46 455 46 4 A
-port 5 se
-rlabel srampdc 623 46 623 46 4 RBL
-port 6 se
-rlabel sramndc 171 -268 171 -268 4 GND
-port 4 se
-rlabel polycontact 115 -54 115 -54 4 Q
-port 2 se
-rlabel polycontact 227 -156 227 -156 4 QB
-port 3 se
-rlabel metal1 790 -277 790 -277 4 VSS_uq0
-rlabel metal1 s 165 141 165 141 4 VSS
-port 1 nsew
+rlabel metal1 s -57 119 387 163 4 VDD
+port 3 nsew
+rlabel metal1 140 -595 821 -534 1 VSS
+port 6 n
+rlabel metal1 -118 -354 -72 -287 1 WL
+port 11 n
+rlabel metal1 600 -171 646 23 1 RBL
+port 10 n
+rlabel metal1 432 -171 478 23 1 A
+port 7 n
+rlabel metal1 34 -487 66 -414 1 WBLB
+port 4 n
+rlabel metal1 275 -487 308 -414 1 WBL
+port 5 n
+rlabel metal1 138 -77 354 -31 1 Q
+port 8 n
+rlabel metal1 -12 -179 204 -133 1 QB
+port 12 n
 << end >>
