@@ -68,12 +68,19 @@ N 760 -380 760 -280 {lab=WBLB}
 N 160 -530 160 -510 {lab=WL}
 N 450 -350 450 -270 {lab=QBIN}
 N 390 -350 390 -280 {lab=QIN}
-N 940 -290 980 -290 {lab=VSS}
+N 940 -290 980 -290 {lab=VDD}
 N 940 -190 980 -190 {lab=VSS}
 N 940 -140 980 -140 {lab=VSS}
 N 940 -240 1080 -240 {lab=RBL}
 N 980 -190 980 -140 {lab=VSS}
-N 980 -330 980 -290 {lab=VSS}
+N 980 -330 980 -290 {lab=VDD}
+N 1100 -300 1200 -300 {lab=VSS}
+N 1200 -300 1200 -140 {lab=VSS}
+N 980 -140 1200 -140 {lab=VSS}
+N 1100 -270 1100 -260 {lab=RBL}
+N 940 -260 1100 -260 {lab=RBL}
+N 1100 -390 1100 -330 {lab=A}
+N 940 -390 1100 -390 {lab=A}
 C {symbols/nfet_03v3.sym} 920 -190 0 0 {name=M1
 L='L_M1'
 W='W_M1'
@@ -207,3 +214,18 @@ model=pfet_03v3
 spiceprefix=X
 }
 C {lab_pin.sym} 980 -330 1 0 {name=p2 sig_type=std_logic lab=VDD}
+C {symbols/pfet_03v3.sym} 1080 -300 0 0 {name=M3
+L='L_M2'
+W='W_M2'
+nf=1
+m=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {lab_pin.sym} 1060 -300 0 0 {name=p4 sig_type=std_logic lab=Q}

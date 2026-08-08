@@ -1,0 +1,260 @@
+| units: 0.5 tech: gf180mcuD format: MIT
+x 9T_tileable_0[0,0]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,0]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=434 y=954 nfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,0]/WBL 9T_tileable_0[0,0]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=107 y=125 nfet_03v3
+x 9T_tileable_0[0,0]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,0]/Q 9T_tileable_0[0,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=382 y=537 pfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,0]/WBLB 9T_tileable_0[0,0]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=458 y=125 nfet_03v3
+x 9T_tileable_0[0,0]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,0]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=382 y=274 nfet_03v3
+x 9T_tileable_0[0,0]/Q 9T_tileable_0[0,0]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=190 y=537 pfet_03v3
+x 9T_tileable_0[0,0]/Q 9T_tileable_0[0,5]/A 9T_tileable_0[0,0]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=130 y=954 nfet_03v3
+x 9T_tileable_0[0,0]/Q 9T_tileable_0[0,0]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=190 y=274 nfet_03v3
+x 9T_tileable_0[0,0]/QB 9T_tileable_0[0,5]/A 9T_tileable_0[0,0]/RBL 9T_tileable_0[0,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=382 y=681 pfet_03v3
+x 9T_tileable_0[1,0]/QB 9T_tileable_0[1,0]/a_199_412# 9T_tileable_0[1,0]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=434 y=2050 nfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,0]/WBL 9T_tileable_0[1,0]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=107 y=1221 nfet_03v3
+x 9T_tileable_0[1,0]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,0]/Q 9T_tileable_0[1,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=382 y=1633 pfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,0]/WBLB 9T_tileable_0[1,0]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=458 y=1221 nfet_03v3
+x 9T_tileable_0[1,0]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,0]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=382 y=1370 nfet_03v3
+x 9T_tileable_0[1,0]/Q 9T_tileable_0[1,0]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=190 y=1633 pfet_03v3
+x 9T_tileable_0[1,0]/Q 9T_tileable_0[1,5]/A 9T_tileable_0[1,0]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=130 y=2050 nfet_03v3
+x 9T_tileable_0[1,0]/Q 9T_tileable_0[1,0]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=190 y=1370 nfet_03v3
+x 9T_tileable_0[1,0]/QB 9T_tileable_0[1,5]/A 9T_tileable_0[1,0]/RBL 9T_tileable_0[1,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=382 y=1777 pfet_03v3
+x 9T_tileable_0[0,1]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,1]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=1056 y=954 nfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,1]/WBL 9T_tileable_0[0,1]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=729 y=125 nfet_03v3
+x 9T_tileable_0[0,1]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,1]/Q 9T_tileable_0[0,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=1004 y=537 pfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,1]/WBLB 9T_tileable_0[0,1]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=1080 y=125 nfet_03v3
+x 9T_tileable_0[0,1]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,1]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=1004 y=274 nfet_03v3
+x 9T_tileable_0[0,1]/Q 9T_tileable_0[0,1]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=812 y=537 pfet_03v3
+x 9T_tileable_0[0,1]/Q 9T_tileable_0[0,5]/A 9T_tileable_0[0,1]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=752 y=954 nfet_03v3
+x 9T_tileable_0[0,1]/Q 9T_tileable_0[0,1]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=812 y=274 nfet_03v3
+x 9T_tileable_0[0,1]/QB 9T_tileable_0[0,5]/A 9T_tileable_0[0,1]/RBL 9T_tileable_0[0,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=1004 y=681 pfet_03v3
+x 9T_tileable_0[1,1]/QB 9T_tileable_0[1,1]/a_199_412# 9T_tileable_0[1,1]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=1056 y=2050 nfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,1]/WBL 9T_tileable_0[1,1]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=729 y=1221 nfet_03v3
+x 9T_tileable_0[1,1]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,1]/Q 9T_tileable_0[1,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=1004 y=1633 pfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,1]/WBLB 9T_tileable_0[1,1]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=1080 y=1221 nfet_03v3
+x 9T_tileable_0[1,1]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,1]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=1004 y=1370 nfet_03v3
+x 9T_tileable_0[1,1]/Q 9T_tileable_0[1,1]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=812 y=1633 pfet_03v3
+x 9T_tileable_0[1,1]/Q 9T_tileable_0[1,5]/A 9T_tileable_0[1,1]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=752 y=2050 nfet_03v3
+x 9T_tileable_0[1,1]/Q 9T_tileable_0[1,1]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=812 y=1370 nfet_03v3
+x 9T_tileable_0[1,1]/QB 9T_tileable_0[1,5]/A 9T_tileable_0[1,1]/RBL 9T_tileable_0[1,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=1004 y=1777 pfet_03v3
+x 9T_tileable_0[0,2]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,2]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=1678 y=954 nfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,2]/WBL 9T_tileable_0[0,2]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=1351 y=125 nfet_03v3
+x 9T_tileable_0[0,2]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,2]/Q 9T_tileable_0[0,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=1626 y=537 pfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,2]/WBLB 9T_tileable_0[0,2]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=1702 y=125 nfet_03v3
+x 9T_tileable_0[0,2]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,2]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=1626 y=274 nfet_03v3
+x 9T_tileable_0[0,2]/Q 9T_tileable_0[0,2]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=1434 y=537 pfet_03v3
+x 9T_tileable_0[0,2]/Q 9T_tileable_0[0,5]/A 9T_tileable_0[0,2]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=1374 y=954 nfet_03v3
+x 9T_tileable_0[0,2]/Q 9T_tileable_0[0,2]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=1434 y=274 nfet_03v3
+x 9T_tileable_0[0,2]/QB 9T_tileable_0[0,5]/A 9T_tileable_0[0,2]/RBL 9T_tileable_0[0,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=1626 y=681 pfet_03v3
+x 9T_tileable_0[1,2]/QB 9T_tileable_0[1,2]/a_199_412# 9T_tileable_0[1,2]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=1678 y=2050 nfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,2]/WBL 9T_tileable_0[1,2]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=1351 y=1221 nfet_03v3
+x 9T_tileable_0[1,2]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,2]/Q 9T_tileable_0[1,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=1626 y=1633 pfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,2]/WBLB 9T_tileable_0[1,2]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=1702 y=1221 nfet_03v3
+x 9T_tileable_0[1,2]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,2]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=1626 y=1370 nfet_03v3
+x 9T_tileable_0[1,2]/Q 9T_tileable_0[1,2]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=1434 y=1633 pfet_03v3
+x 9T_tileable_0[1,2]/Q 9T_tileable_0[1,5]/A 9T_tileable_0[1,2]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=1374 y=2050 nfet_03v3
+x 9T_tileable_0[1,2]/Q 9T_tileable_0[1,2]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=1434 y=1370 nfet_03v3
+x 9T_tileable_0[1,2]/QB 9T_tileable_0[1,5]/A 9T_tileable_0[1,2]/RBL 9T_tileable_0[1,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=1626 y=1777 pfet_03v3
+x 9T_tileable_0[0,3]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,3]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=2300 y=954 nfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,3]/WBL 9T_tileable_0[0,3]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=1973 y=125 nfet_03v3
+x 9T_tileable_0[0,3]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,3]/Q 9T_tileable_0[0,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=2248 y=537 pfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,3]/WBLB 9T_tileable_0[0,3]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=2324 y=125 nfet_03v3
+x 9T_tileable_0[0,3]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,3]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=2248 y=274 nfet_03v3
+x 9T_tileable_0[0,3]/Q 9T_tileable_0[0,3]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=2056 y=537 pfet_03v3
+x 9T_tileable_0[0,3]/Q 9T_tileable_0[0,5]/A 9T_tileable_0[0,3]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=1996 y=954 nfet_03v3
+x 9T_tileable_0[0,3]/Q 9T_tileable_0[0,3]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=2056 y=274 nfet_03v3
+x 9T_tileable_0[0,3]/QB 9T_tileable_0[0,5]/A 9T_tileable_0[0,3]/RBL 9T_tileable_0[0,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=2248 y=681 pfet_03v3
+x 9T_tileable_0[1,3]/QB 9T_tileable_0[1,3]/a_199_412# 9T_tileable_0[1,3]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=2300 y=2050 nfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,3]/WBL 9T_tileable_0[1,3]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=1973 y=1221 nfet_03v3
+x 9T_tileable_0[1,3]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,3]/Q 9T_tileable_0[1,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=2248 y=1633 pfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,3]/WBLB 9T_tileable_0[1,3]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=2324 y=1221 nfet_03v3
+x 9T_tileable_0[1,3]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,3]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=2248 y=1370 nfet_03v3
+x 9T_tileable_0[1,3]/Q 9T_tileable_0[1,3]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=2056 y=1633 pfet_03v3
+x 9T_tileable_0[1,3]/Q 9T_tileable_0[1,5]/A 9T_tileable_0[1,3]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=1996 y=2050 nfet_03v3
+x 9T_tileable_0[1,3]/Q 9T_tileable_0[1,3]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=2056 y=1370 nfet_03v3
+x 9T_tileable_0[1,3]/QB 9T_tileable_0[1,5]/A 9T_tileable_0[1,3]/RBL 9T_tileable_0[1,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=2248 y=1777 pfet_03v3
+x 9T_tileable_0[0,4]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,4]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=2922 y=954 nfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,4]/WBL 9T_tileable_0[0,4]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=2595 y=125 nfet_03v3
+x 9T_tileable_0[0,4]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,4]/Q 9T_tileable_0[0,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=2870 y=537 pfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,4]/WBLB 9T_tileable_0[0,4]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=2946 y=125 nfet_03v3
+x 9T_tileable_0[0,4]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,4]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=2870 y=274 nfet_03v3
+x 9T_tileable_0[0,4]/Q 9T_tileable_0[0,4]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=2678 y=537 pfet_03v3
+x 9T_tileable_0[0,4]/Q 9T_tileable_0[0,5]/A 9T_tileable_0[0,4]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=2618 y=954 nfet_03v3
+x 9T_tileable_0[0,4]/Q 9T_tileable_0[0,4]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=2678 y=274 nfet_03v3
+x 9T_tileable_0[0,4]/QB 9T_tileable_0[0,5]/A 9T_tileable_0[0,4]/RBL 9T_tileable_0[0,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=2870 y=681 pfet_03v3
+x 9T_tileable_0[1,4]/QB 9T_tileable_0[1,4]/a_199_412# 9T_tileable_0[1,4]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=2922 y=2050 nfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,4]/WBL 9T_tileable_0[1,4]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=2595 y=1221 nfet_03v3
+x 9T_tileable_0[1,4]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,4]/Q 9T_tileable_0[1,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=2870 y=1633 pfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,4]/WBLB 9T_tileable_0[1,4]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=2946 y=1221 nfet_03v3
+x 9T_tileable_0[1,4]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,4]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=2870 y=1370 nfet_03v3
+x 9T_tileable_0[1,4]/Q 9T_tileable_0[1,4]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=2678 y=1633 pfet_03v3
+x 9T_tileable_0[1,4]/Q 9T_tileable_0[1,5]/A 9T_tileable_0[1,4]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=2618 y=2050 nfet_03v3
+x 9T_tileable_0[1,4]/Q 9T_tileable_0[1,4]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=2678 y=1370 nfet_03v3
+x 9T_tileable_0[1,4]/QB 9T_tileable_0[1,5]/A 9T_tileable_0[1,4]/RBL 9T_tileable_0[1,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=2870 y=1777 pfet_03v3
+x 9T_tileable_0[0,5]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,5]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=3544 y=954 nfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,5]/WBL 9T_tileable_0[0,5]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=3217 y=125 nfet_03v3
+x 9T_tileable_0[0,5]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,5]/Q 9T_tileable_0[0,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=3492 y=537 pfet_03v3
+x 9T_tileable_0[0,5]/WL 9T_tileable_0[1,5]/WBLB 9T_tileable_0[0,5]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=3568 y=125 nfet_03v3
+x 9T_tileable_0[0,5]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,5]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=3492 y=274 nfet_03v3
+x 9T_tileable_0[0,5]/Q 9T_tileable_0[0,5]/QB 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=3300 y=537 pfet_03v3
+x 9T_tileable_0[0,5]/Q 9T_tileable_0[0,5]/A 9T_tileable_0[0,5]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=3240 y=954 nfet_03v3
+x 9T_tileable_0[0,5]/Q 9T_tileable_0[0,5]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=3300 y=274 nfet_03v3
+x 9T_tileable_0[0,5]/QB 9T_tileable_0[0,5]/A 9T_tileable_0[0,5]/RBL 9T_tileable_0[0,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=3492 y=681 pfet_03v3
+x 9T_tileable_0[1,5]/QB 9T_tileable_0[1,5]/a_199_412# 9T_tileable_0[1,5]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=3544 y=2050 nfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,5]/WBL 9T_tileable_0[1,5]/QB 9T_tileable_0[1,5]/VSS s=9448,406 d=5560,243 l=56 w=64 x=3217 y=1221 nfet_03v3
+x 9T_tileable_0[1,5]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,5]/Q 9T_tileable_0[1,5]/VDD s=5984,224 d=7744,352 l=56 w=88 x=3492 y=1633 pfet_03v3
+x 9T_tileable_0[1,5]/WL 9T_tileable_0[1,5]/WBLB 9T_tileable_0[1,5]/Q 9T_tileable_0[1,5]/VSS s=6824,340 d=5588,244 l=56 w=64 x=3568 y=1221 nfet_03v3
+x 9T_tileable_0[1,5]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/Q 9T_tileable_0[1,5]/VSS s=4432,220 d=5588,244 l=56 w=44 x=3492 y=1370 nfet_03v3
+x 9T_tileable_0[1,5]/Q 9T_tileable_0[1,5]/QB 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,5]/VDD s=7744,352 d=5984,224 l=56 w=88 x=3300 y=1633 pfet_03v3
+x 9T_tileable_0[1,5]/Q 9T_tileable_0[1,5]/A 9T_tileable_0[1,5]/RBL 9T_tileable_0[1,5]/VSS s=6064,328 d=6064,328 l=56 w=44 x=3240 y=2050 nfet_03v3
+x 9T_tileable_0[1,5]/Q 9T_tileable_0[1,5]/QB 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSS s=5560,243 d=4432,220 l=56 w=44 x=3300 y=1370 nfet_03v3
+x 9T_tileable_0[1,5]/QB 9T_tileable_0[1,5]/A 9T_tileable_0[1,5]/RBL 9T_tileable_0[1,5]/VDD s=8096,360 d=8328,368 l=56 w=88 x=3492 y=1777 pfet_03v3
+R 9T_tileable_0[1,5]/WBLB 43
+= 9T_tileable_0[1,5]/WBLB 9T_tileable_0[0,5]/WBLB
+R 9T_tileable_0[1,5]/WBL 45
+= 9T_tileable_0[1,5]/WBL 9T_tileable_0[0,5]/WBL
+R 9T_tileable_0[1,5]/RBL 53
+R 9T_tileable_0[1,5]/QB 138
+R 9T_tileable_0[1,5]/a_199_412# 12
+R 9T_tileable_0[1,5]/Q 139
+R 9T_tileable_0[0,5]/RBL 53
+R 9T_tileable_0[0,5]/QB 138
+R 9T_tileable_0[0,5]/Q 139
+R 9T_tileable_0[1,4]/WBLB 43
+= 9T_tileable_0[1,4]/WBLB 9T_tileable_0[0,4]/WBLB
+R 9T_tileable_0[1,4]/WBL 45
+= 9T_tileable_0[1,4]/WBL 9T_tileable_0[0,4]/WBL
+R 9T_tileable_0[1,4]/RBL 53
+R 9T_tileable_0[1,4]/QB 138
+R 9T_tileable_0[1,4]/a_199_412# 12
+R 9T_tileable_0[1,4]/Q 139
+R 9T_tileable_0[0,4]/RBL 53
+R 9T_tileable_0[0,4]/QB 138
+R 9T_tileable_0[0,4]/Q 139
+R 9T_tileable_0[1,3]/WBLB 43
+= 9T_tileable_0[1,3]/WBLB 9T_tileable_0[0,3]/WBLB
+R 9T_tileable_0[1,3]/WBL 45
+= 9T_tileable_0[1,3]/WBL 9T_tileable_0[0,3]/WBL
+R 9T_tileable_0[1,3]/RBL 53
+R 9T_tileable_0[1,3]/QB 138
+R 9T_tileable_0[1,3]/a_199_412# 12
+R 9T_tileable_0[1,3]/Q 139
+R 9T_tileable_0[0,3]/RBL 53
+R 9T_tileable_0[0,3]/QB 138
+R 9T_tileable_0[0,3]/Q 139
+R 9T_tileable_0[1,2]/WBLB 43
+= 9T_tileable_0[1,2]/WBLB 9T_tileable_0[0,2]/WBLB
+R 9T_tileable_0[1,2]/WBL 45
+= 9T_tileable_0[1,2]/WBL 9T_tileable_0[0,2]/WBL
+R 9T_tileable_0[1,2]/RBL 53
+R 9T_tileable_0[1,2]/QB 138
+R 9T_tileable_0[1,2]/a_199_412# 12
+R 9T_tileable_0[1,2]/Q 139
+R 9T_tileable_0[0,2]/RBL 53
+R 9T_tileable_0[0,2]/QB 138
+R 9T_tileable_0[0,2]/Q 139
+R 9T_tileable_0[1,1]/WBLB 43
+= 9T_tileable_0[1,1]/WBLB 9T_tileable_0[0,1]/WBLB
+R 9T_tileable_0[1,1]/WBL 45
+= 9T_tileable_0[1,1]/WBL 9T_tileable_0[0,1]/WBL
+C 9T_tileable_0[1,5]/WL0 4.4
+R 9T_tileable_0[1,5]/WL 526
+= 9T_tileable_0[1,5]/WL 9T_tileable_0[1,4]/WL
+= 9T_tileable_0[1,5]/WL 9T_tileable_0[1,3]/WL
+= 9T_tileable_0[1,5]/WL 9T_tileable_0[1,2]/WL
+= 9T_tileable_0[1,5]/WL 9T_tileable_0[1,1]/WL
+= 9T_tileable_0[1,5]/WL 9T_tileable_0[1,0]/WL
+R 9T_tileable_0[1,5]/VSS 624
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,5]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,5]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,4]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,4]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,0]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,5]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,4]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,3]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,2]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,1]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,0]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,3]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,3]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,2]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,1]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,2]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,1]/VSUBS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,0]/VSUBS
+= 9T_tileable_0[1,5]/VSS a_n228_222#
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,5]/a_199_412#
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,4]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,4]/a_199_412#
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,3]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,3]/a_199_412#
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,2]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,2]/a_199_412#
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,1]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[1,0]/VSS
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,0]/a_199_412#
+= 9T_tileable_0[1,5]/VSS 9T_tileable_0[0,1]/a_199_412#
+R 9T_tileable_0[1,1]/RBL 53
+R 9T_tileable_0[1,5]/A 316
+= 9T_tileable_0[1,5]/A 9T_tileable_0[1,4]/A
+= 9T_tileable_0[1,5]/A 9T_tileable_0[1,3]/A
+= 9T_tileable_0[1,5]/A 9T_tileable_0[1,2]/A
+= 9T_tileable_0[1,5]/A 9T_tileable_0[1,1]/A
+= 9T_tileable_0[1,5]/A 9T_tileable_0[1,0]/A
+C 9T_tileable_0[1,5]/VDD0 6.7
+R 9T_tileable_0[1,5]/VDD 9939
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,5]/a_103_8#
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,4]/a_103_8#
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,3]/a_103_8#
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,2]/a_103_8#
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,1]/a_103_8#
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,0]/a_103_8#
+= 9T_tileable_0[1,5]/VDD w_n216_1546#
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,4]/VDD
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,3]/VDD
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,2]/VDD
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,1]/VDD
+= 9T_tileable_0[1,5]/VDD 9T_tileable_0[1,0]/VDD
+R 9T_tileable_0[1,1]/QB 138
+R 9T_tileable_0[1,1]/a_199_412# 12
+R 9T_tileable_0[1,1]/Q 139
+C 9T_tileable_0[0,5]/WL0 4.3
+R 9T_tileable_0[0,5]/WL 526
+= 9T_tileable_0[0,5]/WL 9T_tileable_0[0,4]/WL
+= 9T_tileable_0[0,5]/WL 9T_tileable_0[0,3]/WL
+= 9T_tileable_0[0,5]/WL 9T_tileable_0[0,2]/WL
+= 9T_tileable_0[0,5]/WL 9T_tileable_0[0,1]/WL
+= 9T_tileable_0[0,5]/WL 9T_tileable_0[0,0]/WL
+R 9T_tileable_0[0,1]/RBL 53
+R 9T_tileable_0[0,5]/A 316
+= 9T_tileable_0[0,5]/A 9T_tileable_0[0,4]/A
+= 9T_tileable_0[0,5]/A 9T_tileable_0[0,3]/A
+= 9T_tileable_0[0,5]/A 9T_tileable_0[0,2]/A
+= 9T_tileable_0[0,5]/A 9T_tileable_0[0,1]/A
+= 9T_tileable_0[0,5]/A 9T_tileable_0[0,0]/A
+C 9T_tileable_0[0,5]/VDD0 6.7
+R 9T_tileable_0[0,5]/VDD 10036
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,5]/a_103_8#
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,4]/a_103_8#
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,3]/a_103_8#
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,2]/a_103_8#
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,1]/a_103_8#
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,0]/a_103_8#
+= 9T_tileable_0[0,5]/VDD w_n255_450#
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,4]/VDD
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,3]/VDD
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,2]/VDD
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,1]/VDD
+= 9T_tileable_0[0,5]/VDD 9T_tileable_0[0,0]/VDD
+R 9T_tileable_0[0,1]/QB 138
+R 9T_tileable_0[0,1]/Q 139
+R 9T_tileable_0[1,0]/WBLB 43
+= 9T_tileable_0[1,0]/WBLB 9T_tileable_0[0,0]/WBLB
+R 9T_tileable_0[1,0]/WBL 45
+= 9T_tileable_0[1,0]/WBL 9T_tileable_0[0,0]/WBL
+R 9T_tileable_0[1,0]/RBL 53
+R 9T_tileable_0[1,0]/QB 138
+R 9T_tileable_0[1,0]/a_199_412# 12
+R 9T_tileable_0[1,0]/Q 139
+R 9T_tileable_0[0,0]/RBL 53
+R 9T_tileable_0[0,0]/QB 138
+R 9T_tileable_0[0,0]/Q 139

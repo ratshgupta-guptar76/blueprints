@@ -1,0 +1,372 @@
+timestamp 1786204855
+version 8.3
+tech gf180mcuD
+style ngspice()
+scale 1000 1 0.5
+resistclasses 1000000 3250000 6300 7000 6300 7000 7300 1000000 60000 185000 60000 185000 6300 7000 6300 7000 6800 7300 350000 310000 1000000 90 90 90 90 40
+use 9T_tileable 9T_tileable_0[0:5:622][0:1:1096] 1 0 143 0 1 529
+node "w_n255_450#" 1597 611.524 -255 450 nw 103275 1320 0 0 32956 736 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 22688 610 36276 776 0 0 0 0 0 0
+node "w_n216_1546#" 1938 522.703 -216 1546 nw 88648 1256 0 0 27372 662 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17907 536 26469 652 0 0 0 0 0 0
+substrate "a_n228_222#" 42 0 -228 222 ppd 0 0 0 0 0 0 68915 1490 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 27346 936 59262 1378 0 0 0 0 0 0
+cap "w_n216_1546#" "w_n255_450#" 1.54424
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,2]/Q" 0.0561008
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,0]/WL" 0.00427706
+cap "9T_tileable_0[0,0]/RBL" "9T_tileable_0[0,0]/VSS" -1.03917e-13
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,1]/Q" -3.46945e-18
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,0]/RBL" 1.42388
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,0]/WL" 9.76996e-15
+cap "9T_tileable_0[1,0]/Q" "9T_tileable_0[0,0]/VSS" 0.374586
+cap "9T_tileable_0[0,0]/VSS" "9T_tileable_0[0,0]/WBLB" -8.52651e-14
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,0]/WBLB" 0.399972
+cap "9T_tileable_0[0,1]/RBL" "9T_tileable_0[0,0]/VSS" -2.84217e-14
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,1]/RBL" 3.55271e-15
+cap "9T_tileable_0[0,1]/WBLB" "9T_tileable_0[0,0]/VSS" -7.10543e-14
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,1]/WBLB" 0.104425
+cap "9T_tileable_0[0,1]/WBL" "9T_tileable_0[0,0]/VSS" -1.42109e-13
+cap "9T_tileable_0[0,0]/VSS" "9T_tileable_0[0,0]/QB" 43.0506
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,1]/WBL" 0.163638
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,0]/QB" 54.5032
+cap "9T_tileable_0[0,0]/WBL" "9T_tileable_0[0,0]/VSS" 18.8689
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,0]/WBL" 21.5485
+cap "9T_tileable_0[1,0]/QB" "9T_tileable_0[0,0]/VSS" 16.9983
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,0]/Q" -3.46945e-18
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,1]/QB" 8.32667e-17
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,0]/VSS" -5.68434e-14
+cap "9T_tileable_0[1,0]/WL" "9T_tileable_0[0,0]/VSS" -1.83187e-14
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[1,0]/WL" 6.66134e-16
+cap "9T_tileable_0[0,1]/Q" "9T_tileable_0[0,0]/VSS" -1.42109e-14
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,1]/Q" 0.144315
+cap "9T_tileable_0[0,0]/VSS" "9T_tileable_0[0,2]/WBL" -3.33067e-16
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,2]/WBL" 0.0609286
+cap "9T_tileable_0[0,0]/Q" "9T_tileable_0[0,0]/QB" 5.68434e-14
+cap "9T_tileable_0[0,1]/WBL" "9T_tileable_0[0,0]/Q" 4.44089e-16
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,0]/QB" 8.32667e-17
+cap "9T_tileable_0[0,0]/Q" "9T_tileable_0[0,0]/VSS" 1.35767
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,1]/QB" 0.103021
+cap "9T_tileable_0[0,0]/A" "9T_tileable_0[0,0]/VSS" 3.77476e-15
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,0]/Q" 16.4839
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[0,0]/A" 13.2898
+cap "9T_tileable_0[0,0]/VDD" "9T_tileable_0[1,0]/VDD" 1.11022e-16
+cap "9T_tileable_0[0,2]/QB" "9T_tileable_0[0,0]/VSS" 4.16334e-17
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,1]/RBL" -4.44089e-16
+cap "9T_tileable_0[0,1]/Q" "9T_tileable_0[0,0]/VDD" -3.55271e-15
+cap "9T_tileable_0[0,2]/WBL" "9T_tileable_0[0,0]/VDD" -4.26326e-14
+cap "9T_tileable_0[0,2]/WBL" "9T_tileable_0[0,0]/VSS" -1.13687e-13
+cap "9T_tileable_0[0,0]/WL" "9T_tileable_0[0,0]/VDD" 1.77636e-15
+cap "9T_tileable_0[0,0]/WL" "9T_tileable_0[0,0]/VSS" 1.63203e-14
+cap "9T_tileable_0[1,0]/WL" "9T_tileable_0[0,0]/VDD" -3.33067e-16
+cap "9T_tileable_0[0,0]/VSS" "9T_tileable_0[1,0]/WL" 5.68434e-14
+cap "9T_tileable_0[0,2]/WBL" "9T_tileable_0[0,1]/Q" 4.44089e-16
+cap "9T_tileable_0[0,2]/RBL" "9T_tileable_0[0,0]/VDD" -8.88178e-16
+cap "9T_tileable_0[0,0]/A" "9T_tileable_0[0,0]/VDD" -8.52651e-14
+cap "9T_tileable_0[0,0]/A" "9T_tileable_0[0,0]/VSS" -1.77636e-15
+cap "9T_tileable_0[0,1]/QB" "9T_tileable_0[0,0]/VSS" -2.77556e-17
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,0]/WL" 8.88178e-16
+cap "9T_tileable_0[0,2]/QB" "9T_tileable_0[0,0]/VDD" -4.26326e-14
+cap "9T_tileable_0[0,2]/Q" "9T_tileable_0[0,0]/VDD" 1.27898e-13
+cap "9T_tileable_0[0,2]/Q" "9T_tileable_0[0,0]/VSS" 2.44249e-15
+cap "9T_tileable_0[0,1]/RBL" "9T_tileable_0[0,0]/VDD" 2.13163e-14
+cap "9T_tileable_0[0,0]/VSS" "9T_tileable_0[0,1]/RBL" -6.66134e-16
+cap "9T_tileable_0[0,2]/Q" "9T_tileable_0[1,0]/VDD" -3.46945e-18
+cap "9T_tileable_0[0,2]/WBLB" "9T_tileable_0[0,0]/VDD" -3.55271e-15
+cap "9T_tileable_0[0,2]/QB" "9T_tileable_0[0,0]/VDD" -6.93889e-17
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,0]/VDD" 1.11022e-16
+cap "9T_tileable_0[0,0]/WBL" "9T_tileable_0[1,0]/VDD" 17.6441
+cap "9T_tileable_0[0,1]/WBL" "9T_tileable_0[1,0]/Q" 2.22045e-16
+cap "9T_tileable_0[0,0]/VSS" "9T_tileable_0[1,0]/QB" 31.178
+cap "9T_tileable_0[0,1]/WBL" "9T_tileable_0[1,0]/VDD" 0.0541133
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,1]/RBL" 3.55271e-15
+cap "9T_tileable_0[0,1]/WBLB" "9T_tileable_0[1,0]/VDD" 0.0338447
+cap "9T_tileable_0[0,0]/VSS" "9T_tileable_0[1,0]/Q" 0.954127
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,0]/VSS" -4.26326e-14
+cap "9T_tileable_0[0,0]/WBLB" "9T_tileable_0[1,0]/VDD" 0.140977
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,1]/Q" 0.0515827
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,0]/QB" 70.8054
+cap "9T_tileable_0[1,2]/Q" "9T_tileable_0[1,0]/VDD" 0.0192771
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,0]/A" 11.6682
+cap "9T_tileable_0[0,0]/WBL" "9T_tileable_0[0,0]/VSS" 7.87676
+cap "9T_tileable_0[0,1]/WBL" "9T_tileable_0[0,0]/VSS" 7.10543e-15
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,0]/Q" 14.6209
+cap "9T_tileable_0[1,1]/QB" "9T_tileable_0[1,0]/VDD" 0.0362451
+cap "9T_tileable_0[0,2]/WBL" "9T_tileable_0[1,0]/VDD" 0.0193825
+cap "9T_tileable_0[0,2]/WBLB" "9T_tileable_0[1,0]/VDD" 0.000591489
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,0]/RBL" 1.2396
+cap "9T_tileable_0[0,2]/WBL" "9T_tileable_0[0,0]/VSS" 7.10543e-15
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,1]/RBL" 2.13163e-14
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,2]/WBL" -2.04281e-14
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,0]/A" -2.13163e-14
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,2]/WBLB" -1.33227e-15
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,1]/Q" -3.55271e-15
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[0,0]/VSS" -1.01585e-14
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,2]/RBL" 8.88178e-16
+cap "9T_tileable_0[1,0]/VDD" "9T_tileable_0[1,2]/QB" -3.55271e-15
+cap "9T_tileable_0[1,2]/Q" "9T_tileable_0[0,0]/VSS" 8.88178e-16
+cap "9T_tileable_0[0,2]/WBL" "9T_tileable_0[1,1]/Q" 2.22045e-16
+cap "9T_tileable_0[1,2]/Q" "9T_tileable_0[1,0]/VDD" 1.7053e-13
+merge "9T_tileable_0[1,5]/VSUBS" "9T_tileable_0[0,5]/VSUBS" -147.788 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -664 0 0 0 0 0 0
+merge "9T_tileable_0[0,5]/VSUBS" "9T_tileable_0[1,4]/VSUBS"
+merge "9T_tileable_0[1,4]/VSUBS" "9T_tileable_0[0,4]/VSUBS"
+merge "9T_tileable_0[0,4]/VSUBS" "9T_tileable_0[1,3]/VSUBS"
+merge "9T_tileable_0[1,3]/VSUBS" "9T_tileable_0[0,3]/VSUBS"
+merge "9T_tileable_0[0,3]/VSUBS" "9T_tileable_0[1,2]/VSUBS"
+merge "9T_tileable_0[1,2]/VSUBS" "9T_tileable_0[0,2]/VSUBS"
+merge "9T_tileable_0[0,2]/VSUBS" "9T_tileable_0[1,1]/VSUBS"
+merge "9T_tileable_0[1,1]/VSUBS" "9T_tileable_0[0,1]/VSUBS"
+merge "9T_tileable_0[0,1]/VSUBS" "9T_tileable_0[1,0]/VSUBS"
+merge "9T_tileable_0[1,0]/VSUBS" "9T_tileable_0[0,0]/VSUBS"
+merge "9T_tileable_0[0,0]/VSUBS" "9T_tileable_0[0,0]/VSS"
+merge "9T_tileable_0[0,0]/VSS" "9T_tileable_0[1,0]/VSS"
+merge "9T_tileable_0[1,0]/VSS" "a_n228_222#"
+merge "9T_tileable_0[1,0]/a_103_8#" "9T_tileable_0[1,0]/VDD" -132.81 -1384 -824 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1328 -348 0 0 0 0 0 0
+merge "9T_tileable_0[1,0]/VDD" "w_n216_1546#"
+merge "9T_tileable_0[0,0]/a_103_8#" "9T_tileable_0[0,0]/VDD" -131.906 0 -810 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -332 0 0 0 0 0 0
+merge "9T_tileable_0[0,0]/VDD" "w_n255_450#"
+cap "9T_tileable_0[1:1,0:5]/VDD" "9T_tileable_0[0:0,0:5]/RBL" 0.991635
+cap "9T_tileable_0[0:0,0:5]/WBLB" "9T_tileable_0[0:0,0:5]/A" 57.5427
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[0:0,0:5]/VSS" 0.456717
+cap "9T_tileable_0[1:1,0:5]/QB" "9T_tileable_0[0:0,0:5]/RBL" 6.38519
+cap "9T_tileable_0[1:1,0:5]/Q" "9T_tileable_0[0:0,0:5]/A" 0.212055
+cap "9T_tileable_0[0:0,0:5]/RBL" "9T_tileable_0[1:1,0:5]/VSS" 4.73828
+cap "9T_tileable_0[0:0,0:5]/Q" "9T_tileable_0[0:0,0:5]/A" -1.42109e-14
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[0:0,0:5]/RBL" 7.19916
+cap "9T_tileable_0[0:0,0:5]/WBLB" "9T_tileable_0[0:0,0:5]/QB" 4.94088
+cap "9T_tileable_0[0:0,0:5]/VDD" "9T_tileable_0[1:1,0:5]/QB" 0.117196
+cap "9T_tileable_0[1:1,0:5]/Q" "9T_tileable_0[0:0,0:5]/WBLB" 0.198584
+cap "9T_tileable_0[0:0,0:5]/WBL" "9T_tileable_0[0:0,0:5]/RBL" 0.240703
+cap "9T_tileable_0[1:1,0:5]/RBL" "9T_tileable_0[0:0,0:5]/A" 0.453581
+cap "9T_tileable_0[0:0,0:5]/VDD" "9T_tileable_0[1:1,0:5]/WL" 7.21157
+cap "9T_tileable_0[1:1,0:5]/Q" "9T_tileable_0[0:0,0:5]/QB" 0.64343
+cap "9T_tileable_0[0:0,0:5]/VDD" "9T_tileable_0[0:0,0:5]/WBL" 0.138445
+cap "9T_tileable_0[1:1,0:5]/QB" "9T_tileable_0[1:1,0:5]/VSS" 7.14034
+cap "9T_tileable_0[1:1,0:5]/a_103_8#" "9T_tileable_0[0:0,0:5]/QB" 0.0143927
+cap "9T_tileable_0[1:1,0:5]/Q" "9T_tileable_0[0:0,0:5]/Q" 0.562445
+cap "9T_tileable_0[1:1,0:5]/QB" "9T_tileable_0[1:1,0:5]/WL" -7.10543e-15
+cap "9T_tileable_0[0:0,0:5]/Q" "9T_tileable_0[1:1,0:5]/a_103_8#" 0.0263553
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[1:1,0:5]/VSS" 6.92094
+cap "9T_tileable_0[1:1,0:5]/RBL" "9T_tileable_0[0:0,0:5]/QB" 0.0707207
+cap "9T_tileable_0[1:1,0:5]/QB" "9T_tileable_0[0:0,0:5]/WBL" 0.222412
+cap "9T_tileable_0[0:0,0:5]/WBL" "9T_tileable_0[1:1,0:5]/VSS" 9.54792e-15
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[0:0,0:5]/WBL" 0.0592444
+cap "9T_tileable_0[0:0,0:5]/Q" "9T_tileable_0[1:1,0:5]/A" 0.0605613
+cap "9T_tileable_0[0:0,0:5]/WL" "9T_tileable_0[1:1,0:5]/VSS" 0.0736779
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[0:0,0:5]/WL" 3.80797
+cap "9T_tileable_0[0:0,0:5]/WBL" "9T_tileable_0[0:0,0:5]/WL" 0.00417473
+cap "9T_tileable_0[0:0,0:5]/RBL" "9T_tileable_0[0:0,0:5]/A" 5.68434e-14
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[0:0,0:5]/a_103_8#" 0.855519
+cap "9T_tileable_0[0:0,0:5]/WBLB" "9T_tileable_0[0:0,0:5]/RBL" 20.3153
+cap "9T_tileable_0[0:0,0:5]/RBL" "9T_tileable_0[0:0,0:5]/QB" 7.10543e-15
+cap "9T_tileable_0[1:1,0:5]/QB" "9T_tileable_0[0:0,0:5]/A" 5.39322
+cap "9T_tileable_0[1:1,0:5]/VDD" "9T_tileable_0[0:0,0:5]/QB" 0.387857
+cap "9T_tileable_0[1:1,0:5]/Q" "9T_tileable_0[0:0,0:5]/RBL" 6.65745
+cap "9T_tileable_0[1:1,0:5]/VSS" "9T_tileable_0[0:0,0:5]/A" 3.39329
+cap "9T_tileable_0[0:0,0:5]/RBL" "9T_tileable_0[1:1,0:5]/a_103_8#" 0.695975
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[0:0,0:5]/A" 73.7161
+cap "9T_tileable_0[1:1,0:5]/VDD" "9T_tileable_0[0:0,0:5]/Q" 0.446888
+cap "9T_tileable_0[1:1,0:5]/QB" "9T_tileable_0[0:0,0:5]/WBLB" 0.0666112
+cap "9T_tileable_0[0:0,0:5]/WBL" "9T_tileable_0[0:0,0:5]/A" 44.9166
+cap "9T_tileable_0[0:0,0:5]/WBLB" "9T_tileable_0[1:1,0:5]/VSS" 6.50726
+cap "9T_tileable_0[1:1,0:5]/RBL" "9T_tileable_0[0:0,0:5]/RBL" 7.11956
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[0:0,0:5]/WBLB" 0.245122
+cap "9T_tileable_0[1:1,0:5]/QB" "9T_tileable_0[0:0,0:5]/QB" 0.408202
+cap "9T_tileable_0[1:1,0:5]/QB" "9T_tileable_0[1:1,0:5]/Q" -5.68434e-14
+cap "9T_tileable_0[1:1,0:5]/QB" "9T_tileable_0[0:0,0:5]/Q" 0.58247
+cap "9T_tileable_0[1:1,0:5]/VSS" "9T_tileable_0[0:0,0:5]/QB" 0.044543
+cap "9T_tileable_0[0:0,0:5]/WBL" "9T_tileable_0[0:0,0:5]/WBLB" 1.13687e-13
+cap "9T_tileable_0[0:0,0:5]/VDD" "9T_tileable_0[1:1,0:5]/RBL" 0.205659
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[0:0,0:5]/QB" 4.29254
+cap "9T_tileable_0[1:1,0:5]/Q" "9T_tileable_0[1:1,0:5]/VSS" 0.243976
+cap "9T_tileable_0[0:0,0:5]/Q" "9T_tileable_0[1:1,0:5]/VSS" 0.0528836
+cap "9T_tileable_0[1:1,0:5]/WL" "9T_tileable_0[0:0,0:5]/Q" 3.81537
+cap "9T_tileable_0[0:0,0:5]/WBLB" "9T_tileable_0[0:0,0:5]/WL" 0.00971891
+cap "9T_tileable_0[1:1,0:5]/Q" "9T_tileable_0[0:0,0:5]/WBL" 0.0261781
+cap "9T_tileable_0[0:0,0:5]/WBL" "9T_tileable_0[0:0,0:5]/Q" 8.17095
+cap "9T_tileable_0[0:1,0:4]/VDD" "9T_tileable_0[0:1,0:4]/WBLB" 0.810593
+cap "9T_tileable_0[0:1,0:4]/A" "9T_tileable_0[0:1,0:4]/a_199_412#" 0.692374
+cap "9T_tileable_0[0:1,1:5]/Q" "9T_tileable_0[0:1,0:4]/WBLB" 0.188127
+cap "9T_tileable_0[0:1,0:4]/WL" "9T_tileable_0[0:1,0:4]/VDD" -3.55271e-15
+cap "9T_tileable_0[0:1,1:5]/a_199_412#" "9T_tileable_0[0:1,0:4]/a_199_412#" 7.21095
+cap "9T_tileable_0[0:1,0:4]/VDD" "9T_tileable_0[0:1,1:5]/WBL" 1.44416
+cap "9T_tileable_0[0:1,0:4]/QB" "9T_tileable_0[0:1,1:5]/WBL" 0.376442
+cap "9T_tileable_0[0:1,0:4]/Q" "9T_tileable_0[0:1,0:4]/VDD" 5.34299
+cap "9T_tileable_0[0:1,0:4]/Q" "9T_tileable_0[0:1,1:5]/Q" 3.75062
+cap "9T_tileable_0[0:1,0:4]/A" "9T_tileable_0[0:1,0:4]/a_103_8#" -1.7053e-13
+cap "9T_tileable_0[0:1,1:5]/QB" "9T_tileable_0[0:1,0:4]/a_103_8#" 4.62644
+cap "9T_tileable_0[0:1,0:4]/A" "9T_tileable_0[0:1,0:4]/RBL" 170.612
+cap "9T_tileable_0[0:1,0:4]/RBL" "9T_tileable_0[0:1,1:5]/WBLB" 0.647261
+cap "9T_tileable_0[0:1,1:5]/a_199_412#" "9T_tileable_0[0:1,0:4]/RBL" 0.115825
+cap "9T_tileable_0[0:1,1:5]/QB" "9T_tileable_0[0:1,0:4]/RBL" 0.481996
+cap "9T_tileable_0[0:1,1:5]/QB" "9T_tileable_0[0:1,0:4]/VSS" 4.90199
+cap "9T_tileable_0[0:1,0:4]/QB" "9T_tileable_0[0:1,0:4]/VDD" 7.93017
+cap "9T_tileable_0[0:1,0:4]/a_199_412#" "9T_tileable_0[0:1,1:5]/WBL" 0.679397
+cap "9T_tileable_0[0:1,1:5]/Q" "9T_tileable_0[0:1,0:4]/VDD" 13.2659
+cap "9T_tileable_0[0:1,1:5]/Q" "9T_tileable_0[0:1,0:4]/QB" 19.4492
+cap "9T_tileable_0[0:1,0:4]/a_103_8#" "9T_tileable_0[0:1,0:4]/WBLB" 5.91993
+cap "9T_tileable_0[0:1,0:4]/A" "9T_tileable_0[0:1,0:4]/WBLB" 6.26162
+cap "9T_tileable_0[0:1,0:4]/a_199_412#" "9T_tileable_0[0:1,1:5]/RBL" 0.105752
+cap "9T_tileable_0[0:1,1:5]/a_199_412#" "9T_tileable_0[0:1,0:4]/WBLB" 0.25675
+cap "9T_tileable_0[0:1,1:5]/QB" "9T_tileable_0[0:1,0:4]/WBLB" 0.331705
+cap "9T_tileable_0[0:1,0:4]/VSS" "9T_tileable_0[0:1,0:4]/WBLB" 6.55147
+cap "9T_tileable_0[0:1,1:5]/WBL" "9T_tileable_0[0:1,0:4]/a_103_8#" 12.1219
+cap "9T_tileable_0[0:1,0:4]/A" "9T_tileable_0[0:1,1:5]/WBL" 10.7345
+cap "9T_tileable_0[0:1,0:4]/Q" "9T_tileable_0[0:1,0:4]/a_103_8#" 5.33073
+cap "9T_tileable_0[0:1,0:4]/Q" "9T_tileable_0[0:1,0:4]/A" 0.54008
+cap "9T_tileable_0[0:1,0:4]/WL" "9T_tileable_0[0:1,0:4]/VSS" 13.0248
+cap "9T_tileable_0[0:1,1:5]/WBL" "9T_tileable_0[0:1,0:4]/RBL" 38.7303
+cap "9T_tileable_0[0:1,0:4]/VSS" "9T_tileable_0[0:1,1:5]/WBL" 12.8312
+cap "9T_tileable_0[0:1,0:4]/Q" "9T_tileable_0[0:1,1:5]/QB" 114.666
+cap "9T_tileable_0[0:1,0:4]/Q" "9T_tileable_0[0:1,0:4]/VSS" 5.95378
+cap "9T_tileable_0[0:1,1:5]/RBL" "9T_tileable_0[0:1,0:4]/RBL" 5.89575
+cap "9T_tileable_0[0:1,1:5]/Q" "9T_tileable_0[0:1,0:4]/a_199_412#" 0.355508
+cap "9T_tileable_0[0:1,0:4]/WL" "9T_tileable_0[0:1,0:4]/WBLB" 3.3583
+cap "9T_tileable_0[0:1,0:4]/VDD" "9T_tileable_0[0:1,0:4]/a_103_8#" 0.0854293
+cap "9T_tileable_0[0:1,1:5]/WBL" "9T_tileable_0[0:1,0:4]/WBLB" 217.005
+cap "9T_tileable_0[0:1,0:4]/A" "9T_tileable_0[0:1,0:4]/QB" 2.15234
+cap "9T_tileable_0[0:1,0:4]/QB" "9T_tileable_0[0:1,0:4]/a_103_8#" 0.35631
+cap "9T_tileable_0[0:1,0:4]/A" "9T_tileable_0[0:1,0:4]/VDD" 5.05684
+cap "9T_tileable_0[0:1,1:5]/Q" "9T_tileable_0[0:1,0:4]/a_103_8#" 0.292917
+cap "9T_tileable_0[0:1,1:5]/Q" "9T_tileable_0[0:1,0:4]/A" 0.654589
+cap "9T_tileable_0[0:1,0:4]/WBL" "9T_tileable_0[0:1,0:4]/WL" 0.024645
+cap "9T_tileable_0[0:1,0:4]/QB" "9T_tileable_0[0:1,1:5]/WBLB" 0.000436026
+cap "9T_tileable_0[0:1,0:4]/WL" "9T_tileable_0[0:1,1:5]/WBL" 4.16235
+cap "9T_tileable_0[0:1,0:4]/QB" "9T_tileable_0[0:1,1:5]/a_199_412#" 0.218284
+cap "9T_tileable_0[0:1,1:5]/QB" "9T_tileable_0[0:1,0:4]/VDD" 3.85124
+cap "9T_tileable_0[0:1,1:5]/QB" "9T_tileable_0[0:1,0:4]/QB" 1.92051
+cap "9T_tileable_0[0:1,0:4]/VDD" "9T_tileable_0[0:1,0:4]/RBL" 2.91069
+cap "9T_tileable_0[0:1,1:5]/Q" "9T_tileable_0[0:1,0:4]/RBL" 2.66338
+cap "9T_tileable_0[0:1,0:4]/Q" "9T_tileable_0[0:1,0:4]/WL" 0.185443
+cap "9T_tileable_0[0:1,0:4]/QB" "9T_tileable_0[0:1,0:4]/VSS" 0.728928
+cap "9T_tileable_0[0:1,1:5]/Q" "9T_tileable_0[0:1,0:4]/VSS" 0.719815
+cap "9T_tileable_0[0:1,0:4]/Q" "9T_tileable_0[0:1,1:5]/WBL" 1.40648
+cap "9T_tileable_0[0:1,2:5]/VDD" "9T_tileable_0[0:1,2:5]/WBL" -8.88178e-16
+cap "9T_tileable_0[0:1,0:3]/Q" "9T_tileable_0[0:1,2:5]/WBL" 0.534094
+cap "9T_tileable_0[0:1,2:5]/VDD" "9T_tileable_0[0:1,0:3]/QB" 0.710439
+cap "9T_tileable_0[0:1,0:3]/WBLB" "9T_tileable_0[0:1,2:5]/Q" 0.09371
+cap "9T_tileable_0[0:1,2:5]/A" "9T_tileable_0[0:1,0:3]/VDD" 1.02489
+cap "9T_tileable_0[0:1,2:5]/QB" "9T_tileable_0[0:1,0:3]/WBLB" 0.10124
+cap "9T_tileable_0[0:1,2:5]/RBL" "9T_tileable_0[0:1,0:3]/RBL" 2.65219
+cap "9T_tileable_0[0:1,0:3]/a_199_412#" "9T_tileable_0[0:1,2:5]/Q" 0.0612617
+cap "9T_tileable_0[0:1,0:3]/a_103_8#" "9T_tileable_0[0:1,2:5]/a_103_8#" 11.5908
+cap "9T_tileable_0[0:1,2:5]/WBL" "9T_tileable_0[0:1,0:3]/VSS" 1.30964
+cap "9T_tileable_0[0:1,2:5]/WBL" "9T_tileable_0[0:1,0:3]/a_103_8#" 1.10271
+cap "9T_tileable_0[0:1,2:5]/A" "9T_tileable_0[0:1,0:3]/RBL" 20.0708
+cap "9T_tileable_0[0:1,2:5]/VDD" "9T_tileable_0[0:1,2:5]/Q" 2.84217e-14
+cap "9T_tileable_0[0:1,0:3]/Q" "9T_tileable_0[0:1,2:5]/Q" 1.11719
+cap "9T_tileable_0[0:1,2:5]/a_199_412#" "9T_tileable_0[0:1,0:3]/WBLB" 0.0847698
+cap "9T_tileable_0[0:1,0:3]/A" "9T_tileable_0[0:1,2:5]/A" 10.4755
+cap "9T_tileable_0[0:1,0:3]/WBL" "9T_tileable_0[0:1,2:5]/WL" 0.0120621
+cap "9T_tileable_0[0:1,0:3]/Q" "9T_tileable_0[0:1,2:5]/QB" 19.5713
+cap "9T_tileable_0[0:1,2:5]/VDD" "9T_tileable_0[0:1,2:5]/QB" 5.68434e-14
+cap "9T_tileable_0[0:1,2:5]/A" "9T_tileable_0[0:1,0:3]/QB" 0.306785
+cap "9T_tileable_0[0:1,0:3]/QB" "9T_tileable_0[0:1,2:5]/VSS" 0.216806
+cap "9T_tileable_0[0:1,0:3]/a_103_8#" "9T_tileable_0[0:1,2:5]/Q" 0.0944129
+cap "9T_tileable_0[0:1,0:3]/VSS" "9T_tileable_0[0:1,2:5]/Q" 0.214747
+cap "9T_tileable_0[0:1,2:5]/a_103_8#" "9T_tileable_0[0:1,0:3]/VDD" 0.0113883
+cap "9T_tileable_0[0:1,0:3]/a_199_412#" "9T_tileable_0[0:1,2:5]/a_199_412#" 3.28992
+cap "9T_tileable_0[0:1,2:5]/VDD" "9T_tileable_0[0:1,0:3]/WBLB" 0.496739
+cap "9T_tileable_0[0:1,0:3]/QB" "9T_tileable_0[0:1,0:3]/VDD" 5.68434e-14
+cap "9T_tileable_0[0:1,2:5]/WBL" "9T_tileable_0[0:1,0:3]/VDD" 0.908263
+cap "9T_tileable_0[0:1,2:5]/QB" "9T_tileable_0[0:1,0:3]/VSS" 0.471215
+cap "9T_tileable_0[0:1,2:5]/QB" "9T_tileable_0[0:1,0:3]/a_103_8#" 0.330151
+cap "9T_tileable_0[0:1,2:5]/WBL" "9T_tileable_0[0:1,0:3]/RBL" 9.40598
+cap "9T_tileable_0[0:1,2:5]/VDD" "9T_tileable_0[0:1,0:3]/Q" 1.04713
+cap "9T_tileable_0[0:1,2:5]/WL" "9T_tileable_0[0:1,0:3]/WL" 6.14796
+cap "9T_tileable_0[0:1,2:5]/Q" "9T_tileable_0[0:1,0:3]/VDD" 1.26738
+cap "9T_tileable_0[0:1,0:3]/A" "9T_tileable_0[0:1,2:5]/WBL" 0.976496
+cap "9T_tileable_0[0:1,0:3]/QB" "9T_tileable_0[0:1,2:5]/a_103_8#" 0.114947
+cap "9T_tileable_0[0:1,2:5]/QB" "9T_tileable_0[0:1,0:3]/VDD" 0.763573
+cap "9T_tileable_0[0:1,0:3]/QB" "9T_tileable_0[0:1,2:5]/WBL" 0.194776
+cap "9T_tileable_0[0:1,0:3]/RBL" "9T_tileable_0[0:1,2:5]/Q" 0.406408
+cap "9T_tileable_0[0:1,2:5]/A" "9T_tileable_0[0:1,0:3]/WBLB" 0.875278
+cap "9T_tileable_0[0:1,2:5]/VSS" "9T_tileable_0[0:1,0:3]/WBLB" 0.803184
+cap "9T_tileable_0[0:1,2:5]/VDD" "9T_tileable_0[0:1,0:3]/a_103_8#" 0.00770561
+cap "9T_tileable_0[0:1,0:3]/A" "9T_tileable_0[0:1,2:5]/Q" 0.176932
+cap "9T_tileable_0[0:1,2:5]/WL" "9T_tileable_0[0:1,0:3]/WBLB" 0.563842
+cap "9T_tileable_0[0:1,2:5]/QB" "9T_tileable_0[0:1,0:3]/RBL" 0.158066
+cap "9T_tileable_0[0:1,0:3]/a_199_412#" "9T_tileable_0[0:1,2:5]/RBL" 0.0260201
+cap "9T_tileable_0[0:1,2:5]/WBL" "9T_tileable_0[0:1,0:3]/WL" 0.378641
+cap "9T_tileable_0[0:1,2:5]/A" "9T_tileable_0[0:1,0:3]/a_199_412#" 0.177195
+cap "9T_tileable_0[0:1,0:3]/QB" "9T_tileable_0[0:1,2:5]/Q" 6.47221
+cap "9T_tileable_0[0:1,0:3]/Q" "9T_tileable_0[0:1,2:5]/A" 0.115993
+cap "9T_tileable_0[0:1,0:3]/Q" "9T_tileable_0[0:1,2:5]/VSS" 0.650133
+cap "9T_tileable_0[0:1,2:5]/a_199_412#" "9T_tileable_0[0:1,0:3]/RBL" 0.0274533
+cap "9T_tileable_0[0:1,0:3]/Q" "9T_tileable_0[0:1,2:5]/WL" 0.0343479
+cap "9T_tileable_0[0:1,0:3]/QB" "9T_tileable_0[0:1,2:5]/QB" 0.283701
+cap "9T_tileable_0[0:1,2:5]/WBLB" "9T_tileable_0[0:1,0:3]/RBL" 0.113436
+cap "9T_tileable_0[0:1,0:3]/WBLB" "9T_tileable_0[0:1,2:5]/a_103_8#" 0.616445
+cap "9T_tileable_0[0:1,2:5]/WBL" "9T_tileable_0[0:1,0:3]/WBLB" 77.9881
+cap "9T_tileable_0[0:1,2:5]/VSS" "9T_tileable_0[0:1,0:3]/VSS" 15.0231
+cap "9T_tileable_0[0:1,0:3]/QB" "9T_tileable_0[0:1,2:5]/a_199_412#" 0.0485368
+cap "9T_tileable_0[0:1,2:5]/VDD" "9T_tileable_0[0:1,0:3]/RBL" 0.882749
+cap "9T_tileable_0[0:1,2:5]/WL" "9T_tileable_0[0:1,0:3]/VSS" 3.9526
+cap "9T_tileable_0[0:1,2:5]/WBLB" "9T_tileable_0[0:1,0:3]/QB" 0.000212105
+cap "9T_tileable_0[0:1,2:5]/VDD" "9T_tileable_0[0:1,0:3]/A" 0.00169617
+cap "9T_tileable_0[0:1,0:3]/Q" "9T_tileable_0[0:1,2:5]/a_103_8#" 0.413373
+cap "9T_tileable_0[0:1,2:5]/WBL" "9T_tileable_0[0:1,0:3]/a_199_412#" 0.211072
+cap "9T_tileable_0[0:1,3:5]/QB" "9T_tileable_0[0:1,0:2]/VSS" 0.0895219
+cap "9T_tileable_0[0:1,3:5]/Q" "9T_tileable_0[0:1,0:2]/VDD" 0.342946
+cap "9T_tileable_0[0:1,3:5]/Q" "9T_tileable_0[0:1,0:2]/QB" 1.68574
+cap "9T_tileable_0[0:1,3:5]/WBL" "9T_tileable_0[0:1,0:2]/WBLB" 47.6332
+cap "9T_tileable_0[0:1,0:2]/Q" "9T_tileable_0[0:1,3:5]/a_103_8#" 0.137218
+cap "9T_tileable_0[0:1,3:5]/A" "9T_tileable_0[0:1,0:2]/WBLB" 0.322842
+cap "9T_tileable_0[0:1,0:2]/WBLB" "9T_tileable_0[0:1,3:5]/a_103_8#" 0.209477
+cap "9T_tileable_0[0:1,0:2]/QB" "9T_tileable_0[0:1,3:5]/VSS" 0.0658825
+cap "9T_tileable_0[0:1,3:5]/VDD" "9T_tileable_0[0:1,0:2]/RBL" 0.363458
+cap "9T_tileable_0[0:1,0:2]/VSS" "9T_tileable_0[0:1,3:5]/WBL" 0.361296
+cap "9T_tileable_0[0:1,3:5]/QB" "9T_tileable_0[0:1,0:2]/VDD" 0.254158
+cap "9T_tileable_0[0:1,3:5]/QB" "9T_tileable_0[0:1,0:2]/QB" 0.0972535
+cap "9T_tileable_0[0:1,3:5]/WBL" "9T_tileable_0[0:1,0:2]/a_199_412#" 0.0312328
+cap "9T_tileable_0[0:1,3:5]/Q" "9T_tileable_0[0:1,0:2]/A" 0.0369915
+cap "9T_tileable_0[0:1,0:2]/WL" "9T_tileable_0[0:1,3:5]/WBL" 0.124059
+cap "9T_tileable_0[0:1,3:5]/VDD" "9T_tileable_0[0:1,0:2]/QB" 0.23079
+cap "9T_tileable_0[0:1,3:5]/Q" "9T_tileable_0[0:1,0:2]/a_103_8#" 0.034719
+cap "9T_tileable_0[0:1,0:2]/Q" "9T_tileable_0[0:1,3:5]/WL" 0.0115963
+cap "9T_tileable_0[0:1,0:2]/RBL" "9T_tileable_0[0:1,3:5]/WBL" 5.25759
+cap "9T_tileable_0[0:1,3:5]/A" "9T_tileable_0[0:1,0:2]/a_199_412#" 0.095585
+cap "9T_tileable_0[0:1,3:5]/WL" "9T_tileable_0[0:1,0:2]/WBLB" 0.208269
+cap "9T_tileable_0[0:1,0:2]/RBL" "9T_tileable_0[0:1,3:5]/A" 10.2982
+cap "9T_tileable_0[0:1,3:5]/Q" "9T_tileable_0[0:1,0:2]/Q" 0.101554
+cap "9T_tileable_0[0:1,0:2]/VDD" "9T_tileable_0[0:1,3:5]/WBL" 0.490457
+cap "9T_tileable_0[0:1,3:5]/WBL" "9T_tileable_0[0:1,0:2]/QB" 0.0876483
+cap "9T_tileable_0[0:1,3:5]/Q" "9T_tileable_0[0:1,0:2]/WBLB" 0.00441731
+cap "9T_tileable_0[0:1,3:5]/QB" "9T_tileable_0[0:1,0:2]/a_103_8#" 0.0994002
+cap "9T_tileable_0[0:1,0:2]/Q" "9T_tileable_0[0:1,3:5]/VSS" 0.182268
+cap "9T_tileable_0[0:1,0:2]/VDD" "9T_tileable_0[0:1,3:5]/A" 0.333655
+cap "9T_tileable_0[0:1,3:5]/A" "9T_tileable_0[0:1,0:2]/QB" 0.109932
+cap "9T_tileable_0[0:1,3:5]/VDD" "9T_tileable_0[0:1,0:2]/A" 0.000647789
+cap "9T_tileable_0[0:1,0:2]/VDD" "9T_tileable_0[0:1,3:5]/a_103_8#" 0.00296603
+cap "9T_tileable_0[0:1,0:2]/QB" "9T_tileable_0[0:1,3:5]/a_103_8#" 0.0398191
+cap "9T_tileable_0[0:1,3:5]/VDD" "9T_tileable_0[0:1,0:2]/a_103_8#" 0.00153993
+cap "9T_tileable_0[0:1,0:2]/VSS" "9T_tileable_0[0:1,3:5]/WL" 2.32868
+cap "9T_tileable_0[0:1,3:5]/VSS" "9T_tileable_0[0:1,0:2]/WBLB" 0.209477
+cap "9T_tileable_0[0:1,3:5]/QB" "9T_tileable_0[0:1,0:2]/Q" 10.6953
+cap "9T_tileable_0[0:1,0:2]/WL" "9T_tileable_0[0:1,3:5]/WL" 2.89069
+cap "9T_tileable_0[0:1,3:5]/VDD" "9T_tileable_0[0:1,0:2]/Q" 0.280675
+cap "9T_tileable_0[0:1,3:5]/Q" "9T_tileable_0[0:1,0:2]/VSS" 0.062067
+cap "9T_tileable_0[0:1,3:5]/WBL" "9T_tileable_0[0:1,3:5]/a_199_412#" 2.22045e-16
+cap "9T_tileable_0[0:1,3:5]/WBL" "9T_tileable_0[0:1,0:2]/A" 0.319943
+cap "9T_tileable_0[0:1,0:2]/a_103_8#" "9T_tileable_0[0:1,3:5]/WBL" 0.361296
+cap "9T_tileable_0[0:1,3:5]/QB" "9T_tileable_0[0:1,0:2]/WBLB" 0.0412234
+cap "9T_tileable_0[0:1,3:5]/Q" "9T_tileable_0[0:1,0:2]/a_199_412#" 0.00408168
+cap "9T_tileable_0[0:1,3:5]/VDD" "9T_tileable_0[0:1,0:2]/WBLB" 0.268632
+cap "9T_tileable_0[0:1,3:5]/A" "9T_tileable_0[0:1,0:2]/A" 5.39471
+cap "9T_tileable_0[0:1,0:2]/RBL" "9T_tileable_0[0:1,3:5]/Q" 0.152464
+cap "9T_tileable_0[0:1,0:2]/VSS" "9T_tileable_0[0:1,3:5]/VSS" 6.01939
+cap "9T_tileable_0[0:1,0:2]/RBL" "9T_tileable_0[0:1,3:5]/WBLB" 0.00144465
+cap "9T_tileable_0[0:1,0:2]/a_103_8#" "9T_tileable_0[0:1,3:5]/a_103_8#" 5.99738
+cap "9T_tileable_0[0:1,3:5]/VDD" "9T_tileable_0[0:1,3:5]/WBL" -8.88178e-16
+cap "9T_tileable_0[0:1,0:2]/Q" "9T_tileable_0[0:1,3:5]/WBL" 0.238953
+merge "9T_tileable_0[0:1,1:5]/VSS" "9T_tileable_0[0:1,0:4]/VSS" -80.457 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -332 0 0 0 0 0 0
+merge "9T_tileable_0[0:1,1:5]/VDD" "9T_tileable_0[0:1,0:4]/VDD" 0 0 -810 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "9T_tileable_0[0,3]/VSUBS" "9T_tileable_0[0,2]/VSUBS" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "9T_tileable_0[0,2]/VSUBS" "9T_tileable_0[0,1]/VSUBS"
+merge "9T_tileable_0[0,1]/VSUBS" "9T_tileable_0[1,3]/VSUBS"
+merge "9T_tileable_0[1,3]/VSUBS" "9T_tileable_0[1,2]/VSUBS"
+merge "9T_tileable_0[1,2]/VSUBS" "9T_tileable_0[1,1]/VSUBS"
+merge "9T_tileable_0[1,1]/VSUBS" "9T_tileable_0[1,0]/VSUBS"
+merge "9T_tileable_0[1,0]/VSUBS" "a_n228_222#"
+merge "9T_tileable_0[0:1,1:5]/A" "9T_tileable_0[0:1,0:4]/A" -106.216 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -294 0 0 0 0 0 0
+merge "9T_tileable_0[1:1,0:5]/WBL" "9T_tileable_0[0:0,0:5]/WBL" -57.4964 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -196 0 0 0 0
+merge "9T_tileable_0[0:1,1:5]/WL" "9T_tileable_0[0:1,0:4]/WL" -50.3887 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -114 0 0 0 0 0 0
+merge "9T_tileable_0[0:1,1:5]/a_103_8#" "9T_tileable_0[0:1,0:4]/a_103_8#" -55.6246 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -332 0 0 0 0 0 0
+merge "9T_tileable_0[1:1,0:5]/WBLB" "9T_tileable_0[0:0,0:5]/WBLB" -70.3269 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -194 0 0 0 0
+merge "9T_tileable_0[1:1,0:5]/VSS" "9T_tileable_0[0:0,0:5]/a_199_412#" -34.601 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -106 0 0 0 0 0 0 0 0

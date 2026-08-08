@@ -1,0 +1,1037 @@
+* SPICE3 file created from sram_8x8_9T.ext - technology: gf180mcuD
+
+.option scale=5n
+
+X0 9T_tileable_0[0|0]/RBL 9T_tileable_0[0|0]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=6.064n pd=0.328m as=6.064n ps=0.328m w=44 l=56
+X1 9T_tileable_0[0|0]/QB 9T_tileable_0[0|5]/WL 9T_tileable_0[1|0]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=5.56n pd=0.243m as=9.448n ps=0.406m w=64 l=56
+X2 9T_tileable_0[0|0]/Q 9T_tileable_0[0|0]/QB 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=5.984n ps=0.224m w=88 l=56
+X3 9T_tileable_0[0|0]/Q 9T_tileable_0[0|5]/WL 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=5.588n pd=0.244m as=6.824n ps=0.34m w=64 l=56
+X4 9T_tileable_0[0|0]/Q 9T_tileable_0[0|0]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=5.588n pd=0.244m as=4.432n ps=0.22m w=44 l=56
+X5 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|0]/Q 9T_tileable_0[0|0]/QB 9T_tileable_0[0|5]/VDD pfet_03v3 ad=5.984n pd=0.224m as=7.744n ps=0.352m w=88 l=56
+X6 9T_tileable_0[0|0]/RBL 9T_tileable_0[0|0]/Q 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=6.064n pd=0.328m as=6.064n ps=0.328m w=44 l=56
+X7 9T_tileable_0[1|5]/VSS 9T_tileable_0[0|0]/Q 9T_tileable_0[0|0]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=4.432n pd=0.22m as=5.56n ps=0.243m w=44 l=56
+X8 9T_tileable_0[0|0]/RBL 9T_tileable_0[0|0]/QB 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=8.096n ps=0.36m w=88 l=56
+X9 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|0]/QB 9T_tileable_0[1|0]/a_199_412# 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=6.064n ps=0.328m w=44 l=56
+X10 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/WL 9T_tileable_0[1|0]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=18.896n ps=0.812m w=64 l=56
+X11 9T_tileable_0[1|0]/Q 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=71.80801n ps=2.688m w=88 l=56
+X12 9T_tileable_0[1|0]/Q 9T_tileable_0[1|5]/WL 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=13.648n ps=0.68m w=64 l=56
+X13 9T_tileable_0[1|0]/Q 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0.14275u ps=7.248m w=44 l=56
+X14 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|0]/Q 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X15 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|0]/Q 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=36.384n ps=1.968m w=44 l=56
+X16 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|0]/Q 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X17 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=48.576n ps=2.16m w=88 l=56
+X18 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|1]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=0 ps=0 w=44 l=56
+X19 9T_tileable_0[0|1]/QB 9T_tileable_0[0|5]/WL 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=18.896n ps=0.812m w=64 l=56
+X20 9T_tileable_0[0|1]/Q 9T_tileable_0[0|1]/QB 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=71.80801n ps=2.688m w=88 l=56
+X21 9T_tileable_0[0|1]/Q 9T_tileable_0[0|5]/WL 9T_tileable_0[1|1]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=13.648n ps=0.68m w=64 l=56
+X22 9T_tileable_0[0|1]/Q 9T_tileable_0[0|1]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X23 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|1]/Q 9T_tileable_0[0|1]/QB 9T_tileable_0[0|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X24 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|1]/Q 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=36.384n ps=1.968m w=44 l=56
+X25 9T_tileable_0[1|5]/VSS 9T_tileable_0[0|1]/Q 9T_tileable_0[0|1]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X26 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|1]/QB 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=48.576n ps=2.16m w=88 l=56
+X27 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|1]/QB 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=6.064n ps=0.328m w=44 l=56
+X28 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/WL 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=0 ps=0 w=64 l=56
+X29 9T_tileable_0[1|1]/Q 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=0 ps=0 w=88 l=56
+X30 9T_tileable_0[1|1]/Q 9T_tileable_0[1|5]/WL 9T_tileable_0[1|1]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=0 ps=0 w=64 l=56
+X31 9T_tileable_0[1|1]/Q 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X32 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|1]/Q 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X33 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|1]/Q 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X34 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|1]/Q 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X35 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=0 ps=0 w=88 l=56
+X36 9T_tileable_0[0|2]/RBL 9T_tileable_0[0|2]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=0 ps=0 w=44 l=56
+X37 9T_tileable_0[0|2]/QB 9T_tileable_0[0|5]/WL 9T_tileable_0[1|2]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=18.896n ps=0.812m w=64 l=56
+X38 9T_tileable_0[0|2]/Q 9T_tileable_0[0|2]/QB 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=0 ps=0 w=88 l=56
+X39 9T_tileable_0[0|2]/Q 9T_tileable_0[0|5]/WL 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=13.648n ps=0.68m w=64 l=56
+X40 9T_tileable_0[0|2]/Q 9T_tileable_0[0|2]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X41 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|2]/Q 9T_tileable_0[0|2]/QB 9T_tileable_0[0|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X42 9T_tileable_0[0|2]/RBL 9T_tileable_0[0|2]/Q 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X43 9T_tileable_0[1|5]/VSS 9T_tileable_0[0|2]/Q 9T_tileable_0[0|2]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X44 9T_tileable_0[0|2]/RBL 9T_tileable_0[0|2]/QB 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=0 ps=0 w=88 l=56
+X45 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|2]/QB 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=6.064n ps=0.328m w=44 l=56
+X46 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/WL 9T_tileable_0[1|2]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=0 ps=0 w=64 l=56
+X47 9T_tileable_0[1|2]/Q 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=0 ps=0 w=88 l=56
+X48 9T_tileable_0[1|2]/Q 9T_tileable_0[1|5]/WL 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=0 ps=0 w=64 l=56
+X49 9T_tileable_0[1|2]/Q 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X50 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|2]/Q 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X51 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|2]/Q 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X52 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|2]/Q 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X53 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=0 ps=0 w=88 l=56
+X54 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|3]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=0 ps=0 w=44 l=56
+X55 9T_tileable_0[0|3]/QB 9T_tileable_0[0|5]/WL 9T_tileable_0[1|3]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=18.896n ps=0.812m w=64 l=56
+X56 9T_tileable_0[0|3]/Q 9T_tileable_0[0|3]/QB 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=0 ps=0 w=88 l=56
+X57 9T_tileable_0[0|3]/Q 9T_tileable_0[0|5]/WL 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=13.648n ps=0.68m w=64 l=56
+X58 9T_tileable_0[0|3]/Q 9T_tileable_0[0|3]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X59 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|3]/Q 9T_tileable_0[0|3]/QB 9T_tileable_0[0|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X60 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|3]/Q 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X61 9T_tileable_0[1|5]/VSS 9T_tileable_0[0|3]/Q 9T_tileable_0[0|3]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X62 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|3]/QB 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=0 ps=0 w=88 l=56
+X63 9T_tileable_0[1|3]/RBL 9T_tileable_0[1|3]/QB 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=6.064n ps=0.328m w=44 l=56
+X64 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/WL 9T_tileable_0[1|3]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=0 ps=0 w=64 l=56
+X65 9T_tileable_0[1|3]/Q 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=0 ps=0 w=88 l=56
+X66 9T_tileable_0[1|3]/Q 9T_tileable_0[1|5]/WL 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=0 ps=0 w=64 l=56
+X67 9T_tileable_0[1|3]/Q 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X68 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|3]/Q 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X69 9T_tileable_0[1|3]/RBL 9T_tileable_0[1|3]/Q 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X70 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|3]/Q 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X71 9T_tileable_0[1|3]/RBL 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=0 ps=0 w=88 l=56
+X72 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|4]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=0 ps=0 w=44 l=56
+X73 9T_tileable_0[0|4]/QB 9T_tileable_0[0|5]/WL 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=18.896n ps=0.812m w=64 l=56
+X74 9T_tileable_0[0|4]/Q 9T_tileable_0[0|4]/QB 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=0 ps=0 w=88 l=56
+X75 9T_tileable_0[0|4]/Q 9T_tileable_0[0|5]/WL 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=13.648n ps=0.68m w=64 l=56
+X76 9T_tileable_0[0|4]/Q 9T_tileable_0[0|4]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X77 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|4]/Q 9T_tileable_0[0|4]/QB 9T_tileable_0[0|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X78 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|4]/Q 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X79 9T_tileable_0[1|5]/VSS 9T_tileable_0[0|4]/Q 9T_tileable_0[0|4]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X80 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|4]/QB 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=0 ps=0 w=88 l=56
+X81 9T_tileable_0[1|4]/RBL 9T_tileable_0[1|4]/QB 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=6.064n ps=0.328m w=44 l=56
+X82 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/WL 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=0 ps=0 w=64 l=56
+X83 9T_tileable_0[1|4]/Q 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=0 ps=0 w=88 l=56
+X84 9T_tileable_0[1|4]/Q 9T_tileable_0[1|5]/WL 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=0 ps=0 w=64 l=56
+X85 9T_tileable_0[1|4]/Q 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X86 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|4]/Q 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X87 9T_tileable_0[1|4]/RBL 9T_tileable_0[1|4]/Q 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X88 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|4]/Q 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X89 9T_tileable_0[1|4]/RBL 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=0 ps=0 w=88 l=56
+X90 9T_tileable_0[0|5]/RBL 9T_tileable_0[0|5]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=0 ps=0 w=44 l=56
+X91 9T_tileable_0[0|5]/QB 9T_tileable_0[0|5]/WL 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=18.896n ps=0.812m w=64 l=56
+X92 9T_tileable_0[0|5]/Q 9T_tileable_0[0|5]/QB 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=0 ps=0 w=88 l=56
+X93 9T_tileable_0[0|5]/Q 9T_tileable_0[0|5]/WL 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=13.648n ps=0.68m w=64 l=56
+X94 9T_tileable_0[0|5]/Q 9T_tileable_0[0|5]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X95 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/Q 9T_tileable_0[0|5]/QB 9T_tileable_0[0|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X96 9T_tileable_0[0|5]/RBL 9T_tileable_0[0|5]/Q 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X97 9T_tileable_0[1|5]/VSS 9T_tileable_0[0|5]/Q 9T_tileable_0[0|5]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X98 9T_tileable_0[0|5]/RBL 9T_tileable_0[0|5]/QB 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=0 ps=0 w=88 l=56
+X99 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/a_199_412# 9T_tileable_0[1|5]/VSS nfet_03v3 ad=12.128n pd=0.656m as=6.064n ps=0.328m w=44 l=56
+X100 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/WL 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.12n pd=0.486m as=0 ps=0 w=64 l=56
+X101 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|5]/VDD pfet_03v3 ad=7.744n pd=0.352m as=0 ps=0 w=88 l=56
+X102 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/WL 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=11.176n pd=0.488m as=0 ps=0 w=64 l=56
+X103 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X104 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/VDD pfet_03v3 ad=0 pd=0 as=7.744n ps=0.352m w=88 l=56
+X105 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X106 9T_tileable_0[1|5]/VSS 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/VSS nfet_03v3 ad=0 pd=0 as=0 ps=0 w=44 l=56
+X107 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VDD pfet_03v3 ad=8.328n pd=0.368m as=0 ps=0 w=88 l=56
+C0 9T_tileable_0[0|3]/RBL 9T_tileable_0[1|3]/RBL 0.00712f
+C1 9T_tileable_0[0|5]/A 9T_tileable_0[1|2]/WBLB 0.14286f
+C2 9T_tileable_0[0|5]/WL 9T_tileable_0[0|0]/Q 0.02742f
+C3 9T_tileable_0[1|4]/QB 9T_tileable_0[1|4]/RBL 0.04627f
+C4 9T_tileable_0[0|2]/Q 9T_tileable_0[0|5]/VDD 0.46281f
+C5 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|1]/Q 0.00144f
+C6 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|5]/VDD 0.00154f
+C7 9T_tileable_0[1|1]/QB 9T_tileable_0[1|3]/WBL 0
+C8 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|2]/QB 0
+C9 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|5]/WL 0.08514f
+C10 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|3]/Q 0.00141f
+C11 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|5]/QB 0.04627f
+C12 9T_tileable_0[1|4]/WBLB 9T_tileable_0[0|5]/Q 0
+C13 9T_tileable_0[1|5]/A 9T_tileable_0[1|0]/WBL 0.08104f
+C14 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|5]/QB 0.02466f
+C15 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|2]/WBLB 0
+C16 9T_tileable_0[1|1]/QB 9T_tileable_0[1|3]/Q 0.00647f
+C17 9T_tileable_0[1|4]/Q 9T_tileable_0[1|2]/QB 0.00647f
+C18 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|4]/QB 0
+C19 9T_tileable_0[1|5]/A 9T_tileable_0[1|3]/WBLB 0.085f
+C20 9T_tileable_0[0|0]/Q 9T_tileable_0[0|1]/Q 0.00375f
+C21 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|3]/RBL 0.00941f
+C22 9T_tileable_0[1|4]/WBLB 9T_tileable_0[0|2]/RBL 0
+C23 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|3]/WBL 0.00177f
+C24 9T_tileable_0[0|5]/WL 9T_tileable_0[0|4]/Q 0.02738f
+C25 9T_tileable_0[1|5]/Q 9T_tileable_0[1|4]/RBL 0.00266f
+C26 9T_tileable_0[0|2]/RBL 9T_tileable_0[0|0]/RBL 0.00265f
+C27 9T_tileable_0[0|0]/QB 9T_tileable_0[0|3]/Q 0.00169f
+C28 9T_tileable_0[0|4]/QB 9T_tileable_0[1|4]/RBL 0
+C29 9T_tileable_0[0|4]/Q 9T_tileable_0[0|5]/QB 0.11467f
+C30 9T_tileable_0[1|5]/QB 9T_tileable_0[0|5]/QB 0
+C31 9T_tileable_0[1|4]/WBLB 9T_tileable_0[0|2]/QB 0
+C32 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|2]/QB 0
+C33 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|3]/Q 0.00144f
+C34 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|4]/a_199_412# 0.00397f
+C35 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|4]/Q 0.00266f
+C36 9T_tileable_0[0|2]/QB 9T_tileable_0[0|0]/RBL 0
+C37 9T_tileable_0[0|0]/QB 9T_tileable_0[0|3]/QB 0
+C38 9T_tileable_0[1|1]/QB 9T_tileable_0[1|2]/WBL 0
+C39 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/Q 0.02803f
+C40 9T_tileable_0[0|4]/Q 9T_tileable_0[0|1]/Q 0
+C41 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|4]/QB 0
+C42 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|5]/WL 0.11995f
+C43 9T_tileable_0[1|0]/QB 9T_tileable_0[1|0]/Q 0.44205f
+C44 9T_tileable_0[0|0]/QB 9T_tileable_0[1|0]/WBL 0.02466f
+C45 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|4]/RBL 0.00265f
+C46 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|3]/Q 0.46272f
+C47 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|1]/WBLB 0
+C48 9T_tileable_0[1|5]/WL 9T_tileable_0[0|0]/RBL 0.0072f
+C49 9T_tileable_0[1|4]/QB 9T_tileable_0[1|3]/Q 0.11467f
+C50 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/QB 0
+C51 9T_tileable_0[1|2]/Q 9T_tileable_0[1|4]/WBL 0
+C52 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|3]/QB 0.26272f
+C53 9T_tileable_0[0|1]/QB 9T_tileable_0[0|0]/RBL 0
+C54 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|3]/WBLB 0
+C55 9T_tileable_0[1|4]/Q 9T_tileable_0[1|1]/WBLB 0
+C56 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|2]/RBL 0
+C57 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|0]/WBL 0.09688f
+C58 9T_tileable_0[1|1]/QB 9T_tileable_0[1|2]/Q 0.01945f
+C59 9T_tileable_0[1|4]/WBL 9T_tileable_0[0|2]/RBL 0.00941f
+C60 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|3]/WBLB 0.08906f
+C61 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|5]/A 0.65611f
+C62 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|5]/VDD 0.08795f
+C63 9T_tileable_0[0|5]/A 9T_tileable_0[1|4]/RBL 0
+C64 9T_tileable_0[1|5]/Q 9T_tileable_0[1|3]/Q 0.00112f
+C65 9T_tileable_0[0|2]/Q 9T_tileable_0[0|0]/RBL 0
+C66 9T_tileable_0[1|0]/Q 9T_tileable_0[1|2]/QB 0.01957f
+C67 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|3]/QB 0
+C68 9T_tileable_0[1|5]/VDD 9T_tileable_0[0|0]/RBL 0.00169f
+C69 9T_tileable_0[1|4]/WBL 9T_tileable_0[0|2]/QB 0
+C70 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|4]/WBL 0.00177f
+C71 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|5]/A 0.02476f
+C72 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|3]/WBL 0.03873f
+C73 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|5]/a_199_412# 0
+C74 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|5]/WL 0.08473f
+C75 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/WBLB 0.1354f
+C76 9T_tileable_0[1|3]/WBL 9T_tileable_0[1|0]/a_199_412# 0
+C77 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|5]/WL 0.08522f
+C78 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/a_199_412# 0.02379f
+C79 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|3]/Q 0.00266f
+C80 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|4]/RBL 0.11095f
+C81 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|2]/a_199_412# 0
+C82 9T_tileable_0[0|4]/Q 9T_tileable_0[1|1]/WBLB 0
+C83 9T_tileable_0[1|3]/QB 9T_tileable_0[1|3]/WBL 0.02488f
+C84 9T_tileable_0[1|0]/QB 9T_tileable_0[1|2]/WBLB 0
+C85 9T_tileable_0[1|2]/Q 9T_tileable_0[1|4]/QB 0.01957f
+C86 9T_tileable_0[0|1]/QB 9T_tileable_0[1|1]/WBL 0.02466f
+C87 9T_tileable_0[1|4]/Q 9T_tileable_0[1|3]/RBL 0.00266f
+C88 9T_tileable_0[0|5]/WL 9T_tileable_0[1|2]/WBLB 0.12049f
+C89 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/WL 0.03684f
+C90 9T_tileable_0[0|1]/QB 9T_tileable_0[1|4]/WBL 0
+C91 9T_tileable_0[1|3]/Q 9T_tileable_0[1|0]/a_199_412# 0
+C92 9T_tileable_0[1|1]/QB 9T_tileable_0[1|2]/a_199_412# 0
+C93 9T_tileable_0[1|2]/WBLB 9T_tileable_0[0|5]/QB 0
+C94 9T_tileable_0[1|3]/QB 9T_tileable_0[1|3]/Q 0.44205f
+C95 9T_tileable_0[0|5]/A 9T_tileable_0[1|3]/WBL 0.13799f
+C96 9T_tileable_0[0|1]/QB 9T_tileable_0[1|1]/QB 0
+C97 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|4]/a_199_412# 0.00721f
+C98 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|1]/Q 0.00562f
+C99 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|3]/RBL 0.00941f
+C100 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|1]/Q 0
+C101 9T_tileable_0[0|0]/QB 9T_tileable_0[0|5]/VDD 0.30756f
+C102 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|5]/VDD 0.08881f
+C103 9T_tileable_0[0|2]/Q 9T_tileable_0[1|4]/WBL 0
+C104 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|4]/Q 0.00141f
+C105 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|5]/VDD 0.09162f
+C106 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|2]/WBL 0.00301f
+C107 9T_tileable_0[0|3]/Q 9T_tileable_0[0|0]/RBL 0
+C108 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|5]/WL 0
+C109 9T_tileable_0[0|5]/A 9T_tileable_0[1|3]/Q 0
+C110 9T_tileable_0[1|5]/Q 9T_tileable_0[0|5]/Q 0
+C111 9T_tileable_0[1|2]/Q 9T_tileable_0[1|5]/Q 0
+C112 9T_tileable_0[1|1]/RBL 9T_tileable_0[0|5]/VDD 0
+C113 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|2]/a_199_412# 0.00721f
+C114 9T_tileable_0[1|4]/WBLB 9T_tileable_0[0|3]/QB 0
+C115 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|3]/WBL 0.00941f
+C116 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|1]/a_199_412# 0.15211f
+C117 9T_tileable_0[1|1]/QB 9T_tileable_0[1|1]/Q 0.44205f
+C118 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|4]/QB 0.00673f
+C119 9T_tileable_0[0|4]/QB 9T_tileable_0[0|5]/Q 0.01945f
+C120 9T_tileable_0[1|2]/WBL 9T_tileable_0[1|0]/a_199_412# 0
+C121 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/VDD 0.26157f
+C122 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|2]/QB 0.00735f
+C123 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/WL 0.03684f
+C124 9T_tileable_0[1|0]/WBL 9T_tileable_0[0|0]/RBL 0.00325f
+C125 9T_tileable_0[1|5]/QB 9T_tileable_0[1|3]/RBL 0
+C126 9T_tileable_0[1|4]/Q 9T_tileable_0[0|4]/Q 0
+C127 9T_tileable_0[1|4]/Q 9T_tileable_0[1|5]/QB 0.11467f
+C128 9T_tileable_0[0|4]/QB 9T_tileable_0[0|2]/RBL 0
+C129 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|0]/RBL 0
+C130 9T_tileable_0[1|2]/Q 9T_tileable_0[1|2]/RBL 0.10495f
+C131 9T_tileable_0[0|5]/A 9T_tileable_0[1|2]/WBL 0.13767f
+C132 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|3]/WBL 0.09527f
+C133 9T_tileable_0[1|5]/A 9T_tileable_0[1|4]/WBLB 0.08412f
+C134 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|5]/Q 0
+C135 9T_tileable_0[1|0]/Q 9T_tileable_0[1|0]/RBL 0.10495f
+C136 9T_tileable_0[1|5]/Q 9T_tileable_0[0|5]/RBL 0.00666f
+C137 9T_tileable_0[0|4]/QB 9T_tileable_0[0|2]/QB 0
+C138 9T_tileable_0[1|2]/Q 9T_tileable_0[1|0]/a_199_412# 0
+C139 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|4]/Q 0.00141f
+C140 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/QB 0.02488f
+C141 9T_tileable_0[1|2]/RBL 9T_tileable_0[0|2]/RBL 0.00712f
+C142 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|4]/RBL 0.0059f
+C143 9T_tileable_0[1|3]/QB 9T_tileable_0[1|2]/Q 0.11467f
+C144 9T_tileable_0[1|4]/QB 9T_tileable_0[1|1]/Q 0.0107f
+C145 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/WL 0.02719f
+C146 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|3]/Q 0
+C147 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|2]/WBL 0.03873f
+C148 9T_tileable_0[1|4]/WBL 9T_tileable_0[0|3]/Q 0.00141f
+C149 9T_tileable_0[1|5]/Q 9T_tileable_0[1|2]/a_199_412# 0
+C150 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/VDD 0.26189f
+C151 9T_tileable_0[0|4]/QB 9T_tileable_0[1|5]/WL 0.00429f
+C152 9T_tileable_0[1|4]/WBLB 9T_tileable_0[0|4]/RBL 0.0777f
+C153 9T_tileable_0[1|2]/RBL 9T_tileable_0[0|2]/QB 0
+C154 9T_tileable_0[0|5]/A 9T_tileable_0[1|2]/Q 0
+C155 9T_tileable_0[1|4]/WBL 9T_tileable_0[0|3]/QB 0
+C156 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/Q 0.06503f
+C157 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|2]/RBL 0
+C158 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/RBL 0.05738f
+C159 9T_tileable_0[0|1]/QB 9T_tileable_0[0|4]/QB 0
+C160 9T_tileable_0[1|0]/Q 9T_tileable_0[0|0]/Q 0
+C161 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|5]/WL 0
+C162 9T_tileable_0[0|5]/A 9T_tileable_0[0|2]/RBL 0.65611f
+C163 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|2]/WBL 0.15598f
+C164 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|2]/RBL 0.15211f
+C165 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|4]/WBL 0.43401f
+C166 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|3]/QB 0
+C167 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/VDD 0.45058f
+C168 9T_tileable_0[0|2]/Q 9T_tileable_0[0|4]/QB 0.01957f
+C169 9T_tileable_0[1|5]/WL 9T_tileable_0[1|0]/a_199_412# 0
+C170 9T_tileable_0[0|0]/QB 9T_tileable_0[0|0]/RBL 0.04627f
+C171 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|5]/WL 0.11636f
+C172 9T_tileable_0[0|4]/QB 9T_tileable_0[1|5]/VDD 0
+C173 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|4]/WBLB 0
+C174 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|5]/A 0.09177f
+C175 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|0]/a_199_412# 0.00329f
+C176 9T_tileable_0[1|1]/QB 9T_tileable_0[1|3]/WBLB 0
+C177 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/WL 0.03684f
+C178 9T_tileable_0[0|5]/A 9T_tileable_0[0|2]/QB 0.10799f
+C179 9T_tileable_0[1|5]/A 9T_tileable_0[1|4]/WBL 0.09307f
+C180 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|2]/RBL 0.0059f
+C181 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|5]/QB 0.01222f
+C182 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/RBL 0.45513f
+C183 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|0]/RBL 0
+C184 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|4]/WBLB 0.08795f
+C185 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|3]/RBL 0
+C186 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/A 0.10799f
+C187 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|0]/RBL 0.11362f
+C188 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/WL 0.4423f
+C189 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|5]/VDD 0.11219f
+C190 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|2]/Q 0
+C191 9T_tileable_0[1|0]/QB 9T_tileable_0[1|3]/WBL 0
+C192 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|2]/QB 0
+C193 9T_tileable_0[0|4]/RBL 9T_tileable_0[1|4]/WBL 0.00325f
+C194 9T_tileable_0[0|5]/WL 9T_tileable_0[1|3]/WBL 0.08518f
+C195 9T_tileable_0[1|1]/Q 9T_tileable_0[1|0]/a_199_412# 0
+C196 9T_tileable_0[1|4]/Q 9T_tileable_0[1|2]/WBLB 0
+C197 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|3]/a_199_412# 0.00397f
+C198 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|5]/a_199_412# 0
+C199 9T_tileable_0[0|5]/A 9T_tileable_0[0|1]/QB 0.10799f
+C200 9T_tileable_0[1|3]/QB 9T_tileable_0[1|1]/Q 0.01957f
+C201 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|5]/WL 0.0072f
+C202 9T_tileable_0[1|0]/QB 9T_tileable_0[1|3]/Q 0.00169f
+C203 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/VDD 0.26272f
+C204 9T_tileable_0[1|5]/A 9T_tileable_0[1|3]/a_199_412# 0.02466f
+C205 9T_tileable_0[0|3]/RBL 9T_tileable_0[1|3]/WBL 0.00325f
+C206 9T_tileable_0[1|1]/WBL 9T_tileable_0[0|0]/QB 0
+C207 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|4]/QB 0
+C208 9T_tileable_0[1|3]/WBL 9T_tileable_0[0|1]/Q 0
+C209 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|2]/WBLB 0.09527f
+C210 9T_tileable_0[0|5]/A 9T_tileable_0[1|1]/Q 0
+C211 9T_tileable_0[0|1]/QB 9T_tileable_0[0|1]/RBL 0.04627f
+C212 9T_tileable_0[1|0]/WBLB 9T_tileable_0[0|2]/QB 0
+C213 9T_tileable_0[0|5]/A 9T_tileable_0[0|2]/Q 0.06565f
+C214 9T_tileable_0[0|3]/Q 9T_tileable_0[0|4]/QB 0.11467f
+C215 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|1]/WBL 0.00301f
+C216 9T_tileable_0[0|3]/RBL 9T_tileable_0[1|3]/Q 0.00666f
+C217 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|4]/WBL 0.00526f
+C218 9T_tileable_0[1|2]/QB 9T_tileable_0[1|3]/WBL 0
+C219 9T_tileable_0[1|5]/A 9T_tileable_0[1|4]/QB 0.10757f
+C220 9T_tileable_0[0|4]/QB 9T_tileable_0[0|3]/QB 0.00192f
+C221 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|5]/WL 0.12073f
+C222 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|1]/Q 0.00666f
+C223 9T_tileable_0[1|0]/QB 9T_tileable_0[1|2]/WBL 0
+C224 9T_tileable_0[1|1]/WBL 9T_tileable_0[0|5]/VDD 0.08906f
+C225 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|2]/Q 0.00266f
+C226 9T_tileable_0[0|5]/WL 9T_tileable_0[1|2]/WBL 0.08505f
+C227 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|1]/QB 0.04627f
+C228 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|1]/WBL 0.00177f
+C229 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|2]/a_199_412# 0
+C230 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|4]/WBL 0.09176f
+C231 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|5]/VDD 0.00169f
+C232 9T_tileable_0[1|2]/WBLB 9T_tileable_0[0|4]/Q 0
+C233 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|4]/WBL 0
+C234 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|5]/QB 0
+C235 9T_tileable_0[1|2]/QB 9T_tileable_0[1|3]/Q 0.01945f
+C236 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|5]/Q 0
+C237 9T_tileable_0[0|4]/RBL 9T_tileable_0[1|4]/QB 0.00639f
+C238 9T_tileable_0[0|1]/QB 9T_tileable_0[1|0]/WBLB 0
+C239 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|4]/QB 0
+C240 9T_tileable_0[1|1]/QB 9T_tileable_0[0|5]/VDD 0
+C241 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|1]/QB 0.00673f
+C242 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/Q 0.06503f
+C243 9T_tileable_0[1|3]/QB 9T_tileable_0[0|3]/Q 0
+C244 9T_tileable_0[1|2]/WBL 9T_tileable_0[0|1]/Q 0.00141f
+C245 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|3]/a_199_412# 0
+C246 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|1]/Q 0
+C247 9T_tileable_0[1|0]/QB 9T_tileable_0[1|2]/Q 0.00647f
+C248 9T_tileable_0[0|2]/Q 9T_tileable_0[1|0]/WBLB 0
+C249 9T_tileable_0[0|5]/WL 9T_tileable_0[0|5]/Q 0.02719f
+C250 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|5]/VDD 0.08968f
+C251 9T_tileable_0[1|3]/QB 9T_tileable_0[0|3]/QB 0
+C252 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|2]/RBL 0
+C253 9T_tileable_0[1|2]/QB 9T_tileable_0[1|2]/WBL 0.02488f
+C254 9T_tileable_0[1|0]/WBL 9T_tileable_0[1|0]/a_199_412# 0.00177f
+C255 9T_tileable_0[0|5]/A 9T_tileable_0[0|3]/Q 0.06569f
+C256 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|3]/a_199_412# 0.00329f
+C257 9T_tileable_0[0|5]/QB 9T_tileable_0[0|5]/Q 0.44205f
+C258 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|5]/RBL 0
+C259 9T_tileable_0[1|5]/RBL 9T_tileable_0[0|5]/RBL 0.00712f
+C260 9T_tileable_0[1|1]/WBLB 9T_tileable_0[1|3]/WBL 0.15598f
+C261 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|4]/QB 0.04627f
+C262 9T_tileable_0[1|5]/A 9T_tileable_0[1|2]/RBL 0.65611f
+C263 9T_tileable_0[0|5]/WL 9T_tileable_0[0|2]/RBL 0
+C264 9T_tileable_0[1|3]/RBL 9T_tileable_0[1|4]/RBL 0.0059f
+C265 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|5]/Q 0
+C266 9T_tileable_0[0|5]/A 9T_tileable_0[0|3]/QB 0.10788f
+C267 9T_tileable_0[1|4]/Q 9T_tileable_0[1|4]/RBL 0.10495f
+C268 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|3]/QB 0.00735f
+C269 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|5]/WL 0
+C270 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|5]/a_199_412# 0.00329f
+C271 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|4]/QB 0
+C272 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|3]/Q 0
+C273 9T_tileable_0[1|5]/A 9T_tileable_0[1|0]/a_199_412# 0.02476f
+C274 9T_tileable_0[0|5]/A 9T_tileable_0[1|0]/WBL 0.12596f
+C275 9T_tileable_0[1|1]/WBLB 9T_tileable_0[1|3]/Q 0
+C276 9T_tileable_0[0|5]/WL 9T_tileable_0[0|2]/QB 0.03684f
+C277 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|2]/RBL 0.0059f
+C278 9T_tileable_0[1|5]/A 9T_tileable_0[1|3]/QB 0.10788f
+C279 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|3]/QB 0
+C280 9T_tileable_0[0|5]/A 9T_tileable_0[1|3]/WBLB 0.14254f
+C281 9T_tileable_0[1|2]/Q 9T_tileable_0[1|2]/QB 0.44205f
+C282 9T_tileable_0[0|5]/WL 9T_tileable_0[0|5]/RBL 0
+C283 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|3]/RBL 0
+C284 9T_tileable_0[0|5]/QB 9T_tileable_0[0|2]/QB 0
+C285 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|4]/RBL 0.03873f
+C286 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/a_199_412# 0
+C287 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/WL 0.03684f
+C288 9T_tileable_0[0|5]/WL 9T_tileable_0[1|5]/WL 0.02285f
+C289 9T_tileable_0[0|5]/RBL 9T_tileable_0[0|5]/QB 0.04627f
+C290 9T_tileable_0[1|0]/QB 9T_tileable_0[1|2]/a_199_412# 0
+C291 9T_tileable_0[1|2]/QB 9T_tileable_0[0|2]/RBL 0.00639f
+C292 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|3]/WBL 0.00526f
+C293 9T_tileable_0[0|2]/QB 9T_tileable_0[0|1]/Q 0.11467f
+C294 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|5]/RBL 0.00265f
+C295 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|3]/WBLB 0
+C296 9T_tileable_0[0|5]/QB 9T_tileable_0[1|5]/WL 0.00429f
+C297 9T_tileable_0[1|0]/WBLB 9T_tileable_0[0|3]/Q 0
+C298 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|5]/VDD 0.10803f
+C299 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|4]/WBL 0.64537f
+C300 9T_tileable_0[1|1]/WBL 9T_tileable_0[0|0]/RBL 0.03873f
+C301 9T_tileable_0[0|1]/QB 9T_tileable_0[0|5]/WL 0.03684f
+C302 9T_tileable_0[1|1]/WBLB 9T_tileable_0[1|2]/WBL 0.43401f
+C303 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/WBL 0.64537f
+C304 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|4]/QB 0.26189f
+C305 9T_tileable_0[0|3]/RBL 9T_tileable_0[1|5]/WL 0.0072f
+C306 9T_tileable_0[1|3]/RBL 9T_tileable_0[1|3]/WBL 0.00301f
+C307 9T_tileable_0[1|0]/WBLB 9T_tileable_0[0|3]/QB 0
+C308 9T_tileable_0[1|2]/QB 9T_tileable_0[0|2]/QB 0
+C309 9T_tileable_0[1|5]/WL 9T_tileable_0[0|1]/Q 0.00382f
+C310 9T_tileable_0[1|5]/QB 9T_tileable_0[1|4]/RBL 0
+C311 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|3]/Q 0
+C312 9T_tileable_0[0|5]/A 9T_tileable_0[0|4]/RBL 0.62574f
+C313 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|2]/RBL 0.0059f
+C314 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|2]/QB 0
+C315 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/a_199_412# 0.00144f
+C316 9T_tileable_0[1|0]/QB 9T_tileable_0[1|1]/Q 0.01945f
+C317 9T_tileable_0[1|0]/WBL 9T_tileable_0[1|0]/WBLB 0.64537f
+C318 9T_tileable_0[0|2]/Q 9T_tileable_0[0|5]/WL 0.02742f
+C319 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/VDD 0.32387f
+C320 9T_tileable_0[1|3]/RBL 9T_tileable_0[1|3]/Q 0.10495f
+C321 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|0]/a_199_412# 0
+C322 9T_tileable_0[0|1]/QB 9T_tileable_0[0|1]/Q 0.44205f
+C323 9T_tileable_0[1|4]/Q 9T_tileable_0[1|3]/Q 0.00375f
+C324 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/WL 0.03684f
+C325 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|2]/RBL 0
+C326 9T_tileable_0[0|0]/Q 9T_tileable_0[1|3]/WBL 0
+C327 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|2]/RBL 0
+C328 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|3]/QB 0
+C329 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/QB 0.00735f
+C330 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|2]/QB 0.00673f
+C331 9T_tileable_0[0|2]/Q 9T_tileable_0[0|5]/QB 0.0107f
+C332 9T_tileable_0[0|5]/QB 9T_tileable_0[1|5]/VDD 0
+C333 9T_tileable_0[1|2]/Q 9T_tileable_0[1|1]/WBLB 0
+C334 9T_tileable_0[0|5]/A 9T_tileable_0[0|0]/QB 0.10799f
+C335 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|0]/a_199_412# 0.00721f
+C336 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|2]/WBL 0.00941f
+C337 9T_tileable_0[1|5]/A 9T_tileable_0[1|0]/WBLB 0.08532f
+C338 9T_tileable_0[1|1]/Q 9T_tileable_0[0|1]/Q 0
+C339 9T_tileable_0[0|3]/RBL 9T_tileable_0[1|5]/VDD 0.00169f
+C340 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|3]/QB 0
+C341 9T_tileable_0[0|2]/Q 9T_tileable_0[0|1]/Q 0.00375f
+C342 9T_tileable_0[0|5]/A 9T_tileable_0[1|1]/RBL 0
+C343 9T_tileable_0[1|5]/VDD 9T_tileable_0[0|1]/Q 0
+C344 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|3]/Q 0
+C345 9T_tileable_0[1|2]/QB 9T_tileable_0[1|1]/Q 0.11467f
+C346 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|4]/QB 0.00735f
+C347 9T_tileable_0[0|2]/Q 9T_tileable_0[1|2]/QB 0
+C348 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/a_199_412# 0
+C349 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/VDD 0.26263f
+C350 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/VDD 1.53147f
+C351 9T_tileable_0[1|1]/RBL 9T_tileable_0[0|1]/RBL 0.00712f
+C352 9T_tileable_0[1|1]/WBLB 9T_tileable_0[0|2]/QB 0
+C353 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|1]/QB 0.02488f
+C354 9T_tileable_0[1|1]/QB 9T_tileable_0[1|4]/WBL 0
+C355 9T_tileable_0[0|0]/Q 9T_tileable_0[1|2]/WBL 0
+C356 9T_tileable_0[1|2]/Q 9T_tileable_0[1|0]/RBL 0
+C357 9T_tileable_0[1|5]/QB 9T_tileable_0[1|3]/Q 0.01957f
+C358 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|5]/VDD 0.11219f
+C359 9T_tileable_0[0|5]/WL 9T_tileable_0[0|3]/Q 0.02741f
+C360 9T_tileable_0[1|1]/WBLB 9T_tileable_0[1|5]/WL 0.12073f
+C361 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|5]/Q 0
+C362 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|1]/WBLB 0
+C363 9T_tileable_0[1|0]/Q 9T_tileable_0[1|3]/WBL 0
+C364 9T_tileable_0[0|0]/QB 9T_tileable_0[1|0]/WBLB 0.01222f
+C365 9T_tileable_0[1|4]/Q 9T_tileable_0[1|2]/Q 0.00112f
+C366 9T_tileable_0[0|3]/Q 9T_tileable_0[0|5]/QB 0.01957f
+C367 9T_tileable_0[0|5]/WL 9T_tileable_0[0|3]/QB 0.03684f
+C368 9T_tileable_0[1|4]/WBLB 9T_tileable_0[0|4]/QB 0.01222f
+C369 9T_tileable_0[0|1]/QB 9T_tileable_0[1|1]/WBLB 0.01222f
+C370 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|4]/WBL 0
+C371 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/RBL 0.45513f
+C372 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|3]/Q 0.10495f
+C373 9T_tileable_0[1|0]/QB 9T_tileable_0[1|0]/WBL 0.02488f
+C374 9T_tileable_0[0|3]/QB 9T_tileable_0[0|5]/QB 0
+C375 9T_tileable_0[0|5]/WL 9T_tileable_0[1|0]/WBL 0.08051f
+C376 9T_tileable_0[0|3]/Q 9T_tileable_0[0|1]/Q 0.00112f
+C377 9T_tileable_0[1|0]/Q 9T_tileable_0[1|3]/Q 0
+C378 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|3]/QB 0.04627f
+C379 9T_tileable_0[1|1]/QB 9T_tileable_0[1|3]/a_199_412# 0
+C380 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|2]/Q 0
+C381 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|0]/WBLB 0.08994f
+C382 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|5]/Q 0.01376f
+C383 9T_tileable_0[0|5]/WL 9T_tileable_0[1|3]/WBLB 0.12028f
+C384 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|0]/WBLB 0
+C385 9T_tileable_0[1|1]/WBLB 9T_tileable_0[1|1]/Q 0.02803f
+C386 9T_tileable_0[0|3]/QB 9T_tileable_0[0|1]/Q 0.01957f
+C387 9T_tileable_0[0|2]/Q 9T_tileable_0[1|1]/WBLB 0
+C388 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|2]/RBL 0
+C389 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|4]/QB 0.02488f
+C390 9T_tileable_0[1|1]/WBLB 9T_tileable_0[1|5]/VDD 0.08958f
+C391 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|5]/QB 0
+C392 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/A 0.10799f
+C393 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|3]/RBL 0
+C394 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|5]/WL 0
+C395 9T_tileable_0[1|4]/Q 9T_tileable_0[1|4]/a_199_412# 0.00144f
+C396 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|0]/RBL 0
+C397 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|2]/RBL 0.00526f
+C398 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|3]/RBL 0.0777f
+C399 9T_tileable_0[1|1]/QB 9T_tileable_0[1|4]/QB 0
+C400 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|3]/QB 0
+C401 9T_tileable_0[1|3]/RBL 9T_tileable_0[1|5]/WL 0
+C402 9T_tileable_0[0|4]/Q 9T_tileable_0[0|5]/Q 0.00375f
+C403 9T_tileable_0[1|0]/Q 9T_tileable_0[1|2]/WBL 0
+C404 9T_tileable_0[0|0]/Q 9T_tileable_0[0|2]/QB 0.01957f
+C405 9T_tileable_0[1|2]/Q 9T_tileable_0[1|5]/QB 0.0107f
+C406 9T_tileable_0[1|4]/Q 9T_tileable_0[1|5]/WL 0.02738f
+C407 9T_tileable_0[1|5]/QB 9T_tileable_0[0|5]/Q 0
+C408 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|3]/RBL 0
+C409 9T_tileable_0[1|4]/Q 9T_tileable_0[1|2]/a_199_412# 0
+C410 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|2]/QB 0
+C411 9T_tileable_0[0|5]/WL 9T_tileable_0[0|4]/RBL 0
+C412 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|4]/a_199_412# 0
+C413 9T_tileable_0[1|5]/A 9T_tileable_0[0|1]/Q 0
+C414 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|2]/QB 0
+C415 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|5]/RBL 0.00325f
+C416 9T_tileable_0[0|5]/A 9T_tileable_0[1|4]/WBLB 0.14166f
+C417 9T_tileable_0[0|4]/Q 9T_tileable_0[0|2]/RBL 0
+C418 9T_tileable_0[0|0]/Q 9T_tileable_0[1|5]/WL 0.00382f
+C419 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|5]/QB 0
+C420 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|1]/Q 0.00266f
+C421 9T_tileable_0[1|4]/WBL 9T_tileable_0[0|4]/QB 0.02466f
+C422 9T_tileable_0[0|5]/A 9T_tileable_0[0|0]/RBL 0.65611f
+C423 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|3]/WBL 0.43401f
+C424 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|5]/VDD 0.11343f
+C425 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/WL 0.08519f
+C426 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|3]/RBL 0.0059f
+C427 9T_tileable_0[1|5]/A 9T_tileable_0[1|2]/QB 0.10799f
+C428 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|2]/a_199_412# 0
+C429 9T_tileable_0[0|1]/QB 9T_tileable_0[0|0]/Q 0.11467f
+C430 9T_tileable_0[1|0]/QB 9T_tileable_0[0|0]/QB 0
+C431 9T_tileable_0[1|0]/Q 9T_tileable_0[1|2]/Q 0.00112f
+C432 9T_tileable_0[0|4]/Q 9T_tileable_0[0|2]/QB 0.00647f
+C433 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|5]/RBL 0
+C434 9T_tileable_0[1|4]/Q 9T_tileable_0[1|1]/Q 0
+C435 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|4]/WBLB 0
+C436 9T_tileable_0[1|3]/RBL 9T_tileable_0[1|5]/VDD 0.11183f
+C437 9T_tileable_0[0|0]/QB 9T_tileable_0[0|5]/WL 0.03684f
+C438 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|3]/Q 0
+C439 9T_tileable_0[1|4]/Q 9T_tileable_0[1|5]/VDD 0.46126f
+C440 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|0]/RBL 0.0059f
+C441 9T_tileable_0[0|3]/Q 9T_tileable_0[1|1]/WBLB 0
+C442 9T_tileable_0[0|5]/RBL 9T_tileable_0[1|5]/QB 0.00639f
+C443 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|2]/RBL 0.00941f
+C444 9T_tileable_0[0|4]/Q 9T_tileable_0[1|5]/WL 0.00382f
+C445 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|0]/a_199_412# 0
+C446 9T_tileable_0[0|3]/QB 9T_tileable_0[1|1]/WBLB 0
+C447 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|5]/Q 0
+C448 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/WL 0.03684f
+C449 9T_tileable_0[0|2]/Q 9T_tileable_0[0|0]/Q 0.00112f
+C450 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|5]/a_199_412# 0.15211f
+C451 9T_tileable_0[0|0]/Q 9T_tileable_0[1|5]/VDD 0
+C452 9T_tileable_0[1|0]/QB 9T_tileable_0[0|5]/VDD 0
+C453 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|2]/Q 0
+C454 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|0]/QB 0
+C455 9T_tileable_0[0|0]/QB 9T_tileable_0[0|1]/Q 0.01945f
+C456 9T_tileable_0[0|5]/WL 9T_tileable_0[0|5]/VDD 0.08135f
+C457 9T_tileable_0[1|3]/QB 9T_tileable_0[1|4]/WBL 0
+C458 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/VDD 0.09162f
+C459 9T_tileable_0[0|1]/QB 9T_tileable_0[0|4]/Q 0.00169f
+C460 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/QB 0.2536f
+C461 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|2]/WBL 0.64537f
+C462 9T_tileable_0[1|5]/Q 9T_tileable_0[1|4]/QB 0.01945f
+C463 9T_tileable_0[1|0]/WBLB 9T_tileable_0[0|0]/RBL 0.0777f
+C464 9T_tileable_0[1|1]/QB 9T_tileable_0[1|3]/QB 0
+C465 9T_tileable_0[0|5]/A 9T_tileable_0[1|1]/WBL 0.13669f
+C466 9T_tileable_0[1|4]/QB 9T_tileable_0[0|4]/QB 0
+C467 9T_tileable_0[0|5]/A 9T_tileable_0[1|4]/WBL 0.13799f
+C468 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|3]/RBL 0.11183f
+C469 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|2]/RBL 0
+C470 9T_tileable_0[1|0]/Q 9T_tileable_0[1|5]/WL 0.02742f
+C471 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|1]/Q 0.46154f
+C472 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|2]/QB 0
+C473 9T_tileable_0[0|2]/Q 9T_tileable_0[0|4]/Q 0.00112f
+C474 9T_tileable_0[1|5]/A 9T_tileable_0[1|1]/WBLB 0.08532f
+C475 9T_tileable_0[0|4]/Q 9T_tileable_0[1|5]/VDD 0
+C476 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/VDD 0.2536f
+C477 9T_tileable_0[0|5]/A 9T_tileable_0[1|1]/QB 0.00539f
+C478 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|4]/RBL 0
+C479 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|1]/WBL 0.00325f
+C480 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|2]/QB 0
+C481 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|4]/WBL 0.00526f
+C482 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|3]/QB 0.00673f
+C483 9T_tileable_0[1|4]/QB 9T_tileable_0[1|2]/RBL 0
+C484 9T_tileable_0[1|0]/WBL 9T_tileable_0[1|0]/RBL 0.00301f
+C485 9T_tileable_0[1|2]/WBLB 9T_tileable_0[0|5]/Q 0
+C486 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|2]/Q 0.02803f
+C487 9T_tileable_0[0|3]/QB 9T_tileable_0[1|3]/RBL 0
+C488 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|1]/QB 0.00639f
+C489 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|0]/RBL 0
+C490 9T_tileable_0[1|0]/Q 9T_tileable_0[1|1]/Q 0.00375f
+C491 9T_tileable_0[0|3]/Q 9T_tileable_0[0|0]/Q 0
+C492 9T_tileable_0[1|3]/QB 9T_tileable_0[1|4]/QB 0.00192f
+C493 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|3]/Q 0
+C494 9T_tileable_0[1|0]/Q 9T_tileable_0[1|5]/VDD 0.46246f
+C495 9T_tileable_0[1|2]/WBLB 9T_tileable_0[0|2]/RBL 0.0777f
+C496 9T_tileable_0[0|0]/Q 9T_tileable_0[0|3]/QB 0.0107f
+C497 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|3]/RBL 0.05738f
+C498 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|0]/WBLB 0.43401f
+C499 9T_tileable_0[1|5]/A 9T_tileable_0[1|0]/RBL 0.65611f
+C500 9T_tileable_0[1|4]/Q 9T_tileable_0[1|3]/WBLB 0
+C501 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|3]/QB 0
+C502 9T_tileable_0[0|0]/QB 9T_tileable_0[1|1]/WBLB 0
+C503 9T_tileable_0[1|5]/Q 9T_tileable_0[1|2]/RBL 0
+C504 9T_tileable_0[1|0]/WBL 9T_tileable_0[0|0]/Q 0.01376f
+C505 9T_tileable_0[1|2]/WBLB 9T_tileable_0[0|2]/QB 0.01222f
+C506 9T_tileable_0[0|5]/A 9T_tileable_0[1|4]/QB 0.00539f
+C507 9T_tileable_0[1|5]/A 9T_tileable_0[1|3]/RBL 0.64581f
+C508 9T_tileable_0[1|1]/QB 9T_tileable_0[1|0]/WBLB 0
+C509 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|4]/a_199_412# 0
+C510 9T_tileable_0[1|5]/A 9T_tileable_0[1|4]/Q 0.06557f
+C511 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|1]/WBLB 0.05738f
+C512 9T_tileable_0[0|3]/Q 9T_tileable_0[0|4]/Q 0.00375f
+C513 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|3]/WBLB 0.15598f
+C514 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/Q 0.00647f
+C515 9T_tileable_0[0|5]/WL 9T_tileable_0[1|4]/WBLB 0.11972f
+C516 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|5]/WL 0.12073f
+C517 9T_tileable_0[1|0]/QB 9T_tileable_0[0|0]/RBL 0.00639f
+C518 9T_tileable_0[0|4]/Q 9T_tileable_0[0|3]/QB 0.01945f
+C519 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|1]/WBLB 0.08965f
+C520 9T_tileable_0[1|5]/A 9T_tileable_0[0|0]/Q 0
+C521 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|2]/a_199_412# 0.00397f
+C522 9T_tileable_0[0|5]/WL 9T_tileable_0[0|0]/RBL 0
+C523 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|1]/WBLB 0.00397f
+C524 9T_tileable_0[1|4]/Q 9T_tileable_0[0|4]/RBL 0.00666f
+C525 9T_tileable_0[1|4]/WBLB 9T_tileable_0[0|5]/QB 0
+C526 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/A 0.09307f
+C527 9T_tileable_0[0|1]/QB 9T_tileable_0[1|2]/WBLB 0
+C528 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/Q 0
+C529 9T_tileable_0[1|4]/WBLB 9T_tileable_0[0|3]/RBL 0
+C530 9T_tileable_0[0|0]/QB 9T_tileable_0[1|0]/RBL 0
+C531 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|0]/a_199_412# 0
+C532 9T_tileable_0[0|5]/A 9T_tileable_0[0|4]/QB 0.10757f
+C533 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|4]/Q 0
+C534 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|5]/QB 0
+C535 9T_tileable_0[1|3]/QB 9T_tileable_0[1|2]/RBL 0
+C536 9T_tileable_0[0|0]/RBL 9T_tileable_0[0|1]/Q 0.00266f
+C537 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|4]/RBL 0.03873f
+C538 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|0]/RBL 0.0059f
+C539 9T_tileable_0[1|3]/WBL 9T_tileable_0[1|3]/Q 0.00562f
+C540 9T_tileable_0[0|2]/Q 9T_tileable_0[1|2]/WBLB 0.02783f
+C541 9T_tileable_0[1|5]/A 9T_tileable_0[0|4]/Q 0
+C542 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|5]/VDD 0.08954f
+C543 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|2]/QB 0
+C544 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/QB 0.10542f
+C545 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|3]/RBL 0.00265f
+C546 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|0]/RBL 0
+C547 9T_tileable_0[0|5]/A 9T_tileable_0[1|2]/RBL 0
+C548 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|0]/RBL 0
+C549 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|4]/Q 0
+C550 9T_tileable_0[1|0]/Q 9T_tileable_0[1|0]/WBL 0.00562f
+C551 9T_tileable_0[0|0]/QB 9T_tileable_0[0|0]/Q 0.44205f
+C552 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|0]/QB 0
+C553 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|3]/RBL 0
+C554 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|4]/Q 0.10495f
+C555 9T_tileable_0[1|1]/WBL 9T_tileable_0[0|5]/WL 0.08467f
+C556 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|3]/RBL 0
+C557 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|4]/Q 0
+C558 9T_tileable_0[0|5]/WL 9T_tileable_0[1|4]/WBL 0.08516f
+C559 9T_tileable_0[0|5]/A 9T_tileable_0[1|3]/QB 0.00539f
+C560 9T_tileable_0[1|0]/Q 9T_tileable_0[1|5]/A 0.06482f
+C561 9T_tileable_0[1|1]/QB 9T_tileable_0[1|0]/QB 0.00192f
+C562 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|5]/Q 0.02783f
+C563 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|5]/RBL 0
+C564 9T_tileable_0[1|5]/a_199_412# 9T_tileable_0[1|3]/RBL 0
+C565 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|0]/Q 0.46432f
+C566 9T_tileable_0[0|3]/RBL 9T_tileable_0[1|4]/WBL 0.03873f
+C567 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|5]/VDD 0.09176f
+C568 9T_tileable_0[1|1]/WBL 9T_tileable_0[0|1]/Q 0.01376f
+C569 9T_tileable_0[1|4]/WBL 9T_tileable_0[0|1]/Q 0
+C570 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|4]/RBL 0.15211f
+C571 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|2]/RBL 0
+C572 9T_tileable_0[1|2]/WBLB 9T_tileable_0[0|3]/Q 0
+C573 9T_tileable_0[1|1]/QB 9T_tileable_0[0|1]/Q 0
+C574 9T_tileable_0[1|2]/Q 9T_tileable_0[1|3]/WBL 0.00141f
+C575 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|2]/QB 0
+C576 9T_tileable_0[1|4]/RBL 9T_tileable_0[1|5]/WL 0
+C577 9T_tileable_0[0|5]/A 9T_tileable_0[0|1]/RBL 0.65611f
+C578 9T_tileable_0[1|1]/WBLB 9T_tileable_0[0|0]/RBL 0
+C579 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/a_199_412# 0.00177f
+C580 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|4]/RBL 0
+C581 9T_tileable_0[1|2]/WBLB 9T_tileable_0[0|3]/QB 0
+C582 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|0]/a_199_412# 0.00397f
+C583 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|4]/Q 0.46126f
+C584 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|5]/QB 0
+C585 9T_tileable_0[1|1]/QB 9T_tileable_0[1|2]/QB 0.00192f
+C586 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|5]/RBL 0.0777f
+C587 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|3]/QB 0
+C588 9T_tileable_0[1|2]/Q 9T_tileable_0[1|3]/Q 0.00375f
+C589 9T_tileable_0[1|3]/WBL 9T_tileable_0[0|2]/RBL 0.03873f
+C590 9T_tileable_0[0|0]/QB 9T_tileable_0[1|0]/Q 0
+C591 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/WL 0.1166f
+C592 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|5]/Q 0.10495f
+C593 9T_tileable_0[1|5]/a_199_412# 9T_tileable_0[1|5]/QB 0.00673f
+C594 9T_tileable_0[0|5]/A 9T_tileable_0[1|0]/WBLB 0.14286f
+C595 9T_tileable_0[1|3]/WBL 9T_tileable_0[0|2]/QB 0
+C596 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|4]/RBL 0.11095f
+C597 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|2]/QB 0
+C598 9T_tileable_0[1|5]/A 9T_tileable_0[1|2]/WBLB 0.08532f
+C599 9T_tileable_0[1|0]/RBL 9T_tileable_0[0|0]/RBL 0.00712f
+C600 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|3]/RBL 0
+C601 9T_tileable_0[1|3]/WBL 9T_tileable_0[1|5]/WL 0.08523f
+C602 9T_tileable_0[1|2]/Q 9T_tileable_0[1|2]/WBL 0.00562f
+C603 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|4]/Q 0.02803f
+C604 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|3]/WBL 0
+C605 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|1]/WBLB 0.64537f
+C606 9T_tileable_0[1|4]/QB 9T_tileable_0[1|2]/QB 0
+C607 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|1]/WBLB 0.09527f
+C608 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/VDD 0.08122f
+C609 9T_tileable_0[0|5]/WL 9T_tileable_0[0|4]/QB 0.03684f
+C610 9T_tileable_0[0|1]/QB 9T_tileable_0[1|3]/WBL 0
+C611 9T_tileable_0[1|5]/Q 9T_tileable_0[0|5]/QB 0
+C612 9T_tileable_0[1|3]/Q 9T_tileable_0[1|5]/WL 0.02741f
+C613 9T_tileable_0[1|2]/WBL 9T_tileable_0[0|2]/RBL 0.00325f
+C614 9T_tileable_0[0|4]/QB 9T_tileable_0[0|5]/QB 0.00192f
+C615 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|3]/Q 0
+C616 9T_tileable_0[1|1]/QB 9T_tileable_0[1|1]/WBLB 0.00735f
+C617 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|4]/WBLB 0.43401f
+C618 9T_tileable_0[0|0]/Q 9T_tileable_0[0|0]/RBL 0.10495f
+C619 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|4]/QB 0
+C620 9T_tileable_0[1|3]/WBL 9T_tileable_0[1|1]/Q 0
+C621 9T_tileable_0[1|2]/WBL 9T_tileable_0[0|2]/QB 0.02466f
+C622 9T_tileable_0[0|4]/QB 9T_tileable_0[0|1]/Q 0.0107f
+C623 9T_tileable_0[0|2]/Q 9T_tileable_0[1|3]/WBL 0.00141f
+C624 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|3]/WBL 0.09162f
+C625 9T_tileable_0[0|0]/QB 9T_tileable_0[1|2]/WBLB 0
+C626 9T_tileable_0[1|0]/QB 9T_tileable_0[1|0]/a_199_412# 0.00673f
+C627 9T_tileable_0[1|5]/Q 9T_tileable_0[1|2]/QB 0.00169f
+C628 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/RBL 0
+C629 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|0]/RBL 0.03873f
+C630 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|2]/WBLB 0
+C631 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|1]/WBLB 0
+C632 9T_tileable_0[1|0]/QB 9T_tileable_0[1|3]/QB 0
+C633 9T_tileable_0[1|2]/Q 9T_tileable_0[0|2]/RBL 0.00666f
+C634 9T_tileable_0[1|3]/Q 9T_tileable_0[1|1]/Q 0.00112f
+C635 9T_tileable_0[0|5]/Q 9T_tileable_0[0|2]/RBL 0
+C636 9T_tileable_0[1|2]/WBL 9T_tileable_0[1|5]/WL 0.08511f
+C637 9T_tileable_0[1|4]/WBLB 9T_tileable_0[0|4]/Q 0.02783f
+C638 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|5]/QB 0
+C639 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|3]/Q 0.46272f
+C640 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|2]/WBL 0.00177f
+C641 9T_tileable_0[0|1]/QB 9T_tileable_0[1|2]/WBL 0
+C642 9T_tileable_0[1|1]/QB 9T_tileable_0[1|0]/RBL 0
+C643 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|3]/RBL 0.03873f
+C644 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|2]/WBLB 0.08954f
+C645 9T_tileable_0[1|2]/Q 9T_tileable_0[0|2]/QB 0
+C646 9T_tileable_0[0|5]/A 9T_tileable_0[1|0]/QB 0.00539f
+C647 9T_tileable_0[0|5]/Q 9T_tileable_0[0|2]/QB 0.00169f
+C648 9T_tileable_0[1|4]/Q 9T_tileable_0[1|4]/WBL 0.00562f
+C649 9T_tileable_0[1|4]/QB 9T_tileable_0[1|1]/WBLB 0
+C650 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/WL 0.02485f
+C651 9T_tileable_0[1|3]/QB 9T_tileable_0[0|3]/RBL 0.00639f
+C652 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|2]/QB 0.04627f
+C653 9T_tileable_0[0|5]/RBL 9T_tileable_0[0|5]/Q 0.10495f
+C654 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|3]/QB 0
+C655 9T_tileable_0[1|1]/QB 9T_tileable_0[1|4]/Q 0.00169f
+C656 9T_tileable_0[1|1]/WBL 9T_tileable_0[0|0]/Q 0.00141f
+C657 9T_tileable_0[0|5]/A 9T_tileable_0[0|5]/QB 0.10542f
+C658 9T_tileable_0[0|5]/Q 9T_tileable_0[1|5]/WL 0.00382f
+C659 9T_tileable_0[1|2]/WBL 9T_tileable_0[1|1]/Q 0.00141f
+C660 9T_tileable_0[1|2]/Q 9T_tileable_0[1|5]/WL 0.02742f
+C661 9T_tileable_0[0|2]/RBL 9T_tileable_0[0|2]/QB 0.04627f
+C662 9T_tileable_0[0|2]/Q 9T_tileable_0[1|2]/WBL 0.01376f
+C663 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|2]/WBL 0.09079f
+C664 9T_tileable_0[0|5]/A 9T_tileable_0[0|3]/RBL 0.64581f
+C665 9T_tileable_0[1|2]/Q 9T_tileable_0[1|2]/a_199_412# 0.00144f
+C666 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|5]/WL 0
+C667 9T_tileable_0[1|0]/Q 9T_tileable_0[0|0]/RBL 0.00666f
+C668 9T_tileable_0[1|3]/QB 9T_tileable_0[1|2]/QB 0.00192f
+C669 9T_tileable_0[1|5]/A 9T_tileable_0[1|4]/RBL 0.62574f
+C670 9T_tileable_0[0|5]/A 9T_tileable_0[0|1]/Q 0.06547f
+C671 9T_tileable_0[0|3]/Q 9T_tileable_0[1|3]/WBL 0.01376f
+C672 9T_tileable_0[0|2]/RBL 9T_tileable_0[1|5]/WL 0.0072f
+C673 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|3]/RBL 0.15211f
+C674 9T_tileable_0[1|4]/Q 9T_tileable_0[1|3]/a_199_412# 0
+C675 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|3]/RBL 0.00265f
+C676 9T_tileable_0[0|4]/QB 9T_tileable_0[1|1]/WBLB 0
+C677 9T_tileable_0[0|3]/QB 9T_tileable_0[1|3]/WBL 0.02466f
+C678 9T_tileable_0[0|5]/A 9T_tileable_0[1|2]/QB 0.00539f
+C679 9T_tileable_0[0|4]/RBL 9T_tileable_0[1|4]/RBL 0.00712f
+C680 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|1]/Q 0.10495f
+C681 9T_tileable_0[0|3]/Q 9T_tileable_0[1|3]/Q 0
+C682 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/A 0.07786f
+C683 9T_tileable_0[0|2]/QB 9T_tileable_0[1|5]/WL 0.00429f
+C684 9T_tileable_0[1|2]/Q 9T_tileable_0[1|1]/Q 0.00375f
+C685 9T_tileable_0[1|4]/WBL 9T_tileable_0[0|4]/Q 0.01376f
+C686 9T_tileable_0[0|2]/Q 9T_tileable_0[1|2]/Q 0
+C687 9T_tileable_0[0|2]/Q 9T_tileable_0[0|5]/Q 0
+C688 9T_tileable_0[1|0]/QB 9T_tileable_0[1|0]/WBLB 0.00735f
+C689 9T_tileable_0[0|5]/Q 9T_tileable_0[1|5]/VDD 0
+C690 9T_tileable_0[1|2]/Q 9T_tileable_0[1|5]/VDD 0.46278f
+C691 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|5]/WL 0
+C692 9T_tileable_0[0|5]/WL 9T_tileable_0[1|0]/WBLB 0.12049f
+C693 9T_tileable_0[0|5]/RBL 9T_tileable_0[1|5]/WL 0.0072f
+C694 9T_tileable_0[1|4]/QB 9T_tileable_0[1|3]/RBL 0
+C695 9T_tileable_0[0|3]/QB 9T_tileable_0[1|3]/Q 0
+C696 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|2]/a_199_412# 0.00329f
+C697 9T_tileable_0[1|4]/Q 9T_tileable_0[1|4]/QB 0.44205f
+C698 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|3]/WBL 0.64537f
+C699 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|3]/a_199_412# 0
+C700 9T_tileable_0[0|1]/QB 9T_tileable_0[0|2]/QB 0.00192f
+C701 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|4]/RBL 0
+C702 9T_tileable_0[0|2]/Q 9T_tileable_0[0|2]/RBL 0.10495f
+C703 9T_tileable_0[1|5]/VDD 9T_tileable_0[0|2]/RBL 0.00169f
+C704 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|5]/WL 0
+C705 9T_tileable_0[1|5]/A 9T_tileable_0[1|3]/WBL 0.09307f
+C706 9T_tileable_0[1|0]/WBLB 9T_tileable_0[0|1]/Q 0
+C707 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|0]/Q 0.00141f
+C708 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|3]/Q 0.02803f
+C709 9T_tileable_0[0|1]/QB 9T_tileable_0[1|5]/WL 0.00429f
+C710 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|4]/QB 0
+C711 9T_tileable_0[1|3]/QB 9T_tileable_0[1|1]/WBLB 0
+C712 9T_tileable_0[0|2]/Q 9T_tileable_0[0|2]/QB 0.44205f
+C713 9T_tileable_0[1|5]/VDD 9T_tileable_0[0|2]/QB 0
+C714 9T_tileable_0[1|5]/Q 9T_tileable_0[1|3]/RBL 0
+C715 9T_tileable_0[1|4]/Q 9T_tileable_0[1|5]/Q 0.00375f
+C716 9T_tileable_0[1|5]/A 9T_tileable_0[1|3]/Q 0.06569f
+C717 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|2]/QB 0
+C718 9T_tileable_0[0|5]/RBL 9T_tileable_0[1|5]/VDD 0.00169f
+C719 9T_tileable_0[1|1]/QB 9T_tileable_0[1|0]/Q 0.11467f
+C720 9T_tileable_0[1|2]/WBLB 9T_tileable_0[0|0]/RBL 0
+C721 9T_tileable_0[1|4]/Q 9T_tileable_0[0|4]/QB 0
+C722 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|4]/RBL 0
+C723 9T_tileable_0[1|5]/WL 9T_tileable_0[1|1]/Q 0.02742f
+C724 9T_tileable_0[0|5]/A 9T_tileable_0[1|1]/WBLB 0.14286f
+C725 9T_tileable_0[0|2]/Q 9T_tileable_0[1|5]/WL 0.00382f
+C726 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|5]/WL 0.08135f
+C727 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|0]/RBL 0.00265f
+C728 9T_tileable_0[1|4]/QB 9T_tileable_0[0|4]/Q 0
+C729 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/QB 0.00192f
+C730 9T_tileable_0[0|1]/QB 9T_tileable_0[1|1]/Q 0
+C731 9T_tileable_0[0|3]/Q 9T_tileable_0[0|5]/Q 0.00112f
+C732 9T_tileable_0[0|1]/QB 9T_tileable_0[0|2]/Q 0.01945f
+C733 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/Q 0.00562f
+C734 9T_tileable_0[1|5]/a_199_412# 9T_tileable_0[1|4]/RBL 0
+C735 9T_tileable_0[0|1]/QB 9T_tileable_0[1|5]/VDD 0
+C736 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|0]/a_199_412# 0.15211f
+C737 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|3]/RBL 0.0059f
+C738 9T_tileable_0[1|5]/WBLB 9T_tileable_0[0|5]/VDD 0.08122f
+C739 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|1]/WBLB 0.0777f
+C740 9T_tileable_0[1|5]/WBL 9T_tileable_0[0|4]/QB 0
+C741 9T_tileable_0[1|4]/Q 9T_tileable_0[1|2]/RBL 0
+C742 9T_tileable_0[0|3]/QB 9T_tileable_0[0|5]/Q 0.00647f
+C743 9T_tileable_0[0|0]/QB 9T_tileable_0[1|3]/WBL 0
+C744 9T_tileable_0[1|5]/A 9T_tileable_0[1|2]/WBL 0.09275f
+C745 9T_tileable_0[1|5]/RBL 9T_tileable_0[0|5]/QB 0
+C746 9T_tileable_0[0|3]/Q 9T_tileable_0[0|2]/RBL 0.00266f
+C747 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|3]/WBL 0.00941f
+C748 9T_tileable_0[1|3]/QB 9T_tileable_0[1|3]/RBL 0.04627f
+C749 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|1]/Q 0.46145f
+C750 9T_tileable_0[0|2]/Q 9T_tileable_0[1|5]/VDD 0
+C751 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/a_199_412# 0.00397f
+C752 9T_tileable_0[0|3]/QB 9T_tileable_0[0|2]/RBL 0
+C753 9T_tileable_0[1|4]/Q 9T_tileable_0[1|3]/QB 0.01945f
+C754 9T_tileable_0[0|5]/A 9T_tileable_0[1|0]/RBL 0
+C755 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/QB 0.44205f
+C756 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|5]/Q 0
+C757 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|2]/RBL 0.00526f
+C758 9T_tileable_0[0|3]/Q 9T_tileable_0[0|2]/QB 0.01945f
+C759 9T_tileable_0[0|4]/Q 9T_tileable_0[0|4]/QB 0.44205f
+C760 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|3]/WBL 0.09176f
+C761 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|3]/Q 0
+C762 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|3]/WBL 0
+C763 9T_tileable_0[0|5]/WL 9T_tileable_0[0|5]/QB 0.03684f
+C764 9T_tileable_0[0|5]/A 9T_tileable_0[1|3]/RBL 0
+C765 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|4]/WBL 0.15598f
+C766 9T_tileable_0[0|3]/QB 9T_tileable_0[0|2]/QB 0.00192f
+C767 9T_tileable_0[0|5]/A 9T_tileable_0[1|4]/Q 0
+C768 9T_tileable_0[1|5]/A 9T_tileable_0[0|5]/Q 0
+C769 9T_tileable_0[1|5]/A 9T_tileable_0[1|2]/Q 0.06565f
+C770 9T_tileable_0[0|5]/WL 9T_tileable_0[0|3]/RBL 0
+C771 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|2]/RBL 0
+C772 9T_tileable_0[0|3]/Q 9T_tileable_0[1|5]/WL 0.00382f
+C773 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|3]/QB 0
+C774 9T_tileable_0[0|5]/WL 9T_tileable_0[0|1]/Q 0.02742f
+C775 9T_tileable_0[1|1]/QB 9T_tileable_0[1|2]/WBLB 0
+C776 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|3]/Q 0
+C777 9T_tileable_0[0|3]/RBL 9T_tileable_0[0|5]/QB 0
+C778 9T_tileable_0[0|0]/QB 9T_tileable_0[1|2]/WBL 0
+C779 9T_tileable_0[0|3]/QB 9T_tileable_0[1|5]/WL 0.00429f
+C780 9T_tileable_0[0|5]/A 9T_tileable_0[0|0]/Q 0.06482f
+C781 9T_tileable_0[0|1]/QB 9T_tileable_0[0|3]/Q 0.00647f
+C782 9T_tileable_0[1|0]/QB 9T_tileable_0[1|2]/QB 0
+C783 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|2]/QB 0
+C784 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|5]/Q 0.00266f
+C785 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/WBL 0.13799f
+C786 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|4]/a_199_412# 0
+C787 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|2]/WBL 0.03873f
+C788 9T_tileable_0[1|0]/WBL 9T_tileable_0[1|5]/WL 0.08057f
+C789 9T_tileable_0[0|1]/QB 9T_tileable_0[0|3]/QB 0
+C790 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/QB 0
+C791 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|4]/RBL 0.05738f
+C792 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|2]/WBLB 0
+C793 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|5]/WL 0.12052f
+C794 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|0]/RBL 0.05738f
+C795 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|2]/RBL 0.00265f
+C796 9T_tileable_0[1|5]/A 9T_tileable_0[1|4]/a_199_412# 0.02449f
+C797 9T_tileable_0[0|2]/Q 9T_tileable_0[0|3]/Q 0.00375f
+C798 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|2]/WBL 0.09097f
+C799 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|2]/WBL 0
+C800 9T_tileable_0[0|3]/Q 9T_tileable_0[1|5]/VDD 0
+C801 9T_tileable_0[0|1]/QB 9T_tileable_0[1|3]/WBLB 0
+C802 9T_tileable_0[0|5]/A 9T_tileable_0[0|4]/Q 0.06557f
+C803 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/QB 0.00539f
+C804 9T_tileable_0[0|2]/Q 9T_tileable_0[0|3]/QB 0.11467f
+C805 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/WL 0.02485f
+C806 9T_tileable_0[0|3]/QB 9T_tileable_0[1|5]/VDD 0
+C807 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|4]/QB 0
+C808 9T_tileable_0[1|5]/A 9T_tileable_0[1|2]/a_199_412# 0.02476f
+C809 9T_tileable_0[1|0]/Q 9T_tileable_0[1|0]/a_199_412# 0.00144f
+C810 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|2]/Q 0.00266f
+C811 9T_tileable_0[0|4]/RBL 9T_tileable_0[0|5]/RBL 0.0059f
+C812 9T_tileable_0[1|0]/Q 9T_tileable_0[1|3]/QB 0.0107f
+C813 9T_tileable_0[1|0]/WBL 9T_tileable_0[1|5]/VDD 0.09284f
+C814 9T_tileable_0[0|1]/RBL 9T_tileable_0[0|4]/Q 0
+C815 9T_tileable_0[1|0]/WBLB 9T_tileable_0[0|0]/Q 0.02783f
+C816 9T_tileable_0[0|4]/RBL 9T_tileable_0[1|5]/WL 0.0072f
+C817 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/Q 0.45058f
+C818 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|5]/VDD 0.08906f
+C819 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|2]/Q 0
+C820 9T_tileable_0[1|0]/QB 9T_tileable_0[1|1]/WBLB 0
+C821 9T_tileable_0[0|0]/QB 9T_tileable_0[0|2]/QB 0
+C822 9T_tileable_0[0|5]/WL 9T_tileable_0[1|1]/WBLB 0.12049f
+C823 9T_tileable_0[0|5]/A 9T_tileable_0[1|0]/Q 0
+C824 9T_tileable_0[1|5]/A 9T_tileable_0[1|1]/Q 0.06547f
+C825 9T_tileable_0[0|2]/Q 9T_tileable_0[1|5]/A 0
+C826 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|5]/Q 0
+C827 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VDD 1.52985f
+C828 9T_tileable_0[1|3]/WBL 9T_tileable_0[0|0]/RBL 0.00526f
+C829 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|2]/RBL 0.11219f
+C830 9T_tileable_0[1|2]/WBLB 9T_tileable_0[0|4]/QB 0
+C831 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|4]/RBL 0.00301f
+C832 9T_tileable_0[0|0]/QB 9T_tileable_0[1|5]/WL 0.00429f
+C833 9T_tileable_0[1|1]/WBLB 9T_tileable_0[0|1]/Q 0.02783f
+C834 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|2]/QB 0.26263f
+C835 9T_tileable_0[0|4]/RBL 9T_tileable_0[1|5]/VDD 0.00169f
+C836 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|5]/WL 0
+C837 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|3]/RBL 0.00265f
+C838 9T_tileable_0[0|1]/QB 9T_tileable_0[0|0]/QB 0.00192f
+C839 9T_tileable_0[0|5]/VDD 9T_tileable_0[0|5]/RBL 0.10803f
+C840 9T_tileable_0[0|3]/Q 9T_tileable_0[0|3]/QB 0.44205f
+C841 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|2]/a_199_412# 0
+C842 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|2]/RBL 0.05738f
+C843 9T_tileable_0[1|2]/QB 9T_tileable_0[1|1]/WBLB 0
+C844 9T_tileable_0[1|0]/QB 9T_tileable_0[1|0]/RBL 0.04627f
+C845 9T_tileable_0[0|1]/QB 9T_tileable_0[1|1]/RBL 0
+C846 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|5]/WL 0.0484f
+C847 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|5]/WL 0
+C848 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|5]/a_199_412# 0.00721f
+C849 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|2]/a_199_412# 0.00721f
+C850 9T_tileable_0[0|0]/QB 9T_tileable_0[0|2]/Q 0.00647f
+C851 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|3]/Q 0.02783f
+C852 9T_tileable_0[1|0]/Q 9T_tileable_0[1|0]/WBLB 0.02803f
+C853 9T_tileable_0[0|0]/QB 9T_tileable_0[1|5]/VDD 0
+C854 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|3]/QB 0
+C855 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/RBL 0.00301f
+C856 9T_tileable_0[0|1]/QB 9T_tileable_0[0|5]/VDD 0.26164f
+C857 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|4]/RBL 0
+C858 9T_tileable_0[1|2]/WBL 9T_tileable_0[0|0]/RBL 0.00941f
+C859 9T_tileable_0[1|5]/a_199_412# 9T_tileable_0[1|5]/WL 0
+C860 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|1]/Q 0.10495f
+C861 9T_tileable_0[1|3]/WBLB 9T_tileable_0[0|3]/QB 0.01222f
+C862 9T_tileable_0[1|5]/A 9T_tileable_0[0|3]/Q 0
+C863 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|5]/VDD 0.11219f
+C864 9T_tileable_0[1|0]/QB 9T_tileable_0[0|0]/Q 0
+C865 9T_tileable_0[1|5]/WBLB 9T_tileable_0[1|5]/VSS 0.6711f
+C866 9T_tileable_0[1|5]/WBL 9T_tileable_0[1|5]/VSS 0.70666f
+C867 9T_tileable_0[1|5]/RBL 9T_tileable_0[1|5]/VSS 0.18362f
+C868 9T_tileable_0[1|5]/QB 9T_tileable_0[1|5]/VSS 0.57603f **FLOATING
+C869 9T_tileable_0[1|5]/a_199_412# 9T_tileable_0[1|5]/VSS 0.07154f **FLOATING
+C870 9T_tileable_0[1|5]/Q 9T_tileable_0[1|5]/VSS 0.43214f **FLOATING
+C871 9T_tileable_0[0|5]/RBL 9T_tileable_0[1|5]/VSS 0.3406f
+C872 9T_tileable_0[0|5]/QB 9T_tileable_0[1|5]/VSS 0.57566f **FLOATING
+C873 9T_tileable_0[0|5]/Q 9T_tileable_0[1|5]/VSS 0.43382f **FLOATING
+C874 9T_tileable_0[1|4]/WBLB 9T_tileable_0[1|5]/VSS 0.68446f
+C875 9T_tileable_0[1|4]/WBL 9T_tileable_0[1|5]/VSS 0.70666f
+C876 9T_tileable_0[1|4]/RBL 9T_tileable_0[1|5]/VSS 0.18362f
+C877 9T_tileable_0[1|4]/QB 9T_tileable_0[1|5]/VSS 0.57676f **FLOATING
+C878 9T_tileable_0[1|4]/a_199_412# 9T_tileable_0[1|5]/VSS 0.07154f **FLOATING
+C879 9T_tileable_0[1|4]/Q 9T_tileable_0[1|5]/VSS 0.4381f **FLOATING
+C880 9T_tileable_0[0|4]/RBL 9T_tileable_0[1|5]/VSS 0.34071f
+C881 9T_tileable_0[0|4]/QB 9T_tileable_0[1|5]/VSS 0.57661f **FLOATING
+C882 9T_tileable_0[0|4]/Q 9T_tileable_0[1|5]/VSS 0.43977f **FLOATING
+C883 9T_tileable_0[1|3]/WBLB 9T_tileable_0[1|5]/VSS 0.68615f
+C884 9T_tileable_0[1|3]/WBL 9T_tileable_0[1|5]/VSS 0.70666f
+C885 9T_tileable_0[1|3]/RBL 9T_tileable_0[1|5]/VSS 0.18362f
+C886 9T_tileable_0[1|3]/QB 9T_tileable_0[1|5]/VSS 0.57698f **FLOATING
+C887 9T_tileable_0[1|3]/a_199_412# 9T_tileable_0[1|5]/VSS 0.07154f **FLOATING
+C888 9T_tileable_0[1|3]/Q 9T_tileable_0[1|5]/VSS 0.43875f **FLOATING
+C889 9T_tileable_0[0|3]/RBL 9T_tileable_0[1|5]/VSS 0.34074f
+C890 9T_tileable_0[0|3]/QB 9T_tileable_0[1|5]/VSS 0.57687f **FLOATING
+C891 9T_tileable_0[0|3]/Q 9T_tileable_0[1|5]/VSS 0.44042f **FLOATING
+C892 9T_tileable_0[1|2]/WBLB 9T_tileable_0[1|5]/VSS 0.68657f
+C893 9T_tileable_0[1|2]/WBL 9T_tileable_0[1|5]/VSS 0.70591f
+C894 9T_tileable_0[1|2]/RBL 9T_tileable_0[1|5]/VSS 0.18362f
+C895 9T_tileable_0[1|2]/QB 9T_tileable_0[1|5]/VSS 0.57695f **FLOATING
+C896 9T_tileable_0[1|2]/a_199_412# 9T_tileable_0[1|5]/VSS 0.07154f **FLOATING
+C897 9T_tileable_0[1|2]/Q 9T_tileable_0[1|5]/VSS 0.43887f **FLOATING
+C898 9T_tileable_0[0|2]/RBL 9T_tileable_0[1|5]/VSS 0.34074f
+C899 9T_tileable_0[0|2]/QB 9T_tileable_0[1|5]/VSS 0.57685f **FLOATING
+C900 9T_tileable_0[0|2]/Q 9T_tileable_0[1|5]/VSS 0.44054f **FLOATING
+C901 9T_tileable_0[1|1]/WBLB 9T_tileable_0[1|5]/VSS 0.68657f
+C902 9T_tileable_0[1|1]/WBL 9T_tileable_0[1|5]/VSS 0.70308f
+C903 9T_tileable_0[1|5]/WL 9T_tileable_0[1|5]/VSS 4.37613f
+C904 9T_tileable_0[1|1]/RBL 9T_tileable_0[1|5]/VSS 0.18362f
+C905 9T_tileable_0[1|5]/A 9T_tileable_0[1|5]/VSS 1.00502f
+C906 9T_tileable_0[1|5]/VDD 9T_tileable_0[1|5]/VSS 6.65782f
+C907 9T_tileable_0[1|1]/QB 9T_tileable_0[1|5]/VSS 0.57648f **FLOATING
+C908 9T_tileable_0[1|1]/a_199_412# 9T_tileable_0[1|5]/VSS 0.07154f **FLOATING
+C909 9T_tileable_0[1|1]/Q 9T_tileable_0[1|5]/VSS 0.43865f **FLOATING
+C910 9T_tileable_0[0|5]/WL 9T_tileable_0[1|5]/VSS 4.33267f
+C911 9T_tileable_0[0|1]/RBL 9T_tileable_0[1|5]/VSS 0.34071f
+C912 9T_tileable_0[0|5]/A 9T_tileable_0[1|5]/VSS 1.17259f
+C913 9T_tileable_0[0|5]/VDD 9T_tileable_0[1|5]/VSS 6.74754f
+C914 9T_tileable_0[0|1]/QB 9T_tileable_0[1|5]/VSS 0.57638f **FLOATING
+C915 9T_tileable_0[0|1]/Q 9T_tileable_0[1|5]/VSS 0.44026f **FLOATING
+C916 9T_tileable_0[1|0]/WBLB 9T_tileable_0[1|5]/VSS 0.68657f
+C917 9T_tileable_0[1|0]/WBL 9T_tileable_0[1|5]/VSS 0.70348f
+C918 9T_tileable_0[1|0]/RBL 9T_tileable_0[1|5]/VSS 0.18362f
+C919 9T_tileable_0[1|0]/QB 9T_tileable_0[1|5]/VSS 0.61976f **FLOATING
+C920 9T_tileable_0[1|0]/a_199_412# 9T_tileable_0[1|5]/VSS 0.07154f **FLOATING
+C921 9T_tileable_0[1|0]/Q 9T_tileable_0[1|5]/VSS 0.43926f **FLOATING
+C922 9T_tileable_0[0|0]/RBL 9T_tileable_0[1|5]/VSS 0.34061f
+C923 9T_tileable_0[0|0]/QB 9T_tileable_0[1|5]/VSS 0.61453f **FLOATING
+C924 9T_tileable_0[0|0]/Q 9T_tileable_0[1|5]/VSS 0.44054f **FLOATING
