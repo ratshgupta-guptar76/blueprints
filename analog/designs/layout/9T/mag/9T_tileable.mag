@@ -1,9 +1,7 @@
 magic
 tech gf180mcuD
 magscale 1 10
-timestamp 1786205770
-<< error_p >>
-rect 390 230 460 236
+timestamp 1786211619
 << nwell >>
 rect -143 -79 479 326
 << nmos >>
@@ -293,9 +291,9 @@ rect 221 -519 298 -463
 << metal3 >>
 rect -39 -464 59 567
 rect 210 -292 308 567
-rect 385 235 474 263
-rect 385 230 392 235
-rect 385 180 390 230
+rect 385 236 474 263
+rect 385 180 390 236
+rect 460 235 474 236
 rect 385 179 392 180
 rect 469 179 474 235
 rect 385 160 474 179
@@ -307,12 +305,13 @@ rect 211 -519 221 -463
 rect 298 -519 308 -463
 rect 211 -529 308 -519
 << via3 >>
-rect 390 180 392 230
-rect 392 180 460 230
+rect 390 235 460 236
+rect 390 180 392 235
+rect 392 180 460 235
 << metal4 >>
-rect 340 230 480 250
-rect 340 180 390 230
-rect 460 180 480 230
+rect 340 236 480 250
+rect 340 180 390 236
+rect 460 180 480 236
 << labels >>
 flabel metal1 324 -210 413 29 0 FreeSans 640 0 0 0 Q
 flabel metal1 -71 -211 18 29 0 FreeSans 640 0 0 0 QB
