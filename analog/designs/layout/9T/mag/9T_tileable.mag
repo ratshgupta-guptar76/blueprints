@@ -1,9 +1,12 @@
 magic
 tech gf180mcuD
 magscale 1 10
-timestamp 1786211619
+timestamp 1786323585
 << nwell >>
 rect -143 -79 479 326
+<< pwell >>
+rect -143 326 479 567
+rect -143 -529 479 -79
 << nmos >>
 rect -14 425 42 469
 rect 291 425 347 469
@@ -291,10 +294,10 @@ rect 221 -519 298 -463
 << metal3 >>
 rect -39 -464 59 567
 rect 210 -292 308 567
-rect 385 236 474 263
-rect 385 180 390 236
-rect 460 235 474 236
-rect 385 179 392 180
+rect 385 250 474 263
+rect 385 235 401 250
+rect 457 235 474 250
+rect 385 179 392 235
 rect 469 179 474 235
 rect 385 160 474 179
 rect -39 -520 -29 -464
@@ -305,20 +308,12 @@ rect 211 -519 221 -463
 rect 298 -519 308 -463
 rect 211 -529 308 -519
 << via3 >>
-rect 390 235 460 236
-rect 390 180 392 235
-rect 392 180 460 235
+rect 401 235 457 250
+rect 401 180 457 235
 << metal4 >>
-rect 340 236 480 250
-rect 340 180 390 236
-rect 460 180 480 236
+rect 401 250 457 268
+rect 401 163 457 180
 << labels >>
-flabel metal1 324 -210 413 29 0 FreeSans 640 0 0 0 Q
-flabel metal1 -71 -211 18 29 0 FreeSans 640 0 0 0 QB
-flabel metal3 -29 -520 48 -464 0 FreeSans 320 0 0 0 WBL
-port 1 nsew
-flabel via2 221 -519 298 -463 0 FreeSans 320 0 0 0 WBLB
-port 2 nsew
 flabel metal2 -128 -402 -76 -350 0 FreeSans 320 0 0 0 WL
 port 3 nsew
 flabel metal1 -106 151 -34 326 0 FreeSans 320 0 0 0 A
@@ -329,4 +324,8 @@ flabel metal2 145 -286 197 -233 0 FreeSans 320 0 0 0 VSS
 port 8 nsew
 flabel metal1 317 237 391 355 0 FreeSans 320 0 0 0 RBL
 port 5 nsew
+flabel metal3 -29 -520 48 -464 0 FreeSans 320 0 0 0 WBLB
+port 9 nsew
+flabel via2 221 -519 298 -463 0 FreeSans 320 0 0 0 WBL
+port 11 nsew
 << end >>

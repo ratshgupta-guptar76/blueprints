@@ -1,15 +1,15 @@
 * NGSPICE file created from sram_8x8_9T.ext - technology: gf180mcuD
 
 .subckt x9T_tileable WL A RBL VDD VSS WBLB WBL a_199_412# a_103_8# VSUBS
-X0 RBL QB a_199_412# VSUBS nfet_03v3 ad=0.1516p pd=1.64u as=0.1516p ps=1.64u w=0.22u l=0.28u
-X1 QB WL WBLB VSUBS nfet_03v3 ad=0.139p pd=1.215u as=0.2362p ps=2.03u w=0.32u l=0.28u
-X2 Q QB a_103_8# VDD pfet_03v3 ad=0.1936p pd=1.76u as=0.1496p ps=1.12u w=0.44u l=0.28u
-X3 Q WL WBL VSUBS nfet_03v3 ad=0.1397p pd=1.22u as=0.1706p ps=1.7u w=0.32u l=0.28u
-X4 Q QB VSS VSUBS nfet_03v3 ad=0.1397p pd=1.22u as=0.1108p ps=1.1u w=0.22u l=0.28u
-X5 a_103_8# Q QB VDD pfet_03v3 ad=0.1496p pd=1.12u as=0.1936p ps=1.76u w=0.44u l=0.28u
-X6 RBL Q A VSUBS nfet_03v3 ad=0.1516p pd=1.64u as=0.1516p ps=1.64u w=0.22u l=0.28u
-X7 VSS Q QB VSUBS nfet_03v3 ad=0.1108p pd=1.1u as=0.139p ps=1.215u w=0.22u l=0.28u
-X8 RBL QB A VDD pfet_03v3 ad=0.2082p pd=1.84u as=0.2024p ps=1.8u w=0.44u l=0.28u
+X0 RBL a_n45_n270# a_199_412# VSUBS nfet_03v3 ad=0.1516p pd=1.64u as=0.1516p ps=1.64u w=0.22u l=0.28u
+X1 a_n45_n270# WL WBLB VSUBS nfet_03v3 ad=0.139p pd=1.215u as=0.2362p ps=2.03u w=0.32u l=0.28u
+X2 a_n14_236# a_n45_n270# a_103_8# VDD pfet_03v3 ad=0.1936p pd=1.76u as=0.1496p ps=1.12u w=0.44u l=0.28u
+X3 a_n14_236# WL WBL VSUBS nfet_03v3 ad=0.1397p pd=1.22u as=0.1706p ps=1.7u w=0.32u l=0.28u
+X4 a_n14_236# a_n45_n270# VSS VSUBS nfet_03v3 ad=0.1397p pd=1.22u as=0.1108p ps=1.1u w=0.22u l=0.28u
+X5 a_103_8# a_n14_236# a_n45_n270# VDD pfet_03v3 ad=0.1496p pd=1.12u as=0.1936p ps=1.76u w=0.44u l=0.28u
+X6 RBL a_n14_236# A VSUBS nfet_03v3 ad=0.1516p pd=1.64u as=0.1516p ps=1.64u w=0.22u l=0.28u
+X7 VSS a_n14_236# a_n45_n270# VSUBS nfet_03v3 ad=0.1108p pd=1.1u as=0.139p ps=1.215u w=0.22u l=0.28u
+X8 RBL a_n45_n270# A VDD pfet_03v3 ad=0.2082p pd=1.84u as=0.2024p ps=1.8u w=0.44u l=0.28u
 .ends
 
 .subckt sram_8x8_9T RBL[24] RBL[16] RBL[8] RBL[0] RBL[25] RBL[17] RBL[9] RBL[1] RBL[26]
