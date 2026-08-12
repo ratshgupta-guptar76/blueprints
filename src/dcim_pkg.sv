@@ -1,8 +1,8 @@
 package dcim_pkg;
 
-    localparam int DW         =  8;
-    localparam int N_WEIGHTS  =  8;
-    localparam int ROWS       =  64;
+    localparam int DW         =  8;     // shouldn't be changed when using hardened dcim sram macro
+    localparam int N_WEIGHTS  =  4;
+    localparam int ROWS       =  32;
     localparam int COLS       =  N_WEIGHTS*DW;
 
     localparam bit W_SIGN = 1;

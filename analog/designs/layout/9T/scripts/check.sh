@@ -17,7 +17,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 DRC_DECK="$PDK_ROOT/$PDK/libs.tech/klayout/tech/drc/gf180mcu.drc"
 
-mkdir -p "$ROOT_DIR/gds" "$ROOT_DIR/drc"
+mkdir -p "$ROOT_DIR/mag" "$ROOT_DIR/drc"
 
 # 1. Magic: write GDS from .mag
 (

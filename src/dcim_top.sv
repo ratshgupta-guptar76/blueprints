@@ -107,7 +107,6 @@ dcim_array #(
     .ROWS(ROWS),
     .COLS(COLS)
 ) DCIM_ARRAY (
-    .clk(clk),
 // Input Signals
     .w_en(w_en),
     .row_addr(row_addr),
