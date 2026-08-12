@@ -46,6 +46,11 @@ VERILOG_FILES:
 USE_SLANG: True
 SLANG_ARGUMENTS: ['--keep-hierarchy']
 
+EXTRA_VERILOG_MODELS:
+  - dir::../gf180mcu/gf180mcuD/libs.ref/gf180mcu_fd_io/verilog/gf180mcu_fd_io__blackbox.v
+  - dir::../gf180mcu/gf180mcuD/libs.ref/gf180mcu_fd_io/verilog/gf180mcu_ef_io__blackbox.v
+  - dir::../gf180mcu/gf180mcuD/libs.ref/gf180mcu_fd_io/verilog/gf180mcu_ws_io__blackbox.v
+
 # Slightly smaller file sizes
 PRIMARY_GDSII_STREAMOUT_TOOL: klayout
 
