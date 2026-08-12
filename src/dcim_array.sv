@@ -44,26 +44,23 @@ module dcim_array #(
         .wl   (wl)
     );
 
-    localparam int NMAC = COLS / 8;
-    logic [255:0] rbl [NMAC];
 
+    logic [255:0] rbl;
+
+    sram_32x8_9T u_sram_32x8_9T_0 (
+        .WL   (wl),
+        .A    (act_bp),
+        .WBL  ( w_buf),
+        .WBLB (~w_buf),
+        .RBL  (rbl)
+    );
     genvar m, r, c;
     generate
-        for (m = 0; m < NMAC; m++) begin : MACRO
-            sram_32x8_9T u_sram (
-                .WL   (wl),
-                .A    (act_bp),
-                .WBL  ( w_buf[8*m +: 8]),
-                .WBLB (~w_buf[8*m +: 8]),
-                .RBL  (rbl[m])
-            );
-
             for (r = 0; r < ROWS; r++) begin : RMAP
                 for (c = 0; c < 8; c++) begin : CMAP
-                    assign pp[r][8*m + c] = rbl[m][r*8 + c];
+                    assign pp[r][c] = rbl[r*8 + c];
                 end
             end
-        end
     endgenerate
 
 endmodule
