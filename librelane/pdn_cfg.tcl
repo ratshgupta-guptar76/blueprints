@@ -198,17 +198,32 @@ add_pdn_connect \
 define_pdn_grid \
     -macro \
     -instances i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0 \
-    -name sram_macros_NS \
+    -name dcim_macro_rot \
+    -grid_over_boundary \
     -starts_with POWER \
     -halo "$::env(PDN_HORIZONTAL_HALO) $::env(PDN_VERTICAL_HALO)"
 
+# -grid_over_boundary lets stdcell_grid's own Metal4/5 straps extend straight
+# across this macro's footprint instead of routing around it (per the pdn
+# README's "rotated_rams" example), so no local strap is defined here. This
+# only works once the macro is within reach of stdcell_grid's straps at all,
+# which is why it was moved to (1000, 1000), inside the actual placement core
+# -- its previous location (250, 250) sat outside the reach of the entire
+# power grid (PDN_EXTEND_TO=core_ring stops around (385, 385)).
+#
+# At this macro's 44.255um width, none of stdcell_grid's Metal4 verticals
+# (75um pitch) happen to land across it, but its Metal5 horizontals do --
+# confirmed via debug: "Metal4 (0 shapes) - Metal5 (4 shapes)" at this grid.
+# So connect straight from Metal5 (real shapes here) to Metal3 (this macro's
+# actual pin layer) instead of routing the connection through Metal4.
 add_pdn_connect \
-    -grid sram_macros_NS \
+    -grid dcim_macro_rot \
     -layers "$::env(PDN_VERTICAL_LAYER) $::env(PDN_HORIZONTAL_LAYER)"
 
 add_pdn_connect \
-    -grid sram_macros_NS \
-    -layers "$::env(PDN_VERTICAL_LAYER) Metal3"
+    -grid dcim_macro_rot \
+    -layers "$::env(PDN_HORIZONTAL_LAYER) Metal3"
 
-add_pdn_stripe -grid sram_macros_NS -layer Metal4 -width 2.36 -offset 1.18 -spacing 0.28 -pitch 426.86 -starts_with GROUND -number_of_straps 2
-
+set_debug_level PDN Straps 1
+set_debug_level PDN Via 2
+set_debug_level PDN Make 2

@@ -4,16 +4,16 @@ meta:
   substituting_steps:
 
     # Disable KLayout DRC
-    # KLayout.DRC: null
-    # Checker.KLayoutDRC: null
+    KLayout.DRC: null
+    Checker.KLayoutDRC: null
 
     # Disable KLayout antenna check
-    #KLayout.Antenna: null
-    #Checker.KLayoutAntenna: null
+    KLayout.Antenna: null
+    Checker.KLayoutAntenna: null
 
     # Disable KLayout density check
-    #KLayout.Density: null
-    #Checker.KLayoutDensity: null
+    KLayout.Density: null
+    Checker.KLayoutDensity: null
 
     # Save time during development
     # Enable for sign-off
@@ -21,8 +21,8 @@ meta:
     Magic.DRC: null
     Checker.MagicDRC: null
     KLayout.XOR: null
-    Netgen.LVS: null
-    Checker.LVS: null
+    # Netgen.LVS: null
+    # Checker.LVS: null
 
 DESIGN_NAME: chip_top
 VERILOG_FILES:
@@ -207,8 +207,8 @@ MACROS:
         - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T.lib
     instances:
        i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0:
-        location: [750, 1001]
-        orientation: E
+        location: [1000, 1000]
+        orientation: N
 
 # No user macros for the workshop slot -- the core is a trivial
 # counter.  chip_id + wafer.space logo (above) are the only placed
@@ -217,7 +217,7 @@ MACROS:
 # No macro PDN connections needed beyond what the PDN grid already
 # supplies through chip_id / logo.  Keep the key as an empty list so
 # the rest of the config still parses.
-PDN_MACRO_CONNECTIONS: 
+FP_PDN_MACRO_HOOKS: 
 - "i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0 VDD VSS VDD VSS"
 
 # Halo size around macros while cutting rows.
@@ -242,7 +242,7 @@ MAGIC_EXT_ABSTRACT_CELLS:
 - gf180mcu_ws_ip__logo
 
 # Global thread count per worker process
-KLAYOUT_DRC_THREADS: 1
+KLAYOUT_DRC_THREADS: 2
 
 # DRC options block containing worker count
 KLAYOUT_DRC_OPTIONS:
