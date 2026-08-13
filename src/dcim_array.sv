@@ -45,22 +45,48 @@ module dcim_array #(
     );
 
 
-    logic [255:0] rbl;
+    logic [255:0] rbl [3:0];  
 
     sram_32x8_9T u_sram_32x8_9T_0 (
         .WL   (wl),
         .A    (act_bp),
-        .WBL  ( w_buf),
-        .WBLB (~w_buf),
-        .RBL  (rbl)
+        .WBL  ( w_buf[7:0]),
+        .WBLB (~w_buf[7:0]),
+        .RBL  (rbl[0])
     );
-    genvar m, r, c;
+
+    sram_32x8_9T u_sram_32x8_9T_1 (
+        .WL   (wl),
+        .A    (act_bp),
+        .WBL  ( w_buf[15:8]),
+        .WBLB (~w_buf[15:8]),
+        .RBL  (rbl[1])
+    );
+
+    sram_32x8_9T u_sram_32x8_9T_2 (
+        .WL   (wl),
+        .A    (act_bp),
+        .WBL  ( w_buf[23:16]),
+        .WBLB (~w_buf[23:16]),
+        .RBL  (rbl[2])
+    );
+
+    sram_32x8_9T u_sram_32x8_9T_3 (
+        .WL   (wl),
+        .A    (act_bp),
+        .WBL  ( w_buf[31:24]),
+        .WBLB (~w_buf[31:24]),
+        .RBL  (rbl[3])
+    );
+    genvar w, r, c;
     generate
+        for (w = 0; w < 4; w++) begin : WMAP
             for (r = 0; r < ROWS; r++) begin : RMAP
                 for (c = 0; c < 8; c++) begin : CMAP
-                    assign pp[r][c] = rbl[r*8 + c];
+                    assign pp[r][w*8 + c] = rbl[w][r*8 + c];
                 end
             end
+        end
     endgenerate
 
 endmodule
