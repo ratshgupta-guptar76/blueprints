@@ -22,10 +22,12 @@ module sram_32x8_9T (
     reg [7:0] mem [31:0];
 
     integer r;
+    /* verilator lint_off LATCH */
     always @(*) begin
         for (r = 0; r < 32; r = r + 1)
             if (WL[r] === 1'b1) mem[r] = WBL;
     end
+    /* verilator lint_on LATCH */
 
     genvar gr, gc;
     generate

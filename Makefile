@@ -7,6 +7,7 @@ RTL_MODULES := \
     dcim_array control_fsm dcim_top
 
 RTL_SOURCES := $(addprefix $(MAKEFILE_DIR)/src/,$(addsuffix .sv,$(RTL_MODULES)))
+RTL_SOURCES += $(MAKEFILE_DIR)/ip/sram_32x8_9T/vh/sram_32x8_9T.v
 MUTATION_READY := $(patsubst $(MUTATION_DIR)/%.txt,%,$(wildcard $(MUTATION_DIR)/*.txt))
 
 # --- Project paths -------------------------------
