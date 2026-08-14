@@ -1,151 +1,123 @@
-# SPDX-FileCopyrightText: © 2025 Project Template Contributors
+# SPDX-FileCopyrightText: 2026 Chipathon 2026 workshop
 # SPDX-License-Identifier: Apache-2.0
 
 import os
-import random
-import logging
 from pathlib import Path
 
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import Timer, Edge, RisingEdge, FallingEdge, ClockCycles
+from cocotb.triggers import ClockCycles, RisingEdge, Timer
 from cocotb_tools.runner import get_runner
 
+
 sim = os.getenv("SIM", "icarus")
-pdk_root = os.getenv("PDK_ROOT", Path("~/.ciel").expanduser())
+pdk_root = Path(os.getenv("PDK_ROOT", Path("~/.ciel").expanduser()))
 pdk = os.getenv("PDK", "gf180mcuD")
-scl = os.getenv("SCL", "gf180mcu_fd_sc_mcu7t5v0")
-gl = os.getenv("GL", False)
-slot = os.getenv("SLOT", "1x1")
+slot = os.getenv("SLOT", "workshop")
 
-hdl_toplevel = "chip_top"
 
-async def set_defaults(dut):
+def _drive_inputs(dut, start=0, p_minus1=7):
+    """Drive only the DCIM input pads and keep the rest high-Z."""
+    width = len(dut.bidir_PAD)
+    bus = ["z"] * width
+
+    def set_bit(bit, value):
+        bus[width - 1 - bit] = "1" if value else "0"
+
+    # bit 0: a_bit, bit 1: w_bit (held low)
+    set_bit(0, 0)
+    set_bit(1, 0)
+
+    # bit 2: start
+    set_bit(2, start)
+
+    # bit 3: cont (held low)
+    set_bit(3, 0)
+
+    # bits 4..6: P_minus1
+    set_bit(4, (p_minus1 >> 0) & 1)
+    set_bit(5, (p_minus1 >> 1) & 1)
+    set_bit(6, (p_minus1 >> 2) & 1)
+
+    dut.bidir_PAD.value = "".join(bus)
+
+
+async def _start_up(dut):
     dut.input_PAD.value = 0
+    _drive_inputs(dut, start=0, p_minus1=7)
 
-async def enable_power(dut):
-    dut.VDD.value = 1
-    dut.VSS.value = 0
+    cocotb.start_soon(Clock(dut.clk_PAD, 20, unit="ns").start())
 
-async def start_clock(clock, freq=50):
-    """Start the clock @ freq MHz"""
-    c = Clock(clock, 1 / freq * 1000, "ns")
-    cocotb.start_soon(c.start())
-
-
-async def reset(reset, active_low=True, time_ns=1000):
-    """Reset dut"""
-    cocotb.log.info("Reset asserted...")
-
-    reset.value = not active_low
-    await Timer(time_ns, "ns")
-    reset.value = active_low
-
-    cocotb.log.info("Reset deasserted.")
-
-
-async def start_up(dut):
-    """Startup sequence"""
-    await set_defaults(dut)
-    if gl:
-        await enable_power(dut)
-    await start_clock(dut.clk_PAD)
-    await reset(dut.rst_n_PAD)
+    dut.rst_n_PAD.value = 0
+    await Timer(100, unit="ns")
+    dut.rst_n_PAD.value = 1
+    await ClockCycles(dut.clk_PAD, 2)
 
 
 @cocotb.test()
-async def test_counter(dut):
-    """Run the counter test"""
+async def test_start_sets_busy(dut):
+    """Single-aspect smoke test: START pulse should drive BUSY high."""
+    await _start_up(dut)
 
-    # Create a logger for this testbench
-    logger = logging.getLogger("my_testbench")
+    assert int(dut.i_chip_core.busy.value) == 0, "BUSY should be low after reset"
 
-    logger.info("Startup sequence...")
+    _drive_inputs(dut, start=1, p_minus1=7)
+    await RisingEdge(dut.clk_PAD)
+    _drive_inputs(dut, start=0, p_minus1=7)
 
-    # Start up
-    await start_up(dut)
+    for _ in range(20):
+        await RisingEdge(dut.clk_PAD)
+        if int(dut.i_chip_core.busy.value) == 1:
+            return
 
-    logger.info("Running the test...")
-
-    # Wait for some time...
-    await ClockCycles(dut.clk_PAD, 10)
-
-    # Start the counter by setting all inputs to 1
-    dut.input_PAD.value = -1
-
-    # Wait for a number of clock cycles
-    await ClockCycles(dut.clk_PAD, 100)
-
-    # Check the end result of the counter
-    assert dut.bidir_PAD.value == 100 - 1
-
-    logger.info("Done!")
+    raise AssertionError("START did not make BUSY go high within 20 cycles")
 
 
-def chip_top_runner():
-
+def chip_top_smoke_runner():
     proj_path = Path(__file__).resolve().parent
+    src_path = proj_path / "../src"
 
-    sources = []
-    defines = {f"SLOT_{slot.upper()}": True}
-    includes = [proj_path / "../src/"]
-
-    if gl:
-        # SCL models
-        sources.append(Path(pdk_root) / pdk / "libs.ref" / scl / "verilog" / f"{scl}.v")
-        sources.append(Path(pdk_root) / pdk / "libs.ref" / scl / "verilog" / "primitives.v")
-
-        # We use the powered netlist
-        sources.append(proj_path / f"../final/pnl/{hdl_toplevel}.pnl.v")
-
-        defines = {"FUNCTIONAL": True, "USE_POWER_PINS": True}
-    else:
-        sources.append(proj_path / "../src/chip_top.sv")
-        sources.append(proj_path / "../src/chip_core.sv")
-
-    sources += [
-        # IO pad models
-        Path(pdk_root) / pdk / "libs.ref/gf180mcu_fd_io/verilog/gf180mcu_fd_io.v",
-        Path(pdk_root) / pdk / "libs.ref/gf180mcu_fd_io/verilog/gf180mcu_ws_io.v",
-        
-        # SRAM macros
-        Path(pdk_root) / pdk / "libs.ref/gf180mcu_fd_ip_sram/verilog/gf180mcu_fd_ip_sram__sram512x8m8wm1.v",
-        
-        # Custom IP
+    sources = [
+        src_path / "dcim_pkg.sv",
+        src_path / "row_decoder.sv",
+        src_path / "shift_reg.sv",
+        src_path / "col_adder.sv",
+        src_path / "weight_load.sv",
+        src_path / "stream_out.sv",
+        src_path / "adder_tree.sv",
+        src_path / "act_shift_chain.sv",
+        src_path / "lane_shift_accum.sv",
+        src_path / "shift_accum.sv",
+        src_path / "dcim_array.sv",
+        src_path / "control_fsm.sv",
+        src_path / "dcim_top.sv",
+        src_path / "chip_core.sv",
+        src_path / "chip_top.sv",
+        proj_path / "../ip/sram_32x8_9T/vh/sram_32x8_9T.v",
+        pdk_root / pdk / "libs.ref" / "gf180mcu_fd_io" / "verilog" / "gf180mcu_fd_io.v",
+        pdk_root / pdk / "libs.ref" / "gf180mcu_fd_io" / "verilog" / "gf180mcu_ws_io.v",
         proj_path / "../ip/gf180mcu_ws_ip__id/vh/gf180mcu_ws_ip__id.v",
         proj_path / "../ip/gf180mcu_ws_ip__logo/vh/gf180mcu_ws_ip__logo.v",
     ]
 
-    build_args = []
-
-    if sim == "icarus":
-        # For debugging
-        # build_args = ["-Winfloop", "-pfileline=1"]
-        pass
-
-    if sim == "verilator":
-        build_args = ["--timing", "--trace", "--trace-fst", "--trace-structs"]
-
     runner = get_runner(sim)
+
     runner.build(
         sources=sources,
-        hdl_toplevel=hdl_toplevel,
-        defines=defines,
+        hdl_toplevel="chip_top",
+        defines={f"SLOT_{slot.upper()}": True},
+        includes=[src_path],
+        build_args=["-g2012"] if sim == "icarus" else [],
         always=True,
-        includes=includes,
-        build_args=build_args,
         waves=True,
     )
 
-    plusargs = []
-
     runner.test(
-        hdl_toplevel=hdl_toplevel,
-        test_module="chip_top_tb,",
-        plusargs=plusargs,
+        hdl_toplevel="chip_top",
+        test_module="chip_top_tb",
         waves=True,
     )
 
 
 if __name__ == "__main__":
-    chip_top_runner()
+    chip_top_smoke_runner()
