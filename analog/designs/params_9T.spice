@@ -2,7 +2,7 @@
 * Transistor Width & Length parameters for 9T_03v3 cell
 .param W_M1=0.22u  L_M1=0.28u
 .param W_M2=0.44u  L_M2=0.28u
-.param W_M3=0.44u  L_M3=0.28u
+.param W_M3=0.22u  L_M3=0.28u
 .param W_PU=0.44u	L_PU=0.28u
 .param W_PD=0.22u	L_PD=0.28u
 .param W_AX=0.32u	L_AX=0.28u
