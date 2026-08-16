@@ -46,13 +46,13 @@ module chip_core #(
     localparam int PAD_W_BIT     = 1;
     localparam int PAD_START     = 2;
     localparam int PAD_CONT      = 3;
-    localparam int PAD_PMINUS1_0 = 4;
-    localparam int PAD_PMINUS1_1 = 5;
-    localparam int PAD_PMINUS1_2 = 6;
+    localparam int PAD_PMINUS1_0 = 19;
+    localparam int PAD_PMINUS1_1 = 18;
+    localparam int PAD_PMINUS1_2 = 17;
     // Outputs
-    localparam int PAD_Y_BIT   = 7;
-    localparam int PAD_DONE    = 8;
-    localparam int PAD_BUSY    = 9;
+    localparam int PAD_Y_BIT   = 16;
+    localparam int PAD_DONE    = 15;
+    localparam int PAD_BUSY    = 14;
 
     localparam logic [NUM_BIDIR_PADS-1:0] OE_MASK = 
         (NUM_BIDIR_PADS'(1) << PAD_Y_BIT)

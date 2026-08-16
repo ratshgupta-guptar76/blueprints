@@ -21,8 +21,8 @@ meta:
     # Magic.DRC: null
     # Checker.MagicDRC: null
     # KLayout.XOR: null
-    # Netgen.LVS: null
-    # Checker.LVS: null
+    Netgen.LVS: null
+    Checker.LVS: null
 
 DESIGN_NAME: chip_top
 VERILOG_FILES:
@@ -95,7 +95,7 @@ DRT_ANTENNA_REPAIR_MARGIN: 10 # %
 
 # PDN - Straps
 PDN_VWIDTH: 5
-PDN_HWIDTH: 5
+PDN_HWIDTH: 2
 PDN_VSPACING: 1
 PDN_HSPACING: 1
 PDN_VPITCH: 75
@@ -176,18 +176,18 @@ MACROS:
       "*":
         - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T.lib
     instances:
-       i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0:
-        location: [700, 700]
+      i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0:
+        location: [667, 1567]
         orientation: N
-       i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1:
-        location: [1000, 700]
+      i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1:
+        location: [1042, 1567]
         orientation: N
-       i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2:
-        location: [700, 1000]
+      i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2:
+        location: [667, 1942]
         orientation: N
-       i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3:
-        location: [1000, 1000]
-        orientation: N
+      i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3:
+        location: [1042, 1942]
+        orientation: MY
 
 # No user macros for the workshop slot -- the core is a trivial
 # counter.  chip_id + wafer.space logo (above) are the only placed
@@ -224,6 +224,14 @@ PDN_CFG: dir::pdn_cfg.tcl
 # MAGIC_EXT_ABSTRACT_CELLS:
 # - gf180mcu_ws_ip__id
 # - gf180mcu_ws_ip__logo
+
+KLAYOUT_DRC_OPTIONS:
+  feol: true
+  beol: true
+  wall: true
+  ball: true
+
+
 
 # Global thread count per worker process
 KLAYOUT_DRC_THREADS: 4

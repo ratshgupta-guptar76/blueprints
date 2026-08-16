@@ -197,7 +197,7 @@ add_pdn_connect \
 
 define_pdn_grid \
     -macro \
-    -cells sram_32x8_9T \
+    -instances {i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0 i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1 i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2 i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3} \
     -name dcim_macro_rot \
     -grid_over_boundary \
     -starts_with POWER \
