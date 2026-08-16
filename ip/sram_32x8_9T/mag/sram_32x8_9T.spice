@@ -1,0 +1,562 @@
+* NGSPICE file created from sram_32x8_9T.ext - technology: gf180mcuD
+
+.subckt x9T_tileable WL A RBL VDD VSS WBLB WBL a_199_412# a_103_8# VSUBS
+X0 RBL a_n45_n270# a_199_412# VSUBS nfet_03v3 ad=0.1516p pd=1.64u as=0.1516p ps=1.64u w=0.22u l=0.28u
+X1 a_n45_n270# WL WBLB VSUBS nfet_03v3 ad=0.139p pd=1.215u as=0.2362p ps=2.03u w=0.32u l=0.28u
+X2 a_n14_236# a_n45_n270# a_103_8# VDD pfet_03v3 ad=0.1936p pd=1.76u as=0.1496p ps=1.12u w=0.44u l=0.28u
+X3 a_n14_236# WL WBL VSUBS nfet_03v3 ad=0.1397p pd=1.22u as=0.1706p ps=1.7u w=0.32u l=0.28u
+X4 a_n14_236# a_n45_n270# VSS VSUBS nfet_03v3 ad=0.1397p pd=1.22u as=0.1108p ps=1.1u w=0.22u l=0.28u
+X5 a_103_8# a_n14_236# a_n45_n270# VDD pfet_03v3 ad=0.1496p pd=1.12u as=0.1936p ps=1.76u w=0.44u l=0.28u
+X6 RBL a_n14_236# A VSUBS nfet_03v3 ad=0.1516p pd=1.64u as=0.1516p ps=1.64u w=0.22u l=0.28u
+X7 VSS a_n14_236# a_n45_n270# VSUBS nfet_03v3 ad=0.1108p pd=1.1u as=0.139p ps=1.215u w=0.22u l=0.28u
+X8 RBL a_n45_n270# A VDD pfet_03v3 ad=0.2082p pd=1.84u as=0.2024p ps=1.8u w=0.44u l=0.28u
+.ends
+
+.subckt sram_32x8_9T A[0] A[1] A[2] A[3] A[4] A[5] A[6] A[7] A[8] A[9] A[10] A[11]
++ A[12] A[13] A[14] A[15] A[16] A[17] A[18] A[19] A[20] A[21] A[22] A[23] A[24] A[25]
++ A[26] A[27] A[28] A[29] A[30] A[31] RBL[0] RBL[1] RBL[2] RBL[3] RBL[4] RBL[5] RBL[6]
++ RBL[7] RBL[8] RBL[9] RBL[10] RBL[11] RBL[12] RBL[13] RBL[14] RBL[15] RBL[16] RBL[17]
++ RBL[18] RBL[19] RBL[20] RBL[21] RBL[22] RBL[23] RBL[24] RBL[25] RBL[26] RBL[27]
++ RBL[28] RBL[29] RBL[30] RBL[31] RBL[32] RBL[33] RBL[34] RBL[35] RBL[36] RBL[37]
++ RBL[38] RBL[39] RBL[40] RBL[41] RBL[42] RBL[43] RBL[44] RBL[45] RBL[46] RBL[47]
++ RBL[48] RBL[49] RBL[50] RBL[51] RBL[52] RBL[53] RBL[54] RBL[55] RBL[56] RBL[57]
++ RBL[58] RBL[59] RBL[60] RBL[61] RBL[62] RBL[63] RBL[64] RBL[65] RBL[66] RBL[67]
++ RBL[68] RBL[69] RBL[70] RBL[71] RBL[72] RBL[73] RBL[74] RBL[75] RBL[76] RBL[77]
++ RBL[78] RBL[79] RBL[80] RBL[81] RBL[82] RBL[83] RBL[84] RBL[85] RBL[86] RBL[87]
++ RBL[88] RBL[89] RBL[90] RBL[91] RBL[92] RBL[93] RBL[94] RBL[95] RBL[96] RBL[97]
++ RBL[98] RBL[99] RBL[100] RBL[101] RBL[102] RBL[103] RBL[104] RBL[105] RBL[106] RBL[107]
++ RBL[108] RBL[109] RBL[110] RBL[111] RBL[112] RBL[113] RBL[114] RBL[115] RBL[116]
++ RBL[117] RBL[118] RBL[119] RBL[120] RBL[121] RBL[122] RBL[123] RBL[124] RBL[125]
++ RBL[126] RBL[127] RBL[128] RBL[129] RBL[130] RBL[131] RBL[132] RBL[133] RBL[134]
++ RBL[135] RBL[136] RBL[137] RBL[138] RBL[139] RBL[140] RBL[141] RBL[142] RBL[143]
++ RBL[144] RBL[145] RBL[146] RBL[147] RBL[148] RBL[149] RBL[150] RBL[151] RBL[152]
++ RBL[153] RBL[154] RBL[155] RBL[156] RBL[157] RBL[158] RBL[159] RBL[160] RBL[161]
++ RBL[162] RBL[163] RBL[164] RBL[165] RBL[166] RBL[167] RBL[168] RBL[169] RBL[170]
++ RBL[171] RBL[172] RBL[173] RBL[174] RBL[175] RBL[176] RBL[177] RBL[178] RBL[179]
++ RBL[180] RBL[181] RBL[182] RBL[183] RBL[184] RBL[185] RBL[186] RBL[187] RBL[188]
++ RBL[189] RBL[190] RBL[191] RBL[192] RBL[193] RBL[194] RBL[195] RBL[196] RBL[197]
++ RBL[198] RBL[199] RBL[200] RBL[201] RBL[202] RBL[203] RBL[204] RBL[205] RBL[206]
++ RBL[207] RBL[208] RBL[209] RBL[210] RBL[211] RBL[212] RBL[213] RBL[214] RBL[215]
++ RBL[216] RBL[217] RBL[218] RBL[219] RBL[220] RBL[221] RBL[222] RBL[223] RBL[224]
++ RBL[225] RBL[226] RBL[227] RBL[228] RBL[229] RBL[230] RBL[231] RBL[232] RBL[233]
++ RBL[234] RBL[235] RBL[236] RBL[237] RBL[238] RBL[239] RBL[240] RBL[241] RBL[242]
++ RBL[243] RBL[244] RBL[245] RBL[246] RBL[247] RBL[248] RBL[249] RBL[250] RBL[251]
++ RBL[252] RBL[253] RBL[254] RBL[255] VDD VSS WBL[0] WBL[1] WBL[2] WBL[3] WBL[4] WBL[5]
++ WBL[6] WBL[7] WBLB[0] WBLB[1] WBLB[2] WBLB[3] WBLB[4] WBLB[5] WBLB[6] WBLB[7] WL[0]
++ WL[1] WL[2] WL[3] WL[4] WL[5] WL[6] WL[7] WL[8] WL[9] WL[10] WL[11] WL[12] WL[13]
++ WL[14] WL[15] WL[16] WL[17] WL[18] WL[19] WL[20] WL[21] WL[22] WL[23] WL[24] WL[25]
++ WL[26] WL[27] WL[28] WL[29] WL[30] WL[31]
+X9T_tileable_0[0|0] WL[0] 9T_tileable_0[0|7]/A RBL[0] VDD VSS WBLB[0] WBL[0] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[1|0] WL[1] 9T_tileable_0[1|7]/A RBL[8] VDD VSS WBLB[0] WBL[0] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[2|0] WL[2] 9T_tileable_0[2|7]/A RBL[16] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[3|0] WL[3] 9T_tileable_0[3|7]/A RBL[24] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[4|0] WL[4] 9T_tileable_0[4|7]/A RBL[32] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[5|0] WL[5] 9T_tileable_0[5|7]/A RBL[40] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[6|0] WL[6] 9T_tileable_0[6|7]/A RBL[48] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[7|0] WL[7] 9T_tileable_0[7|7]/A RBL[56] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[8|0] WL[8] 9T_tileable_0[8|7]/A RBL[64] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[9|0] WL[9] 9T_tileable_0[9|7]/A RBL[72] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[10|0] WL[10] 9T_tileable_0[10|7]/A RBL[80] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[11|0] WL[11] 9T_tileable_0[11|7]/A RBL[88] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[12|0] WL[12] 9T_tileable_0[12|7]/A RBL[96] VDD VSS WBLB[0] WBL[0] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[13|0] WL[13] 9T_tileable_0[13|7]/A RBL[104] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[14|0] WL[14] 9T_tileable_0[14|7]/A RBL[112] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[15|0] WL[15] 9T_tileable_0[15|7]/A RBL[120] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[16|0] WL[16] 9T_tileable_0[16|7]/A RBL[128] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[17|0] WL[17] 9T_tileable_0[17|7]/A RBL[136] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[18|0] WL[18] 9T_tileable_0[18|7]/A RBL[144] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[19|0] WL[19] 9T_tileable_0[19|7]/A RBL[152] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[20|0] WL[20] 9T_tileable_0[20|7]/A RBL[160] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[21|0] WL[21] 9T_tileable_0[21|7]/A RBL[168] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[22|0] WL[22] 9T_tileable_0[22|7]/A RBL[176] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[23|0] WL[23] 9T_tileable_0[23|7]/A RBL[184] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[24|0] WL[24] 9T_tileable_0[24|7]/A RBL[192] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[25|0] WL[25] 9T_tileable_0[25|7]/A RBL[200] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[26|0] WL[26] 9T_tileable_0[26|7]/A RBL[208] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[27|0] WL[27] 9T_tileable_0[27|7]/A RBL[216] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[28|0] WL[28] 9T_tileable_0[28|7]/A RBL[224] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[29|0] WL[29] 9T_tileable_0[29|7]/A RBL[232] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[30|0] WL[30] 9T_tileable_0[30|7]/A RBL[240] VDD VSS WBLB[0] WBL[0]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[31|0] WL[31] 9T_tileable_0[31|7]/A RBL[248] 9T_tileable_0[31|7]/VDD
++ VSS WBLB[0] WBL[0] VSS 9T_tileable_0[31|7]/VDD VSS x9T_tileable
+X9T_tileable_0[0|1] WL[0] 9T_tileable_0[0|7]/A RBL[1] VDD VSS WBLB[1] WBL[1] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[1|1] WL[1] 9T_tileable_0[1|7]/A RBL[9] VDD VSS WBLB[1] WBL[1] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[2|1] WL[2] 9T_tileable_0[2|7]/A RBL[17] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[3|1] WL[3] 9T_tileable_0[3|7]/A RBL[25] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[4|1] WL[4] 9T_tileable_0[4|7]/A RBL[33] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[5|1] WL[5] 9T_tileable_0[5|7]/A RBL[41] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[6|1] WL[6] 9T_tileable_0[6|7]/A RBL[49] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[7|1] WL[7] 9T_tileable_0[7|7]/A RBL[57] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[8|1] WL[8] 9T_tileable_0[8|7]/A RBL[65] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[9|1] WL[9] 9T_tileable_0[9|7]/A RBL[73] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[10|1] WL[10] 9T_tileable_0[10|7]/A RBL[81] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[11|1] WL[11] 9T_tileable_0[11|7]/A RBL[89] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[12|1] WL[12] 9T_tileable_0[12|7]/A RBL[97] VDD VSS WBLB[1] WBL[1] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[13|1] WL[13] 9T_tileable_0[13|7]/A RBL[105] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[14|1] WL[14] 9T_tileable_0[14|7]/A RBL[113] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[15|1] WL[15] 9T_tileable_0[15|7]/A RBL[121] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[16|1] WL[16] 9T_tileable_0[16|7]/A RBL[129] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[17|1] WL[17] 9T_tileable_0[17|7]/A RBL[137] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[18|1] WL[18] 9T_tileable_0[18|7]/A RBL[145] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[19|1] WL[19] 9T_tileable_0[19|7]/A RBL[153] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[20|1] WL[20] 9T_tileable_0[20|7]/A RBL[161] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[21|1] WL[21] 9T_tileable_0[21|7]/A RBL[169] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[22|1] WL[22] 9T_tileable_0[22|7]/A RBL[177] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[23|1] WL[23] 9T_tileable_0[23|7]/A RBL[185] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[24|1] WL[24] 9T_tileable_0[24|7]/A RBL[193] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[25|1] WL[25] 9T_tileable_0[25|7]/A RBL[201] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[26|1] WL[26] 9T_tileable_0[26|7]/A RBL[209] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[27|1] WL[27] 9T_tileable_0[27|7]/A RBL[217] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[28|1] WL[28] 9T_tileable_0[28|7]/A RBL[225] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[29|1] WL[29] 9T_tileable_0[29|7]/A RBL[233] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[30|1] WL[30] 9T_tileable_0[30|7]/A RBL[241] VDD VSS WBLB[1] WBL[1]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[31|1] WL[31] 9T_tileable_0[31|7]/A RBL[249] 9T_tileable_0[31|7]/VDD
++ VSS WBLB[1] WBL[1] VSS 9T_tileable_0[31|7]/VDD VSS x9T_tileable
+X9T_tileable_0[0|2] WL[0] 9T_tileable_0[0|7]/A RBL[2] VDD VSS WBLB[2] WBL[2] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[1|2] WL[1] 9T_tileable_0[1|7]/A RBL[10] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[2|2] WL[2] 9T_tileable_0[2|7]/A RBL[18] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[3|2] WL[3] 9T_tileable_0[3|7]/A RBL[26] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[4|2] WL[4] 9T_tileable_0[4|7]/A RBL[34] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[5|2] WL[5] 9T_tileable_0[5|7]/A RBL[42] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[6|2] WL[6] 9T_tileable_0[6|7]/A RBL[50] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[7|2] WL[7] 9T_tileable_0[7|7]/A RBL[58] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[8|2] WL[8] 9T_tileable_0[8|7]/A RBL[66] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[9|2] WL[9] 9T_tileable_0[9|7]/A RBL[74] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[10|2] WL[10] 9T_tileable_0[10|7]/A RBL[82] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[11|2] WL[11] 9T_tileable_0[11|7]/A RBL[90] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[12|2] WL[12] 9T_tileable_0[12|7]/A RBL[98] VDD VSS WBLB[2] WBL[2] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[13|2] WL[13] 9T_tileable_0[13|7]/A RBL[106] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[14|2] WL[14] 9T_tileable_0[14|7]/A RBL[114] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[15|2] WL[15] 9T_tileable_0[15|7]/A RBL[122] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[16|2] WL[16] 9T_tileable_0[16|7]/A RBL[130] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[17|2] WL[17] 9T_tileable_0[17|7]/A RBL[138] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[18|2] WL[18] 9T_tileable_0[18|7]/A RBL[146] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[19|2] WL[19] 9T_tileable_0[19|7]/A RBL[154] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[20|2] WL[20] 9T_tileable_0[20|7]/A RBL[162] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[21|2] WL[21] 9T_tileable_0[21|7]/A RBL[170] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[22|2] WL[22] 9T_tileable_0[22|7]/A RBL[178] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[23|2] WL[23] 9T_tileable_0[23|7]/A RBL[186] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[24|2] WL[24] 9T_tileable_0[24|7]/A RBL[194] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[25|2] WL[25] 9T_tileable_0[25|7]/A RBL[202] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[26|2] WL[26] 9T_tileable_0[26|7]/A RBL[210] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[27|2] WL[27] 9T_tileable_0[27|7]/A RBL[218] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[28|2] WL[28] 9T_tileable_0[28|7]/A RBL[226] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[29|2] WL[29] 9T_tileable_0[29|7]/A RBL[234] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[30|2] WL[30] 9T_tileable_0[30|7]/A RBL[242] VDD VSS WBLB[2] WBL[2]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[31|2] WL[31] 9T_tileable_0[31|7]/A RBL[250] 9T_tileable_0[31|7]/VDD
++ VSS WBLB[2] WBL[2] VSS 9T_tileable_0[31|7]/VDD VSS x9T_tileable
+X9T_tileable_0[0|3] WL[0] 9T_tileable_0[0|7]/A RBL[3] VDD VSS WBLB[3] WBL[3] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[1|3] WL[1] 9T_tileable_0[1|7]/A RBL[11] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[2|3] WL[2] 9T_tileable_0[2|7]/A RBL[19] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[3|3] WL[3] 9T_tileable_0[3|7]/A RBL[27] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[4|3] WL[4] 9T_tileable_0[4|7]/A RBL[35] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[5|3] WL[5] 9T_tileable_0[5|7]/A RBL[43] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[6|3] WL[6] 9T_tileable_0[6|7]/A RBL[51] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[7|3] WL[7] 9T_tileable_0[7|7]/A RBL[59] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[8|3] WL[8] 9T_tileable_0[8|7]/A RBL[67] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[9|3] WL[9] 9T_tileable_0[9|7]/A RBL[75] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[10|3] WL[10] 9T_tileable_0[10|7]/A RBL[83] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[11|3] WL[11] 9T_tileable_0[11|7]/A RBL[91] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[12|3] WL[12] 9T_tileable_0[12|7]/A RBL[99] VDD VSS WBLB[3] WBL[3] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[13|3] WL[13] 9T_tileable_0[13|7]/A RBL[107] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[14|3] WL[14] 9T_tileable_0[14|7]/A RBL[115] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[15|3] WL[15] 9T_tileable_0[15|7]/A RBL[123] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[16|3] WL[16] 9T_tileable_0[16|7]/A RBL[131] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[17|3] WL[17] 9T_tileable_0[17|7]/A RBL[139] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[18|3] WL[18] 9T_tileable_0[18|7]/A RBL[147] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[19|3] WL[19] 9T_tileable_0[19|7]/A RBL[155] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[20|3] WL[20] 9T_tileable_0[20|7]/A RBL[163] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[21|3] WL[21] 9T_tileable_0[21|7]/A RBL[171] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[22|3] WL[22] 9T_tileable_0[22|7]/A RBL[179] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[23|3] WL[23] 9T_tileable_0[23|7]/A RBL[187] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[24|3] WL[24] 9T_tileable_0[24|7]/A RBL[195] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[25|3] WL[25] 9T_tileable_0[25|7]/A RBL[203] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[26|3] WL[26] 9T_tileable_0[26|7]/A RBL[211] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[27|3] WL[27] 9T_tileable_0[27|7]/A RBL[219] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[28|3] WL[28] 9T_tileable_0[28|7]/A RBL[227] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[29|3] WL[29] 9T_tileable_0[29|7]/A RBL[235] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[30|3] WL[30] 9T_tileable_0[30|7]/A RBL[243] VDD VSS WBLB[3] WBL[3]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[31|3] WL[31] 9T_tileable_0[31|7]/A RBL[251] 9T_tileable_0[31|7]/VDD
++ VSS WBLB[3] WBL[3] VSS 9T_tileable_0[31|7]/VDD VSS x9T_tileable
+X9T_tileable_0[0|4] WL[0] 9T_tileable_0[0|7]/A RBL[4] VDD VSS WBLB[4] WBL[4] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[1|4] WL[1] 9T_tileable_0[1|7]/A RBL[12] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[2|4] WL[2] 9T_tileable_0[2|7]/A RBL[20] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[3|4] WL[3] 9T_tileable_0[3|7]/A RBL[28] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[4|4] WL[4] 9T_tileable_0[4|7]/A RBL[36] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[5|4] WL[5] 9T_tileable_0[5|7]/A RBL[44] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[6|4] WL[6] 9T_tileable_0[6|7]/A RBL[52] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[7|4] WL[7] 9T_tileable_0[7|7]/A RBL[60] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[8|4] WL[8] 9T_tileable_0[8|7]/A RBL[68] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[9|4] WL[9] 9T_tileable_0[9|7]/A RBL[76] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[10|4] WL[10] 9T_tileable_0[10|7]/A RBL[84] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[11|4] WL[11] 9T_tileable_0[11|7]/A RBL[92] VDD VSS WBLB[4] WBL[4] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[12|4] WL[12] 9T_tileable_0[12|7]/A RBL[100] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[13|4] WL[13] 9T_tileable_0[13|7]/A RBL[108] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[14|4] WL[14] 9T_tileable_0[14|7]/A RBL[116] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[15|4] WL[15] 9T_tileable_0[15|7]/A RBL[124] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[16|4] WL[16] 9T_tileable_0[16|7]/A RBL[132] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[17|4] WL[17] 9T_tileable_0[17|7]/A RBL[140] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[18|4] WL[18] 9T_tileable_0[18|7]/A RBL[148] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[19|4] WL[19] 9T_tileable_0[19|7]/A RBL[156] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[20|4] WL[20] 9T_tileable_0[20|7]/A RBL[164] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[21|4] WL[21] 9T_tileable_0[21|7]/A RBL[172] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[22|4] WL[22] 9T_tileable_0[22|7]/A RBL[180] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[23|4] WL[23] 9T_tileable_0[23|7]/A RBL[188] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[24|4] WL[24] 9T_tileable_0[24|7]/A RBL[196] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[25|4] WL[25] 9T_tileable_0[25|7]/A RBL[204] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[26|4] WL[26] 9T_tileable_0[26|7]/A RBL[212] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[27|4] WL[27] 9T_tileable_0[27|7]/A RBL[220] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[28|4] WL[28] 9T_tileable_0[28|7]/A RBL[228] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[29|4] WL[29] 9T_tileable_0[29|7]/A RBL[236] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[30|4] WL[30] 9T_tileable_0[30|7]/A RBL[244] VDD VSS WBLB[4] WBL[4]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[31|4] WL[31] 9T_tileable_0[31|7]/A RBL[252] 9T_tileable_0[31|7]/VDD
++ VSS WBLB[4] WBL[4] VSS 9T_tileable_0[31|7]/VDD VSS x9T_tileable
+X9T_tileable_0[0|5] WL[0] 9T_tileable_0[0|7]/A RBL[5] VDD VSS WBLB[5] WBL[5] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[1|5] WL[1] 9T_tileable_0[1|7]/A RBL[13] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[2|5] WL[2] 9T_tileable_0[2|7]/A RBL[21] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[3|5] WL[3] 9T_tileable_0[3|7]/A RBL[29] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[4|5] WL[4] 9T_tileable_0[4|7]/A RBL[37] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[5|5] WL[5] 9T_tileable_0[5|7]/A RBL[45] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[6|5] WL[6] 9T_tileable_0[6|7]/A RBL[53] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[7|5] WL[7] 9T_tileable_0[7|7]/A RBL[61] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[8|5] WL[8] 9T_tileable_0[8|7]/A RBL[69] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[9|5] WL[9] 9T_tileable_0[9|7]/A RBL[77] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[10|5] WL[10] 9T_tileable_0[10|7]/A RBL[85] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[11|5] WL[11] 9T_tileable_0[11|7]/A RBL[93] VDD VSS WBLB[5] WBL[5] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[12|5] WL[12] 9T_tileable_0[12|7]/A RBL[101] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[13|5] WL[13] 9T_tileable_0[13|7]/A RBL[109] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[14|5] WL[14] 9T_tileable_0[14|7]/A RBL[117] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[15|5] WL[15] 9T_tileable_0[15|7]/A RBL[125] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[16|5] WL[16] 9T_tileable_0[16|7]/A RBL[133] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[17|5] WL[17] 9T_tileable_0[17|7]/A RBL[141] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[18|5] WL[18] 9T_tileable_0[18|7]/A RBL[149] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[19|5] WL[19] 9T_tileable_0[19|7]/A RBL[157] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[20|5] WL[20] 9T_tileable_0[20|7]/A RBL[165] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[21|5] WL[21] 9T_tileable_0[21|7]/A RBL[173] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[22|5] WL[22] 9T_tileable_0[22|7]/A RBL[181] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[23|5] WL[23] 9T_tileable_0[23|7]/A RBL[189] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[24|5] WL[24] 9T_tileable_0[24|7]/A RBL[197] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[25|5] WL[25] 9T_tileable_0[25|7]/A RBL[205] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[26|5] WL[26] 9T_tileable_0[26|7]/A RBL[213] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[27|5] WL[27] 9T_tileable_0[27|7]/A RBL[221] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[28|5] WL[28] 9T_tileable_0[28|7]/A RBL[229] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[29|5] WL[29] 9T_tileable_0[29|7]/A RBL[237] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[30|5] WL[30] 9T_tileable_0[30|7]/A RBL[245] VDD VSS WBLB[5] WBL[5]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[31|5] WL[31] 9T_tileable_0[31|7]/A RBL[253] 9T_tileable_0[31|7]/VDD
++ VSS WBLB[5] WBL[5] VSS 9T_tileable_0[31|7]/VDD VSS x9T_tileable
+X9T_tileable_0[0|6] WL[0] 9T_tileable_0[0|7]/A RBL[6] VDD VSS WBLB[6] WBL[6] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[1|6] WL[1] 9T_tileable_0[1|7]/A RBL[14] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[2|6] WL[2] 9T_tileable_0[2|7]/A RBL[22] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[3|6] WL[3] 9T_tileable_0[3|7]/A RBL[30] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[4|6] WL[4] 9T_tileable_0[4|7]/A RBL[38] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[5|6] WL[5] 9T_tileable_0[5|7]/A RBL[46] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[6|6] WL[6] 9T_tileable_0[6|7]/A RBL[54] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[7|6] WL[7] 9T_tileable_0[7|7]/A RBL[62] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[8|6] WL[8] 9T_tileable_0[8|7]/A RBL[70] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[9|6] WL[9] 9T_tileable_0[9|7]/A RBL[78] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[10|6] WL[10] 9T_tileable_0[10|7]/A RBL[86] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[11|6] WL[11] 9T_tileable_0[11|7]/A RBL[94] VDD VSS WBLB[6] WBL[6] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[12|6] WL[12] 9T_tileable_0[12|7]/A RBL[102] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[13|6] WL[13] 9T_tileable_0[13|7]/A RBL[110] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[14|6] WL[14] 9T_tileable_0[14|7]/A RBL[118] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[15|6] WL[15] 9T_tileable_0[15|7]/A RBL[126] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[16|6] WL[16] 9T_tileable_0[16|7]/A RBL[134] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[17|6] WL[17] 9T_tileable_0[17|7]/A RBL[142] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[18|6] WL[18] 9T_tileable_0[18|7]/A RBL[150] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[19|6] WL[19] 9T_tileable_0[19|7]/A RBL[158] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[20|6] WL[20] 9T_tileable_0[20|7]/A RBL[166] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[21|6] WL[21] 9T_tileable_0[21|7]/A RBL[174] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[22|6] WL[22] 9T_tileable_0[22|7]/A RBL[182] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[23|6] WL[23] 9T_tileable_0[23|7]/A RBL[190] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[24|6] WL[24] 9T_tileable_0[24|7]/A RBL[198] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[25|6] WL[25] 9T_tileable_0[25|7]/A RBL[206] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[26|6] WL[26] 9T_tileable_0[26|7]/A RBL[214] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[27|6] WL[27] 9T_tileable_0[27|7]/A RBL[222] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[28|6] WL[28] 9T_tileable_0[28|7]/A RBL[230] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[29|6] WL[29] 9T_tileable_0[29|7]/A RBL[238] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[30|6] WL[30] 9T_tileable_0[30|7]/A RBL[246] VDD VSS WBLB[6] WBL[6]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[31|6] WL[31] 9T_tileable_0[31|7]/A RBL[254] 9T_tileable_0[31|7]/VDD
++ VSS WBLB[6] WBL[6] VSS 9T_tileable_0[31|7]/VDD VSS x9T_tileable
+X9T_tileable_0[0|7] WL[0] 9T_tileable_0[0|7]/A RBL[7] VDD VSS WBLB[7] WBL[7] VSS VDD
++ VSS x9T_tileable
+X9T_tileable_0[1|7] WL[1] 9T_tileable_0[1|7]/A RBL[15] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[2|7] WL[2] 9T_tileable_0[2|7]/A RBL[23] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[3|7] WL[3] 9T_tileable_0[3|7]/A RBL[31] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[4|7] WL[4] 9T_tileable_0[4|7]/A RBL[39] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[5|7] WL[5] 9T_tileable_0[5|7]/A RBL[47] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[6|7] WL[6] 9T_tileable_0[6|7]/A RBL[55] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[7|7] WL[7] 9T_tileable_0[7|7]/A RBL[63] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[8|7] WL[8] 9T_tileable_0[8|7]/A RBL[71] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[9|7] WL[9] 9T_tileable_0[9|7]/A RBL[79] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[10|7] WL[10] 9T_tileable_0[10|7]/A RBL[87] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[11|7] WL[11] 9T_tileable_0[11|7]/A RBL[95] VDD VSS WBLB[7] WBL[7] VSS
++ VDD VSS x9T_tileable
+X9T_tileable_0[12|7] WL[12] 9T_tileable_0[12|7]/A RBL[103] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[13|7] WL[13] 9T_tileable_0[13|7]/A RBL[111] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[14|7] WL[14] 9T_tileable_0[14|7]/A RBL[119] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[15|7] WL[15] 9T_tileable_0[15|7]/A RBL[127] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[16|7] WL[16] 9T_tileable_0[16|7]/A RBL[135] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[17|7] WL[17] 9T_tileable_0[17|7]/A RBL[143] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[18|7] WL[18] 9T_tileable_0[18|7]/A RBL[151] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[19|7] WL[19] 9T_tileable_0[19|7]/A RBL[159] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[20|7] WL[20] 9T_tileable_0[20|7]/A RBL[167] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[21|7] WL[21] 9T_tileable_0[21|7]/A RBL[175] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[22|7] WL[22] 9T_tileable_0[22|7]/A RBL[183] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[23|7] WL[23] 9T_tileable_0[23|7]/A RBL[191] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[24|7] WL[24] 9T_tileable_0[24|7]/A RBL[199] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[25|7] WL[25] 9T_tileable_0[25|7]/A RBL[207] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[26|7] WL[26] 9T_tileable_0[26|7]/A RBL[215] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[27|7] WL[27] 9T_tileable_0[27|7]/A RBL[223] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[28|7] WL[28] 9T_tileable_0[28|7]/A RBL[231] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[29|7] WL[29] 9T_tileable_0[29|7]/A RBL[239] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[30|7] WL[30] 9T_tileable_0[30|7]/A RBL[247] VDD VSS WBLB[7] WBL[7]
++ VSS VDD VSS x9T_tileable
+X9T_tileable_0[31|7] WL[31] 9T_tileable_0[31|7]/A RBL[255] 9T_tileable_0[31|7]/VDD
++ VSS WBLB[7] WBL[7] VSS 9T_tileable_0[31|7]/VDD VSS x9T_tileable
+.ends
+

@@ -199,7 +199,6 @@ define_pdn_grid \
     -macro \
     -cells sram_32x8_9T \
     -name dcim_macro_rot \
-    -grid_over_boundary \
     -starts_with POWER \
     -halo "$::env(PDN_HORIZONTAL_HALO) $::env(PDN_VERTICAL_HALO)"
 
@@ -230,6 +229,11 @@ add_pdn_connect \
 add_pdn_connect \
     -grid dcim_macro_rot \
     -layers "$::env(PDN_HORIZONTAL_LAYER) Metal3"
+
+add_pdn_connect \
+    -grid dcim_macro_rot \
+    -layers "Metal3 Metal2"
+
 
 # set_debug_level PDN Straps 1
 # set_debug_level PDN Via 2
