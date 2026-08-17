@@ -17,8 +17,8 @@ meta:
     # Save time during development
     # Enable for sign-off
     # OpenROAD.IRDropReport: null
-    Magic.DRC: null
-    Checker.MagicDRC: null
+    # Magic.DRC: null
+    # Checker.MagicDRC: null
     # KLayout.XOR: null
     # Netgen.LVS: null
     # Checker.LVS: null
@@ -108,7 +108,7 @@ CORE_AREA: [100, 100, 1000, 1000]
 # PDN - Straps
 # HPITCH/VPITCH=75 is smaller than the SRAM macro height (181.215um), so
 # every macro crosses at least 2 horizontal straps regardless of its exact
-# Y placement (see dcim_macro_rot in pdn_cfg.tcl).
+# Y placement (see dcim_macro_rot in pdn_core_cfg.tcl).
 PDN_VWIDTH: 5
 PDN_HWIDTH: 2
 PDN_VSPACING: 1
@@ -132,7 +132,7 @@ PDN_VERTICAL_HALO: 5
 
 # Custom macro PDN grid (grid_over_boundary workaround for the SRAM's
 # narrow Metal3 pins) -- same script the padring flow uses.
-PDN_CFG: dir::pdn_cfg.tcl
+PDN_CFG: dir::pdn_core_cfg.tcl
 
 MACROS:
   sram_32x8_9T:
@@ -235,19 +235,16 @@ MAGIC_EXT_UNIQUE: notopports
 # Global thread count per worker process
 KLAYOUT_DRC_THREADS: 4
 
-KLAYOUT_DRC_OPTIONS: {
-      feol: true,
-      beol: true,
-      run_mode: "deep",
-      conn_drc: true,
-      dummy: true,
-      dummy_no_sub_prev: true,
-      offgrid: true,
-      wedge: true
-    }
-
 # DRC options block containing worker count
 KLAYOUT_DRC_OPTIONS:
+  feol: true
+  beol: true
+  run_mode: "deep"
+  conn_drc: true
+  dummy: true
+  dummy_no_sub_prev: true
+  offgrid: true
+  wedge: true
   decks: "all,-antenna,-density,-cup"
   variant: ref::$PDK
   workers: max
