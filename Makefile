@@ -72,6 +72,12 @@ PDK_ROOT ?= $(MAKEFILE_DIR)/gf180mcu
 PDK ?= gf180mcuD
 PDK_TAG ?= 1.8.0
 
+# gf180mcu_as_sc_mcu7t3v3 (the SCL this project builds with, see SCL above)
+# isn't part of wafer-space/gf180mcu -- it's a separate application-specific
+# library. Pinned to the exact commit this project has been validated against.
+AS_SCL_REPO ?= https://github.com/AvalonSemiconductors/gf180mcu_as_sc_mcu7t3v3.git
+AS_SCL_COMMIT ?= c35a86ac394e548c3de37e43a579fd770f1842a6
+
 AVAILABLE_SLOTS = 1x1 0p5x1 1x0p5 0p5x0p5 workshop
 DEFAULT_SLOT = workshop
 
@@ -109,9 +115,18 @@ help: ## Show this help message
 all: librelane ## Build the project (runs LibreLane)
 .PHONY: all
 
-clone-pdk: ## Clone the GF180MCU PDK repository
+clone-pdk: ## Clone the GF180MCU PDK repository (plus the gf180mcu_as_sc_mcu7t3v3 SCL)
 	rm -rf $(MAKEFILE_DIR)/gf180mcu
 	git clone https://github.com/wafer-space/gf180mcu.git $(MAKEFILE_DIR)/gf180mcu --depth 1 --branch ${PDK_TAG}
+	rm -rf $(MAKEFILE_DIR)/.as_scl_tmp
+	git init -q $(MAKEFILE_DIR)/.as_scl_tmp
+	git -C $(MAKEFILE_DIR)/.as_scl_tmp remote add origin ${AS_SCL_REPO}
+	git -C $(MAKEFILE_DIR)/.as_scl_tmp fetch --depth 1 origin ${AS_SCL_COMMIT}
+	git -C $(MAKEFILE_DIR)/.as_scl_tmp checkout -q FETCH_HEAD
+	mkdir -p $(MAKEFILE_DIR)/gf180mcu/gf180mcuD/libs.ref $(MAKEFILE_DIR)/gf180mcu/gf180mcuD/libs.tech/librelane
+	cp -r $(MAKEFILE_DIR)/.as_scl_tmp/pdk/libs.ref/gf180mcu_as_sc_mcu7t3v3 $(MAKEFILE_DIR)/gf180mcu/gf180mcuD/libs.ref/
+	cp -r $(MAKEFILE_DIR)/.as_scl_tmp/pdk/libs.tech/librelane/gf180mcu_as_sc_mcu7t3v3 $(MAKEFILE_DIR)/gf180mcu/gf180mcuD/libs.tech/librelane/
+	rm -rf $(MAKEFILE_DIR)/.as_scl_tmp
 .PHONY: clone-pdk
 
 librelane: ## Run LibreLane flow (synthesis, PnR, verification)
