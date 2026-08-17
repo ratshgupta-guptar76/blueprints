@@ -10,11 +10,11 @@
 // design wires them to custom analog IP later).
 
 `default_nettype none
-
+`include "slot_defines.svh"
 module chip_core #(
-    parameter NUM_INPUT_PADS,
-    parameter NUM_BIDIR_PADS,
-    parameter NUM_ANALOG_PADS
+    parameter NUM_INPUT_PADS = 4,
+    parameter NUM_BIDIR_PADS = 20,
+    parameter NUM_ANALOG_PADS = 60
     )(
     `ifdef USE_POWER_PINS
     inout  wire VDD,

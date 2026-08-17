@@ -1,0 +1,248 @@
+meta:
+  version: 3
+  flow: Classic
+  substituting_steps:
+    # Disable KLayout DRC
+    # KLayout.DRC: null
+    # Checker.KLayoutDRC: null
+
+    # Disable KLayout antenna check
+    # KLayout.Antenna: null
+    # Checker.KLayoutAntenna: null
+
+    # Disable KLayout density check
+    # KLayout.Density: null
+    # Checker.KLayoutDensity: null
+
+    # Save time during development
+    # Enable for sign-off
+    # OpenROAD.IRDropReport: null
+    Magic.DRC: null
+    Checker.MagicDRC: null
+    # KLayout.XOR: null
+    Netgen.LVS: null
+    Checker.LVS: null
+
+    # OpenROAD PSM (Checker.PowerGridViolations) needs power-pad terminal
+    # locations (VSRC_LOC_FILES) to analyze the grid, which only exist on
+    # a padded chip-level design. chip_core has no pads, so PSM reports
+    # both VDD/VSS as violations ("does not contain any terminals")
+    # regardless of grid correctness -- same reason LVS is disabled above.
+    Checker.PowerGridViolations: null
+
+DESIGN_NAME: chip_core
+
+VERILOG_FILES:
+- dir::../src/dcim_pkg.sv
+- dir::../src/shift_reg.sv
+- dir::../src/act_shift_chain.sv
+- dir::../src/row_decoder.sv
+- dir::../src/dcim_array.sv
+- dir::../src/col_adder.sv
+- dir::../src/adder_tree.sv
+- dir::../src/lane_shift_accum.sv
+- dir::../src/shift_accum.sv
+- dir::../src/weight_load.sv
+- dir::../src/stream_out.sv
+- dir::../src/control_fsm.sv
+- dir::../src/dcim_top.sv
+- dir::../src/chip_core.sv
+- dir::../ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v
+
+# SDC file updated for core
+PNR_SDC_FILE: dir::chip_core.sdc
+SIGNOFF_SDC_FILE: dir::chip_core.sdc
+FALLBACK_SDC: dir::chip_core.sdc
+
+IGNORE_DISCONNECTED_MODULES:
+- chip_core
+
+# Remove pad-specific configs
+# IGNORE_DISCONNECTED_MODULES removed (no IO pad blackboxes)
+# EXTRA_VERILOG_MODELS for pads removed
+
+# Enable plugin for better SystemVerilog support
+USE_SLANG: True
+SLANG_ARGUMENTS: ['--keep-hierarchy']
+
+# Slightly smaller file sizes
+PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+RUN_MAGIC_STREAMOUT: False
+
+# Power / ground nets
+VDD_NETS:
+- VDD
+GND_NETS:
+- VSS
+
+# Direct clock port on chip_core
+CLOCK_PORT: clk
+CLOCK_NET: clk
+CLOCK_PERIOD: 40
+
+# Fix hold violations
+PL_RESIZER_HOLD_SLACK_MARGIN: 0.35
+GRT_RESIZER_HOLD_SLACK_MARGIN: 0.3
+
+# Increase for more logic
+# on your die
+PL_TARGET_DENSITY_PCT: 35
+GRT_ALLOW_CONGESTION: true
+
+# Fix antenna violations after DRT
+DRT_ANTENNA_REPAIR_ITERS: 10
+DRT_ANTENNA_REPAIR_MARGIN: 10 # %
+
+# Disable core ring pad connection & enable seal ring
+PDN_CORE_RING: True
+PDN_CORE_RING_CONNECT_TO_PADS: False
+
+# Fixed 1100x1100um core, with margin around it for the PDN core ring.
+# The ring is drawn per-net (VDD + VSS), so the actual stack is
+# offset(6) + width(25) + spacing(1.7) + width(25) = ~57.7um -- 100um
+# margin leaves headroom for that plus routing/via clearance.
+FP_SIZING: absolute
+DIE_AREA: [0, 0, 1100, 1100]
+CORE_AREA: [100, 100, 1000, 1000]
+
+# PDN - Straps
+# HPITCH/VPITCH=75 is smaller than the SRAM macro height (181.215um), so
+# every macro crosses at least 2 horizontal straps regardless of its exact
+# Y placement (see dcim_macro_rot in pdn_cfg.tcl).
+PDN_VWIDTH: 5
+PDN_HWIDTH: 2
+PDN_VSPACING: 1
+PDN_HSPACING: 1
+PDN_VPITCH: 75
+PDN_HPITCH: 75
+
+# PDN - Core ring
+# Maximum metal width without slotting: 30um
+PDN_CORE_RING_VWIDTH: 25
+PDN_CORE_RING_HWIDTH: 25
+PDN_ENABLE_PINS: False
+PDN_CORE_VERTICAL_LAYER: Metal2
+PDN_CORE_HORIZONTAL_LAYER: Metal3
+
+# Halo around macros for row-cutting and for the PDN macro grid
+FP_MACRO_HORIZONTAL_HALO: 10
+FP_MACRO_VERTICAL_HALO: 10
+PDN_HORIZONTAL_HALO: 5
+PDN_VERTICAL_HALO: 5
+
+# Custom macro PDN grid (grid_over_boundary workaround for the SRAM's
+# narrow Metal3 pins) -- same script the padring flow uses.
+PDN_CFG: dir::pdn_cfg.tcl
+
+MACROS:
+  sram_32x8_9T:
+    gds:
+      - dir::../ip/sram_32x8_9T/gds/sram_32x8_9T.gds
+    lef:
+      - dir::../ip/sram_32x8_9T/lef/sram_32x8_9T.lef
+    vh:
+      - dir::../ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v
+    lib:
+      "*":
+        - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T.lib
+    instances:
+      # Hierarchy updated: removed i_chip_core prefix
+      # 2x2 grid inside the 1100x1100 core (macro is 44.255 x 181.215um);
+      # 400um X/Y pitch leaves >350um clearance on every side for halo,
+      # routing channels and standard cells.
+      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0:
+        location: [300, 250]
+        orientation: MY
+      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1:
+        location: [700, 250]
+        orientation: MY
+      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2:
+        location: [300, 650]
+        orientation: MY
+      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3:
+        location: [700, 650]
+        orientation: MY
+
+FP_PDN_MACRO_HOOKS:
+- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0 VDD VSS VDD VSS"
+- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1 VDD VSS VDD VSS"
+- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2 VDD VSS VDD VSS"
+- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3 VDD VSS VDD VSS"
+
+# Do not error on magic DRC violations
+# Note: Passing magic DRC is not required for the submission.
+# However, it is recommended to fix or carefully review all violations.
+ERROR_ON_MAGIC_DRC: False
+
+# Prevent false positive DRC errors in I/O cells
+MAGIC_GDS_FLATGLOB:
+# For contacts
+- "*_CDNS_*"
+# Foundry provided SRAMs
+- "*$$*"
+- "M1_N*"
+- "M1_P*"
+- "M2_M1*"
+- "M3_M2*"
+- "nmos_5p0*"
+- "nmos_1p2*"
+- "pmos_5p0*"
+- "pmos_1p2*"
+- "via1_*"
+- "ypass_gate*"
+- "G_ring_*"
+# These additional cells must be flattened to get rid of 3.3V devices
+# (DUALGATE drawn into high-level cells)
+- "dcap_103*"
+- "din_*"
+- "mux821_*"
+- "rdummy_*"
+- "pmoscap_*"
+- "xdec_*"
+- "ypredec*"
+- "xpredec*"
+- "prexdec_*"
+- "xdec8_*"
+- "xdec16_*"
+- "xdec32_*"
+- "sa_*"
+
+# Since we cannot meet the minimum density limit on Metal2,
+# ignore active metal on previous and subsequent layers
+# (DM.5_DM.7 and DM.4_DM.6). Dummy metal is moved to active
+# metal during the precheck.
+KLAYOUT_FILLER_OPTIONS:
+  Metal2_ignore_active: true
+
+# Because we have multiple power pads for one power domain
+MAGIC_EXT_UNIQUE: notopports
+
+# Global thread count per worker process
+KLAYOUT_DRC_THREADS: 4
+
+KLAYOUT_DRC_OPTIONS: {
+      feol: true,
+      beol: true,
+      run_mode: "deep",
+      conn_drc: true,
+      dummy: true,
+      dummy_no_sub_prev: true,
+      offgrid: true,
+      wedge: true
+    }
+
+# DRC options block containing worker count
+KLAYOUT_DRC_OPTIONS:
+  decks: "all,-antenna,-density,-cup"
+  variant: ref::$PDK
+  workers: max
+
+KLAYOUT_DENSITY_OPTIONS:
+  decks: "density"
+  variant: ref::$PDK
+  workers: max
+
+KLAYOUT_ANTENNA_OPTIONS:
+  decks: "antenna"
+  variant: ref::$PDK
+  workers: max

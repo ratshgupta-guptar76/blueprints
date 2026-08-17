@@ -267,4 +267,11 @@ clean: ## Remove cocotb build artefacts, results and waveforms
 	rm -f $(COCOTB_DIR)/dump.fst $(COCOTB_DIR)/dump.vcd $(COCOTB_DIR)/results.xml
 .PHONY: clean
 
+librelane-core: ## Run LibreLane flow for core only (no padring)
+	STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk
+.PHONY: librelane-core
+
+librelane-core-pdn: ## Run LibreLane flow for core only, stopping after the PDN core ring
+	STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --to OpenROAD.GeneratePDN
+.PHONY: librelane-core-pdn
 endif
