@@ -28,8 +28,14 @@ if { [info exists ::env(MAX_CAPACITANCE_CONSTRAINT)] } {
 set clocks [get_clocks $clock_port]
 
 # Direct Core Signal Ports
-set core_bidir_ports [get_ports { 
+# bidir_in is the only actual input in the bidir group; bidir_out/oe/cs/sl/ie/pu/pd
+# are all outputs (pad control/config driven by the core -- see chip_core.sv), so
+# input and output delay must be applied to disjoint sets, not the same bundle.
+set core_bidir_in_ports [get_ports {
     bidir_in[*]
+}]
+
+set core_bidir_out_ports [get_ports {
     bidir_out[*]
     bidir_oe[*]
     bidir_cs[*]
@@ -37,16 +43,16 @@ set core_bidir_ports [get_ports {
     bidir_ie[*]
     bidir_pu[*]
     bidir_pd[*]
-}] 
+}]
 
-set_input_delay -min 0 -clock $clocks $core_bidir_ports
-set_input_delay -max $input_delay_value -clock $clocks $core_bidir_ports
-set_output_delay $output_delay_value -clock $clocks $core_bidir_ports
+set_input_delay -min 0 -clock $clocks $core_bidir_in_ports
+set_input_delay -max $input_delay_value -clock $clocks $core_bidir_in_ports
+set_output_delay $output_delay_value -clock $clocks $core_bidir_out_ports
 
-set core_input_ports [get_ports { 
+set core_input_ports [get_ports {
     rst_n
     input_in[*]
-}] 
+}]
 
 set_input_delay -min 0 -clock $clocks $core_input_ports
 set_input_delay -max $input_delay_value -clock $clocks $core_input_ports

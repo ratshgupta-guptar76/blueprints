@@ -20,8 +20,8 @@ meta:
     Magic.DRC: null
     Checker.MagicDRC: null
     # KLayout.XOR: null
-    Netgen.LVS: null
-    Checker.LVS: null
+    # Netgen.LVS: null
+    # Checker.LVS: null
 
     # OpenROAD PSM (Checker.PowerGridViolations) needs power-pad terminal
     # locations (VSRC_LOC_FILES) to analyze the grid, which only exist on
@@ -162,6 +162,21 @@ MACROS:
       U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3:
         location: [700, 650]
         orientation: MY
+
+# Filler/decap cells have no signal pins -- just VDD/VSS -- and are
+# deterministically inserted by Fill Insertion, so LVS has nothing
+# functional to verify on them (fill density/tap spacing is a DRC
+# concern, not LVS). With ~49k of ~57k devices being these, netgen's
+# LVS has to fully resolve one enormous symmetric equivalence class to
+# prove a unique match, which blows up its isomorphism refinement
+# (this is why it only hangs when the netlists actually match -- a
+# real mismatch lets it bail out early instead of proving uniqueness).
+LVS_IGNORE_CELLS:
+- gf180mcu_as_sc_mcu7t3v3__fill_1
+- gf180mcu_as_sc_mcu7t3v3__fill_2
+- gf180mcu_as_sc_mcu7t3v3__fillcap_4
+- gf180mcu_as_sc_mcu7t3v3__fillcap_8
+- gf180mcu_as_sc_mcu7t3v3__fillcap_16
 
 FP_PDN_MACRO_HOOKS:
 - "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0 VDD VSS VDD VSS"
