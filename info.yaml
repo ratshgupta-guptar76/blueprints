@@ -40,11 +40,11 @@ pins:
     io_type: input_cmos
   - name: cont
     io_type: input_cmos
-  - name: P_minus1_0
+  - name: "P_minus1[0]"
     io_type: input_cmos
-  - name: P_minus1_1
+  - name: "P_minus1[1]"
     io_type: input_cmos
-  - name: P_minus1_2
+  - name: "P_minus1[2]"
     io_type: input_cmos
   - name: y_bit
     io_type: bidirectional
