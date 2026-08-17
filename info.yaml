@@ -4,3 +4,55 @@ project:
   discord: "kammy_r"
   description: "32x32 digital compute-in-memory INT8 matvec macro with 9T SRAM bitcells"
   lvs_config: "lvs_config.json"
+
+pins:
+
+# ----- ------ ----- ----- ------ ----- ----- ------ -----
+# Chipathon 2026: Project configuration
+# LICENSE: Apache License Version 2.0
+# http://www.apache.org/licenses/
+# ----- ------ ----- ----- ------ ----- ----- ------ -----
+
+# data will be pulled from main branch of the repo.
+# please be sure that the main branch contains the data you want to submit.
+# This file will be updated with more information later
+
+# ======================================================
+# Project metadata (used for documentation / review)
+# ======================================================
+project:
+  title: "9T DCIM SRAM Macro"   # Project title (e.g. "Simple CPU", "PLL", "ADC")
+  team: "A07 Blueprints"        # Your Team name
+  discord: "kammy_r"            # Optional: Discord username (for support / communication)
+  description: "32x32 digital compute-in-memory INT8 matvec macro with 9T SRAM bitcells"
+  lvs_config: "lvs_config.json"
+
+pins:
+  - name: clk
+    io_type: input_cmos
+  - name: rst_n
+    io_type: input_schmitt
+  - name: a_bit
+    io_type: input_cmos
+  - name: w_bit
+    io_type: input_cmos
+  - name: start
+    io_type: input_cmos
+  - name: cont
+    io_type: input_cmos
+  - name: P_minus1_0
+    io_type: input_cmos
+  - name: P_minus1_1
+    io_type: input_cmos
+  - name: P_minus1_2
+    io_type: input_cmos
+  - name: y_bit
+    io_type: bidirectional
+  - name: done
+    io_type: bidirectional
+  - name: busy
+    io_type: bidirectional
+  - name: vdd
+    io_type: power
+  - name: vss
+    io_type: ground  # note: due to a common ground connection, ground pads are generally not needed.
