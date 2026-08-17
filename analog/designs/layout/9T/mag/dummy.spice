@@ -1,0 +1,122 @@
+* SRAM 8x8 array: write and half-select disturb test
+.include /workspace/analog/designs/pvt.spice
+.include ./sram_8x8_9T.spice
+
+XARRAY sram_8x8_9T
+
+* ---- supplies: one global source, per-row taps ----
+VVDD vdd_g 0 {VDD_CORNER}
+RV0 vdd_g XARRAY.9T_tileable_0[0|7]/VDD 0.001
+RV1 vdd_g XARRAY.9T_tileable_0[1|7]/VDD 0.001
+RV2 vdd_g XARRAY.9T_tileable_0[2|7]/VDD 0.001
+RV3 vdd_g XARRAY.9T_tileable_0[3|7]/VDD 0.001
+RV4 vdd_g XARRAY.9T_tileable_0[4|7]/VDD 0.001
+RV5 vdd_g XARRAY.9T_tileable_0[5|7]/VDD 0.001
+RV6 vdd_g XARRAY.9T_tileable_0[6|7]/VDD 0.001
+RV7 vdd_g XARRAY.9T_tileable_0[7|7]/VDD 0.001
+
+VVSS XARRAY.9T_tileable_0[7|7]/VSS 0 0
+
+* ---- row 7's unresolved M1 source nodes, tied to ground ----
+VR70 XARRAY.9T_tileable_0[7|0]/a_199_412# 0 0
+VR71 XARRAY.9T_tileable_0[7|1]/a_199_412# 0 0
+VR72 XARRAY.9T_tileable_0[7|2]/a_199_412# 0 0
+VR73 XARRAY.9T_tileable_0[7|3]/a_199_412# 0 0
+VR74 XARRAY.9T_tileable_0[7|4]/a_199_412# 0 0
+VR75 XARRAY.9T_tileable_0[7|5]/a_199_412# 0 0
+VR76 XARRAY.9T_tileable_0[7|6]/a_199_412# 0 0
+VR77 XARRAY.9T_tileable_0[7|7]/a_199_412# 0 0
+
+* ---- wordlines: row 0 pulsed, rows 1-7 off ----
+VWL0 XARRAY.9T_tileable_0[0|7]/WL 0 0
+VWL1 XARRAY.9T_tileable_0[1|7]/WL 0 0
+VWL2 XARRAY.9T_tileable_0[2|7]/WL 0 0
+VWL3 XARRAY.9T_tileable_0[3|7]/WL 0 PULSE(0 {VDD_CORNER} 5n 0.2n 0.2n 15n 300n)
+VWL4 XARRAY.9T_tileable_0[4|7]/WL 0 0
+VWL5 XARRAY.9T_tileable_0[5|7]/WL 0 0
+VWL6 XARRAY.9T_tileable_0[6|7]/WL 0 0
+VWL7 XARRAY.9T_tileable_0[7|7]/WL 0 0
+
+* ---- activations off during write ----
+VA0 XARRAY.9T_tileable_0[0|7]/A 0 {VDD_CORNER}
+VA1 XARRAY.9T_tileable_0[1|7]/A 0 {VDD_CORNER}
+VA2 XARRAY.9T_tileable_0[2|7]/A 0 {VDD_CORNER}
+VA3 XARRAY.9T_tileable_0[3|7]/A 0 {VDD_CORNER}
+VA4 XARRAY.9T_tileable_0[4|7]/A 0 {VDD_CORNER}
+VA5 XARRAY.9T_tileable_0[5|7]/A 0 {VDD_CORNER}
+VA6 XARRAY.9T_tileable_0[6|7]/A 0 {VDD_CORNER}
+VA7 XARRAY.9T_tileable_0[7|7]/A 0 {VDD_CORNER}
+
+* ---- column 0: drive a write-0 ----
+VWBL3  XARRAY.9T_tileable_0[7|3]/WBL  0 {VDD_CORNER}
+VWBLB3 XARRAY.9T_tileable_0[7|3]/WBLB 0 0
+
+* ---- columns 1-7: both bitlines high (half-select, no write) ----
+VWBL1  XARRAY.9T_tileable_0[7|1]/WBL  0 {VDD_CORNER}
+VWBLB1 XARRAY.9T_tileable_0[7|1]/WBLB 0 {VDD_CORNER}
+VWBL2  XARRAY.9T_tileable_0[7|2]/WBL  0 {VDD_CORNER}
+VWBLB2 XARRAY.9T_tileable_0[7|2]/WBLB 0 {VDD_CORNER}
+VWBL0  XARRAY.9T_tileable_0[7|0]/WBL  0 {VDD_CORNER}
+VWBLB0 XARRAY.9T_tileable_0[7|0]/WBLB 0 {VDD_CORNER}
+VWBL4  XARRAY.9T_tileable_0[7|4]/WBL  0 {VDD_CORNER}
+VWBLB4 XARRAY.9T_tileable_0[7|4]/WBLB 0 {VDD_CORNER}
+VWBL5  XARRAY.9T_tileable_0[7|5]/WBL  0 {VDD_CORNER}
+VWBLB5 XARRAY.9T_tileable_0[7|5]/WBLB 0 {VDD_CORNER}
+VWBL6  XARRAY.9T_tileable_0[7|6]/WBL  0 {VDD_CORNER}
+VWBLB6 XARRAY.9T_tileable_0[7|6]/WBLB 0 {VDD_CORNER}
+VWBL7  XARRAY.9T_tileable_0[7|7]/WBL  0 {VDD_CORNER}
+VWBLB7 XARRAY.9T_tileable_0[7|7]/WBLB 0 {VDD_CORNER}
+
+* ---- initial state: representative cells hold Q=1 ----
+.ic v(XARRAY.X9T_tileable_0[0|0].Q)={VDD_CORNER}
+.ic v(XARRAY.X9T_tileable_0[0|0].QB)=0
+.ic v(XARRAY.X9T_tileable_0[0|1].Q)={VDD_CORNER}
+.ic v(XARRAY.X9T_tileable_0[0|1].QB)=0
+.ic v(XARRAY.X9T_tileable_0[1|0].Q)={VDD_CORNER}
+.ic v(XARRAY.X9T_tileable_0[1|0].QB)=0
+.ic v(XARRAY.X9T_tileable_0[7|0].Q)={VDD_CORNER}
+.ic v(XARRAY.X9T_tileable_0[7|0].QB)=0
+.ic v(XARRAY.X9T_tileable_0[3|3].Q)={VDD_CORNER}
+.ic v(XARRAY.X9T_tileable_0[3|3].QB)=0
+
+.control
+  save all
+  tran 0.05n 150n uic
+
+  echo
+  echo ===== SELECTED [0,0]: should write to 0 =====
+  meas tran q00_init  FIND v(XARRAY.X9T_tileable_0[0|0].Q) AT=4n
+  meas tran q00_final FIND v(XARRAY.X9T_tileable_0[0|0].Q) AT=140n
+
+  echo
+  echo ===== HALF-SELECT [0,1]: same WL, must hold 1 =====
+  meas tran q01_final FIND v(XARRAY.X9T_tileable_0[0|1].Q) AT=140n
+  meas tran q01_dip   MIN  v(XARRAY.X9T_tileable_0[0|1].Q) FROM=5n TO=25n
+
+  echo
+  echo ===== SAME COLUMN [1,0]: WL off, must hold 1 =====
+  meas tran q10_final FIND v(XARRAY.X9T_tileable_0[1|0].Q) AT=140n
+  meas tran q10_dip   MIN  v(XARRAY.X9T_tileable_0[1|0].Q) FROM=5n TO=25n
+
+  echo
+  echo ===== MIDDLE CELL [3,3] =====
+  meas tran q33_final FIND v(XARRAY.X9T_tileable_0[3|3].Q) AT=140n
+  meas tran q33_dip   MIN  v(XARRAY.X9T_tileable_0[3|3].Q) FROM=5n TO=25n
+
+  echo
+  echo ===== FAR CORNER [7,0]: IR-drop check =====
+  meas tran q70_final FIND v(XARRAY.X9T_tileable_0[7|0].Q) AT=140n
+  meas tran vdd7_min  MIN v(XARRAY.9T_tileable_0[7|7]/VDD) FROM=5n TO=25n
+
+  echo
+  echo ===== Compute Measuresments [A - HI] =====
+  meas tran rbl33 FIND v(XARRAY.9T_tileable_0[3|3]/RBL) AT=140n
+  meas tran rbl00 FIND v(XARRAY.9T_tileable_0[0|0]/RBL) AT=140n
+
+  set gnuplot_terminal=png
+  gnuplot /workspace/analog/sim/9t/results/q33 v(XARRAY.X9T_tileable_0[3|3].Q) v(XARRAY.X9T_tileable_0[3|3].QB)
+
+  write /workspace/analog/sim/9t/results/array_8x8_write.raw all
+.endc
+
+.end

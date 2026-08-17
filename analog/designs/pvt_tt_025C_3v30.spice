@@ -1,0 +1,9 @@
+* File: pvt_tt_025C_3v30.spice
+* Typical corner (25C, 3.3V) -- matches the tt_025C_3v30 Liberty target,
+* unlike pvt.spice which is pinned to the ss/-40C/3.67V worst-case corner
+* used for hold/write-margin analysis.
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+
+.temp 25
+.param VDD_CORNER=3.3

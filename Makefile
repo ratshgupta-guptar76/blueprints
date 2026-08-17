@@ -1,5 +1,7 @@
 MAKEFILE_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
+SCL := gf180mcu_as_sc_mcu7t3v3
+
 # --- RTL sources ---------------------------------
 RTL_MODULES := \
     dcim_pkg row_decoder shift_reg col_adder weight_load stream_out \
@@ -7,6 +9,7 @@ RTL_MODULES := \
     dcim_array control_fsm dcim_top
 
 RTL_SOURCES := $(addprefix $(MAKEFILE_DIR)/src/,$(addsuffix .sv,$(RTL_MODULES)))
+RTL_SOURCES += $(MAKEFILE_DIR)/ip/sram_32x8_9T/vh/sram_32x8_9T.v
 MUTATION_READY := $(patsubst $(MUTATION_DIR)/%.txt,%,$(wildcard $(MUTATION_DIR)/*.txt))
 
 # --- Project paths -------------------------------
@@ -18,7 +21,7 @@ MUTATION_DIR   := $(MAKEFILE_DIR)/scripts/mutations
 
 
 # --- Simulation configuration --------------------
-SIM                ?= verilator
+SIM                ?= icarus
 VERILATOR_COVERAGE ?= 1
 export SIM
 
@@ -69,6 +72,12 @@ PDK_ROOT ?= $(MAKEFILE_DIR)/gf180mcu
 PDK ?= gf180mcuD
 PDK_TAG ?= 1.8.0
 
+# gf180mcu_as_sc_mcu7t3v3 (the SCL this project builds with, see SCL above)
+# isn't part of wafer-space/gf180mcu -- it's a separate application-specific
+# library. Pinned to the exact commit this project has been validated against.
+AS_SCL_REPO ?= https://github.com/AvalonSemiconductors/gf180mcu_as_sc_mcu7t3v3.git
+AS_SCL_COMMIT ?= c35a86ac394e548c3de37e43a579fd770f1842a6
+
 AVAILABLE_SLOTS = 1x1 0p5x1 1x0p5 0p5x0p5 workshop
 DEFAULT_SLOT = workshop
 
@@ -106,13 +115,22 @@ help: ## Show this help message
 all: librelane ## Build the project (runs LibreLane)
 .PHONY: all
 
-clone-pdk: ## Clone the GF180MCU PDK repository
+clone-pdk: ## Clone the GF180MCU PDK repository (plus the gf180mcu_as_sc_mcu7t3v3 SCL)
 	rm -rf $(MAKEFILE_DIR)/gf180mcu
 	git clone https://github.com/wafer-space/gf180mcu.git $(MAKEFILE_DIR)/gf180mcu --depth 1 --branch ${PDK_TAG}
+	rm -rf $(MAKEFILE_DIR)/.as_scl_tmp
+	git init -q $(MAKEFILE_DIR)/.as_scl_tmp
+	git -C $(MAKEFILE_DIR)/.as_scl_tmp remote add origin ${AS_SCL_REPO}
+	git -C $(MAKEFILE_DIR)/.as_scl_tmp fetch --depth 1 origin ${AS_SCL_COMMIT}
+	git -C $(MAKEFILE_DIR)/.as_scl_tmp checkout -q FETCH_HEAD
+	mkdir -p $(MAKEFILE_DIR)/gf180mcu/gf180mcuD/libs.ref $(MAKEFILE_DIR)/gf180mcu/gf180mcuD/libs.tech/librelane
+	cp -r $(MAKEFILE_DIR)/.as_scl_tmp/pdk/libs.ref/gf180mcu_as_sc_mcu7t3v3 $(MAKEFILE_DIR)/gf180mcu/gf180mcuD/libs.ref/
+	cp -r $(MAKEFILE_DIR)/.as_scl_tmp/pdk/libs.tech/librelane/gf180mcu_as_sc_mcu7t3v3 $(MAKEFILE_DIR)/gf180mcu/gf180mcuD/libs.tech/librelane/
+	rm -rf $(MAKEFILE_DIR)/.as_scl_tmp
 .PHONY: clone-pdk
 
 librelane: ## Run LibreLane flow (synthesis, PnR, verification)
-	librelane librelane/slots/slot_${SLOT}.yaml librelane/config.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk
+	STD_CELL_LIBRARY=${SCL} librelane librelane/slots/slot_${SLOT}.yaml librelane/config.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk
 .PHONY: librelane
 
 librelane-nodrc: ## Run LibreLane flow without DRC checks
@@ -264,4 +282,11 @@ clean: ## Remove cocotb build artefacts, results and waveforms
 	rm -f $(COCOTB_DIR)/dump.fst $(COCOTB_DIR)/dump.vcd $(COCOTB_DIR)/results.xml
 .PHONY: clean
 
+librelane-core: ## Run LibreLane flow for core only (no padring)
+	STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk
+.PHONY: librelane-core
+
+librelane-core-pdn: ## Run LibreLane flow for core only, stopping after the PDN core ring
+	STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --to OpenROAD.GeneratePDN
+.PHONY: librelane-core-pdn
 endif

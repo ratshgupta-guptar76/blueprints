@@ -26,8 +26,6 @@ module dcim_array #(
     parameter int ROWS = dcim_pkg::ROWS,
     parameter int COLS = dcim_pkg::COLS
 ) (
-    input logic clk,
-
     input logic                    w_en,
     input logic [$clog2(ROWS)-1:0] row_addr,
     input logic [COLS-1:0]         w_buf,
@@ -46,25 +44,49 @@ module dcim_array #(
         .wl   (wl)
     );
 
-    logic [ROWS-1:0][COLS-1:0] w_mem;
 
-    always_ff @(posedge clk) begin : LOAD_WEIGHTS
-        if (~w_en) begin
-            // Hold/IDLE state - Do nothing.
-            w_mem <= w_mem;
-        end else begin
-            // Write Enabled for Weights
-            // only rows with `wl` HI (1) will be set (emulate SRAM). `wl` must be one-hot
-            for (int i = 0; i < ROWS; i++) begin
-                if (wl[i] == 1'b1) w_mem[i] <= w_buf;           // Update row
-                else               w_mem[i] <= w_mem[i];        // Keep state
+    logic [255:0] rbl [3:0];  
+
+    sram_32x8_9T u_sram_32x8_9T_0 (
+        .WL   (wl),
+        .A    (act_bp),
+        .WBL  ( w_buf[7:0]),
+        .WBLB (~w_buf[7:0]),
+        .RBL  (rbl[0])
+    );
+
+    sram_32x8_9T u_sram_32x8_9T_1 (
+        .WL   (wl),
+        .A    (act_bp),
+        .WBL  ( w_buf[15:8]),
+        .WBLB (~w_buf[15:8]),
+        .RBL  (rbl[1])
+    );
+
+    sram_32x8_9T u_sram_32x8_9T_2 (
+        .WL   (wl),
+        .A    (act_bp),
+        .WBL  ( w_buf[23:16]),
+        .WBLB (~w_buf[23:16]),
+        .RBL  (rbl[2])
+    );
+
+    sram_32x8_9T u_sram_32x8_9T_3 (
+        .WL   (wl),
+        .A    (act_bp),
+        .WBL  ( w_buf[31:24]),
+        .WBLB (~w_buf[31:24]),
+        .RBL  (rbl[3])
+    );
+    genvar w, r, c;
+    generate
+        for (w = 0; w < 4; w++) begin : WMAP
+            for (r = 0; r < ROWS; r++) begin : RMAP
+                for (c = 0; c < 8; c++) begin : CMAP
+                    assign pp[r][w*8 + c] = rbl[w][r*8 + c];
+                end
             end
         end
-    end
-
-    always_comb begin : AND_BIT_MULT
-        for (int i = 0; i < ROWS; i++)
-            pp[i] = w_mem[i] & {COLS{act_bp[i]}};
-    end
+    endgenerate
 
 endmodule
