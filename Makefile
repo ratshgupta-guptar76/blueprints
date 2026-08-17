@@ -21,7 +21,7 @@ MUTATION_DIR   := $(MAKEFILE_DIR)/scripts/mutations
 
 
 # --- Simulation configuration --------------------
-SIM                ?= verilator
+SIM                ?= icarus
 VERILATOR_COVERAGE ?= 1
 export SIM
 
