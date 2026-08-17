@@ -15,10 +15,10 @@ import numpy as np
 '''
 ## Adopted from dcim_pkg.sv
 DW          : int   =  8       # Maximum precision of weights and activations
-N_WEIGHTS   : int   =  8       # Number of weights across a row/column (TBD later)
-ROWS        : int   =  64      # Number of word rows 
-COLS        : int   =  64      # Number of word cols
-ACC_WIDTH   : int   =  22      # Out accumulator width (max[])
+N_WEIGHTS   : int   =  4       # Number of weights across a row/column
+ROWS        : int   =  32      # Number of word rows
+COLS        : int   =  N_WEIGHTS * DW  # Number of word cols
+ACC_WIDTH   : int   =  21      # Out accumulator width (DW + A_MAX_BITS + clog2(ROWS))
 
 W_SIGN      : int   =  1       # Weight signedness
 W_BITS      : int   =  8       # Weight bit-precision

@@ -10,13 +10,10 @@
 // design wires them to custom analog IP later).
 
 `default_nettype none
-
+`include "slot_defines.svh"
 module chip_core #(
-    // Defaults match the workshop slot so chip_core lints/elaborates
-    // standalone (e.g. for a padring-less LibreLane run); chip_top
-    // always overrides these explicitly, so this has no effect there.
-    parameter NUM_INPUT_PADS  = 1,
-    parameter NUM_BIDIR_PADS  = 20,
+    parameter NUM_INPUT_PADS = 4,
+    parameter NUM_BIDIR_PADS = 20,
     parameter NUM_ANALOG_PADS = 60
     )(
     `ifdef USE_POWER_PINS
@@ -49,13 +46,13 @@ module chip_core #(
     localparam int PAD_W_BIT     = 1;
     localparam int PAD_START     = 2;
     localparam int PAD_CONT      = 3;
-    localparam int PAD_PMINUS1_0 = 4;
-    localparam int PAD_PMINUS1_1 = 5;
-    localparam int PAD_PMINUS1_2 = 6;
+    localparam int PAD_PMINUS1_0 = 19;
+    localparam int PAD_PMINUS1_1 = 18;
+    localparam int PAD_PMINUS1_2 = 17;
     // Outputs
-    localparam int PAD_Y_BIT   = 7;
-    localparam int PAD_DONE    = 8;
-    localparam int PAD_BUSY    = 9;
+    localparam int PAD_Y_BIT   = 16;
+    localparam int PAD_DONE    = 15;
+    localparam int PAD_BUSY    = 14;
 
     localparam logic [NUM_BIDIR_PADS-1:0] OE_MASK = 
         (NUM_BIDIR_PADS'(1) << PAD_Y_BIT)

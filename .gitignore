@@ -25,6 +25,7 @@ cocotb/*_coverage.yml
 cocotb/*_coverage.xml
 
 # Analog simulation results
+analog/designs/backups
 analog/sim/*/results
 analog/flow/results
 

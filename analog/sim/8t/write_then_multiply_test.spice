@@ -1,0 +1,71 @@
+* ============================================
+* Test: multiply_full_sequence.spice
+* Cell: 8T_03v3
+* PDK: GF180mcuD
+* Purpose: exercise all four (W,A) products in one
+*          transient. Phase 1 = W1, Phase 2 = W0.
+* ============================================
+
+.include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tb/8T_tb.spice
+
+* -- supplies --
+VVDD  vdd 0 {VDD_CORNER}
+VVSS  vss 0 0
+
+* -- WL: two write pulses, at 5n and 105n --
+VWL   wl 0 PULSE(0 {VDD_CORNER} 5n 0.2n 0.2n 10n 100n)
+
+* -- write data: WBL high first (writes Q=1), flips at 100n --
+VWBL  wbl  0 PWL(0n {VDD_CORNER}  99n {VDD_CORNER}  100n 0  200n 0)
+VWBLB wblb 0 PWL(0n 0  99n 0  100n {VDD_CORNER}  200n {VDD_CORNER})
+
+* -- A: toggles during both compute windows --
+VA    a 0 PULSE(0 {VDD_CORNER} 30n 0.2n 0.2n 20n 40n)
+
+* -- output load --
+CRBL  rbl 0 5f
+
+* -- start with Q=0 so the first write flips it high --
+.ic v(q)=0 v(qb)={VDD_CORNER}
+
+.control
+  save all
+
+  tran 0.05n 200n uic
+
+  echo
+  echo ===== PHASE 1: W = 1 =====
+  meas tran p1_q       FIND v(q)   AT=25n
+  meas tran p1_qb      FIND v(qb)  AT=25n
+  meas tran w1a1_out_1 FIND v(rbl) AT=45n
+  meas tran w1a0_out_1 FIND v(rbl) AT=65n
+  meas tran w1a1_out_2 FIND v(rbl) AT=85n
+  meas tran p1_o_max   MAX v(rbl) FROM=40n TO=50n
+  meas tran p1_o_min   MIN v(rbl) FROM=60n TO=70n
+
+  echo
+  echo ===== PHASE 2: W = 0 =====
+  meas tran p2_q       FIND v(q)   AT=125n
+  meas tran p2_qb      FIND v(qb)  AT=125n
+  meas tran w0a1_out_1 FIND v(rbl) AT=145n
+  meas tran w0a0_out_1 FIND v(rbl) AT=165n
+  meas tran w0a1_out_2 FIND v(rbl) AT=185n
+  meas tran p2_o_max   MAX v(rbl) FROM=125n TO=195n
+
+  echo
+  echo ===== TIMING =====
+  meas tran o_rise WHEN v(rbl)=1.465 RISE=1
+  meas tran o_fall WHEN v(rbl)=1.465 FALL=1
+
+  echo
+  echo ===== STORAGE INTEGRITY =====
+  meas tran q_end  FIND v(q)  AT=199n
+  meas tran qb_end FIND v(qb) AT=199n
+
+  write /workspace/analog/sim/8t/results/multiply_full_sequence.raw all
+.endc
+
+.end

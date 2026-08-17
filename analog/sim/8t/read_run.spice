@@ -31,7 +31,7 @@ CWBLB wblb 0 20f                              ; BLB load capacitance
   
   tran 0.1n 50n uic
 
-  * plot v(q) v(qb)
+  plot q rbl a 
 
   * --- validate data ---
   echo

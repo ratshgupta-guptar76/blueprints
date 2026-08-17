@@ -1,0 +1,93 @@
+* ============================================
+* Test: monte_carlo_hold.spice
+* Cell: 8T_03v3
+* PDK: GF180mcuD
+* Author: R. Gupta
+* Date: 2026-07-14
+* Monte Carlo mismatch-only hold SNM yield sweep.
+* Corner/temp/VDD come entirely from pvt.spice (driven by the Python
+* PVT sweep) - this deck does not hardcode a corner.
+* ============================================
+
+* -- includes --
+.include /workspace/analog/designs/pvt.spice
+.include /workspace/analog/designs/params_6T.spice
+.include /workspace/analog/designs/params_8T.spice
+.include /workspace/analog/tb/8T_open_tb.spice
+
+* -- mismatch-only MC --
+* Global process variation is already fixed by the PVT corner .lib call
+* above (in pvt.spice) - enabling sw_stat_global too would double-count
+* it, so only per-instance mismatch is turned on here.
+.param sw_stat_mismatch=1
+.param sw_stat_global=0
+
+* -- stimulus --
+VVDD vdd 0 {VDD_CORNER}   ; supply
+VVSS vss 0 0              ; source
+VWL  wl  0 0              ; hold: OFF
+VU   u   0 0              ; input voltage to be swept
+VA   a   0 {VDD_CORNER}   ; set Activation = HI
+
+* -- initial conditions --
+.ic v(q)={VDD_CORNER} v(qb)=0         ; initial state: Q=1, QB=0
+.ic v(wbl)=0.1 v(wblb)=0.1   ; initial state pre-charged to 0.1V - common for idle power reduction
+
+* -- SNM rotation transformation --
+BV1 v1   0 v= sqrt(2)*v(q)+v(u)
+BV2 v2   0 v= sqrt(2)*v(qb)-v(u)
+BQ  qin  0 v=(v(v1)+v(u))* 1/sqrt(2)  ; input to inverter Q
+BQB qbin 0 v=(v(v2)-v(u))* 1/sqrt(2)  ; input to inverter QB
+
+* .control params
+.csparam VDD_CORNER={VDD_CORNER}
+
+.option noacct
+* -- analysis --
+.control
+  save all
+
+  * --- Monte Carlo loop ---
+  * each pass: reset (forces every agauss()-based mismatch term in the
+  * PDK subckts to redraw), sweep, measure, print one greppable sample.
+  * Non-convergent passes are skipped (not counted as samples) and
+  * tallied so the effective sample size is known at the end.
+  let nruns = 1000
+  let n = 0
+  let n_skipped = 0
+
+  dowhile n < nruns
+
+    reset
+
+    * --- DC sweep the original input voltage ---
+    let VDD_HALF_HI={VDD_CORNER} / 2
+    let VDD_HALF_LO={VDD_CORNER} / -2
+    dc VU $&VDD_HALF_LO $&VDD_HALF_HI 0.01
+
+    if $sim_status = 0
+      * --- variables for SNM calculation ---
+      let diff = (v(v1) - v(v2))/sqrt(2)
+
+      * --- measure data ---
+      meas DC hold_snm_max MAX diff
+      meas DC hold_snm_min MIN diff
+      let mc_snm = min(abs(hold_snm_max), abs(hold_snm_min))
+
+      * --- greppable per-run sample: "mc_snm = <value>" ---
+      print mc_snm
+    else
+      echo "run $&n: DC sweep did not converge - skipped"
+      let n_skipped = n_skipped + 1
+    end
+
+    let n = n + 1
+  end
+
+  let n_valid = nruns - n_skipped
+  echo
+  echo "Monte Carlo done: nruns=$&nruns  skipped=$&n_skipped  effective_samples=$&n_valid"
+
+.endc
+
+.end
