@@ -1,12 +1,3 @@
-project:
-  title: "Digital Compute-in-Memory Macro for Neural Network Matrix Multiplication"
-  team: "A07 Blueprints"
-  discord: "kammy_r"
-  description: "32x32 digital compute-in-memory INT8 matvec macro with 9T SRAM bitcells"
-  lvs_config: "lvs_config.json"
-
-pins:
-
 # ----- ------ ----- ----- ------ ----- ----- ------ -----
 # Chipathon 2026: Project configuration
 # LICENSE: Apache License Version 2.0
