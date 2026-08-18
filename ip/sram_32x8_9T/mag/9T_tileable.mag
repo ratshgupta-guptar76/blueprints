@@ -1,7 +1,7 @@
 magic
 tech gf180mcuD
 magscale 1 10
-timestamp 1786481945
+timestamp 1787088178
 << nwell >>
 rect -143 -79 479 326
 << pwell >>
@@ -317,18 +317,18 @@ rect 402 187 457 235
 rect 401 243 457 268
 rect 401 163 457 187
 << labels >>
-flabel metal2 s -128 -402 -76 -350 0 FreeSans 400 0 0 0 WL
+flabel metal2 s -128 -402 -76 -350 0 FreeSans 500 0 0 0 WL
 port 1 nsew
-flabel metal1 s -106 151 -34 326 0 FreeSans 400 0 0 0 A
+flabel metal1 s -106 151 -34 326 0 FreeSans 500 0 0 0 A
 port 2 nsew
-flabel metal1 s 317 237 391 355 0 FreeSans 400 0 0 0 RBL
+flabel metal1 s 317 237 391 355 0 FreeSans 500 0 0 0 RBL
 port 3 nsew
-flabel nwell s 119 33 202 97 0 FreeSans 400 0 0 0 VDD
+flabel nwell s 119 33 202 97 0 FreeSans 500 0 0 0 VDD
 port 4 nsew
-flabel metal2 s 145 -286 197 -233 0 FreeSans 400 0 0 0 VSS
+flabel metal2 s 145 -286 197 -233 0 FreeSans 500 0 0 0 VSS
 port 5 nsew
-flabel metal3 s -29 -520 48 -464 0 FreeSans 400 0 0 0 WBLB
+flabel metal3 s -29 -520 48 -464 0 FreeSans 500 0 0 0 WBLB
 port 6 nsew
-flabel metal2 s 259 -491 259 -491 0 FreeSans 400 0 0 0 WBL
+flabel metal2 s 259 -491 259 -491 0 FreeSans 500 0 0 0 WBL
 port 7 nsew
 << end >>
