@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: 2026 Chipathon 2026 workshop
 // SPDX-License-Identifier: Apache-2.0
 //
-// Minimal chip_core for the Chipathon 2026 workshop padring slot.
-// The emphasis of this slot is the padring itself (60 analog + 20
-// bidir + 4/4 power + clk/rst_n); the core is intentionally trivial:
-// a free-running counter whose state drives the 20 bidir pads. The
-// 60 analog pads are routed straight through to analog[] and stay
-// unconnected at the core level (the intent is that a downstream
-// design wires them to custom analog IP later).
+// chip_core for the workshop padring slot, wired to the 9T DCIM
+// matrix-vector macro (dcim_top). All DCIM control/data pins are
+// mapped onto the 20 bidirectional pads (fixed indices: a_bit=0,
+// w_bit=1, start=2, cont=3, P_minus1={19,18,17}, y_bit=16, done=15,
+// busy=14; see the localparam pad map below); everything else is
+// pulled down and unused. The 60 analog pads are routed straight
+// through to analog[] and stay unconnected at the core level.
 
 `default_nettype none
 `include "slot_defines.svh"
