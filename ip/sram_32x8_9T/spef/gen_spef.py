@@ -33,6 +33,18 @@ OUT = HERE / "sram_32x8_9T.spef"
 
 POWER = {"VDD", "VSS"}
 
+# IEEE 1481-1998 SPECIAL_CHAR set (SpefLex.ll), minus '[' ']' which are the
+# unescaped bus-subscript delimiters (PREFIX/SUFFIX_BUS_DELIM) used as-is by
+# real port names like "A[0]": identifier characters outside that must be
+# backslash-escaped. Magic's internal anonymous-node names (e.g.
+# "a_2067_10377#") end in an unescaped '#', which OpenSTA's SPEF parser
+# rejects as a syntax error.
+SPEF_SPECIAL_CHARS = set("!#$%&`()*+,-./:;<=>?@\\^'{|}~")
+
+
+def spef_escape(name):
+    return "".join(f"\\{c}" if c in SPEF_SPECIAL_CHARS else c for c in name)
+
 
 def parse_value_ff(tok):
     """Parse a magic ext2spice cap value (bare, 'f'-suffixed, or 'p'-suffixed) to femtofarads."""
@@ -153,7 +165,7 @@ def main():
     a('')
     a('*NAME_MAP')
     for name in name_list:
-        a(f'*{name_idx[name]} {name}')
+        a(f'*{name_idx[name]} {spef_escape(name)}')
     a('')
     a('*PORTS')
     for p in signal_ports:

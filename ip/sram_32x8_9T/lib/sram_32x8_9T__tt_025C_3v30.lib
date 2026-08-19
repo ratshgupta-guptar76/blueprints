@@ -173,7 +173,6 @@ library (sram_32x8_9T) {
     bus (RBL) {
       bus_type        : BUS256;
       direction       : output;
-      max_capacitance : 0.003529; /* max of 256 extracted per-bit values */
       related_power_pin  : VDD;
       related_ground_pin : VSS;
       pin (RBL[0]) {

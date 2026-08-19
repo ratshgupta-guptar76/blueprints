@@ -152,7 +152,14 @@ with open(OUT, "w") as f:
     f.write('\n    bus (RBL) {\n')
     f.write('      bus_type        : BUS256;\n')
     f.write('      direction       : output;\n')
-    f.write(f'      max_capacitance : {max(rbl_caps):.6f}; /* max of 256 extracted per-bit values */\n')
+    # No max_capacitance here: it's an output-pin *drive-capability* constraint
+    # (how much load this pin is allowed to drive), not something a SPEF net
+    # extraction can tell you -- the SPEF only reports the capacitance one
+    # physical net happens to have. Setting it to the extracted value
+    # (previously done here) made it smaller than a single min-size buffer's
+    # input pin cap, so every downstream RBL net looked like an unfixable
+    # max_capacitance violation and OpenROAD's repair_design looped forever
+    # trying to buffer it away.
     f.write('      related_power_pin  : VDD;\n')
     f.write('      related_ground_pin : VSS;\n')
     for k in range(256):
