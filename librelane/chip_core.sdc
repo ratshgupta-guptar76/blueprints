@@ -32,17 +32,17 @@ set clocks [get_clocks $clock_port]
 # are all outputs (pad control/config driven by the core -- see chip_core.sv), so
 # input and output delay must be applied to disjoint sets, not the same bundle.
 set core_bidir_in_ports [get_ports {
-    bidir_in[*]
+    a_bit
+    w_bit
+    start
+    cont
+    P_minus1[*]
 }]
 
 set core_bidir_out_ports [get_ports {
-    bidir_out[*]
-    bidir_oe[*]
-    bidir_cs[*]
-    bidir_sl[*]
-    bidir_ie[*]
-    bidir_pu[*]
-    bidir_pd[*]
+    y_bit
+    done
+    busy
 }]
 
 set_input_delay -min 0 -clock $clocks $core_bidir_in_ports
@@ -51,7 +51,11 @@ set_output_delay $output_delay_value -clock $clocks $core_bidir_out_ports
 
 set core_input_ports [get_ports {
     rst_n
-    input_in[*]
+    a_bit
+    w_bit
+    start
+    cont
+    P_minus1[*]
 }]
 
 set_input_delay -min 0 -clock $clocks $core_input_ports

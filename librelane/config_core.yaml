@@ -30,7 +30,7 @@ meta:
     # regardless of grid correctness -- same reason LVS is disabled above.
     Checker.PowerGridViolations: null
 
-DESIGN_NAME: chip_core
+DESIGN_NAME: dcim_top
 
 VERILOG_FILES:
 - dir::../src/dcim_pkg.sv
@@ -46,7 +46,6 @@ VERILOG_FILES:
 - dir::../src/stream_out.sv
 - dir::../src/control_fsm.sv
 - dir::../src/dcim_top.sv
-- dir::../src/chip_core.sv
 - dir::../ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v
 
 # SDC file updated for core
@@ -55,7 +54,7 @@ SIGNOFF_SDC_FILE: dir::chip_core.sdc
 FALLBACK_SDC: dir::chip_core.sdc
 
 IGNORE_DISCONNECTED_MODULES:
-- chip_core
+- dcim_top
 
 # Remove pad-specific configs
 # IGNORE_DISCONNECTED_MODULES removed (no IO pad blackboxes)
@@ -101,6 +100,10 @@ PDN_CORE_RING_CONNECT_TO_PADS: False
 # The ring is drawn per-net (VDD + VSS), so the actual stack is
 # offset(6) + width(25) + spacing(1.7) + width(25) = ~57.7um -- 100um
 # margin leaves headroom for that plus routing/via clearance.
+IO_EXCLUDE_PIN_REGION:
+  - "bottom:*"
+  - "right:*"
+
 FP_SIZING: absolute
 DIE_AREA: [0, 0, 1100, 1100]
 CORE_AREA: [100, 100, 1000, 1000]
@@ -150,16 +153,16 @@ MACROS:
       # 2x2 grid inside the 1100x1100 core (macro is 44.255 x 181.215um);
       # 400um X/Y pitch leaves >350um clearance on every side for halo,
       # routing channels and standard cells.
-      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0:
+      DCIM_ARRAY.u_sram_32x8_9T_0:
         location: [300, 250]
         orientation: MY
-      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1:
+      DCIM_ARRAY.u_sram_32x8_9T_1:
         location: [700, 250]
         orientation: MY
-      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2:
+      DCIM_ARRAY.u_sram_32x8_9T_2:
         location: [300, 650]
         orientation: MY
-      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3:
+      DCIM_ARRAY.u_sram_32x8_9T_3:
         location: [700, 650]
         orientation: MY
 
@@ -179,10 +182,10 @@ LVS_IGNORE_CELLS:
 - gf180mcu_as_sc_mcu7t3v3__fillcap_16
 
 FP_PDN_MACRO_HOOKS:
-- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0 VDD VSS VDD VSS"
-- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1 VDD VSS VDD VSS"
-- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2 VDD VSS VDD VSS"
-- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3 VDD VSS VDD VSS"
+- "DCIM_ARRAY.u_sram_32x8_9T_0 VDD VSS VDD VSS"
+- "DCIM_ARRAY.u_sram_32x8_9T_1 VDD VSS VDD VSS"
+- "DCIM_ARRAY.u_sram_32x8_9T_2 VDD VSS VDD VSS"
+- "DCIM_ARRAY.u_sram_32x8_9T_3 VDD VSS VDD VSS"
 
 # Do not error on magic DRC violations
 # Note: Passing magic DRC is not required for the submission.
