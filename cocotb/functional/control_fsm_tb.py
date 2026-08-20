@@ -41,7 +41,10 @@
 #       comp_en = COMPUTE
 #       a_en = WRITE_A or COMPUTE
 #       w_en = WRITE_W and wfull
-#       wshift_en = WRITE_W
+#       wshift_en = WRITE_W and not (row_cnt == ROWS-1 and wfull)  // excludes the
+#                   WRITE_W->WRITE_A transition-triggering cycle itself, so
+#                   weight_load.sv's wload_cnt doesn't take an uncounted
+#                   extra shift there (see golden/control_fsm.py)
 #       row_addr = row_cnt
 #       bp_idx = bp_cnt
 #       clr = WRITE_A and (if load_cnt == DW*ROWS-1)
