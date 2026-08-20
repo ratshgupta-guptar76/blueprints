@@ -1,0 +1,9 @@
+* File: pvt_ss_125C_3v00.spice
+* Slow corner (125C, 3.0V) -- matches the ss_125C_3v00 Liberty target
+* (temperature/voltage read from gf180mcu_as_sc_mcu7t3v3__ss_125C_3v00.lib's
+* own operating_conditions block, not guessed).
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ss
+
+.temp 125
+.param VDD_CORNER=3.0

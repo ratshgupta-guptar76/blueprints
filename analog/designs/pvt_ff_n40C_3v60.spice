@@ -1,0 +1,9 @@
+* File: pvt_ff_n40C_3v60.spice
+* Fast corner (-40C, 3.6V) -- matches the ff_n40C_3v60 Liberty target
+* (temperature/voltage read from gf180mcu_as_sc_mcu7t3v3__ff_n40C_3v60.lib's
+* own operating_conditions block, not guessed).
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice ff
+
+.temp -40
+.param VDD_CORNER=3.6
