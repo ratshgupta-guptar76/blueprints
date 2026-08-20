@@ -2,8 +2,6 @@
 
 ## KLayout DRC
 
-
-
 <details>
 <summary><b>Expand JSON</b></summary>
 
