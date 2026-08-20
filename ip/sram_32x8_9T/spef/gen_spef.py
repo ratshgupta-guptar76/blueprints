@@ -47,12 +47,25 @@ def spef_escape(name):
 
 
 def parse_value_ff(tok):
-    """Parse a magic ext2spice cap value (bare, 'f'-suffixed, or 'p'-suffixed) to femtofarads."""
+    """Parse a magic ext2spice cap value ('f'-suffixed, 'p'-suffixed, or bare
+    zero) to femtofarads. A bare *non-zero* token would be ambiguous -- SPICE's
+    default capacitance unit is Farads, not femtofarads, so silently treating
+    it as already-femtofarads would be off by 15 orders of magnitude. Magic's
+    ext2spice always suffixes non-zero values (verified against every C-line
+    in ../pex/sram_32x8_9T.spice: every non-zero token ends in 'f' or 'p',
+    every bare token is exactly "0"), so this raises instead of guessing if
+    that ever stops being true.
+    """
     if tok.endswith("p"):
         return float(tok[:-1]) * 1000.0
     if tok.endswith("f"):
         return float(tok[:-1])
-    return float(tok)
+    if tok == "0":
+        return 0.0
+    raise ValueError(
+        f"Unrecognized capacitance token {tok!r}: no 'f'/'p' suffix and not "
+        "literal zero -- can't tell what unit this is in, refusing to guess."
+    )
 
 
 def main():
