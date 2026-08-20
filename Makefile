@@ -268,6 +268,13 @@ sim-gl: ## Run gate-level simulation with cocotb (after copy-final)
 	cd $(COCOTB_DIR) && GL=1 PDK_ROOT=${PDK_ROOT} PDK=${PDK} SLOT=${SLOT} python3 chip_top_tb.py
 .PHONY: sim-gl
 
+# Forced to verilator: Icarus has a confirmed event-scheduling bug on this
+# netlist's zero-delay, CTS-hold-buffered flop-to-flop shift chains (wrong
+# values in GL mode only; RTL mode and Verilator GL mode are both correct).
+sim-gl-core: ## Run gate-level simulation for the core (dcim_top) with cocotb (after librelane-core)
+	cd $(COCOTB_DIR) && GL=1 SIM=verilator PDK_ROOT=${PDK_ROOT} PDK=${PDK} STD_CELL_LIBRARY=${SCL} python3 dcim_top_tb.py
+.PHONY: sim-gl-core
+
 sim-view: ## View simulation waveforms in GTKWave
 	gtkwave cocotb/sim_build/chip_top.fst
 .PHONY: sim-view
