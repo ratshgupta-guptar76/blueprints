@@ -163,7 +163,7 @@ module control_fsm #(
         busy      = (state != IDLE);
         done      = (state == DONE);
         w_en      = (state == WRITE_W) && wfull;
-        wshift_en = (state == WRITE_W);
+        wshift_en = (state == WRITE_W) && !(row_cnt == unsigned'(RW'(ROWS-1)) && wfull);
         row_addr  = row_cnt;
         a_en      = (state == WRITE_A) || (state == COMPUTE);
         comp_en   = (state == COMPUTE);
