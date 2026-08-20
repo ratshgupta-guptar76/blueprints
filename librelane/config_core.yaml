@@ -83,6 +83,42 @@ CLOCK_PERIOD: 40
 PL_RESIZER_HOLD_SLACK_MARGIN: 0.35
 GRT_RESIZER_HOLD_SLACK_MARGIN: 0.3
 
+# gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (the strongest clock buffer in this
+# SCL -- only _4/_8/_12 exist) has a 0.200pF max_capacitance. Left
+# unset (default 100 = no derating), CTS's automatic buffer selection
+# sizes clusters right up against that limit at zero margin, so the same
+# fanout comes out over the limit at slower PVT corners (repair_design-
+# family steps don't touch clock nets, so this has to be fixed at CTS
+# time, not patched after -- CTS_MAX_CAP does NOT affect this; it only
+# tunes wire-segment characterization, confirmed to have zero effect on
+# this design's tree, hence the derate below instead).
+CTS_SINK_BUFFER_MAX_CAP_DERATE_PCT: 85
+
+# The derate above tunes leaf-buffer sink clustering, not the tree's
+# higher levels -- clkbuf_0_clk (the root, forced onto clkbuff_12 via
+# CTS_ROOT_BUFFER) and an intermediate H-tree buffer are still over
+# max_capacitance on the worst corners, worse since the die grew to
+# match Block A (1110x1110). Unlike CTS_CLK_MAX_WIRE_LENGTH (a post-CTS
+# repair_clock_nets split that previously made the worst corners worse
+# while fixing nominal -- reverted), this acts during tree construction
+# itself, capping the physical span between buffer levels so long
+# trunk/branch runs get subdivided going in, not patched after.
+CTS_DISTANCE_BETWEEN_BUFFERS: 300
+
+# RepairDesignPostGPL's own default 20% cap margin (DESIGN_REPAIR_MAX_CAP_PCT)
+# is checked against ONE analysis corner, but signoff STA checks all 9.
+# At 55%, min_*/nom_* corners are fully clean but 5 repair buffers
+# (max_capNN/wireNN, non-clock -- CTS_DISTANCE_BETWEEN_BUFFERS above
+# already cleared the clock-tree violators) are still over on the 3
+# worst-case corners, all within ~9% of the limit. Widened further.
+DESIGN_REPAIR_MAX_CAP_PCT: 70
+
+# Tried CTS_CLK_MAX_WIRE_LENGTH: 300 to also split the CTS root buffer's
+# (clkbuf_0_clk) long trunk wire via `repair_clock_nets` -- it cleared
+# the nominal-corner violations but made the worst corners (max_tt/ff/ss)
+# go from 2 to 4 violations each, a net regression. Reverted; not a
+# signoff blocker, revisit later if needed.
+
 # Increase for more logic
 # on your die
 PL_TARGET_DENSITY_PCT: 35
@@ -91,6 +127,35 @@ GRT_ALLOW_CONGESTION: true
 # Fix antenna violations after DRT
 DRT_ANTENNA_REPAIR_ITERS: 10
 DRT_ANTENNA_REPAIR_MARGIN: 10 # %
+
+# Places the 12 signal pins on the specific sides/order the Chipathon
+# 2026 padframe Block A expects (E12-E22, N01-N11 -- see
+# docs/sram-macro.md). Activates Odb.CustomIOPlacement, which only
+# handles signal pins (bterm.getSigType() not in ["POWER", "GROUND"]
+# is hardcoded in odbpy/io_place.py) -- vdd/vss are NOT listed in the
+# cfg file: their physical location comes from the PDN core ring
+# below instead, which is continuous around the whole boundary and so
+# already reaches wherever E12 (the padframe's forced ground position)
+# physically falls, with no separate placement step needed.
+#
+# East side (E12-E22, ascending = bottom-to-top, matching this
+# mechanism's required bottom-to-top order for E/W directly): E12
+# itself is the ground ring contact (not in the cfg), the 9 remaining
+# signal pins fill toward E22.
+# North side (N01-N11, ascending = left-to-right, matching this
+# mechanism's required left-to-right order for N/S directly): our 3
+# outputs take N01-N03; N04-N11 (8 positions) are unused for this
+# design and reserved as virtual/unplaced slots ($8 in the cfg) so
+# the real pins land at the start of the range instead of being
+# spread across the full N01-N11 span.
+#
+# This gets the correct SIDE and RELATIVE ORDER, which is the
+# achievable part without the organizers' own padframe LEF; exact
+# micron-pitch alignment with the shared frame (so our track grid's
+# 9-signal spacing on the E side lines up with wherever the real
+# frame expects positions E13-E22 to physically be) is something only
+# their integration process or a real padframe LEF can fully confirm.
+IO_PIN_ORDER_CFG: dir::io_pin_order.cfg
 
 # Disable core ring pad connection & enable seal ring
 PDN_CORE_RING: True
@@ -104,16 +169,20 @@ IO_EXCLUDE_PIN_REGION:
   - "bottom:*"
   - "right:*"
 
+# Sized to Chipathon 2026 padframe Block A exactly (1110x1110um,
+# 22-pin quadrant, pin order E12-E22,N01-N11 -- see the Chipathon 2026
+# Padframe proposal deck). Core margin kept proportional to the
+# previous 100um.
 FP_SIZING: absolute
-DIE_AREA: [0, 0, 1100, 1100]
-CORE_AREA: [100, 100, 1000, 1000]
+DIE_AREA: [0, 0, 1110, 1110]
+CORE_AREA: [100, 100, 1010, 1010]
 
 # PDN - Straps
 # HPITCH/VPITCH=75 is smaller than the SRAM macro height (181.215um), so
 # every macro crosses at least 2 horizontal straps regardless of its exact
 # Y placement (see dcim_macro_rot in pdn_core_cfg.tcl).
 PDN_VWIDTH: 5
-PDN_HWIDTH: 2
+PDN_HWIDTH: 4
 PDN_VSPACING: 1
 PDN_HSPACING: 1
 PDN_VPITCH: 75
@@ -123,7 +192,13 @@ PDN_HPITCH: 75
 # Maximum metal width without slotting: 30um
 PDN_CORE_RING_VWIDTH: 25
 PDN_CORE_RING_HWIDTH: 25
-PDN_ENABLE_PINS: False
+# Promotes the PDN straps to labeled block pins (LibreLane default is
+# True; this was False for the padded chip_top flow, where physical
+# IO pad cells make the boundary connection instead). This submission
+# has no padring -- the Chipathon 2026 padframe organizers connect
+# directly to this block's boundary, so VDD/VSS need real, named
+# terminals here, matching the vss/vdd entries in info.yaml.
+PDN_ENABLE_PINS: True
 PDN_CORE_VERTICAL_LAYER: Metal2
 PDN_CORE_HORIZONTAL_LAYER: Metal3
 
@@ -137,6 +212,19 @@ PDN_VERTICAL_HALO: 5
 # narrow Metal3 pins) -- same script the padring flow uses.
 PDN_CFG: dir::pdn_core_cfg.tcl
 
+# sram_bitcell_9T is instantiated 256x inside sram_32x8_9T.nl.v below --
+# it has no gds/lef of its own (it's part of the sram_32x8_9T tile), so it
+# can't be a MACRO entry. EXTRA_LIBS loads its Liberty timing arcs for
+# every STA corner unconditionally (see ip/sram_32x8_9T/nl/gen_nl.py).
+# tt-only despite gen_bitcell_lib.py now producing all 3 corners: EXTRA_LIBS
+# is a flat, corner-blind list ("loaded indiscriminately for all timing
+# corners" -- librelane/config/flow.py), so it can't be keyed like
+# MACROS.lib/.spef below. This is a real, smaller-granularity approximation
+# (accepted, not fixable without a custom flow step) distinct from the
+# macro-level lib, which IS now properly per-corner.
+EXTRA_LIBS:
+- dir::../ip/sram_32x8_9T/lib/sram_bitcell_9T__tt_025C_3v30.lib
+
 MACROS:
   sram_32x8_9T:
     gds:
@@ -145,9 +233,31 @@ MACROS:
       - dir::../ip/sram_32x8_9T/lef/sram_32x8_9T.lef
     vh:
       - dir::../ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v
+    # Approximate blackbox timing, used during mid-PnR optimization
+    # (placement/CTS/resizing) where only estimated parasitics exist.
+    # Real per-corner data now (gen_lib.py), not just the tt corner
+    # reused everywhere -- wildcard keys match the PDK SCL's own
+    # convention (gf180mcu_as_sc_mcu7t3v3/config.tcl's LIB dict).
     lib:
+      "*_tt_025C_3v30":
+        - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T__tt_025C_3v30.lib
+      "*_ff_n40C_3v60":
+        - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T__ff_n40C_3v60.lib
+      "*_ss_125C_3v00":
+        - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T__ss_125C_3v00.lib
+    # Real extracted parasitics + structural netlist, used for signoff
+    # STA in place of the lib above (STA_MACRO_PRIORITIZE_NL defaults to
+    # True, so OpenROAD.STAPrePNR/STAPostPNR & CheckMacroInstances pick
+    # these automatically whenever both are present). Single file for
+    # all corners is correct here, not an approximation: Magic's
+    # ext2spice found zero resistance on signal routes (gen_spef.py),
+    # so this is a pure capacitance extraction from fixed layout
+    # geometry -- genuinely corner-independent, unlike the lib above.
+    nl:
+      - dir::../ip/sram_32x8_9T/nl/sram_32x8_9T.nl.v
+    spef:
       "*":
-        - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T.lib
+        - dir::../ip/sram_32x8_9T/spef/sram_32x8_9T.spef
     instances:
       # Hierarchy updated: removed i_chip_core prefix
       # 2x2 grid inside the 1100x1100 core (macro is 44.255 x 181.215um);
