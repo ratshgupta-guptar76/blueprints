@@ -19,10 +19,10 @@ project:
   lvs_config: "lvs_config.json"
 
 pins:
-  - name: clk
-    io_type: input_cmos
-  - name: rst_n
+  - name: rst
     io_type: input_schmitt
+  - name: rst_n
+    io_type: input_cmos
   - name: a_bit
     io_type: input_cmos
   - name: w_bit
