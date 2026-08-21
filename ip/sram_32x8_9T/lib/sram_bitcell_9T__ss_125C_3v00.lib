@@ -1,0 +1,78 @@
+library (sram_bitcell_9T) {
+  technology (cmos);
+  delay_model : table_lookup;
+  time_unit : "1ns";
+  voltage_unit : "1V";
+  current_unit : "1mA";
+  pulling_resistance_unit : "1kohm";
+  leakage_power_unit : "1nW";
+  capacitive_load_unit (1, pf);
+  input_threshold_pct_rise : 50.0;
+  input_threshold_pct_fall : 50.0;
+  output_threshold_pct_rise : 50.0;
+  output_threshold_pct_fall : 50.0;
+  slew_lower_threshold_pct_rise : 20.0;
+  slew_upper_threshold_pct_rise : 80.0;
+  slew_lower_threshold_pct_fall : 20.0;
+  slew_upper_threshold_pct_fall : 80.0;
+  slew_derate_from_library : 1.0;
+  nom_process : 1.0;
+  nom_temperature : 125.0;
+  nom_voltage : 3.0;
+  default_max_transition : 1.5;
+  operating_conditions (ss_125C_3v00) {
+    process : 1.0;
+    temperature : 125.0;
+    voltage : 3.0;
+  }
+  default_operating_conditions : ss_125C_3v00;
+
+  cell (sram_bitcell_9T) {
+    area : 17.0428; /* 9T_tileable.mag bbox, um^2 */
+    dont_use : TRUE;
+    dont_touch : TRUE;
+    interface_timing : TRUE;
+
+    pg_pin (VDD) { voltage_name : VDD; pg_type : primary_power; }
+    pg_pin (VSS) { voltage_name : VSS; pg_type : primary_ground; }
+
+    pin (A) {
+      direction   : input;
+      capacitance : 0.000499; /* real, from 9T_tb.spice extraction */
+      related_power_pin  : VDD;
+      related_ground_pin : VSS;
+    }
+    pin (WL) {
+      direction   : input;
+      capacitance : 0.000438; /* real, from 9T_tb.spice extraction */
+      related_power_pin  : VDD;
+      related_ground_pin : VSS;
+    }
+    pin (WBL) {
+      direction   : input;
+      capacitance : 0.000201; /* real, from 9T_tb.spice extraction */
+      related_power_pin  : VDD;
+      related_ground_pin : VSS;
+    }
+    pin (WBLB) {
+      direction   : input;
+      capacitance : 0.000110; /* real, from 9T_tb.spice extraction */
+      related_power_pin  : VDD;
+      related_ground_pin : VSS;
+    }
+    pin (RBL) {
+      direction   : output;
+      capacitance : 0.000315; /* real, from 9T_tb.spice extraction */
+      related_power_pin  : VDD;
+      related_ground_pin : VSS;
+      timing () {
+        related_pin  : "A";
+        timing_sense : positive_unate;
+        cell_rise (scalar) { values("0.0633163"); }
+        cell_fall (scalar) { values("0.0698808"); }
+        rise_transition (scalar) { values("0.137845"); }
+        fall_transition (scalar) { values("0.113007"); }
+      }
+    }
+  }
+}
