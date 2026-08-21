@@ -28,7 +28,7 @@ meta:
     # a padded chip-level design. chip_core has no pads, so PSM reports
     # both VDD/VSS as violations ("does not contain any terminals")
     # regardless of grid correctness -- same reason LVS is disabled above.
-    Checker.PowerGridViolations: null
+    # Checker.PowerGridViolations: null
 
 DESIGN_NAME: dcim_top
 
