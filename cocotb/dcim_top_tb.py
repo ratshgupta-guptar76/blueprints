@@ -1,16 +1,16 @@
 # SPDX-FileCopyrightText: 2026 Chipathon 2026 -- Team A07 Blueprints
 # SPDX-License-Identifier: Apache-2.0
 """
-dcim_top_tb.py
+A07_dcim_top_tb.py
 ---------------
-System-level testbench for `dcim_top` directly (not the padded `chip_top`).
+System-level testbench for `A07_dcim_top` directly (not the padded `chip_top`).
 This is the actual Chipathon 2026 submission target (config_core.yaml,
-DESIGN_NAME=dcim_top) -- chip_top_tb.py tests the padded workshop-slot
+DESIGN_NAME=A07_dcim_top) -- chip_top_tb.py tests the padded workshop-slot
 build instead, and its GL mode only runs a single smoke test (y_bit has
 no working GL path *through the padring's PAD cells*; see its
-_internal()/_y_bit() comments). dcim_top has no padring: y_bit/done/busy
+_internal()/_y_bit() comments). A07_dcim_top has no padring: y_bit/done/busy
 are direct primary ports of the synthesized netlist (confirmed against
-final/nl/dcim_top.nl.v's own module port list), so they're readable
+final/nl/A07_dcim_top.nl.v's own module port list), so they're readable
 directly in GL mode with no workaround needed, and every test below runs
 in both RTL and GL mode.
 
@@ -387,13 +387,13 @@ async def test_second_fresh_weight_load_without_reset(dut):
     )
 
 
-def dcim_top_runner():
+def A07_dcim_top_runner():
     proj_path = Path(__file__).resolve().parent
     src_path = proj_path / "../src"
 
     if gl:
         sources = [
-            proj_path / "../final/nl/dcim_top.nl.v",
+            proj_path / "../final/nl/A07_A07_dcim_top.nl.v",
             pdk_root / pdk / "libs.ref" / scl / "verilog" / f"{scl}.v",
             proj_path / "../ip/sram_32x8_9T/vh/sram_32x8_9T.v",
         ]
@@ -412,7 +412,7 @@ def dcim_top_runner():
             src_path / "shift_accum.sv",
             src_path / "dcim_array.sv",
             src_path / "control_fsm.sv",
-            src_path / "dcim_top.sv",
+            src_path / "A07_dcim_top.sv",
             proj_path / "../ip/sram_32x8_9T/vh/sram_32x8_9T.v",
         ]
         defines = {}
@@ -435,7 +435,7 @@ def dcim_top_runner():
 
     runner.build(
         sources=sources,
-        hdl_toplevel="dcim_top",
+        hdl_toplevel="A07_A07_dcim_top",
         defines=defines,
         includes=[src_path],
         build_args=build_args,
@@ -444,11 +444,11 @@ def dcim_top_runner():
     )
 
     runner.test(
-        hdl_toplevel="dcim_top",
-        test_module="dcim_top_tb",
+        hdl_toplevel="A07_A07_dcim_top",
+        test_module="A07_dcim_top_tb",
         waves=True,
     )
 
 
 if __name__ == "__main__":
-    dcim_top_runner()
+    A07_dcim_top_runner()

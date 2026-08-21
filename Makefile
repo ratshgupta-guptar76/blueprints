@@ -6,7 +6,7 @@ SCL := gf180mcu_as_sc_mcu7t3v3
 RTL_MODULES := \
     dcim_pkg row_decoder shift_reg col_adder weight_load stream_out \
     adder_tree act_shift_chain lane_shift_accum shift_accum \
-    dcim_array control_fsm dcim_top
+    dcim_array control_fsm A07_dcim_top
 
 RTL_SOURCES := $(addprefix $(MAKEFILE_DIR)/src/,$(addsuffix .sv,$(RTL_MODULES)))
 RTL_SOURCES += $(MAKEFILE_DIR)/ip/sram_32x8_9T/vh/sram_32x8_9T.v
@@ -158,7 +158,7 @@ librelane-padring: ## Only create the padring
 .PHONY: librelane-padring
 
 lint: ## Lint RTL sources with Verilator
-	verilator --lint-only -Wall --top-module dcim_top $(RTL_SOURCES)
+	verilator --lint-only -Wall --top-module A07_dcim_top $(RTL_SOURCES)
 .PHONY: lint
 
 sim: ## Run RTL simulation with cocotb

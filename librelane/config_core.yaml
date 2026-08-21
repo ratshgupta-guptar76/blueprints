@@ -23,7 +23,7 @@ meta:
     # Netgen.LVS: null
     # Checker.LVS: null
 
-DESIGN_NAME: dcim_top
+DESIGN_NAME: A07_dcim_top
 
 VERILOG_FILES:
 - dir::../src/dcim_pkg.sv
@@ -38,7 +38,7 @@ VERILOG_FILES:
 - dir::../src/weight_load.sv
 - dir::../src/stream_out.sv
 - dir::../src/control_fsm.sv
-- dir::../src/dcim_top.sv
+- dir::../src/A07_dcim_top.sv
 - dir::../ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v
 
 # SDC file updated for core
@@ -47,7 +47,7 @@ SIGNOFF_SDC_FILE: dir::chip_core.sdc
 FALLBACK_SDC: dir::chip_core.sdc
 
 IGNORE_DISCONNECTED_MODULES:
-- dcim_top
+- A07_dcim_top
 
 # Remove pad-specific configs
 # IGNORE_DISCONNECTED_MODULES removed (no IO pad blackboxes)
@@ -185,12 +185,6 @@ PDN_HPITCH: 75
 # Maximum metal width without slotting: 30um
 PDN_CORE_RING_VWIDTH: 25
 PDN_CORE_RING_HWIDTH: 25
-# Promotes the PDN straps to labeled block pins (LibreLane default is
-# True; this was False for the padded chip_top flow, where physical
-# IO pad cells make the boundary connection instead). This submission
-# has no padring -- the Chipathon 2026 padframe organizers connect
-# directly to this block's boundary, so VDD/VSS need real, named
-# terminals here, matching the vss/vdd entries in info.yaml.
 PDN_ENABLE_PINS: True
 PDN_CORE_VERTICAL_LAYER: Metal2
 PDN_CORE_HORIZONTAL_LAYER: Metal3
@@ -201,20 +195,22 @@ FP_MACRO_VERTICAL_HALO: 10
 PDN_HORIZONTAL_HALO: 5
 PDN_VERTICAL_HALO: 5
 
-# Custom macro PDN grid (grid_over_boundary workaround for the SRAM's
-# narrow Metal3 pins) -- same script the padring flow uses.
 PDN_CFG: dir::pdn_core_cfg.tcl
 
-# sram_bitcell_9T is instantiated 256x inside sram_32x8_9T.nl.v below --
-# it has no gds/lef of its own (it's part of the sram_32x8_9T tile), so it
+# sram_bitcell_9T is instantiated 256x inside sram_32x8_9T.nl.v below -- it
+# has no gds/lef of its own (it's part of the sram_32x8_9T tile), so it
 # can't be a MACRO entry. EXTRA_LIBS loads its Liberty timing arcs for
 # every STA corner unconditionally (see ip/sram_32x8_9T/nl/gen_nl.py).
-# tt-only despite gen_bitcell_lib.py now producing all 3 corners: EXTRA_LIBS
-# is a flat, corner-blind list ("loaded indiscriminately for all timing
-# corners" -- librelane/config/flow.py), so it can't be keyed like
-# MACROS.lib/.spef below. This is a real, smaller-granularity approximation
-# (accepted, not fixable without a custom flow step) distinct from the
-# macro-level lib, which IS now properly per-corner.
+# tt-only: EXTRA_LIBS is a flat, corner-blind list, so it can't be keyed
+# like MACROS.lib/.spef below. NOTE: embedding sram_bitcell_9T's cell()
+# group into sram_32x8_9T's own per-corner .lib (as gen_lib.py now can, via
+# gen_bitcell_lib.write_cell_block) does NOT help here and was tried and
+# reverted: librelane/common/toolbox.py's get_timing_files_categorized
+# skips a macro's own `lib:` entirely whenever `nl:`/`spef:` are present
+# (STA_MACRO_PRIORITIZE_NL defaults True) -- confirmed by an empirical run
+# showing zero SRAM-instance mentions in any STA report once EXTRA_LIBS was
+# removed. EXTRA_LIBS (or a per-corner equivalent) is structurally required
+# as long as nl/spef are kept for hierarchical SPEF-based STA.
 EXTRA_LIBS:
 - dir::../ip/sram_32x8_9T/lib/sram_bitcell_9T__tt_025C_3v30.lib
 
@@ -226,11 +222,6 @@ MACROS:
       - dir::../ip/sram_32x8_9T/lef/sram_32x8_9T.lef
     vh:
       - dir::../ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v
-    # Approximate blackbox timing, used during mid-PnR optimization
-    # (placement/CTS/resizing) where only estimated parasitics exist.
-    # Real per-corner data now (gen_lib.py), not just the tt corner
-    # reused everywhere -- wildcard keys match the PDK SCL's own
-    # convention (gf180mcu_as_sc_mcu7t3v3/config.tcl's LIB dict).
     lib:
       "*_tt_025C_3v30":
         - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T__tt_025C_3v30.lib
@@ -238,24 +229,12 @@ MACROS:
         - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T__ff_n40C_3v60.lib
       "*_ss_125C_3v00":
         - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T__ss_125C_3v00.lib
-    # Real extracted parasitics + structural netlist, used for signoff
-    # STA in place of the lib above (STA_MACRO_PRIORITIZE_NL defaults to
-    # True, so OpenROAD.STAPrePNR/STAPostPNR & CheckMacroInstances pick
-    # these automatically whenever both are present). Single file for
-    # all corners is correct here, not an approximation: Magic's
-    # ext2spice found zero resistance on signal routes (gen_spef.py),
-    # so this is a pure capacitance extraction from fixed layout
-    # geometry -- genuinely corner-independent, unlike the lib above.
     nl:
       - dir::../ip/sram_32x8_9T/nl/sram_32x8_9T.nl.v
     spef:
       "*":
         - dir::../ip/sram_32x8_9T/spef/sram_32x8_9T.spef
     instances:
-      # Hierarchy updated: removed i_chip_core prefix
-      # 2x2 grid inside the 1100x1100 core (macro is 44.255 x 181.215um);
-      # 400um X/Y pitch leaves >350um clearance on every side for halo,
-      # routing channels and standard cells.
       DCIM_ARRAY.u_sram_32x8_9T_0:
         location: [300, 250]
         orientation: MY
@@ -269,14 +248,6 @@ MACROS:
         location: [700, 650]
         orientation: MY
 
-# Filler/decap cells have no signal pins -- just VDD/VSS -- and are
-# deterministically inserted by Fill Insertion, so LVS has nothing
-# functional to verify on them (fill density/tap spacing is a DRC
-# concern, not LVS). With ~49k of ~57k devices being these, netgen's
-# LVS has to fully resolve one enormous symmetric equivalence class to
-# prove a unique match, which blows up its isomorphism refinement
-# (this is why it only hangs when the netlists actually match -- a
-# real mismatch lets it bail out early instead of proving uniqueness).
 LVS_IGNORE_CELLS:
 - gf180mcu_as_sc_mcu7t3v3__fill_1
 - gf180mcu_as_sc_mcu7t3v3__fill_2

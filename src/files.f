@@ -10,6 +10,6 @@ shift_accum.sv
 weight_load.sv
 stream_out.sv
 control_fsm.sv
-dcim_top.sv
+A07_dcim_top.sv
 chip_core.sv
 chip_top.sv

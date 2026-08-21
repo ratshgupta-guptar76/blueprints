@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 // chip_core for the workshop padring slot, wired to the 9T DCIM
-// matrix-vector macro (dcim_top). All DCIM control/data pins are
+// matrix-vector macro (A07_dcim_top). All DCIM control/data pins are
 // mapped onto the 20 bidirectional pads (fixed indices: a_bit=0,
 // w_bit=1, start=2, cont=3, P_minus1={19,18,17}, y_bit=16, done=15,
 // busy=14; see the localparam pad map below); everything else is
@@ -97,7 +97,7 @@ module chip_core #(
 
 
     // DCIM macro - [Team A7] Blueprints
-    dcim_top #(
+    A07_dcim_top #(
         .ROWS     (dcim_pkg::ROWS),
         .COLS     (dcim_pkg::COLS),
         .N_WEIGHTS(dcim_pkg::N_WEIGHTS),

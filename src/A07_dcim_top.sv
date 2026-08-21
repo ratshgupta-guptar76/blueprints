@@ -1,4 +1,4 @@
-module dcim_top #(
+module A07_dcim_top #(
     parameter int ROWS      = dcim_pkg::ROWS,
     parameter int COLS      = dcim_pkg::COLS,
     parameter int N_WEIGHTS = dcim_pkg::N_WEIGHTS,
