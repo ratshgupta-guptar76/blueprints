@@ -164,6 +164,13 @@ KLAYOUT_FILLER_OPTIONS:
 # Because we have multiple power pads for one power domain
 MAGIC_EXT_UNIQUE: notopports
 
+# sram_bitcell_9T is instantiated 256x inside sram_32x8_9T.nl.v below --
+# it has no gds/lef of its own (it's part of the sram_32x8_9T tile), so it
+# can't be a MACRO entry. EXTRA_LIBS loads its Liberty timing arcs for
+# every STA corner unconditionally (see ip/sram_32x8_9T/nl/gen_nl.py).
+EXTRA_LIBS:
+- dir::../ip/sram_32x8_9T/lib/sram_bitcell_9T__tt_025C_3v30.lib
+
 MACROS:
   sram_32x8_9T:
     gds:
@@ -172,9 +179,20 @@ MACROS:
       - dir::../ip/sram_32x8_9T/lef/sram_32x8_9T.lef
     vh:
       - dir::../ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v
+    # Approximate blackbox timing, used during mid-PnR optimization
+    # (placement/CTS/resizing) where only estimated parasitics exist.
     lib:
       "*":
-        - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T.lib
+        - dir::../ip/sram_32x8_9T/lib/sram_32x8_9T__tt_025C_3v30.lib
+    # Real extracted parasitics + structural netlist, used for signoff
+    # STA in place of the lib above (STA_MACRO_PRIORITIZE_NL defaults to
+    # True, so OpenROAD.STAPrePNR/STAPostPNR & CheckMacroInstances pick
+    # these automatically whenever both are present).
+    nl:
+      - dir::../ip/sram_32x8_9T/nl/sram_32x8_9T.nl.v
+    spef:
+      "*":
+        - dir::../ip/sram_32x8_9T/spef/sram_32x8_9T.spef
     instances:
       i_chip_core.U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0:
         location: [667, 1567]
