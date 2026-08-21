@@ -23,13 +23,6 @@ meta:
     # Netgen.LVS: null
     # Checker.LVS: null
 
-    # OpenROAD PSM (Checker.PowerGridViolations) needs power-pad terminal
-    # locations (VSRC_LOC_FILES) to analyze the grid, which only exist on
-    # a padded chip-level design. chip_core has no pads, so PSM reports
-    # both VDD/VSS as violations ("does not contain any terminals")
-    # regardless of grid correctness -- same reason LVS is disabled above.
-    # Checker.PowerGridViolations: null
-
 DESIGN_NAME: dcim_top
 
 VERILOG_FILES:
