@@ -38,7 +38,7 @@ VERILOG_FILES:
 - dir::../src/weight_load.sv
 - dir::../src/stream_out.sv
 - dir::../src/control_fsm.sv
-- dir::../src/A07_dcim_top.sv
+- dir::../src/dcim_top.sv
 - dir::../src/chip_core.sv
 - dir::../src/chip_top.sv
 - dir::../ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v
