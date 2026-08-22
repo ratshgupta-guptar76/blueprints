@@ -21,29 +21,132 @@ project:
 pins:
   - name: VSS
     io_type: ground
+
   - name: clk
     io_type: input_schmitt
+  - name: clk_PU
+    io_type: input_schmitt
+  - name: clk_PD
+    io_type: input_schmitt
+
   - name: rst_n
     io_type: input_cmos
+  - name: rst_n_PU
+    io_type: input_cmos
+  - name: rst_n_PD
+    io_type: input_cmos
+
   - name: a_bit
     io_type: input_cmos
+  - name: a_bit_PU
+    io_type: input_cmos
+  - name: a_bit_PD
+    io_type: input_cmos
+
   - name: w_bit
     io_type: input_cmos
+  - name: w_bit_PU
+    io_type: input_cmos
+  - name: w_bit_PD
+    io_type: input_cmos
+
   - name: start
     io_type: input_cmos
+  - name: start_PU
+    io_type: input_cmos
+  - name: start_PD
+    io_type: input_cmos
+
   - name: cont
     io_type: input_cmos
+  - name: cont_PU
+    io_type: input_cmos
+  - name: cont_PD
+    io_type: input_cmos
+
   - name: "P_minus1[0]"
     io_type: input_cmos
+  - name: P_minus1_0_PU
+    io_type: input_cmos
+  - name: P_minus1_0_PD
+    io_type: input_cmos
+
   - name: "P_minus1[1]"
     io_type: input_cmos
+  - name: P_minus1_1_PU
+    io_type: input_cmos
+  - name: P_minus1_1_PD
+    io_type: input_cmos
+
   - name: "P_minus1[2]"
     io_type: input_cmos
-  - name: y_bit
+  - name: P_minus1_2_PU
+    io_type: input_cmos
+  - name: P_minus1_2_PD
+    io_type: input_cmos
+
+  - name: y_bit_IN
     io_type: bidirectional
-  - name: done
+  - name: y_bit_OUT
     io_type: bidirectional
-  - name: busy
+  - name: y_bit_OE
     io_type: bidirectional
+  - name: y_bit_CS
+    io_type: bidirectional
+  - name: y_bit_SL
+    io_type: bidirectional
+  - name: y_bit_IE
+    io_type: bidirectional
+  - name: y_bit_PU
+    io_type: bidirectional
+  - name: y_bit_PD
+    io_type: bidirectional
+  - name: y_bit_PDRV0
+    io_type: bidirectional
+  - name: y_bit_PDRV1
+    io_type: bidirectional
+
+  - name: done_IN
+    io_type: bidirectional
+  - name: done_OUT
+    io_type: bidirectional
+  - name: done_OE
+    io_type: bidirectional
+  - name: done_CS
+    io_type: bidirectional
+  - name: done_SL
+    io_type: bidirectional
+  - name: done_IE
+    io_type: bidirectional
+  - name: done_PU
+    io_type: bidirectional
+  - name: done_PD
+    io_type: bidirectional
+  - name: done_PDRV0
+    io_type: bidirectional
+  - name: done_PDRV1
+    io_type: bidirectional
+
+  - name: busy_IN
+    io_type: bidirectional
+  - name: busy_OUT
+    io_type: bidirectional
+  - name: busy_OE
+    io_type: bidirectional
+  - name: busy_CS
+    io_type: bidirectional
+  - name: busy_SL
+    io_type: bidirectional
+  - name: busy_IE
+    io_type: bidirectional
+  - name: busy_PU
+    io_type: bidirectional
+  - name: busy_PD
+    io_type: bidirectional
+  - name: busy_PDRV0
+    io_type: bidirectional
+  - name: busy_PDRV1
+    io_type: bidirectional
+
   - name: VDD
     io_type: power
