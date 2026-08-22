@@ -67,6 +67,7 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 else
 
 TOP = chip_top
+CORE = A07_dcim_top
 
 PDK_ROOT ?= $(MAKEFILE_DIR)/gf180mcu
 PDK ?= gf180mcuD
@@ -271,17 +272,17 @@ sim-gl: ## Run gate-level simulation with cocotb (after copy-final)
 # Forced to verilator: Icarus has a confirmed event-scheduling bug on this
 # netlist's zero-delay, CTS-hold-buffered flop-to-flop shift chains (wrong
 # values in GL mode only; RTL mode and Verilator GL mode are both correct).
-sim-gl-core: ## Run gate-level simulation for the core (dcim_top) with cocotb (after librelane-core)
-	cd $(COCOTB_DIR) && GL=1 SIM=verilator PDK_ROOT=${PDK_ROOT} PDK=${PDK} STD_CELL_LIBRARY=${SCL} python3 dcim_top_tb.py
+sim-gl-core: ## Run gate-level simulation for the core (A07_dcim_top) with cocotb (after librelane-core)
+	cd $(COCOTB_DIR) && GL=1 SIM=verilator PDK_ROOT=${PDK_ROOT} PDK=${PDK} STD_CELL_LIBRARY=${SCL} python3 A07_dcim_top_tb.py
 .PHONY: sim-gl-core
 
 sim-view: ## View simulation waveforms in GTKWave
 	gtkwave cocotb/sim_build/chip_top.fst
 .PHONY: sim-view
 
-render-image: ## Render an image from the final layout (after copy-final)
+render-core-image: ## Render an image from the final layout (after copy-final)
 	mkdir -p img/
-	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/lay2img.py final/gds/${TOP}.gds img/${TOP}.png --width 2048 --oversampling 4
+	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/lay2img.py final/gds/${CORE}.gds img/${CORE}.png --width 2048 --oversampling 4
 .PHONY: copy-final
 
 clean: ## Remove cocotb build artefacts, results and waveforms
