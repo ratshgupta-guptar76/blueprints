@@ -1,0 +1,21 @@
+{
+  "project_size": {
+    "source_gds": "/Users/kanobailey/chipathon/2026/gds/A07/A07_dcim_top.gds",
+    "top_cell": "A07_dcim_top",
+    "layer": 0,
+    "datatype": 0,
+    "layout_dbu_microns": 0.001,
+    "rectangle_dbu": [
+      0,
+      0,
+      1110000,
+      1110000
+    ],
+    "width_microns": "1110",
+    "height_microns": "1110"
+  },
+  "participant_pin_count": 14,
+  "selected_variants": [
+    "A"
+  ]
+}
