@@ -4,6 +4,7 @@ gf180mcu/
 gf180_drc.lyrdb
 final/
 img/
+def/A07/render/
 *.lyrdb
 .ipynb_checkpoints/
 .vscode/
