@@ -290,11 +290,33 @@ clean: ## Remove cocotb build artefacts, results and waveforms
 	rm -f $(COCOTB_DIR)/dump.fst $(COCOTB_DIR)/dump.vcd $(COCOTB_DIR)/results.xml
 .PHONY: clean
 
+# PYTHONPATH here makes librelane_plugin_padframe_bridge/ (in
+# scripts/python/) discoverable by LibreLane's plugin loader, which
+# registers Odb.AddPadframePowerBridge and the ClassicWithPadframeBridge
+# flow that config_core.yaml's meta.flow now references -- see that
+# package's __init__.py for why the padframe power bridge needs to be a
+# real flow step (not a separate manual script run between two flow
+# invocations).
 librelane-core: ## Run LibreLane flow for core only (no padring)
-	STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk
+	PYTHONPATH="$(MAKEFILE_DIR)/scripts/python:$$PYTHONPATH" STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk
 .PHONY: librelane-core
 
 librelane-core-pdn: ## Run LibreLane flow for core only, stopping after the PDN core ring
-	STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --to OpenROAD.GeneratePDN
+	PYTHONPATH="$(MAKEFILE_DIR)/scripts/python:$$PYTHONPATH" STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --to OpenROAD.GeneratePDN
 .PHONY: librelane-core-pdn
+
+# librelane-openroad/-klayout above always resolve librelane/config.yaml
+# (chip_top), but --last-run just grabs whichever run directory under
+# librelane/runs/ is newest overall, regardless of which config produced
+# it -- so after any librelane-core* run, those targets pick up a
+# core-flow run and OpenROAD's OpenGUI step fails ("missing required
+# input 'def'") because that run's structure doesn't match what
+# config.yaml's own flow expects. These target config_core.yaml instead.
+librelane-core-openroad: ## Open the last core run in OpenROAD
+	PYTHONPATH="$(MAKEFILE_DIR)/scripts/python:$$PYTHONPATH" librelane librelane/config_core.yaml --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --last-run --flow OpenInOpenROAD
+.PHONY: librelane-core-openroad
+
+librelane-core-klayout: ## Open the last core run in KLayout
+	PYTHONPATH="$(MAKEFILE_DIR)/scripts/python:$$PYTHONPATH" librelane librelane/config_core.yaml --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --last-run --flow OpenInKLayout
+.PHONY: librelane-core-klayout
 endif
