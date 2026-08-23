@@ -480,7 +480,7 @@ def chip_top_smoke_runner():
             src_path / "shift_accum.sv",
             src_path / "dcim_array.sv",
             src_path / "control_fsm.sv",
-            src_path / "A07_dcim_top.sv",
+            src_path / "dcim_top.sv",
             src_path / "chip_core.sv",
             src_path / "chip_top.sv",
             proj_path / "../ip/sram_32x8_9T/vh/sram_32x8_9T.v",

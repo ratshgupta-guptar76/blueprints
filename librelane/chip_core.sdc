@@ -28,21 +28,24 @@ if { [info exists ::env(MAX_CAPACITANCE_CONSTRAINT)] } {
 set clocks [get_clocks $clock_port]
 
 # Direct Core Signal Ports
-# bidir_in is the only actual input in the bidir group; bidir_out/oe/cs/sl/ie/pu/pd
-# are all outputs (pad control/config driven by the core -- see chip_core.sv), so
-# input and output delay must be applied to disjoint sets, not the same bundle.
+# A07_dcim_top's data pins (see src/A07_dcim_top.sv): the *_PU/_PD/_CS/_SL/_IE/_OE/
+# _PDRV0/_PDRV1 pad-config ports and the unused y_bit_IN/done_IN/busy_IN
+# receiver ports are tied to constants in RTL and left unconstrained here,
+# same as any other tie-off pin.
 set core_bidir_in_ports [get_ports {
     a_bit
     w_bit
     start
     cont
-    P_minus1[*]
+    P_minus1_0
+    P_minus1_1
+    P_minus1_2
 }]
 
 set core_bidir_out_ports [get_ports {
-    y_bit
-    done
-    busy
+    y_bit_OUT
+    done_OUT
+    busy_OUT
 }]
 
 set_input_delay -min 0 -clock $clocks $core_bidir_in_ports
@@ -55,7 +58,9 @@ set core_input_ports [get_ports {
     w_bit
     start
     cont
-    P_minus1[*]
+    P_minus1_0
+    P_minus1_1
+    P_minus1_2
 }]
 
 set_input_delay -min 0 -clock $clocks $core_input_ports

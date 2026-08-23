@@ -2,17 +2,24 @@
 # SPDX-License-Identifier: Apache-2.0
 """
 A07_dcim_top_tb.py
----------------
-System-level testbench for `A07_dcim_top` directly (not the padded `chip_top`).
-This is the actual Chipathon 2026 submission target (config_core.yaml,
-DESIGN_NAME=A07_dcim_top) -- chip_top_tb.py tests the padded workshop-slot
-build instead, and its GL mode only runs a single smoke test (y_bit has
-no working GL path *through the padring's PAD cells*; see its
-_internal()/_y_bit() comments). A07_dcim_top has no padring: y_bit/done/busy
-are direct primary ports of the synthesized netlist (confirmed against
-final/nl/A07_dcim_top.nl.v's own module port list), so they're readable
-directly in GL mode with no workaround needed, and every test below runs
-in both RTL and GL mode.
+-------------------
+System-level testbench for `A07_dcim_top`, the padframe-facing wrapper that
+config_core.yaml builds as DESIGN_NAME (see src/A07_dcim_top.sv) around the
+pure `dcim_top` macro -- not the padded `chip_top` (chip_top_tb.py tests that
+build instead, and its GL mode only runs a single smoke test: y_bit has no
+working GL path *through the padring's PAD cells*; see its
+_internal()/_y_bit() comments).
+
+A07_dcim_top's P_minus1 is split into 3 scalar pins (P_minus1_0/1/2) and
+y_bit/done/busy are split into _OUT variants plus unused pad-config pins
+(PU/PD/CS/SL/IE/OE/PDRV0/PDRV1, tied off in RTL -- see src/A07_dcim_top.sv)
+and unused _IN receiver pins (also tied off there, driven 0 here for
+cleanliness). Both RTL and GL mode build/target A07_dcim_top directly -- GL
+reads config_core.yaml's actual synthesized output,
+final/nl/A07_dcim_top.nl.v, whose top module is A07_dcim_top itself (Yosys
+flattens the wrapper + dcim_top's internal hierarchy into one module), so no
+port-adapter shim is needed either way, and every test below runs in both
+RTL and GL mode.
 
 Coverage, vs. chip_top_tb.py's single-fixed-seed pattern:
   - Reset/start smoke test.
@@ -73,7 +80,9 @@ def _drive_control(dut, *, a_bit=0, w_bit=0, start=0, cont=0, p_minus1=DW - 1):
     dut.w_bit.value = w_bit
     dut.start.value = start
     dut.cont.value = cont
-    dut.P_minus1.value = p_minus1
+    dut.P_minus1_0.value = (p_minus1 >> 0) & 1
+    dut.P_minus1_1.value = (p_minus1 >> 1) & 1
+    dut.P_minus1_2.value = (p_minus1 >> 2) & 1
 
 
 async def _drive_and_edge(dut, **kwargs):
@@ -96,6 +105,13 @@ async def _drive_and_edge(dut, **kwargs):
 
 
 async def _start_up(dut):
+    # Pad-side receiver inputs: unused (A07_dcim_top only XORs these into an
+    # otherwise-unused signal, see src/A07_dcim_top.sv), driven 0 so nothing
+    # floating feeds into the netlist.
+    dut.y_bit_IN.value = 0
+    dut.done_IN.value = 0
+    dut.busy_IN.value = 0
+
     _drive_control(dut)
     cocotb.start_soon(Clock(dut.clk, 20, unit="ns").start())
     dut.rst_n.value = 0
@@ -177,7 +193,7 @@ async def _compute_and_drain(dut, a, p_minus1, cont):
 
     await ClockCycles(dut.clk, p_minus1 + 1)
     await ReadOnly()
-    assert int(dut.done.value) == 1, "expected DONE high after COMPUTE finished"
+    assert int(dut.done_OUT.value) == 1, "expected DONE high after COMPUTE finished"
 
     # DONE -> SHIFT_OUT: this edge captures y into stream_out's PISO, so y_bit is
     # already valid (lane 0, bit 0) the instant we land in SHIFT_OUT.
@@ -189,7 +205,7 @@ async def _compute_and_drain(dut, a, p_minus1, cont):
         for bit in range(ACC_WIDTH):
             _drive_control(dut, cont=cont, p_minus1=p_minus1)
             await ReadOnly()
-            lanes[lane] |= int(dut.y_bit.value) << bit
+            lanes[lane] |= int(dut.y_bit_OUT.value) << bit
             await RisingEdge(dut.clk)
             await ReadWrite()
 
@@ -226,13 +242,13 @@ async def test_start_sets_busy(dut):
     """Single-aspect smoke test: START pulse should drive BUSY high."""
     await _start_up(dut)
     await ReadOnly()
-    assert int(dut.busy.value) == 0, "BUSY should be low after reset"
+    assert int(dut.busy_OUT.value) == 0, "BUSY should be low after reset"
     await RisingEdge(dut.clk)
     await ReadWrite()
     await _pulse_start(dut, p_minus1=DW - 1)
     for _ in range(20):
         await ReadOnly()
-        if int(dut.busy.value) == 1:
+        if int(dut.busy_OUT.value) == 1:
             return
         await RisingEdge(dut.clk)
         await ReadWrite()
@@ -387,13 +403,13 @@ async def test_second_fresh_weight_load_without_reset(dut):
     )
 
 
-def A07_dcim_top_runner():
+def a07_dcim_top_runner():
     proj_path = Path(__file__).resolve().parent
     src_path = proj_path / "../src"
 
     if gl:
         sources = [
-            proj_path / "../final/nl/A07_A07_dcim_top.nl.v",
+            proj_path / "../final/nl/A07_dcim_top.nl.v",
             pdk_root / pdk / "libs.ref" / scl / "verilog" / f"{scl}.v",
             proj_path / "../ip/sram_32x8_9T/vh/sram_32x8_9T.v",
         ]
@@ -412,6 +428,7 @@ def A07_dcim_top_runner():
             src_path / "shift_accum.sv",
             src_path / "dcim_array.sv",
             src_path / "control_fsm.sv",
+            src_path / "dcim_top.sv",
             src_path / "A07_dcim_top.sv",
             proj_path / "../ip/sram_32x8_9T/vh/sram_32x8_9T.v",
         ]
@@ -435,7 +452,7 @@ def A07_dcim_top_runner():
 
     runner.build(
         sources=sources,
-        hdl_toplevel="A07_A07_dcim_top",
+        hdl_toplevel="A07_dcim_top",
         defines=defines,
         includes=[src_path],
         build_args=build_args,
@@ -444,11 +461,11 @@ def A07_dcim_top_runner():
     )
 
     runner.test(
-        hdl_toplevel="A07_A07_dcim_top",
+        hdl_toplevel="A07_dcim_top",
         test_module="A07_dcim_top_tb",
         waves=True,
     )
 
 
 if __name__ == "__main__":
-    A07_dcim_top_runner()
+    a07_dcim_top_runner()

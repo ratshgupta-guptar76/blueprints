@@ -6,7 +6,7 @@ SCL := gf180mcu_as_sc_mcu7t3v3
 RTL_MODULES := \
     dcim_pkg row_decoder shift_reg col_adder weight_load stream_out \
     adder_tree act_shift_chain lane_shift_accum shift_accum \
-    dcim_array control_fsm A07_dcim_top
+    dcim_array control_fsm dcim_top
 
 RTL_SOURCES := $(addprefix $(MAKEFILE_DIR)/src/,$(addsuffix .sv,$(RTL_MODULES)))
 RTL_SOURCES += $(MAKEFILE_DIR)/ip/sram_32x8_9T/vh/sram_32x8_9T.v
@@ -67,6 +67,7 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 else
 
 TOP = chip_top
+CORE = A07_dcim_top
 
 PDK_ROOT ?= $(MAKEFILE_DIR)/gf180mcu
 PDK ?= gf180mcuD
@@ -158,7 +159,7 @@ librelane-padring: ## Only create the padring
 .PHONY: librelane-padring
 
 lint: ## Lint RTL sources with Verilator
-	verilator --lint-only -Wall --top-module A07_dcim_top $(RTL_SOURCES)
+	verilator --lint-only -Wall --top-module dcim_top $(RTL_SOURCES)
 .PHONY: lint
 
 sim: ## Run RTL simulation with cocotb
@@ -271,17 +272,17 @@ sim-gl: ## Run gate-level simulation with cocotb (after copy-final)
 # Forced to verilator: Icarus has a confirmed event-scheduling bug on this
 # netlist's zero-delay, CTS-hold-buffered flop-to-flop shift chains (wrong
 # values in GL mode only; RTL mode and Verilator GL mode are both correct).
-sim-gl-core: ## Run gate-level simulation for the core (dcim_top) with cocotb (after librelane-core)
-	cd $(COCOTB_DIR) && GL=1 SIM=verilator PDK_ROOT=${PDK_ROOT} PDK=${PDK} STD_CELL_LIBRARY=${SCL} python3 dcim_top_tb.py
+sim-gl-core: ## Run gate-level simulation for the core (A07_dcim_top) with cocotb (after librelane-core)
+	cd $(COCOTB_DIR) && GL=1 SIM=verilator PDK_ROOT=${PDK_ROOT} PDK=${PDK} STD_CELL_LIBRARY=${SCL} python3 A07_dcim_top_tb.py
 .PHONY: sim-gl-core
 
 sim-view: ## View simulation waveforms in GTKWave
 	gtkwave cocotb/sim_build/chip_top.fst
 .PHONY: sim-view
 
-render-image: ## Render an image from the final layout (after copy-final)
+render-core-image: ## Render an image from the final layout (after copy-final)
 	mkdir -p img/
-	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/lay2img.py final/gds/${TOP}.gds img/${TOP}.png --width 2048 --oversampling 4
+	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/lay2img.py final/gds/${CORE}.gds img/${CORE}.png --width 2048 --oversampling 4
 .PHONY: copy-final
 
 clean: ## Remove cocotb build artefacts, results and waveforms
@@ -289,11 +290,33 @@ clean: ## Remove cocotb build artefacts, results and waveforms
 	rm -f $(COCOTB_DIR)/dump.fst $(COCOTB_DIR)/dump.vcd $(COCOTB_DIR)/results.xml
 .PHONY: clean
 
+# PYTHONPATH here makes librelane_plugin_padframe_bridge/ (in
+# scripts/python/) discoverable by LibreLane's plugin loader, which
+# registers Odb.AddPadframePowerBridge and the ClassicWithPadframeBridge
+# flow that config_core.yaml's meta.flow now references -- see that
+# package's __init__.py for why the padframe power bridge needs to be a
+# real flow step (not a separate manual script run between two flow
+# invocations).
 librelane-core: ## Run LibreLane flow for core only (no padring)
-	STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk
+	PYTHONPATH="$(MAKEFILE_DIR)/scripts/python:$$PYTHONPATH" STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk
 .PHONY: librelane-core
 
 librelane-core-pdn: ## Run LibreLane flow for core only, stopping after the PDN core ring
-	STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --to OpenROAD.GeneratePDN
+	PYTHONPATH="$(MAKEFILE_DIR)/scripts/python:$$PYTHONPATH" STD_CELL_LIBRARY=${SCL} librelane librelane/config_core.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --to OpenROAD.GeneratePDN
 .PHONY: librelane-core-pdn
+
+# librelane-openroad/-klayout above always resolve librelane/config.yaml
+# (chip_top), but --last-run just grabs whichever run directory under
+# librelane/runs/ is newest overall, regardless of which config produced
+# it -- so after any librelane-core* run, those targets pick up a
+# core-flow run and OpenROAD's OpenGUI step fails ("missing required
+# input 'def'") because that run's structure doesn't match what
+# config.yaml's own flow expects. These target config_core.yaml instead.
+librelane-core-openroad: ## Open the last core run in OpenROAD
+	PYTHONPATH="$(MAKEFILE_DIR)/scripts/python:$$PYTHONPATH" librelane librelane/config_core.yaml --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --last-run --flow OpenInOpenROAD
+.PHONY: librelane-core-openroad
+
+librelane-core-klayout: ## Open the last core run in KLayout
+	PYTHONPATH="$(MAKEFILE_DIR)/scripts/python:$$PYTHONPATH" librelane librelane/config_core.yaml --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --last-run --flow OpenInKLayout
+.PHONY: librelane-core-klayout
 endif

@@ -1,6 +1,6 @@
 meta:
   version: 3
-  flow: Classic
+  flow: ClassicWithPadframeBridge
   substituting_steps:
     # Disable KLayout DRC
     # KLayout.DRC: null
@@ -38,6 +38,7 @@ VERILOG_FILES:
 - dir::../src/weight_load.sv
 - dir::../src/stream_out.sv
 - dir::../src/control_fsm.sv
+- dir::../src/dcim_top.sv
 - dir::../src/A07_dcim_top.sv
 - dir::../ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v
 
@@ -45,13 +46,6 @@ VERILOG_FILES:
 PNR_SDC_FILE: dir::chip_core.sdc
 SIGNOFF_SDC_FILE: dir::chip_core.sdc
 FALLBACK_SDC: dir::chip_core.sdc
-
-IGNORE_DISCONNECTED_MODULES:
-- A07_dcim_top
-
-# Remove pad-specific configs
-# IGNORE_DISCONNECTED_MODULES removed (no IO pad blackboxes)
-# EXTRA_VERILOG_MODELS for pads removed
 
 # Enable plugin for better SystemVerilog support
 USE_SLANG: True
@@ -76,41 +70,11 @@ CLOCK_PERIOD: 40
 PL_RESIZER_HOLD_SLACK_MARGIN: 0.35
 GRT_RESIZER_HOLD_SLACK_MARGIN: 0.3
 
-# gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (the strongest clock buffer in this
-# SCL -- only _4/_8/_12 exist) has a 0.200pF max_capacitance. Left
-# unset (default 100 = no derating), CTS's automatic buffer selection
-# sizes clusters right up against that limit at zero margin, so the same
-# fanout comes out over the limit at slower PVT corners (repair_design-
-# family steps don't touch clock nets, so this has to be fixed at CTS
-# time, not patched after -- CTS_MAX_CAP does NOT affect this; it only
-# tunes wire-segment characterization, confirmed to have zero effect on
-# this design's tree, hence the derate below instead).
 CTS_SINK_BUFFER_MAX_CAP_DERATE_PCT: 85
 
-# The derate above tunes leaf-buffer sink clustering, not the tree's
-# higher levels -- clkbuf_0_clk (the root, forced onto clkbuff_12 via
-# CTS_ROOT_BUFFER) and an intermediate H-tree buffer are still over
-# max_capacitance on the worst corners, worse since the die grew to
-# match Block A (1110x1110). Unlike CTS_CLK_MAX_WIRE_LENGTH (a post-CTS
-# repair_clock_nets split that previously made the worst corners worse
-# while fixing nominal -- reverted), this acts during tree construction
-# itself, capping the physical span between buffer levels so long
-# trunk/branch runs get subdivided going in, not patched after.
-CTS_DISTANCE_BETWEEN_BUFFERS: 300
+CTS_DISTANCE_BETWEEN_BUFFERS: 250
 
-# RepairDesignPostGPL's own default 20% cap margin (DESIGN_REPAIR_MAX_CAP_PCT)
-# is checked against ONE analysis corner, but signoff STA checks all 9.
-# At 55%, min_*/nom_* corners are fully clean but 5 repair buffers
-# (max_capNN/wireNN, non-clock -- CTS_DISTANCE_BETWEEN_BUFFERS above
-# already cleared the clock-tree violators) are still over on the 3
-# worst-case corners, all within ~9% of the limit. Widened further.
 DESIGN_REPAIR_MAX_CAP_PCT: 70
-
-# Tried CTS_CLK_MAX_WIRE_LENGTH: 300 to also split the CTS root buffer's
-# (clkbuf_0_clk) long trunk wire via `repair_clock_nets` -- it cleared
-# the nominal-corner violations but made the worst corners (max_tt/ff/ss)
-# go from 2 to 4 violations each, a net regression. Reverted; not a
-# signoff blocker, revisit later if needed.
 
 # Increase for more logic
 # on your die
@@ -121,59 +85,19 @@ GRT_ALLOW_CONGESTION: true
 DRT_ANTENNA_REPAIR_ITERS: 10
 DRT_ANTENNA_REPAIR_MARGIN: 10 # %
 
-# Places the 12 signal pins on the specific sides/order the Chipathon
-# 2026 padframe Block A expects (E12-E22, N01-N11 -- see
-# docs/sram-macro.md). Activates Odb.CustomIOPlacement, which only
-# handles signal pins (bterm.getSigType() not in ["POWER", "GROUND"]
-# is hardcoded in odbpy/io_place.py) -- vdd/vss are NOT listed in the
-# cfg file: their physical location comes from the PDN core ring
-# below instead, which is continuous around the whole boundary and so
-# already reaches wherever E12 (the padframe's forced ground position)
-# physically falls, with no separate placement step needed.
-#
-# East side (E12-E22, ascending = bottom-to-top, matching this
-# mechanism's required bottom-to-top order for E/W directly): E12
-# itself is the ground ring contact (not in the cfg), the 9 remaining
-# signal pins fill toward E22.
-# North side (N01-N11, ascending = left-to-right, matching this
-# mechanism's required left-to-right order for N/S directly): our 3
-# outputs take N01-N03; N04-N11 (8 positions) are unused for this
-# design and reserved as virtual/unplaced slots ($8 in the cfg) so
-# the real pins land at the start of the range instead of being
-# spread across the full N01-N11 span.
-#
-# This gets the correct SIDE and RELATIVE ORDER, which is the
-# achievable part without the organizers' own padframe LEF; exact
-# micron-pitch alignment with the shared frame (so our track grid's
-# 9-signal spacing on the E side lines up with wherever the real
-# frame expects positions E13-E22 to physically be) is something only
-# their integration process or a real padframe LEF can fully confirm.
-IO_PIN_ORDER_CFG: dir::io_pin_order.cfg
+FP_DEF_TEMPLATE: "dir::../def/A07/project_defs/A/A07_A.def"
+
+# IO_PIN_ORDER_CFG: dir::io_pin_order.cfg
 
 # Disable core ring pad connection & enable seal ring
 PDN_CORE_RING: True
 PDN_CORE_RING_CONNECT_TO_PADS: False
 
-# Fixed 1100x1100um core, with margin around it for the PDN core ring.
-# The ring is drawn per-net (VDD + VSS), so the actual stack is
-# offset(6) + width(25) + spacing(1.7) + width(25) = ~57.7um -- 100um
-# margin leaves headroom for that plus routing/via clearance.
-IO_EXCLUDE_PIN_REGION:
-  - "bottom:*"
-  - "right:*"
-
-# Sized to Chipathon 2026 padframe Block A exactly (1110x1110um,
-# 22-pin quadrant, pin order E12-E22,N01-N11 -- see the Chipathon 2026
-# Padframe proposal deck). Core margin kept proportional to the
-# previous 100um.
 FP_SIZING: absolute
 DIE_AREA: [0, 0, 1110, 1110]
 CORE_AREA: [100, 100, 1010, 1010]
 
 # PDN - Straps
-# HPITCH/VPITCH=75 is smaller than the SRAM macro height (181.215um), so
-# every macro crosses at least 2 horizontal straps regardless of its exact
-# Y placement (see dcim_macro_rot in pdn_core_cfg.tcl).
 PDN_VWIDTH: 5
 PDN_HWIDTH: 4
 PDN_VSPACING: 1
@@ -235,16 +159,16 @@ MACROS:
       "*":
         - dir::../ip/sram_32x8_9T/spef/sram_32x8_9T.spef
     instances:
-      DCIM_ARRAY.u_sram_32x8_9T_0:
+      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0:
         location: [300, 250]
         orientation: MY
-      DCIM_ARRAY.u_sram_32x8_9T_1:
+      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1:
         location: [700, 250]
         orientation: MY
-      DCIM_ARRAY.u_sram_32x8_9T_2:
+      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2:
         location: [300, 650]
         orientation: MY
-      DCIM_ARRAY.u_sram_32x8_9T_3:
+      U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3:
         location: [700, 650]
         orientation: MY
 
@@ -256,10 +180,10 @@ LVS_IGNORE_CELLS:
 - gf180mcu_as_sc_mcu7t3v3__fillcap_16
 
 FP_PDN_MACRO_HOOKS:
-- "DCIM_ARRAY.u_sram_32x8_9T_0 VDD VSS VDD VSS"
-- "DCIM_ARRAY.u_sram_32x8_9T_1 VDD VSS VDD VSS"
-- "DCIM_ARRAY.u_sram_32x8_9T_2 VDD VSS VDD VSS"
-- "DCIM_ARRAY.u_sram_32x8_9T_3 VDD VSS VDD VSS"
+- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0 VDD VSS VDD VSS"
+- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1 VDD VSS VDD VSS"
+- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2 VDD VSS VDD VSS"
+- "U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3 VDD VSS VDD VSS"
 
 # Do not error on magic DRC violations
 # Note: Passing magic DRC is not required for the submission.

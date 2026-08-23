@@ -197,32 +197,12 @@ add_pdn_connect \
 
 define_pdn_grid \
     -macro \
-    -instances {DCIM_ARRAY.u_sram_32x8_9T_0 DCIM_ARRAY.u_sram_32x8_9T_1 DCIM_ARRAY.u_sram_32x8_9T_2 DCIM_ARRAY.u_sram_32x8_9T_3} \
+    -instances {U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_0 U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_1 U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_2 U_DCIM_TOP.DCIM_ARRAY.u_sram_32x8_9T_3} \
     -name dcim_macro_rot \
     -grid_over_boundary \
     -starts_with POWER \
     -halo "$::env(PDN_HORIZONTAL_HALO) $::env(PDN_VERTICAL_HALO)"
 
-# Matches by cell type (-cells), not a specific -instances name, so this one
-# grid definition covers all sram_32x8_9T instances (currently 4).
-#
-# -grid_over_boundary lets stdcell_grid's own Metal4/5 straps extend straight
-# across each macro's footprint instead of routing around it (per the pdn
-# README's "rotated_rams" example), so no local strap is defined here. This
-# only works once a macro is within reach of stdcell_grid's straps at all,
-# which is why all instances sit at y=900, inside the actual placement core
-# -- the original location (250, 250) sat outside the reach of the entire
-# power grid (PDN_EXTEND_TO=core_ring stops around (385, 385)). Every
-# instance is kept at the *same* Y and only varies in X, since Metal5's
-# horizontal straps span the full die width -- one confirmed Y crossing
-# covers all instances regardless of X.
-#
-# At this macro's 44.255um width, none of stdcell_grid's Metal4 verticals
-# (75um pitch) happen to land across any instance, but its Metal5
-# horizontals do -- confirmed via debug: "Metal4 (0 shapes) - Metal5 (4
-# shapes)" at this grid. So connect straight from Metal5 (real shapes here)
-# to Metal3 (this macro's actual pin layer) instead of routing through
-# Metal4.
 add_pdn_connect \
     -grid dcim_macro_rot \
     -layers "$::env(PDN_VERTICAL_LAYER) $::env(PDN_HORIZONTAL_LAYER)"
