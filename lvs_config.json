@@ -24,7 +24,8 @@
 		""
 	],
 	"LVS_VERILOG_FILES": [
-		""
+		"$UPRJ_ROOT/ip/sram_32x8_9T/vh/sram_32x8_9T_blackbox.v",
+		"$UPRJ_ROOT/verilog/A07_dcim_top.pnl.v"
 	],
 	"LAYOUT_FILE": "$UPRJ_ROOT/gds/$TOP_LAYOUT.gds"
 }
