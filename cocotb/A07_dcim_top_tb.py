@@ -10,7 +10,7 @@ build instead, and its GL mode only runs a single smoke test: y_bit has no
 working GL path *through the padring's PAD cells*; see its
 _internal()/_y_bit() comments).
 
-A07_dcim_top's P_minus1 is split into 3 scalar pins (P_minus1_0/1/2) and
+A07_dcim_top's P_minus1 is a packed 3-bit vector and
 y_bit/done/busy are split into _OUT variants plus unused pad-config pins
 (PU/PD/CS/SL/IE/OE/PDRV0/PDRV1, tied off in RTL -- see src/A07_dcim_top.sv)
 and unused _IN receiver pins (also tied off there, driven 0 here for
@@ -80,9 +80,7 @@ def _drive_control(dut, *, a_bit=0, w_bit=0, start=0, cont=0, p_minus1=DW - 1):
     dut.w_bit.value = w_bit
     dut.start.value = start
     dut.cont.value = cont
-    dut.P_minus1_0.value = (p_minus1 >> 0) & 1
-    dut.P_minus1_1.value = (p_minus1 >> 1) & 1
-    dut.P_minus1_2.value = (p_minus1 >> 2) & 1
+    dut.P_minus1.value = p_minus1
 
 
 async def _drive_and_edge(dut, **kwargs):
