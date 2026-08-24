@@ -12,7 +12,314 @@
       1110000
     ],
     "width_microns": "1110",
-    "height_microns": "1110"
+    "height_microns": "1110",
+    "top_cell_text": [
+      {
+        "text": "P_minus1_0",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "P_minus1_0_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "P_minus1_0_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "P_minus1_1",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "P_minus1_1_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "P_minus1_1_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "P_minus1_2",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "P_minus1_2_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "P_minus1_2_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "a_bit",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "a_bit_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "a_bit_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_CS",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_IE",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_IN",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_OE",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_OUT",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_PDRV0",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_PDRV1",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "busy_SL",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "clk",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "clk_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "clk_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "cont",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "cont_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "cont_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_CS",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_IE",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_IN",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_OE",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_OUT",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_PDRV0",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_PDRV1",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "done_SL",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "rst_n",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "rst_n_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "rst_n_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "start",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "start_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "start_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "w_bit",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "w_bit_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "w_bit_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_CS",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_IE",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_IN",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_OE",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_OUT",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_PD",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_PDRV0",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_PDRV1",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_PU",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "y_bit_SL",
+        "layer": 36,
+        "datatype": 10
+      },
+      {
+        "text": "VDD",
+        "layer": 46,
+        "datatype": 10
+      },
+      {
+        "text": "VSS",
+        "layer": 46,
+        "datatype": 10
+      },
+      {
+        "text": "VDD",
+        "layer": 81,
+        "datatype": 10
+      },
+      {
+        "text": "VSS",
+        "layer": 81,
+        "datatype": 10
+      }
+    ]
   },
   "participant_pin_count": 14,
   "selected_variants": [

@@ -17,6 +17,7 @@
 // TEST: each lane's y independently matches golden_bit_serial's per-weight trace;
 //   confirm slice boundaries (lane 0 = sum[7:0], lane 7 = sum[63:56]).
 // ==================================================================================
+`timescale 1ns / 1ps
 
 module shift_accum #(
     parameter int ROWS      = dcim_pkg::ROWS,

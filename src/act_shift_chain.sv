@@ -28,7 +28,7 @@
 // Single bank only. Ping-pong (2 banks + output mux, FSM swap select) wraps this
 // later — not in this module.
 // ==================================================================================
-
+`timescale 1ns / 1ps
 
 module act_shift_chain #(
     parameter int ROWS = dcim_pkg::ROWS,

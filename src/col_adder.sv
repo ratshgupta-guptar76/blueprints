@@ -9,6 +9,7 @@
 //   sum width = $clog2(ROWS+1) = 7  (max 64 one-bit inputs)
 // TEST: sum == popcount(pp_col) for random vectors + all-0 + all-1 (=64).
 // ==================================================================================
+`timescale 1ns / 1ps
 
 module col_adder #(
     parameter int ROWS = dcim_pkg::ROWS

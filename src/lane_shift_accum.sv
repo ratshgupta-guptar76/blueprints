@@ -31,6 +31,7 @@
 //   result (weight 8'hFF -> lane_val=-1). A_SIGN=1 needs matching golden + plane-7
 //   activation MSB set.
 // ==================================================================================
+`timescale 1ns / 1ps
 
 module lane_shift_accum #(
     parameter int ROWS       = dcim_pkg::ROWS,

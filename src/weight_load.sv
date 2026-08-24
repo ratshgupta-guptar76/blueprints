@@ -18,6 +18,7 @@
 //   Shift direction here ({w_bit, w_buf[COLS-1:1]}) sets that mapping — confirm, don't
 //   assume.
 // ==================================================================================
+`timescale 1ns / 1ps
 
 module weight_load #(
     parameter int COLS = dcim_pkg::COLS

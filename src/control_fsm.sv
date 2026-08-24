@@ -38,6 +38,7 @@
 // Interfaces: wfull from weight_load, y_done from stream_out; drives y_load/y_en to
 // stream_out. Wired at chip_core.
 // ==================================================================================
+`timescale 1ns / 1ps
 
 module control_fsm #(
     parameter int ROWS = dcim_pkg::ROWS,

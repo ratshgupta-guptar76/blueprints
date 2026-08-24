@@ -48,17 +48,9 @@ module A07_dcim_top (
     output logic cont_PU,
     output logic cont_PD,
 
-    input  logic P_minus1_0,
-    output logic P_minus1_0_PU,
-    output logic P_minus1_0_PD,
-
-    input  logic P_minus1_1,
-    output logic P_minus1_1_PU,
-    output logic P_minus1_1_PD,
-
-    input  logic P_minus1_2,
-    output logic P_minus1_2_PU,
-    output logic P_minus1_2_PD,
+    input  logic P_minus1[2:0],
+    output logic P_minus1_PU[2:0],
+    output logic P_minus1_PD[2:0],
 
     input  logic y_bit_IN,
     output logic y_bit_OUT,
@@ -95,24 +87,24 @@ module A07_dcim_top (
 );
 
     // Input pads: pulls disabled, driven externally.
-    assign clk_PU        = 1'b0;
-    assign clk_PD        = 1'b0;
-    assign rst_n_PU       = 1'b0;
-    assign rst_n_PD       = 1'b0;
-    assign a_bit_PU       = 1'b0;
-    assign a_bit_PD       = 1'b0;
-    assign w_bit_PU       = 1'b0;
-    assign w_bit_PD       = 1'b0;
-    assign start_PU       = 1'b0;
-    assign start_PD       = 1'b0;
-    assign cont_PU        = 1'b0;
-    assign cont_PD        = 1'b0;
-    assign P_minus1_0_PU  = 1'b0;
-    assign P_minus1_0_PD  = 1'b0;
-    assign P_minus1_1_PU  = 1'b0;
-    assign P_minus1_1_PD  = 1'b0;
-    assign P_minus1_2_PU  = 1'b0;
-    assign P_minus1_2_PD  = 1'b0;
+    assign clk_PU          = 1'b0;
+    assign clk_PD          = 1'b0;
+    assign rst_n_PU        = 1'b0;
+    assign rst_n_PD        = 1'b0;
+    assign a_bit_PU        = 1'b0;
+    assign a_bit_PD        = 1'b0;
+    assign w_bit_PU        = 1'b0;
+    assign w_bit_PD        = 1'b0;
+    assign start_PU        = 1'b0;
+    assign start_PD        = 1'b0;
+    assign cont_PU         = 1'b0;
+    assign cont_PD         = 1'b0;
+    assign P_minus1_PU[0]  = 1'b0;
+    assign P_minus1_PD[0]  = 1'b0;
+    assign P_minus1_PU[1]  = 1'b0;
+    assign P_minus1_PD[1]  = 1'b0;
+    assign P_minus1_PU[2]  = 1'b0;
+    assign P_minus1_PD[2]  = 1'b0;
 
     // Bidir pads used as fixed outputs: OE permanently on, receiver
     // (IE) off, CMOS/fast/no-pull config, lowest drive strength.
@@ -154,7 +146,7 @@ module A07_dcim_top (
         .w_bit   (w_bit),
         .start   (start),
         .cont    (cont),
-        .P_minus1({P_minus1_2, P_minus1_1, P_minus1_0}),
+        .P_minus1(P_minus1),
         .y_bit   (y_bit_OUT),
         .done    (done_OUT),
         .busy    (busy_OUT)

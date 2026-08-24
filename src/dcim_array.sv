@@ -21,6 +21,7 @@
 //   - Column mapping matches golden_model layout (one weight, check its 8 columns).
 //   - pp is active-high (no inversion vs golden products).
 // ==================================================================================
+`timescale 1ns / 1ps
 
 module dcim_array #(
     parameter int ROWS = dcim_pkg::ROWS,

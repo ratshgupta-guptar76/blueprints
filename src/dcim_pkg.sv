@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 package dcim_pkg;
 
     localparam int DW         =  8;     // shouldn't be changed when using hardened dcim sram macro

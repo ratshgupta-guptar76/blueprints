@@ -25,6 +25,7 @@
 //                         departing bit is the LSB. Tapping the MSB duplicates bits
 //                         down the chain. (serial_out and compute_bit are the same net.)
 // ==================================================================================
+`timescale 1ns / 1ps
 
 module shift_reg #(
     parameter int DW   = dcim_pkg::DW

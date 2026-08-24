@@ -13,6 +13,7 @@
 //
 // TOT = N_WEIGHTS*ACC_WIDTH = 176. Counter YW = $clog2(TOT) = 8-bit.
 // ==================================================================================
+`timescale 1ns / 1ps
 
 module stream_out #(
     parameter int N_WEIGHTS = dcim_pkg::N_WEIGHTS,

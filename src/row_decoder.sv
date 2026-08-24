@@ -16,6 +16,7 @@
 // width, derived — declare ROWS first so RW can reference it).
 // en is driven by w_en from control_fsm. Never let wl assert outside a write.
 // =============================================================================
+`timescale 1ns / 1ps
 
 module row_decoder #(
     parameter int ROWS = dcim_pkg::ROWS,

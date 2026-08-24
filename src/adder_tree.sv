@@ -12,6 +12,7 @@
 //
 // TEST: sum[c] == popcount of column c, for random pp + a single-1 + all-1 columns.
 // ==================================================================================
+`timescale 1ns / 1ps
 
 module adder_tree #(
     parameter int ROWS      = dcim_pkg::ROWS,
