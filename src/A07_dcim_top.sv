@@ -48,9 +48,9 @@ module A07_dcim_top (
     output logic cont_PU,
     output logic cont_PD,
 
-    input  logic P_minus1[2:0],
-    output logic P_minus1_PU[2:0],
-    output logic P_minus1_PD[2:0],
+    input  logic [2:0] P_minus1,
+    output logic [2:0] P_minus1_PU,
+    output logic [2:0] P_minus1_PD,
 
     input  logic y_bit_IN,
     output logic y_bit_OUT,
@@ -99,12 +99,8 @@ module A07_dcim_top (
     assign start_PD        = 1'b0;
     assign cont_PU         = 1'b0;
     assign cont_PD         = 1'b0;
-    assign P_minus1_PU[0]  = 1'b0;
-    assign P_minus1_PD[0]  = 1'b0;
-    assign P_minus1_PU[1]  = 1'b0;
-    assign P_minus1_PD[1]  = 1'b0;
-    assign P_minus1_PU[2]  = 1'b0;
-    assign P_minus1_PD[2]  = 1'b0;
+    assign P_minus1_PU     = 3'b0;
+    assign P_minus1_PD     = 3'b0;
 
     // Bidir pads used as fixed outputs: OE permanently on, receiver
     // (IE) off, CMOS/fast/no-pull config, lowest drive strength.
@@ -146,7 +142,7 @@ module A07_dcim_top (
         .w_bit   (w_bit),
         .start   (start),
         .cont    (cont),
-        .P_minus1({P_minus1[2], P_minus1[1], P_minus1[0]}),
+        .P_minus1(P_minus1),
         .y_bit   (y_bit_OUT),
         .done    (done_OUT),
         .busy    (busy_OUT)
