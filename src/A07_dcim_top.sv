@@ -146,7 +146,7 @@ module A07_dcim_top (
         .w_bit   (w_bit),
         .start   (start),
         .cont    (cont),
-        .P_minus1(P_minus1),
+        .P_minus1({P_minus1[2], P_minus1[1], P_minus1[0]}),
         .y_bit   (y_bit_OUT),
         .done    (done_OUT),
         .busy    (busy_OUT)

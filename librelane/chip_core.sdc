@@ -37,9 +37,7 @@ set core_bidir_in_ports [get_ports {
     w_bit
     start
     cont
-    P_minus1_0
-    P_minus1_1
-    P_minus1_2
+    P_minus1[2:0]
 }]
 
 set core_bidir_out_ports [get_ports {
@@ -58,9 +56,7 @@ set core_input_ports [get_ports {
     w_bit
     start
     cont
-    P_minus1_0
-    P_minus1_1
-    P_minus1_2
+    P_minus1[2:0]
 }]
 
 set_input_delay -min 0 -clock $clocks $core_input_ports
