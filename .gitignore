@@ -26,9 +26,8 @@ cocotb/*_coverage.yml
 cocotb/*_coverage.xml
 
 # Analog simulation results
-analog/designs/backups
-analog/sim/*/results
-analog/flow/results
+analog/backups
+analog/characterization/9t/results
 
 # Remove if updates are to be made to run_docker_iic.sh
 scripts/

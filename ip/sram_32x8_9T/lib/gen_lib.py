@@ -8,14 +8,14 @@ are corner-independent and reused as-is for tt/ff/ss.
 
 RBL's cell_rise/cell_fall/rise_transition/fall_transition arcs come from
 transient SPICE measurements of the A -> RBL propagation path (measured
-in analog/sim/9t/read_delay_<corner>.spice, one run per corner) -- NOT
+in analog/characterization/9t/read_delay_<corner>.spice, one run per corner) -- NOT
 from the SPEF, which only carries capacitance: Magic's extraction found
 zero resistance along the signal routes (see spef/gen_spef.py's
 docstring), so there was never any RC data to derive delay from.
 
 Methodology / what this does and doesn't represent:
   - The sim uses the single already-extracted 9T bitcell netlist
-    (analog/tb/9T_tb.spice's 9T_03v3 subckt, itself a real Magic
+    (analog/testbench/9T_tb.spice's 9T_03v3 subckt, itself a real Magic
     extraction of one cell) driving a lumped CRBL equal to the real
     worst-case RBL net capacitance from the full 32x8 macro's SPEF
     (3.52894fF, the max over all 256 RBL[i] nets) -- not the full
@@ -54,7 +54,7 @@ LEF = HERE / "../lef/sram_32x8_9T.lef"
 # block in gf180mcu_as_sc_mcu7t3v3__<corner>.lib, not guessed. cell_rise/
 # cell_fall/rise_transition/fall_transition are ngspice `meas tran`
 # results (t_read_rise/t_read_fall/trans_rbl_rise/trans_rbl_fall) from
-# analog/sim/9t/read_delay_<corner>.spice, converted s -> ns.
+# analog/characterization/9t/read_delay_<corner>.spice, converted s -> ns.
 CORNERS = {
     "tt_025C_3v30": dict(
         temperature=25.0, voltage=3.3,

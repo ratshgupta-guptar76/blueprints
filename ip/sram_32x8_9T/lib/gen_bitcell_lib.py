@@ -12,8 +12,8 @@ real tiled array of one physical cell (ip/sram_32x8_9T/mag/9T_tileable.mag,
 instantiated 256 times per ../nl/gen_nl.py) -- so the correct granularity
 for hierarchical STA is a per-bitcell Liberty model, not a per-macro one.
 
-Conveniently, analog/sim/9t/read_delay_<corner>.spice already measures
-exactly this: it simulates ONE extracted bitcell (analog/tb/9T_tb.spice's
+Conveniently, analog/characterization/9t/read_delay_<corner>.spice already measures
+exactly this: it simulates ONE extracted bitcell (analog/testbench/9T_tb.spice's
 9T_03v3 subckt), so its A -> RBL numbers are already bitcell-granularity,
 not macro-granularity -- gen_lib.py just applies them uniformly across the
 macro's 256 output pins as an approximation. Here they're used directly,
@@ -37,7 +37,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 CELL = "sram_bitcell_9T"
-BITCELL_SPICE = HERE / "../../../analog/tb/9T_tb.spice"
+BITCELL_SPICE = HERE / "../../../analog/testbench/9T_tb.spice"
 
 # Real Magic bounding box of ip/sram_32x8_9T/mag/9T_tileable.mag: 3.110 x 5.480um
 AREA_UM2 = 3.110 * 5.480

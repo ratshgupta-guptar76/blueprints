@@ -86,21 +86,20 @@ module A07_dcim_top (
     output logic busy_PDRV1
 );
 
-    // Input pads: pulls disabled, driven externally.
     assign clk_PU          = 1'b0;
     assign clk_PD          = 1'b0;
-    assign rst_n_PU        = 1'b0;
+    assign rst_n_PU        = 1'b1;
     assign rst_n_PD        = 1'b0;
     assign a_bit_PU        = 1'b0;
-    assign a_bit_PD        = 1'b0;
+    assign a_bit_PD        = 1'b1;
     assign w_bit_PU        = 1'b0;
-    assign w_bit_PD        = 1'b0;
+    assign w_bit_PD        = 1'b1;
     assign start_PU        = 1'b0;
-    assign start_PD        = 1'b0;
+    assign start_PD        = 1'b1;
     assign cont_PU         = 1'b0;
-    assign cont_PD         = 1'b0;
-    assign P_minus1_PU     = 3'b0;
-    assign P_minus1_PD     = 3'b0;
+    assign cont_PD         = 1'b1;
+    assign P_minus1_PU     = 3'b111;    // Make sure default is 8, i.e. 3'b111, so that the first cycle of the testbench is valid.
+    assign P_minus1_PD     = 3'b000;
 
     // Bidir pads used as fixed outputs: OE permanently on, receiver
     // (IE) off, CMOS/fast/no-pull config, lowest drive strength.

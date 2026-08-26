@@ -1,0 +1,48 @@
+* ============================================
+* Test: read_delay.spice
+* Cell: 9T_03v3
+* PDK: GF180mcuD
+* ============================================
+* Compute/read-port access delay: cell holds W=1 (Q=VDD), write port off,
+* Activation (A) is pulsed like a read-enable. Reports the A -> RBL
+* propagation delay through the M1/M2 read buffer. CRBL mirrors the 20fF
+* bitline load already used for WBL/WBLB in read_run.spice -- there's no
+* explicit RBL load anywhere else in this repo, so this is the closest
+* precedent for a per-cell bitline capacitance.
+
+* -- includes --
+.include /workspace/analog/characterization/pvt.spice
+.include /workspace/analog/testbench/9T_tb.spice
+
+* -- stimulus --
+VVDD vdd  0 {VDD_CORNER}
+VVSS vss  0 0
+VWL  wl   0 0                                              ; write port off
+VBL  wbl  0 0
+VBLB wblb 0 0
+VA   a    0 PULSE(0 {VDD_CORNER} 5n 0.1n 0.1n 20n 50n)     ; activation pulsed
+CRBL rbl  0 20f                                            ; bitline load
+
+* -- initial conditions --
+.ic v(q)={VDD_CORNER} v(qb)=0    ; W=1 stored
+
+* .control params -- {} substitution inside .control needs a .csparam bridge
+.csparam VDD_CORNER={VDD_CORNER}
+
+* -- sim --
+.control
+  save all
+
+  tran 0.1n 50n uic
+
+  * --- A -> RBL propagation delay ---
+  echo
+  meas tran t_read TRIG v(a) VAL={VDD_CORNER}/2 RISE=1 TARG v(rbl) VAL={VDD_CORNER}/2 RISE=1
+  echo
+
+  * --- save .raw for python parsing ---
+  write /workspace/analog/characterization/9t/results/read_delay.raw all
+
+.endc
+
+.end

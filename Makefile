@@ -17,7 +17,7 @@ COCOTB_DIR     := $(MAKEFILE_DIR)/cocotb
 RESULTS_DIR    := $(COCOTB_DIR)/results
 SIM_BUILD_DIR  := $(COCOTB_DIR)/sim_build
 COV_DIR        := $(COCOTB_DIR)/cov_annotated
-MUTATION_DIR   := $(MAKEFILE_DIR)/scripts/mutations
+MUTATION_DIR   := $(MAKEFILE_DIR)/scripts/mutation/tables
 
 
 # --- Simulation configuration --------------------
@@ -155,7 +155,7 @@ librelane-klayout: ## Open the last run in KLayout
 .PHONY: librelane-klayout
 
 librelane-padring: ## Only create the padring
-	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/padring.py librelane/slots/slot_${SLOT}.yaml librelane/config.yaml
+	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/flow/padring.py librelane/slots/slot_${SLOT}.yaml librelane/config.yaml
 .PHONY: librelane-padring
 
 lint: ## Lint RTL sources with Verilator
@@ -224,13 +224,13 @@ func-mut: ## Run functional + mutation for one module with func-mut=<module>
 	if [ ! -f "$(COCOTB_DIR)/functional/$${m}_tb.py" ]; then \
 		echo "ERROR: no testbench functional/$${m}_tb.py"; exit 2; fi; \
 	if [ ! -f "$(MUTATION_DIR)/$${m}.txt" ]; then \
-		echo "ERROR: no mutation table scripts/mutations/$${m}.txt"; exit 2; fi; \
+		echo "ERROR: no mutation table scripts/mutation/tables/$${m}.txt"; exit 2; fi; \
 	echo "=== func-mut: $$m ==="; \
 	status=0; \
 	echo "--- functional ($$m) ---"; \
 	$(MAKE) --no-print-directory -f $(MAKEFILE_DIR)/Makefile func-mut= func=$$m || status=1; \
 	echo "--- mutation ($$m) ---"; \
-	( cd $(MAKEFILE_DIR) && MAKEFLAGS= ./scripts/mutate.sh $$m ) || status=1; \
+	( cd $(MAKEFILE_DIR) && MAKEFLAGS= ./scripts/mutation/mutate.sh $$m ) || status=1; \
 	echo ""; \
 	if [ $$status -eq 0 ]; then echo "func-mut $$m: PASS"; \
 	else echo "func-mut $$m: FAIL"; fi; \
@@ -252,7 +252,7 @@ func-mut-all: ## Run functional + mutation for every module with both a tb and a
 		echo "=============================================="; \
 		mstatus=0; \
 		$(MAKE) --no-print-directory -f $(MAKEFILE_DIR)/Makefile func-mut= func=$$m || mstatus=1; \
-		( cd $(MAKEFILE_DIR) && MAKEFLAGS= ./scripts/mutate.sh $$m ) || mstatus=1; \
+		( cd $(MAKEFILE_DIR) && MAKEFLAGS= ./scripts/mutation/mutate.sh $$m ) || mstatus=1; \
 		if [ $$mstatus -eq 0 ]; then passed="$$passed $$m"; \
 		else failed="$$failed $$m"; fi; \
 	done; \
@@ -282,7 +282,7 @@ sim-view: ## View simulation waveforms in GTKWave
 
 render-core-image: ## Render an image from the final layout (after copy-final)
 	mkdir -p img/
-	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/lay2img.py final/gds/${CORE}.gds img/${CORE}.png --width 2048 --oversampling 4
+	PDK_ROOT=${PDK_ROOT} PDK=${PDK} python3 scripts/flow/lay2img.py final/gds/${CORE}.gds img/${CORE}.png --width 2048 --oversampling 4
 .PHONY: copy-final
 
 clean: ## Remove cocotb build artefacts, results and waveforms

@@ -1,78 +1,68 @@
 # Analog Workspace
 
-Full-custom design of the CIM 8T bitcell macro. This folder is **mounted into
-the IIC-OSIC-TOOLS container** — it is not a container image itself. The Nix
-shell at the repo root is the *digital* (LibreLane) environment and does **not**
-ship Xschem or ngspice, so all schematic + SPICE work happens here in the
-container.
+Full-custom design and characterization of the 9T compute-in-memory
+bitcell behind the [`ip/sram_32x8_9T/`](../ip/sram_32x8_9T) macro — the
+*development* side of the SRAM cell, as opposed to `ip/`, which holds only
+the signed-off views the LibreLane flow actually places. ngspice and the
+GF180 PDK only exist inside the IIC-OSIC-TOOLS container, not in the
+repo-root Nix shell (that shell is the *digital* LibreLane environment).
+Launch the container with
+[`scripts/env/run_docker_iic.sh`](../scripts/env/run_docker_iic.sh); it
+bind-mounts the whole repo at `/workspace`, so `/workspace/analog` stays in
+sync with the host with nothing to copy in.
 
 ## Layout
 
 ```
-scripts/start_vnc.sh  # launcher (at repo root): IIC-OSIC-TOOLS + GF180 PDK
-analog/               # this folder — mounted to /foss/designs in the container
-  xschem/       # schematics (.sch) and symbols (.sym): 8T cell, array, WL/BL drivers
-  spice/        # extracted netlists + SPICE testbenches (.spice, .meas)
-  magic/        # layout (.mag) + .magicrc
-  sim/          # ngspice outputs / waveforms (raw data — safe to delete/regenerate)
+cells/                 # bitcell DUT: schematic + extracted SPICE
+  9T_03v3.sch/.spice
+
+testbench/               # reusable testbench subcircuits, .include'd by characterization/9t/ decks
+  9T_tb.spice             # closed-loop wrapper
+  9T_open_tb.spice         # open-loop wrapper
+
+characterization/
+  pvt.spice, pvt_ff_n40C_3v60.spice,   # PVT corner definitions (tt/ff/ss), shared across
+    pvt_ss_125C_3v00.spice,             # every deck below
+    pvt_tt_025C_3v30.spice
+  9t/                                    # runnable ngspice test decks, one file per metric
+    read_run, write_run, read_delay, write_delay, write_margin, hold_snm,
+    hold_power, access_energy, compute_disturb_{hi,lo}, mult_w*a*_test,
+    monte_carlo_{hold,wm}, ...
+    results/                             # ngspice raw output -- gitignored, safe to delete/regenerate
+
+layout/9T/               # 9T physical layout
+  mag/       # Magic layout (.mag) -- tileable cell, tap column, the hardened sram_32x8_9T tile
+  gds/       # streamed-out GDS
+  scripts/   # to_sram.sh/to_std.sh (SRAMDEF marker toggle), check.sh (DRC), add_sramdef.py
 ```
 
-## Start the environment
-
-Run from the repo root:
-
-```bash
-scripts/start_vnc.sh                 # docker (default)
-ENGINE=podman scripts/start_vnc.sh   # podman instead
-```
-
-Then open **http://localhost:80** (password `abc123`) in a browser, or connect a
-VNC client to `vnc://localhost:5901`. Stop with `scripts/start_vnc.sh stop`.
-
-### Display options
-
-Override via environment variables (set at launch; restart to change):
-
-| Var | Default | Effect |
-|-----|---------|--------|
-| `VNC_RESOLUTION` | `1920x1080` | Desktop resolution, `WIDTHxHEIGHT`. |
-| `SCALE` | `1` | Pixel scale: framebuffer = `VNC_RESOLUTION * SCALE`. Smaller = bigger UI. Must be > 0. |
-| `VNC_PW` | `abc123` | VNC password. |
-| `ENGINE` | `docker` | Container engine (`docker` or `podman`). |
-
-```bash
-VNC_RESOLUTION=2560x1440 scripts/start_vnc.sh            # higher resolution
-SCALE=0.5 scripts/start_vnc.sh                           # 2x bigger UI
-VNC_RESOLUTION=2560x1440 SCALE=0.5 scripts/start_vnc.sh  # -> 1280x720
-```
-
-Inside the container this folder is mounted directly at `/foss/designs`.
-
-> **Always use VNC for the GUIs**, not host X11: Xwayland breaks Xschem's Tk
-> right-click menus, and KLayout falls back to slow software rendering under X11.
-> Set the `asusctl` profile to Performance on AC before long SPICE/DRC runs.
+**No sweep automation exists yet for 9T.** This directory used to also
+hold an 8T bitcell variant (an earlier, ultimately-not-chosen topology) and
+all of its sizing/PVT/Monte-Carlo sweep tooling (`sizing_sweep.py`,
+`m1m2_sweep.py`, `pvt_sweep.ipynb`, `mc.ipynb`); that material was removed
+once 9T became the only variant this repo develops, and every one of those
+sweep tools was written specifically against the 8T decks (`sim/8t/`), not
+9T. It's still recoverable from git history if a 9T-targeted version needs
+to be built from it. Until then, characterizing 9T means running the decks
+in `characterization/9t/` directly.
 
 ## Tool flow
 
 | Step | Tool | Output |
 |------|------|--------|
-| Schematic | `xschem` | `xschem/*.sch`, exported netlist → `spice/` |
-| Characterize | `ngspice` | read/write margins, stability (Seevinck), `sim/` |
-| Layout | `magic` | `magic/*.mag` |
-| DRC | `magic` / `klayout` | clean layout |
+| Schematic | `xschem` | `cells/9T_03v3.sch`, `testbench/*.spice` |
+| Characterize | `ngspice` | `characterization/9t/*.spice` decks → `characterization/9t/results/` |
+| Layout | `magic` | `layout/9T/mag/*.mag` |
+| DRC | `magic` / `klayout` (`layout/9T/scripts/check.sh`) | clean layout |
 | Extract + LVS | `magic` (PEX) + `netgen` | schematic-vs-layout match |
 
 ## Handoff to the digital flow
 
-The **hardened views** the LibreLane flow consumes do **not** live here — once the
-macro is laid out and signed off, export its `.gds`, `.lef`, and `.lib` into the
-IP directory:
-
-```
-ip/cim8t_64x64/{gds,lef,lib,vh}/
-```
-
-and declare it in `librelane/macros/*.yaml`. Keep this `analog/` folder for the
-*sources* (schematic/layout/spice); keep `ip/cim8t_64x64/` for the *built views*.
-Pin the macro's port/interface contract so the analog and digital halves agree on
-the boundary.
+The hardened views the LibreLane flow consumes live in
+[`ip/sram_32x8_9T/`](../ip/sram_32x8_9T) (`gds/`, `lef/`, `lib/`, `nl/`,
+`spef/`, `vh/`), declared in `librelane/config.yaml` /
+`librelane/config_core.yaml`'s `MACROS.sram_32x8_9T`. Keep this `analog/`
+folder for the *sources* (schematic/layout/SPICE/characterization); keep
+`ip/sram_32x8_9T/` for the *built views* that actually get placed in the
+core.
