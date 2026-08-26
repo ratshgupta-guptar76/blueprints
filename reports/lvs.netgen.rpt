@@ -1,0 +1,1648 @@
+
+Cell gf180mcu_as_sc_mcu7t3v3__xnor2_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__xnor2_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__xnor2_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__xnor2_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__xnor2_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__xnor2_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__xnor2_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__xnor2_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__xnor2_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+B                                          |B                                          
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__xnor2_2 and gf180mcu_as_sc_mcu7t3v3__xnor2_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__xor2_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__xor2_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__xor2_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__xor2_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__xor2_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__xor2_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__xor2_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__xor2_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__xor2_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+B                                          |B                                          
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__xor2_2 and gf180mcu_as_sc_mcu7t3v3__xor2_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__nand2_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__nand2_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__nand2_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__nand2_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__nand2_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__nand2_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__nand2_2 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__nand2_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__nand2_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+B                                          |B                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__nand2_2 and gf180mcu_as_sc_mcu7t3v3__nand2_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__inv_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__inv_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__inv_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__inv_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__inv_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__inv_2 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_2  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_2  
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__inv_2 and gf180mcu_as_sc_mcu7t3v3__inv_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__tap_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__tap_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__tap_2 (1) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__tap_2 (1) disconnected node: VSS
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__tap_2  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__tap_2  
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VSS                                        |VSS                                        
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__tap_2 and gf180mcu_as_sc_mcu7t3v3__tap_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__maj3_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__maj3_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__maj3_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__maj3_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__maj3_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__maj3_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__maj3_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__maj3_2 (0) disconnected node: C
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__maj3_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__maj3_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__maj3_2 and gf180mcu_as_sc_mcu7t3v3__maj3_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__tieh_4 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__tieh_4 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__tieh_4 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__tieh_4 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__tieh_4 (0) disconnected node: ONE
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__tieh_4 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__tieh_4 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+ONE                                        |ONE                                        
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__tieh_4 and gf180mcu_as_sc_mcu7t3v3__tieh_4 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__and2_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__and2_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__and2_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__and2_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__and2_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__and2_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__and2_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__and2_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__and2_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+B                                          |B                                          
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__and2_2 and gf180mcu_as_sc_mcu7t3v3__and2_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__ao22_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__ao22_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__ao22_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__ao22_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__ao22_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__ao22_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__ao22_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__ao22_2 (0) disconnected node: D
+Cell gf180mcu_as_sc_mcu7t3v3__ao22_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__ao22_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__ao22_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+D                                          |D                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__ao22_2 and gf180mcu_as_sc_mcu7t3v3__ao22_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__ao31_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__ao31_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__ao31_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__ao31_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__ao31_2 (0) disconnected node: D
+Cell gf180mcu_as_sc_mcu7t3v3__ao31_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__ao31_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__ao31_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__ao31_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__ao31_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__ao31_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+D                                          |D                                          
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__ao31_2 and gf180mcu_as_sc_mcu7t3v3__ao31_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__mux2_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__mux2_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__mux2_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__mux2_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__mux2_2 (0) disconnected node: S
+Cell gf180mcu_as_sc_mcu7t3v3__mux2_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__mux2_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__mux2_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__mux2_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__mux2_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+S                                          |S                                          
+B                                          |B                                          
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__mux2_2 and gf180mcu_as_sc_mcu7t3v3__mux2_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__buff_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__buff_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__buff_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__buff_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__buff_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__buff_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__buff_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__buff_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__buff_2 and gf180mcu_as_sc_mcu7t3v3__buff_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (0) disconnected node: CLK
+Cell gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (0) disconnected node: Q
+Cell gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (0) disconnected node: RN
+Cell gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (0) disconnected node: SN
+Cell gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (0) disconnected node: D
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__dfsrtp |Circuit 2: gf180mcu_as_sc_mcu7t3v3__dfsrtp 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+CLK                                        |CLK                                        
+Q                                          |Q                                          
+RN                                         |RN                                         
+SN                                         |SN                                         
+D                                          |D                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 and gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__oai21_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__oai21_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__oai21_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__oai21_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__oai21_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__oai21_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__oai21_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__oai21_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__oai21_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__oai21_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__oai21_2 and gf180mcu_as_sc_mcu7t3v3__oai21_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__clkbuf |Circuit 2: gf180mcu_as_sc_mcu7t3v3__clkbuf 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__clkbuff_4 and gf180mcu_as_sc_mcu7t3v3__clkbuff_4 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__nor3_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__nor3_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__nor3_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__nor3_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__nor3_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__nor3_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__nor3_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__nor3_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__nor3_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__nor3_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__nor3_2 and gf180mcu_as_sc_mcu7t3v3__nor3_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__tiel_4 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__tiel_4 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__tiel_4 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__tiel_4 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__tiel_4 (0) disconnected node: ZERO
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__tiel_4 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__tiel_4 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+ZERO                                       |ZERO                                       
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__tiel_4 and gf180mcu_as_sc_mcu7t3v3__tiel_4 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__or2_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__or2_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__or2_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__or2_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__or2_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__or2_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__or2_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__or2_2  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__or2_2  
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+B                                          |B                                          
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__or2_2 and gf180mcu_as_sc_mcu7t3v3__or2_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__dlybuf |Circuit 2: gf180mcu_as_sc_mcu7t3v3__dlybuf 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__dlybuff_2 and gf180mcu_as_sc_mcu7t3v3__dlybuff_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__ao21_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__ao21_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__ao21_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__ao21_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__ao21_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__ao21_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__ao21_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__ao21_2 (0) disconnected node: C
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__ao21_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__ao21_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__ao21_2 and gf180mcu_as_sc_mcu7t3v3__ao21_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__nor2_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__nor2_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__nor2_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__nor2_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__nor2_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__nor2_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__nor2_2 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__nor2_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__nor2_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+B                                          |B                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__nor2_2 and gf180mcu_as_sc_mcu7t3v3__nor2_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21_2 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__aoi21_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__aoi21_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+C                                          |C                                          
+B                                          |B                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__aoi21_2 and gf180mcu_as_sc_mcu7t3v3__aoi21_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__clkbuf |Circuit 2: gf180mcu_as_sc_mcu7t3v3__clkbuf 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__clkbuff_12 and gf180mcu_as_sc_mcu7t3v3__clkbuff_12 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__aoi21b |Circuit 2: gf180mcu_as_sc_mcu7t3v3__aoi21b 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+C                                          |C                                          
+B                                          |B                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__aoi21b_2 and gf180mcu_as_sc_mcu7t3v3__aoi21b_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__ao21b_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__ao21b_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__ao21b_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__ao21b_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__ao21b_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__ao21b_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__ao21b_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__ao21b_2 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__ao21b_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__ao21b_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+C                                          |C                                          
+B                                          |B                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__ao21b_2 and gf180mcu_as_sc_mcu7t3v3__ao21b_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__nor2b_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__nor2b_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__nor2b_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__nor2b_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__nor2b_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__nor2b_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__nor2b_2 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__nor2b_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__nor2b_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+B                                          |B                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__nor2b_2 and gf180mcu_as_sc_mcu7t3v3__nor2b_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__nand2b_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__nand2b_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__nand2b_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__nand2b_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__nand2b_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__nand2b_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__nand2b_2 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__nand2b |Circuit 2: gf180mcu_as_sc_mcu7t3v3__nand2b 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+B                                          |B                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__nand2b_2 and gf180mcu_as_sc_mcu7t3v3__nand2b_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__aoi211_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__aoi211_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__aoi211_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__aoi211_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__aoi211_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__aoi211_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__aoi211_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__aoi211_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__aoi211_2 (0) disconnected node: D
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__aoi211 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__aoi211 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+Y                                          |Y                                          
+D                                          |D                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__aoi211_2 and gf180mcu_as_sc_mcu7t3v3__aoi211_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: D
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: S0
+Cell gf180mcu_as_sc_mcu7t3v3__mux4_2 (0) disconnected node: S1
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__mux4_2 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__mux4_2 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+C                                          |C                                          
+D                                          |D                                          
+Y                                          |Y                                          
+B                                          |B                                          
+A                                          |A                                          
+S0                                         |S0                                         
+S1                                         |S1                                         
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__mux4_2 and gf180mcu_as_sc_mcu7t3v3__mux4_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__nand4_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__nand4_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__nand4_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__nand4_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__nand4_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__nand4_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__nand4_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__nand4_2 (0) disconnected node: D
+Cell gf180mcu_as_sc_mcu7t3v3__nand4_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__nand4_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__nand4_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+D                                          |D                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__nand4_2 and gf180mcu_as_sc_mcu7t3v3__nand4_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__oai211_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__oai211_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__oai211_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__oai211_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__oai211_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__oai211_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__oai211_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__oai211_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__oai211_2 (0) disconnected node: D
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__oai211 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__oai211 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+Y                                          |Y                                          
+D                                          |D                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__oai211_2 and gf180mcu_as_sc_mcu7t3v3__oai211_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__nand3_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__nand3_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__nand3_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__nand3_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__nand3_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__nand3_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__nand3_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__nand3_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__nand3_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__nand3_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__nand3_2 and gf180mcu_as_sc_mcu7t3v3__nand3_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__ao211_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__ao211_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__ao211_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__ao211_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__ao211_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__ao211_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__ao211_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__ao211_2 (0) disconnected node: D
+Cell gf180mcu_as_sc_mcu7t3v3__ao211_2 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__ao211_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__ao211_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+D                                          |D                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__ao211_2 and gf180mcu_as_sc_mcu7t3v3__ao211_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__clkbuf |Circuit 2: gf180mcu_as_sc_mcu7t3v3__clkbuf 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__clkbuff_8 and gf180mcu_as_sc_mcu7t3v3__clkbuff_8 are equivalent.
+
+Cell sram_32x8_9T (0) disconnected node: RBL[0]
+Cell sram_32x8_9T (0) disconnected node: RBL[1]
+Cell sram_32x8_9T (0) disconnected node: RBL[2]
+Cell sram_32x8_9T (0) disconnected node: RBL[3]
+Cell sram_32x8_9T (0) disconnected node: RBL[4]
+Cell sram_32x8_9T (0) disconnected node: RBL[5]
+Cell sram_32x8_9T (0) disconnected node: RBL[6]
+Cell sram_32x8_9T (0) disconnected node: RBL[7]
+Cell sram_32x8_9T (0) disconnected node: RBL[8]
+Cell sram_32x8_9T (0) disconnected node: RBL[9]
+Cell sram_32x8_9T (0) disconnected node: RBL[10]
+Cell sram_32x8_9T (0) disconnected node: RBL[11]
+Cell sram_32x8_9T (0) disconnected node: RBL[12]
+Cell sram_32x8_9T (0) disconnected node: RBL[13]
+Cell sram_32x8_9T (0) disconnected node: RBL[14]
+Cell sram_32x8_9T (0) disconnected node: RBL[15]
+Cell sram_32x8_9T (0) disconnected node: RBL[16]
+Cell sram_32x8_9T (0) disconnected node: RBL[17]
+Cell sram_32x8_9T (0) disconnected node: RBL[18]
+Cell sram_32x8_9T (0) disconnected node: RBL[19]
+Cell sram_32x8_9T (0) disconnected node: RBL[20]
+Cell sram_32x8_9T (0) disconnected node: RBL[21]
+Cell sram_32x8_9T (0) disconnected node: RBL[22]
+Cell sram_32x8_9T (0) disconnected node: RBL[23]
+Cell sram_32x8_9T (0) disconnected node: RBL[24]
+Cell sram_32x8_9T (0) disconnected node: RBL[25]
+Cell sram_32x8_9T (0) disconnected node: RBL[26]
+Cell sram_32x8_9T (0) disconnected node: RBL[27]
+Cell sram_32x8_9T (0) disconnected node: RBL[28]
+Cell sram_32x8_9T (0) disconnected node: RBL[29]
+Cell sram_32x8_9T (0) disconnected node: RBL[30]
+Cell sram_32x8_9T (0) disconnected node: RBL[31]
+Cell sram_32x8_9T (0) disconnected node: RBL[32]
+Cell sram_32x8_9T (0) disconnected node: RBL[33]
+Cell sram_32x8_9T (0) disconnected node: RBL[34]
+Cell sram_32x8_9T (0) disconnected node: RBL[35]
+Cell sram_32x8_9T (0) disconnected node: RBL[36]
+Cell sram_32x8_9T (0) disconnected node: RBL[37]
+Cell sram_32x8_9T (0) disconnected node: RBL[38]
+Cell sram_32x8_9T (0) disconnected node: RBL[39]
+Cell sram_32x8_9T (0) disconnected node: RBL[40]
+Cell sram_32x8_9T (0) disconnected node: RBL[41]
+Cell sram_32x8_9T (0) disconnected node: RBL[42]
+Cell sram_32x8_9T (0) disconnected node: RBL[43]
+Cell sram_32x8_9T (0) disconnected node: RBL[44]
+Cell sram_32x8_9T (0) disconnected node: RBL[45]
+Cell sram_32x8_9T (0) disconnected node: RBL[46]
+Cell sram_32x8_9T (0) disconnected node: RBL[47]
+Cell sram_32x8_9T (0) disconnected node: RBL[48]
+Cell sram_32x8_9T (0) disconnected node: RBL[49]
+Cell sram_32x8_9T (0) disconnected node: RBL[50]
+Cell sram_32x8_9T (0) disconnected node: RBL[51]
+Cell sram_32x8_9T (0) disconnected node: RBL[52]
+Cell sram_32x8_9T (0) disconnected node: RBL[53]
+Cell sram_32x8_9T (0) disconnected node: RBL[54]
+Cell sram_32x8_9T (0) disconnected node: RBL[55]
+Cell sram_32x8_9T (0) disconnected node: RBL[56]
+Cell sram_32x8_9T (0) disconnected node: RBL[57]
+Cell sram_32x8_9T (0) disconnected node: RBL[58]
+Cell sram_32x8_9T (0) disconnected node: RBL[59]
+Cell sram_32x8_9T (0) disconnected node: RBL[60]
+Cell sram_32x8_9T (0) disconnected node: RBL[61]
+Cell sram_32x8_9T (0) disconnected node: RBL[62]
+Cell sram_32x8_9T (0) disconnected node: RBL[63]
+Cell sram_32x8_9T (0) disconnected node: RBL[64]
+Cell sram_32x8_9T (0) disconnected node: RBL[65]
+Cell sram_32x8_9T (0) disconnected node: RBL[66]
+Cell sram_32x8_9T (0) disconnected node: RBL[67]
+Cell sram_32x8_9T (0) disconnected node: RBL[68]
+Cell sram_32x8_9T (0) disconnected node: RBL[69]
+Cell sram_32x8_9T (0) disconnected node: RBL[70]
+Cell sram_32x8_9T (0) disconnected node: RBL[71]
+Cell sram_32x8_9T (0) disconnected node: RBL[72]
+Cell sram_32x8_9T (0) disconnected node: RBL[73]
+Cell sram_32x8_9T (0) disconnected node: RBL[74]
+Cell sram_32x8_9T (0) disconnected node: RBL[75]
+Cell sram_32x8_9T (0) disconnected node: RBL[76]
+Cell sram_32x8_9T (0) disconnected node: RBL[77]
+Cell sram_32x8_9T (0) disconnected node: RBL[78]
+Cell sram_32x8_9T (0) disconnected node: RBL[79]
+Cell sram_32x8_9T (0) disconnected node: RBL[80]
+Cell sram_32x8_9T (0) disconnected node: RBL[81]
+Cell sram_32x8_9T (0) disconnected node: RBL[82]
+Cell sram_32x8_9T (0) disconnected node: RBL[83]
+Cell sram_32x8_9T (0) disconnected node: RBL[84]
+Cell sram_32x8_9T (0) disconnected node: RBL[85]
+Cell sram_32x8_9T (0) disconnected node: RBL[86]
+Cell sram_32x8_9T (0) disconnected node: RBL[87]
+Cell sram_32x8_9T (0) disconnected node: RBL[88]
+Cell sram_32x8_9T (0) disconnected node: RBL[89]
+Cell sram_32x8_9T (0) disconnected node: RBL[90]
+Cell sram_32x8_9T (0) disconnected node: RBL[91]
+Cell sram_32x8_9T (0) disconnected node: RBL[92]
+Cell sram_32x8_9T (0) disconnected node: RBL[93]
+Cell sram_32x8_9T (0) disconnected node: RBL[94]
+Cell sram_32x8_9T (0) disconnected node: RBL[95]
+Cell sram_32x8_9T (0) disconnected node: RBL[96]
+Cell sram_32x8_9T (0) disconnected node: RBL[97]
+Cell sram_32x8_9T (0) disconnected node: RBL[98]
+Cell sram_32x8_9T (0) disconnected node: RBL[99]
+Cell sram_32x8_9T (0) disconnected node: RBL[100]
+Cell sram_32x8_9T (0) disconnected node: RBL[101]
+Cell sram_32x8_9T (0) disconnected node: RBL[102]
+Cell sram_32x8_9T (0) disconnected node: RBL[103]
+Cell sram_32x8_9T (0) disconnected node: RBL[104]
+Cell sram_32x8_9T (0) disconnected node: RBL[105]
+Cell sram_32x8_9T (0) disconnected node: RBL[106]
+Cell sram_32x8_9T (0) disconnected node: RBL[107]
+Cell sram_32x8_9T (0) disconnected node: RBL[108]
+Cell sram_32x8_9T (0) disconnected node: RBL[109]
+Cell sram_32x8_9T (0) disconnected node: RBL[110]
+Cell sram_32x8_9T (0) disconnected node: RBL[111]
+Cell sram_32x8_9T (0) disconnected node: RBL[112]
+Cell sram_32x8_9T (0) disconnected node: RBL[113]
+Cell sram_32x8_9T (0) disconnected node: RBL[114]
+Cell sram_32x8_9T (0) disconnected node: RBL[115]
+Cell sram_32x8_9T (0) disconnected node: RBL[116]
+Cell sram_32x8_9T (0) disconnected node: RBL[117]
+Cell sram_32x8_9T (0) disconnected node: RBL[118]
+Cell sram_32x8_9T (0) disconnected node: RBL[119]
+Cell sram_32x8_9T (0) disconnected node: RBL[120]
+Cell sram_32x8_9T (0) disconnected node: RBL[121]
+Cell sram_32x8_9T (0) disconnected node: RBL[122]
+Cell sram_32x8_9T (0) disconnected node: RBL[123]
+Cell sram_32x8_9T (0) disconnected node: RBL[124]
+Cell sram_32x8_9T (0) disconnected node: RBL[125]
+Cell sram_32x8_9T (0) disconnected node: RBL[126]
+Cell sram_32x8_9T (0) disconnected node: RBL[127]
+Cell sram_32x8_9T (0) disconnected node: RBL[128]
+Cell sram_32x8_9T (0) disconnected node: RBL[129]
+Cell sram_32x8_9T (0) disconnected node: RBL[130]
+Cell sram_32x8_9T (0) disconnected node: RBL[131]
+Cell sram_32x8_9T (0) disconnected node: RBL[132]
+Cell sram_32x8_9T (0) disconnected node: RBL[133]
+Cell sram_32x8_9T (0) disconnected node: RBL[134]
+Cell sram_32x8_9T (0) disconnected node: RBL[135]
+Cell sram_32x8_9T (0) disconnected node: RBL[136]
+Cell sram_32x8_9T (0) disconnected node: RBL[137]
+Cell sram_32x8_9T (0) disconnected node: RBL[138]
+Cell sram_32x8_9T (0) disconnected node: RBL[139]
+Cell sram_32x8_9T (0) disconnected node: RBL[140]
+Cell sram_32x8_9T (0) disconnected node: RBL[141]
+Cell sram_32x8_9T (0) disconnected node: RBL[142]
+Cell sram_32x8_9T (0) disconnected node: RBL[143]
+Cell sram_32x8_9T (0) disconnected node: RBL[144]
+Cell sram_32x8_9T (0) disconnected node: RBL[145]
+Cell sram_32x8_9T (0) disconnected node: RBL[146]
+Cell sram_32x8_9T (0) disconnected node: RBL[147]
+Cell sram_32x8_9T (0) disconnected node: RBL[148]
+Cell sram_32x8_9T (0) disconnected node: RBL[149]
+Cell sram_32x8_9T (0) disconnected node: RBL[150]
+Cell sram_32x8_9T (0) disconnected node: RBL[151]
+Cell sram_32x8_9T (0) disconnected node: RBL[152]
+Cell sram_32x8_9T (0) disconnected node: RBL[153]
+Cell sram_32x8_9T (0) disconnected node: RBL[154]
+Cell sram_32x8_9T (0) disconnected node: RBL[155]
+Cell sram_32x8_9T (0) disconnected node: RBL[156]
+Cell sram_32x8_9T (0) disconnected node: RBL[157]
+Cell sram_32x8_9T (0) disconnected node: RBL[158]
+Cell sram_32x8_9T (0) disconnected node: RBL[159]
+Cell sram_32x8_9T (0) disconnected node: RBL[160]
+Cell sram_32x8_9T (0) disconnected node: RBL[161]
+Cell sram_32x8_9T (0) disconnected node: RBL[162]
+Cell sram_32x8_9T (0) disconnected node: RBL[163]
+Cell sram_32x8_9T (0) disconnected node: RBL[164]
+Cell sram_32x8_9T (0) disconnected node: RBL[165]
+Cell sram_32x8_9T (0) disconnected node: RBL[166]
+Cell sram_32x8_9T (0) disconnected node: RBL[167]
+Cell sram_32x8_9T (0) disconnected node: RBL[168]
+Cell sram_32x8_9T (0) disconnected node: RBL[169]
+Cell sram_32x8_9T (0) disconnected node: RBL[170]
+Cell sram_32x8_9T (0) disconnected node: RBL[171]
+Cell sram_32x8_9T (0) disconnected node: RBL[172]
+Cell sram_32x8_9T (0) disconnected node: RBL[173]
+Cell sram_32x8_9T (0) disconnected node: RBL[174]
+Cell sram_32x8_9T (0) disconnected node: RBL[175]
+Cell sram_32x8_9T (0) disconnected node: RBL[176]
+Cell sram_32x8_9T (0) disconnected node: RBL[177]
+Cell sram_32x8_9T (0) disconnected node: RBL[178]
+Cell sram_32x8_9T (0) disconnected node: RBL[179]
+Cell sram_32x8_9T (0) disconnected node: RBL[180]
+Cell sram_32x8_9T (0) disconnected node: RBL[181]
+Cell sram_32x8_9T (0) disconnected node: RBL[182]
+Cell sram_32x8_9T (0) disconnected node: RBL[183]
+Cell sram_32x8_9T (0) disconnected node: RBL[184]
+Cell sram_32x8_9T (0) disconnected node: RBL[185]
+Cell sram_32x8_9T (0) disconnected node: RBL[186]
+Cell sram_32x8_9T (0) disconnected node: RBL[187]
+Cell sram_32x8_9T (0) disconnected node: RBL[188]
+Cell sram_32x8_9T (0) disconnected node: RBL[189]
+Cell sram_32x8_9T (0) disconnected node: RBL[190]
+Cell sram_32x8_9T (0) disconnected node: RBL[191]
+Cell sram_32x8_9T (0) disconnected node: RBL[192]
+Cell sram_32x8_9T (0) disconnected node: RBL[193]
+Cell sram_32x8_9T (0) disconnected node: RBL[194]
+Cell sram_32x8_9T (0) disconnected node: RBL[195]
+Cell sram_32x8_9T (0) disconnected node: RBL[196]
+Cell sram_32x8_9T (0) disconnected node: RBL[197]
+Cell sram_32x8_9T (0) disconnected node: RBL[198]
+Cell sram_32x8_9T (0) disconnected node: RBL[199]
+Cell sram_32x8_9T (0) disconnected node: RBL[200]
+Cell sram_32x8_9T (0) disconnected node: RBL[201]
+Cell sram_32x8_9T (0) disconnected node: RBL[202]
+Cell sram_32x8_9T (0) disconnected node: RBL[203]
+Cell sram_32x8_9T (0) disconnected node: RBL[204]
+Cell sram_32x8_9T (0) disconnected node: RBL[205]
+Cell sram_32x8_9T (0) disconnected node: RBL[206]
+Cell sram_32x8_9T (0) disconnected node: RBL[207]
+Cell sram_32x8_9T (0) disconnected node: RBL[208]
+Cell sram_32x8_9T (0) disconnected node: RBL[209]
+Cell sram_32x8_9T (0) disconnected node: RBL[210]
+Cell sram_32x8_9T (0) disconnected node: RBL[211]
+Cell sram_32x8_9T (0) disconnected node: RBL[212]
+Cell sram_32x8_9T (0) disconnected node: RBL[213]
+Cell sram_32x8_9T (0) disconnected node: RBL[214]
+Cell sram_32x8_9T (0) disconnected node: RBL[215]
+Cell sram_32x8_9T (0) disconnected node: RBL[216]
+Cell sram_32x8_9T (0) disconnected node: RBL[217]
+Cell sram_32x8_9T (0) disconnected node: RBL[218]
+Cell sram_32x8_9T (0) disconnected node: RBL[219]
+Cell sram_32x8_9T (0) disconnected node: RBL[220]
+Cell sram_32x8_9T (0) disconnected node: RBL[221]
+Cell sram_32x8_9T (0) disconnected node: RBL[222]
+Cell sram_32x8_9T (0) disconnected node: RBL[223]
+Cell sram_32x8_9T (0) disconnected node: RBL[224]
+Cell sram_32x8_9T (0) disconnected node: RBL[225]
+Cell sram_32x8_9T (0) disconnected node: RBL[226]
+Cell sram_32x8_9T (0) disconnected node: RBL[227]
+Cell sram_32x8_9T (0) disconnected node: RBL[228]
+Cell sram_32x8_9T (0) disconnected node: RBL[229]
+Cell sram_32x8_9T (0) disconnected node: RBL[230]
+Cell sram_32x8_9T (0) disconnected node: RBL[231]
+Cell sram_32x8_9T (0) disconnected node: RBL[232]
+Cell sram_32x8_9T (0) disconnected node: RBL[233]
+Cell sram_32x8_9T (0) disconnected node: RBL[234]
+Cell sram_32x8_9T (0) disconnected node: RBL[235]
+Cell sram_32x8_9T (0) disconnected node: RBL[236]
+Cell sram_32x8_9T (0) disconnected node: RBL[237]
+Cell sram_32x8_9T (0) disconnected node: RBL[238]
+Cell sram_32x8_9T (0) disconnected node: RBL[239]
+Cell sram_32x8_9T (0) disconnected node: RBL[240]
+Cell sram_32x8_9T (0) disconnected node: RBL[241]
+Cell sram_32x8_9T (0) disconnected node: RBL[242]
+Cell sram_32x8_9T (0) disconnected node: RBL[243]
+Cell sram_32x8_9T (0) disconnected node: RBL[244]
+Cell sram_32x8_9T (0) disconnected node: RBL[245]
+Cell sram_32x8_9T (0) disconnected node: RBL[246]
+Cell sram_32x8_9T (0) disconnected node: RBL[247]
+Cell sram_32x8_9T (0) disconnected node: RBL[248]
+Cell sram_32x8_9T (0) disconnected node: RBL[249]
+Cell sram_32x8_9T (0) disconnected node: RBL[250]
+Cell sram_32x8_9T (0) disconnected node: RBL[251]
+Cell sram_32x8_9T (0) disconnected node: RBL[252]
+Cell sram_32x8_9T (0) disconnected node: RBL[253]
+Cell sram_32x8_9T (0) disconnected node: RBL[254]
+Cell sram_32x8_9T (0) disconnected node: RBL[255]
+Cell sram_32x8_9T (0) disconnected node: WBL[0]
+Cell sram_32x8_9T (0) disconnected node: WBL[1]
+Cell sram_32x8_9T (0) disconnected node: WBL[2]
+Cell sram_32x8_9T (0) disconnected node: WBL[3]
+Cell sram_32x8_9T (0) disconnected node: WBL[4]
+Cell sram_32x8_9T (0) disconnected node: WBL[5]
+Cell sram_32x8_9T (0) disconnected node: WBL[6]
+Cell sram_32x8_9T (0) disconnected node: WBL[7]
+Cell sram_32x8_9T (0) disconnected node: WBLB[0]
+Cell sram_32x8_9T (0) disconnected node: WBLB[1]
+Cell sram_32x8_9T (0) disconnected node: WBLB[2]
+Cell sram_32x8_9T (0) disconnected node: WBLB[3]
+Cell sram_32x8_9T (0) disconnected node: WBLB[4]
+Cell sram_32x8_9T (0) disconnected node: WBLB[5]
+Cell sram_32x8_9T (0) disconnected node: WBLB[6]
+Cell sram_32x8_9T (0) disconnected node: WBLB[7]
+Cell sram_32x8_9T (0) disconnected node: WL[0]
+Cell sram_32x8_9T (0) disconnected node: WL[1]
+Cell sram_32x8_9T (0) disconnected node: WL[2]
+Cell sram_32x8_9T (0) disconnected node: WL[3]
+Cell sram_32x8_9T (0) disconnected node: WL[4]
+Cell sram_32x8_9T (0) disconnected node: WL[5]
+Cell sram_32x8_9T (0) disconnected node: WL[6]
+Cell sram_32x8_9T (0) disconnected node: WL[7]
+Cell sram_32x8_9T (0) disconnected node: WL[8]
+Cell sram_32x8_9T (0) disconnected node: WL[9]
+Cell sram_32x8_9T (0) disconnected node: WL[10]
+Cell sram_32x8_9T (0) disconnected node: WL[11]
+Cell sram_32x8_9T (0) disconnected node: WL[12]
+Cell sram_32x8_9T (0) disconnected node: WL[13]
+Cell sram_32x8_9T (0) disconnected node: WL[14]
+Cell sram_32x8_9T (0) disconnected node: WL[15]
+Cell sram_32x8_9T (0) disconnected node: WL[16]
+Cell sram_32x8_9T (0) disconnected node: WL[17]
+Cell sram_32x8_9T (0) disconnected node: WL[18]
+Cell sram_32x8_9T (0) disconnected node: WL[19]
+Cell sram_32x8_9T (0) disconnected node: WL[20]
+Cell sram_32x8_9T (0) disconnected node: WL[21]
+Cell sram_32x8_9T (0) disconnected node: WL[22]
+Cell sram_32x8_9T (0) disconnected node: WL[23]
+Cell sram_32x8_9T (0) disconnected node: WL[24]
+Cell sram_32x8_9T (0) disconnected node: WL[25]
+Cell sram_32x8_9T (0) disconnected node: WL[26]
+Cell sram_32x8_9T (0) disconnected node: WL[27]
+Cell sram_32x8_9T (0) disconnected node: WL[28]
+Cell sram_32x8_9T (0) disconnected node: WL[29]
+Cell sram_32x8_9T (0) disconnected node: WL[30]
+Cell sram_32x8_9T (0) disconnected node: WL[31]
+Cell sram_32x8_9T (0) disconnected node: A[0]
+Cell sram_32x8_9T (0) disconnected node: A[1]
+Cell sram_32x8_9T (0) disconnected node: A[2]
+Cell sram_32x8_9T (0) disconnected node: A[3]
+Cell sram_32x8_9T (0) disconnected node: A[4]
+Cell sram_32x8_9T (0) disconnected node: A[5]
+Cell sram_32x8_9T (0) disconnected node: A[6]
+Cell sram_32x8_9T (0) disconnected node: A[7]
+Cell sram_32x8_9T (0) disconnected node: A[8]
+Cell sram_32x8_9T (0) disconnected node: A[9]
+Cell sram_32x8_9T (0) disconnected node: A[10]
+Cell sram_32x8_9T (0) disconnected node: A[11]
+Cell sram_32x8_9T (0) disconnected node: A[12]
+Cell sram_32x8_9T (0) disconnected node: A[13]
+Cell sram_32x8_9T (0) disconnected node: A[14]
+Cell sram_32x8_9T (0) disconnected node: A[15]
+Cell sram_32x8_9T (0) disconnected node: A[16]
+Cell sram_32x8_9T (0) disconnected node: A[17]
+Cell sram_32x8_9T (0) disconnected node: A[18]
+Cell sram_32x8_9T (0) disconnected node: A[19]
+Cell sram_32x8_9T (0) disconnected node: A[20]
+Cell sram_32x8_9T (0) disconnected node: A[21]
+Cell sram_32x8_9T (0) disconnected node: A[22]
+Cell sram_32x8_9T (0) disconnected node: A[23]
+Cell sram_32x8_9T (0) disconnected node: A[24]
+Cell sram_32x8_9T (0) disconnected node: A[25]
+Cell sram_32x8_9T (0) disconnected node: A[26]
+Cell sram_32x8_9T (0) disconnected node: A[27]
+Cell sram_32x8_9T (0) disconnected node: A[28]
+Cell sram_32x8_9T (0) disconnected node: A[29]
+Cell sram_32x8_9T (0) disconnected node: A[30]
+Cell sram_32x8_9T (0) disconnected node: A[31]
+Cell sram_32x8_9T (0) disconnected node: VSS
+Cell sram_32x8_9T (0) disconnected node: VDD
+
+Subcircuit pins:
+Circuit 1: sram_32x8_9T                    |Circuit 2: sram_32x8_9T                    
+-------------------------------------------|-------------------------------------------
+RBL[0]                                     |RBL[0]                                     
+RBL[1]                                     |RBL[1]                                     
+RBL[2]                                     |RBL[2]                                     
+RBL[3]                                     |RBL[3]                                     
+RBL[4]                                     |RBL[4]                                     
+RBL[5]                                     |RBL[5]                                     
+RBL[6]                                     |RBL[6]                                     
+RBL[7]                                     |RBL[7]                                     
+RBL[8]                                     |RBL[8]                                     
+RBL[9]                                     |RBL[9]                                     
+RBL[10]                                    |RBL[10]                                    
+RBL[11]                                    |RBL[11]                                    
+RBL[12]                                    |RBL[12]                                    
+RBL[13]                                    |RBL[13]                                    
+RBL[14]                                    |RBL[14]                                    
+RBL[15]                                    |RBL[15]                                    
+RBL[16]                                    |RBL[16]                                    
+RBL[17]                                    |RBL[17]                                    
+RBL[18]                                    |RBL[18]                                    
+RBL[19]                                    |RBL[19]                                    
+RBL[20]                                    |RBL[20]                                    
+RBL[21]                                    |RBL[21]                                    
+RBL[22]                                    |RBL[22]                                    
+RBL[23]                                    |RBL[23]                                    
+RBL[24]                                    |RBL[24]                                    
+RBL[25]                                    |RBL[25]                                    
+RBL[26]                                    |RBL[26]                                    
+RBL[27]                                    |RBL[27]                                    
+RBL[28]                                    |RBL[28]                                    
+RBL[29]                                    |RBL[29]                                    
+RBL[30]                                    |RBL[30]                                    
+RBL[31]                                    |RBL[31]                                    
+RBL[32]                                    |RBL[32]                                    
+RBL[33]                                    |RBL[33]                                    
+RBL[34]                                    |RBL[34]                                    
+RBL[35]                                    |RBL[35]                                    
+RBL[36]                                    |RBL[36]                                    
+RBL[37]                                    |RBL[37]                                    
+RBL[38]                                    |RBL[38]                                    
+RBL[39]                                    |RBL[39]                                    
+RBL[40]                                    |RBL[40]                                    
+RBL[41]                                    |RBL[41]                                    
+RBL[42]                                    |RBL[42]                                    
+RBL[43]                                    |RBL[43]                                    
+RBL[44]                                    |RBL[44]                                    
+RBL[45]                                    |RBL[45]                                    
+RBL[46]                                    |RBL[46]                                    
+RBL[47]                                    |RBL[47]                                    
+RBL[48]                                    |RBL[48]                                    
+RBL[49]                                    |RBL[49]                                    
+RBL[50]                                    |RBL[50]                                    
+RBL[51]                                    |RBL[51]                                    
+RBL[52]                                    |RBL[52]                                    
+RBL[53]                                    |RBL[53]                                    
+RBL[54]                                    |RBL[54]                                    
+RBL[55]                                    |RBL[55]                                    
+RBL[56]                                    |RBL[56]                                    
+RBL[57]                                    |RBL[57]                                    
+RBL[58]                                    |RBL[58]                                    
+RBL[59]                                    |RBL[59]                                    
+RBL[60]                                    |RBL[60]                                    
+RBL[61]                                    |RBL[61]                                    
+RBL[62]                                    |RBL[62]                                    
+RBL[63]                                    |RBL[63]                                    
+RBL[64]                                    |RBL[64]                                    
+RBL[65]                                    |RBL[65]                                    
+RBL[66]                                    |RBL[66]                                    
+RBL[67]                                    |RBL[67]                                    
+RBL[68]                                    |RBL[68]                                    
+RBL[69]                                    |RBL[69]                                    
+RBL[70]                                    |RBL[70]                                    
+RBL[71]                                    |RBL[71]                                    
+RBL[72]                                    |RBL[72]                                    
+RBL[73]                                    |RBL[73]                                    
+RBL[74]                                    |RBL[74]                                    
+RBL[75]                                    |RBL[75]                                    
+RBL[76]                                    |RBL[76]                                    
+RBL[77]                                    |RBL[77]                                    
+RBL[78]                                    |RBL[78]                                    
+RBL[79]                                    |RBL[79]                                    
+RBL[80]                                    |RBL[80]                                    
+RBL[81]                                    |RBL[81]                                    
+RBL[82]                                    |RBL[82]                                    
+RBL[83]                                    |RBL[83]                                    
+RBL[84]                                    |RBL[84]                                    
+RBL[85]                                    |RBL[85]                                    
+RBL[86]                                    |RBL[86]                                    
+RBL[87]                                    |RBL[87]                                    
+RBL[88]                                    |RBL[88]                                    
+RBL[89]                                    |RBL[89]                                    
+RBL[90]                                    |RBL[90]                                    
+RBL[91]                                    |RBL[91]                                    
+RBL[92]                                    |RBL[92]                                    
+RBL[93]                                    |RBL[93]                                    
+RBL[94]                                    |RBL[94]                                    
+RBL[95]                                    |RBL[95]                                    
+RBL[96]                                    |RBL[96]                                    
+RBL[97]                                    |RBL[97]                                    
+RBL[98]                                    |RBL[98]                                    
+RBL[99]                                    |RBL[99]                                    
+RBL[100]                                   |RBL[100]                                   
+RBL[101]                                   |RBL[101]                                   
+RBL[102]                                   |RBL[102]                                   
+RBL[103]                                   |RBL[103]                                   
+RBL[104]                                   |RBL[104]                                   
+RBL[105]                                   |RBL[105]                                   
+RBL[106]                                   |RBL[106]                                   
+RBL[107]                                   |RBL[107]                                   
+RBL[108]                                   |RBL[108]                                   
+RBL[109]                                   |RBL[109]                                   
+RBL[110]                                   |RBL[110]                                   
+RBL[111]                                   |RBL[111]                                   
+RBL[112]                                   |RBL[112]                                   
+RBL[113]                                   |RBL[113]                                   
+RBL[114]                                   |RBL[114]                                   
+RBL[115]                                   |RBL[115]                                   
+RBL[116]                                   |RBL[116]                                   
+RBL[117]                                   |RBL[117]                                   
+RBL[118]                                   |RBL[118]                                   
+RBL[119]                                   |RBL[119]                                   
+RBL[120]                                   |RBL[120]                                   
+RBL[121]                                   |RBL[121]                                   
+RBL[122]                                   |RBL[122]                                   
+RBL[123]                                   |RBL[123]                                   
+RBL[124]                                   |RBL[124]                                   
+RBL[125]                                   |RBL[125]                                   
+RBL[126]                                   |RBL[126]                                   
+RBL[127]                                   |RBL[127]                                   
+RBL[128]                                   |RBL[128]                                   
+RBL[129]                                   |RBL[129]                                   
+RBL[130]                                   |RBL[130]                                   
+RBL[131]                                   |RBL[131]                                   
+RBL[132]                                   |RBL[132]                                   
+RBL[133]                                   |RBL[133]                                   
+RBL[134]                                   |RBL[134]                                   
+RBL[135]                                   |RBL[135]                                   
+RBL[136]                                   |RBL[136]                                   
+RBL[137]                                   |RBL[137]                                   
+RBL[138]                                   |RBL[138]                                   
+RBL[139]                                   |RBL[139]                                   
+RBL[140]                                   |RBL[140]                                   
+RBL[141]                                   |RBL[141]                                   
+RBL[142]                                   |RBL[142]                                   
+RBL[143]                                   |RBL[143]                                   
+RBL[144]                                   |RBL[144]                                   
+RBL[145]                                   |RBL[145]                                   
+RBL[146]                                   |RBL[146]                                   
+RBL[147]                                   |RBL[147]                                   
+RBL[148]                                   |RBL[148]                                   
+RBL[149]                                   |RBL[149]                                   
+RBL[150]                                   |RBL[150]                                   
+RBL[151]                                   |RBL[151]                                   
+RBL[152]                                   |RBL[152]                                   
+RBL[153]                                   |RBL[153]                                   
+RBL[154]                                   |RBL[154]                                   
+RBL[155]                                   |RBL[155]                                   
+RBL[156]                                   |RBL[156]                                   
+RBL[157]                                   |RBL[157]                                   
+RBL[158]                                   |RBL[158]                                   
+RBL[159]                                   |RBL[159]                                   
+RBL[160]                                   |RBL[160]                                   
+RBL[161]                                   |RBL[161]                                   
+RBL[162]                                   |RBL[162]                                   
+RBL[163]                                   |RBL[163]                                   
+RBL[164]                                   |RBL[164]                                   
+RBL[165]                                   |RBL[165]                                   
+RBL[166]                                   |RBL[166]                                   
+RBL[167]                                   |RBL[167]                                   
+RBL[168]                                   |RBL[168]                                   
+RBL[169]                                   |RBL[169]                                   
+RBL[170]                                   |RBL[170]                                   
+RBL[171]                                   |RBL[171]                                   
+RBL[172]                                   |RBL[172]                                   
+RBL[173]                                   |RBL[173]                                   
+RBL[174]                                   |RBL[174]                                   
+RBL[175]                                   |RBL[175]                                   
+RBL[176]                                   |RBL[176]                                   
+RBL[177]                                   |RBL[177]                                   
+RBL[178]                                   |RBL[178]                                   
+RBL[179]                                   |RBL[179]                                   
+RBL[180]                                   |RBL[180]                                   
+RBL[181]                                   |RBL[181]                                   
+RBL[182]                                   |RBL[182]                                   
+RBL[183]                                   |RBL[183]                                   
+RBL[184]                                   |RBL[184]                                   
+RBL[185]                                   |RBL[185]                                   
+RBL[186]                                   |RBL[186]                                   
+RBL[187]                                   |RBL[187]                                   
+RBL[188]                                   |RBL[188]                                   
+RBL[189]                                   |RBL[189]                                   
+RBL[190]                                   |RBL[190]                                   
+RBL[191]                                   |RBL[191]                                   
+RBL[192]                                   |RBL[192]                                   
+RBL[193]                                   |RBL[193]                                   
+RBL[194]                                   |RBL[194]                                   
+RBL[195]                                   |RBL[195]                                   
+RBL[196]                                   |RBL[196]                                   
+RBL[197]                                   |RBL[197]                                   
+RBL[198]                                   |RBL[198]                                   
+RBL[199]                                   |RBL[199]                                   
+RBL[200]                                   |RBL[200]                                   
+RBL[201]                                   |RBL[201]                                   
+RBL[202]                                   |RBL[202]                                   
+RBL[203]                                   |RBL[203]                                   
+RBL[204]                                   |RBL[204]                                   
+RBL[205]                                   |RBL[205]                                   
+RBL[206]                                   |RBL[206]                                   
+RBL[207]                                   |RBL[207]                                   
+RBL[208]                                   |RBL[208]                                   
+RBL[209]                                   |RBL[209]                                   
+RBL[210]                                   |RBL[210]                                   
+RBL[211]                                   |RBL[211]                                   
+RBL[212]                                   |RBL[212]                                   
+RBL[213]                                   |RBL[213]                                   
+RBL[214]                                   |RBL[214]                                   
+RBL[215]                                   |RBL[215]                                   
+RBL[216]                                   |RBL[216]                                   
+RBL[217]                                   |RBL[217]                                   
+RBL[218]                                   |RBL[218]                                   
+RBL[219]                                   |RBL[219]                                   
+RBL[220]                                   |RBL[220]                                   
+RBL[221]                                   |RBL[221]                                   
+RBL[222]                                   |RBL[222]                                   
+RBL[223]                                   |RBL[223]                                   
+RBL[224]                                   |RBL[224]                                   
+RBL[225]                                   |RBL[225]                                   
+RBL[226]                                   |RBL[226]                                   
+RBL[227]                                   |RBL[227]                                   
+RBL[228]                                   |RBL[228]                                   
+RBL[229]                                   |RBL[229]                                   
+RBL[230]                                   |RBL[230]                                   
+RBL[231]                                   |RBL[231]                                   
+RBL[232]                                   |RBL[232]                                   
+RBL[233]                                   |RBL[233]                                   
+RBL[234]                                   |RBL[234]                                   
+RBL[235]                                   |RBL[235]                                   
+RBL[236]                                   |RBL[236]                                   
+RBL[237]                                   |RBL[237]                                   
+RBL[238]                                   |RBL[238]                                   
+RBL[239]                                   |RBL[239]                                   
+RBL[240]                                   |RBL[240]                                   
+RBL[241]                                   |RBL[241]                                   
+RBL[242]                                   |RBL[242]                                   
+RBL[243]                                   |RBL[243]                                   
+RBL[244]                                   |RBL[244]                                   
+RBL[245]                                   |RBL[245]                                   
+RBL[246]                                   |RBL[246]                                   
+RBL[247]                                   |RBL[247]                                   
+RBL[248]                                   |RBL[248]                                   
+RBL[249]                                   |RBL[249]                                   
+RBL[250]                                   |RBL[250]                                   
+RBL[251]                                   |RBL[251]                                   
+RBL[252]                                   |RBL[252]                                   
+RBL[253]                                   |RBL[253]                                   
+RBL[254]                                   |RBL[254]                                   
+RBL[255]                                   |RBL[255]                                   
+WBL[0]                                     |WBL[0]                                     
+WBL[1]                                     |WBL[1]                                     
+WBL[2]                                     |WBL[2]                                     
+WBL[3]                                     |WBL[3]                                     
+WBL[4]                                     |WBL[4]                                     
+WBL[5]                                     |WBL[5]                                     
+WBL[6]                                     |WBL[6]                                     
+WBL[7]                                     |WBL[7]                                     
+WBLB[0]                                    |WBLB[0]                                    
+WBLB[1]                                    |WBLB[1]                                    
+WBLB[2]                                    |WBLB[2]                                    
+WBLB[3]                                    |WBLB[3]                                    
+WBLB[4]                                    |WBLB[4]                                    
+WBLB[5]                                    |WBLB[5]                                    
+WBLB[6]                                    |WBLB[6]                                    
+WBLB[7]                                    |WBLB[7]                                    
+WL[0]                                      |WL[0]                                      
+WL[1]                                      |WL[1]                                      
+WL[2]                                      |WL[2]                                      
+WL[3]                                      |WL[3]                                      
+WL[4]                                      |WL[4]                                      
+WL[5]                                      |WL[5]                                      
+WL[6]                                      |WL[6]                                      
+WL[7]                                      |WL[7]                                      
+WL[8]                                      |WL[8]                                      
+WL[9]                                      |WL[9]                                      
+WL[10]                                     |WL[10]                                     
+WL[11]                                     |WL[11]                                     
+WL[12]                                     |WL[12]                                     
+WL[13]                                     |WL[13]                                     
+WL[14]                                     |WL[14]                                     
+WL[15]                                     |WL[15]                                     
+WL[16]                                     |WL[16]                                     
+WL[17]                                     |WL[17]                                     
+WL[18]                                     |WL[18]                                     
+WL[19]                                     |WL[19]                                     
+WL[20]                                     |WL[20]                                     
+WL[21]                                     |WL[21]                                     
+WL[22]                                     |WL[22]                                     
+WL[23]                                     |WL[23]                                     
+WL[24]                                     |WL[24]                                     
+WL[25]                                     |WL[25]                                     
+WL[26]                                     |WL[26]                                     
+WL[27]                                     |WL[27]                                     
+WL[28]                                     |WL[28]                                     
+WL[29]                                     |WL[29]                                     
+WL[30]                                     |WL[30]                                     
+WL[31]                                     |WL[31]                                     
+A[0]                                       |A[0]                                       
+A[1]                                       |A[1]                                       
+A[2]                                       |A[2]                                       
+A[3]                                       |A[3]                                       
+A[4]                                       |A[4]                                       
+A[5]                                       |A[5]                                       
+A[6]                                       |A[6]                                       
+A[7]                                       |A[7]                                       
+A[8]                                       |A[8]                                       
+A[9]                                       |A[9]                                       
+A[10]                                      |A[10]                                      
+A[11]                                      |A[11]                                      
+A[12]                                      |A[12]                                      
+A[13]                                      |A[13]                                      
+A[14]                                      |A[14]                                      
+A[15]                                      |A[15]                                      
+A[16]                                      |A[16]                                      
+A[17]                                      |A[17]                                      
+A[18]                                      |A[18]                                      
+A[19]                                      |A[19]                                      
+A[20]                                      |A[20]                                      
+A[21]                                      |A[21]                                      
+A[22]                                      |A[22]                                      
+A[23]                                      |A[23]                                      
+A[24]                                      |A[24]                                      
+A[25]                                      |A[25]                                      
+A[26]                                      |A[26]                                      
+A[27]                                      |A[27]                                      
+A[28]                                      |A[28]                                      
+A[29]                                      |A[29]                                      
+A[30]                                      |A[30]                                      
+A[31]                                      |A[31]                                      
+VSS                                        |VSS                                        
+VDD                                        |VDD                                        
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes sram_32x8_9T and sram_32x8_9T are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__aoi31_2 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__aoi31_2 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__aoi31_2 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__aoi31_2 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__aoi31_2 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__aoi31_2 (0) disconnected node: B
+Cell gf180mcu_as_sc_mcu7t3v3__aoi31_2 (0) disconnected node: C
+Cell gf180mcu_as_sc_mcu7t3v3__aoi31_2 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__aoi31_2 (0) disconnected node: D
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__aoi31_ |Circuit 2: gf180mcu_as_sc_mcu7t3v3__aoi31_ 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+B                                          |B                                          
+C                                          |C                                          
+Y                                          |Y                                          
+D                                          |D                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__aoi31_2 and gf180mcu_as_sc_mcu7t3v3__aoi31_2 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__buff_4 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__buff_4 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__buff_4 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__buff_4 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__buff_4 (0) disconnected node: A
+Cell gf180mcu_as_sc_mcu7t3v3__buff_4 (0) disconnected node: Y
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__buff_4 |Circuit 2: gf180mcu_as_sc_mcu7t3v3__buff_4 
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+A                                          |A                                          
+Y                                          |Y                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__buff_4 and gf180mcu_as_sc_mcu7t3v3__buff_4 are equivalent.
+
+Cell gf180mcu_as_sc_mcu7t3v3__inv_4 (0) disconnected node: VDD
+Cell gf180mcu_as_sc_mcu7t3v3__inv_4 (0) disconnected node: VNW
+Cell gf180mcu_as_sc_mcu7t3v3__inv_4 (0) disconnected node: VPW
+Cell gf180mcu_as_sc_mcu7t3v3__inv_4 (0) disconnected node: VSS
+Cell gf180mcu_as_sc_mcu7t3v3__inv_4 (0) disconnected node: Y
+Cell gf180mcu_as_sc_mcu7t3v3__inv_4 (0) disconnected node: A
+
+Subcircuit pins:
+Circuit 1: gf180mcu_as_sc_mcu7t3v3__inv_4  |Circuit 2: gf180mcu_as_sc_mcu7t3v3__inv_4  
+-------------------------------------------|-------------------------------------------
+VDD                                        |VDD                                        
+VNW                                        |VNW                                        
+VPW                                        |VPW                                        
+VSS                                        |VSS                                        
+Y                                          |Y                                          
+A                                          |A                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes gf180mcu_as_sc_mcu7t3v3__inv_4 and gf180mcu_as_sc_mcu7t3v3__inv_4 are equivalent.
+
+Cell A07_dcim_top (0) disconnected node: busy_IN
+Cell A07_dcim_top (0) disconnected node: done_IN
+Cell A07_dcim_top (0) disconnected node: y_bit_IN
+Cell A07_dcim_top (1) disconnected node: busy_IN
+Cell A07_dcim_top (1) disconnected node: done_IN
+Cell A07_dcim_top (1) disconnected node: y_bit_IN
+Subcircuit summary:
+Circuit 1: A07_dcim_top                    |Circuit 2: A07_dcim_top                    
+-------------------------------------------|-------------------------------------------
+gf180mcu_as_sc_mcu7t3v3__xnor2_2 (1457)    |gf180mcu_as_sc_mcu7t3v3__xnor2_2 (1457)    
+gf180mcu_as_sc_mcu7t3v3__xor2_2 (740)      |gf180mcu_as_sc_mcu7t3v3__xor2_2 (740)      
+gf180mcu_as_sc_mcu7t3v3__nand2_2 (266)     |gf180mcu_as_sc_mcu7t3v3__nand2_2 (266)     
+gf180mcu_as_sc_mcu7t3v3__inv_2 (369)       |gf180mcu_as_sc_mcu7t3v3__inv_2 (369)       
+gf180mcu_as_sc_mcu7t3v3__tap_2 (5919)      |gf180mcu_as_sc_mcu7t3v3__tap_2 (5919)      
+gf180mcu_as_sc_mcu7t3v3__maj3_2 (740)      |gf180mcu_as_sc_mcu7t3v3__maj3_2 (740)      
+gf180mcu_as_sc_mcu7t3v3__tieh_4 (506)      |gf180mcu_as_sc_mcu7t3v3__tieh_4 (506)      
+gf180mcu_as_sc_mcu7t3v3__and2_2 (328)      |gf180mcu_as_sc_mcu7t3v3__and2_2 (328)      
+gf180mcu_as_sc_mcu7t3v3__ao22_2 (74)       |gf180mcu_as_sc_mcu7t3v3__ao22_2 (74)       
+gf180mcu_as_sc_mcu7t3v3__ao31_2 (60)       |gf180mcu_as_sc_mcu7t3v3__ao31_2 (60)       
+gf180mcu_as_sc_mcu7t3v3__mux2_2 (358)      |gf180mcu_as_sc_mcu7t3v3__mux2_2 (358)      
+gf180mcu_as_sc_mcu7t3v3__buff_2 (558)      |gf180mcu_as_sc_mcu7t3v3__buff_2 (558)      
+gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (492)    |gf180mcu_as_sc_mcu7t3v3__dfsrtp_2 (492)    
+gf180mcu_as_sc_mcu7t3v3__oai21_2 (195)     |gf180mcu_as_sc_mcu7t3v3__oai21_2 (195)     
+gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (565)   |gf180mcu_as_sc_mcu7t3v3__clkbuff_4 (565)   
+gf180mcu_as_sc_mcu7t3v3__nor3_2 (21)       |gf180mcu_as_sc_mcu7t3v3__nor3_2 (21)       
+gf180mcu_as_sc_mcu7t3v3__tiel_4 (28)       |gf180mcu_as_sc_mcu7t3v3__tiel_4 (28)       
+gf180mcu_as_sc_mcu7t3v3__or2_2 (240)       |gf180mcu_as_sc_mcu7t3v3__or2_2 (240)       
+gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (663)   |gf180mcu_as_sc_mcu7t3v3__dlybuff_2 (663)   
+gf180mcu_as_sc_mcu7t3v3__ao21_2 (62)       |gf180mcu_as_sc_mcu7t3v3__ao21_2 (62)       
+gf180mcu_as_sc_mcu7t3v3__nor2_2 (109)      |gf180mcu_as_sc_mcu7t3v3__nor2_2 (109)      
+gf180mcu_as_sc_mcu7t3v3__aoi21_2 (120)     |gf180mcu_as_sc_mcu7t3v3__aoi21_2 (120)     
+gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (27)   |gf180mcu_as_sc_mcu7t3v3__clkbuff_12 (27)   
+gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (121)    |gf180mcu_as_sc_mcu7t3v3__aoi21b_2 (121)    
+gf180mcu_as_sc_mcu7t3v3__ao21b_2 (58)      |gf180mcu_as_sc_mcu7t3v3__ao21b_2 (58)      
+gf180mcu_as_sc_mcu7t3v3__nor2b_2 (43)      |gf180mcu_as_sc_mcu7t3v3__nor2b_2 (43)      
+gf180mcu_as_sc_mcu7t3v3__nand2b_2 (34)     |gf180mcu_as_sc_mcu7t3v3__nand2b_2 (34)     
+gf180mcu_as_sc_mcu7t3v3__aoi211_2 (14)     |gf180mcu_as_sc_mcu7t3v3__aoi211_2 (14)     
+gf180mcu_as_sc_mcu7t3v3__mux4_2 (29)       |gf180mcu_as_sc_mcu7t3v3__mux4_2 (29)       
+gf180mcu_as_sc_mcu7t3v3__nand4_2 (20)      |gf180mcu_as_sc_mcu7t3v3__nand4_2 (20)      
+gf180mcu_as_sc_mcu7t3v3__oai211_2 (6)      |gf180mcu_as_sc_mcu7t3v3__oai211_2 (6)      
+gf180mcu_as_sc_mcu7t3v3__nand3_2 (32)      |gf180mcu_as_sc_mcu7t3v3__nand3_2 (32)      
+gf180mcu_as_sc_mcu7t3v3__ao211_2 (41)      |gf180mcu_as_sc_mcu7t3v3__ao211_2 (41)      
+gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (8)     |gf180mcu_as_sc_mcu7t3v3__clkbuff_8 (8)     
+sram_32x8_9T (4)                           |sram_32x8_9T (4)                           
+gf180mcu_as_sc_mcu7t3v3__aoi31_2 (13)      |gf180mcu_as_sc_mcu7t3v3__aoi31_2 (13)      
+gf180mcu_as_sc_mcu7t3v3__buff_4 (4)        |gf180mcu_as_sc_mcu7t3v3__buff_4 (4)        
+gf180mcu_as_sc_mcu7t3v3__inv_4 (3)         |gf180mcu_as_sc_mcu7t3v3__inv_4 (3)         
+Number of devices: 14327                   |Number of devices: 14327                   
+Number of nets: 9439                       |Number of nets: 9439                       
+---------------------------------------------------------------------------------------
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Resolving symmetries by net name.
+Netlists match with 1 symmetry.
+
+Subcircuit pins:
+Circuit 1: A07_dcim_top                    |Circuit 2: A07_dcim_top                    
+-------------------------------------------|-------------------------------------------
+P_minus1_PU[0]                             |P_minus1_PU[0]                             
+P_minus1_PU[1]                             |P_minus1_PU[1]                             
+P_minus1_PU[2]                             |P_minus1_PU[2]                             
+a_bit_PD                                   |a_bit_PD                                   
+busy_OE                                    |busy_OE                                    
+busy_PDRV0                                 |busy_PDRV0                                 
+cont_PD                                    |cont_PD                                    
+done_OE                                    |done_OE                                    
+done_PDRV0                                 |done_PDRV0                                 
+rst_n_PU                                   |rst_n_PU                                   
+start_PD                                   |start_PD                                   
+w_bit_PD                                   |w_bit_PD                                   
+y_bit_OE                                   |y_bit_OE                                   
+y_bit_PDRV0                                |y_bit_PDRV0                                
+P_minus1_PD[0]                             |P_minus1_PD[0]                             
+P_minus1_PD[1]                             |P_minus1_PD[1]                             
+P_minus1_PD[2]                             |P_minus1_PD[2]                             
+a_bit_PU                                   |a_bit_PU                                   
+busy_CS                                    |busy_CS                                    
+busy_IE                                    |busy_IE                                    
+busy_PD                                    |busy_PD                                    
+busy_PDRV1                                 |busy_PDRV1                                 
+busy_PU                                    |busy_PU                                    
+busy_SL                                    |busy_SL                                    
+clk_PD                                     |clk_PD                                     
+clk_PU                                     |clk_PU                                     
+cont_PU                                    |cont_PU                                    
+done_CS                                    |done_CS                                    
+done_IE                                    |done_IE                                    
+done_PD                                    |done_PD                                    
+done_PDRV1                                 |done_PDRV1                                 
+done_PU                                    |done_PU                                    
+done_SL                                    |done_SL                                    
+rst_n_PD                                   |rst_n_PD                                   
+start_PU                                   |start_PU                                   
+w_bit_PU                                   |w_bit_PU                                   
+y_bit_CS                                   |y_bit_CS                                   
+y_bit_IE                                   |y_bit_IE                                   
+y_bit_PD                                   |y_bit_PD                                   
+y_bit_PDRV1                                |y_bit_PDRV1                                
+y_bit_PU                                   |y_bit_PU                                   
+y_bit_SL                                   |y_bit_SL                                   
+clk                                        |clk                                        
+start                                      |start                                      
+cont                                       |cont                                       
+w_bit                                      |w_bit                                      
+a_bit                                      |a_bit                                      
+P_minus1[1]                                |P_minus1[1]                                
+P_minus1[2]                                |P_minus1[2]                                
+rst_n                                      |rst_n                                      
+P_minus1[0]                                |P_minus1[0]                                
+busy_OUT                                   |busy_OUT                                   
+y_bit_OUT                                  |y_bit_OUT                                  
+done_OUT                                   |done_OUT                                   
+VDD                                        |VDD                                        
+VSS                                        |VSS                                        
+busy_IN                                    |busy_IN                                    
+done_IN                                    |done_IN                                    
+y_bit_IN                                   |y_bit_IN                                   
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes A07_dcim_top and A07_dcim_top are equivalent.
+
+Final result: Circuits match uniquely.
+.

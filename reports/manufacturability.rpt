@@ -1,8 +1,3 @@
-# Manufacturability Report
-
-> rpt
-
-```rst
 * Antenna
 Passed ✅
 
@@ -11,7 +6,4 @@ Passed ✅
 
 * DRC
 Passed ✅
-
-
-```
 

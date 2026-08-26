@@ -1,11 +1,3 @@
-# DRC Report
-
-## KLayout DRC
-
-<details>
-<summary><b>Expand JSON</b></summary>
-
-```json
 {
     "DF.1a_LV": 0,
     "DF.1a_MV": 0,
@@ -707,26 +699,3 @@
     "DM5.8": 0,
     "total": 0
 }
-```
-
-</details>
-
-## Magic DRC
-
-> drc.magic.rpt
-
-```rst
-dcim_top
-----------------------------------------
-[INFO] COUNT: 0
-[INFO] Should be divided by 3 or 4
-
-
-```
-
-> drc.magic.lyrdb
-
-```xml
-<?xml version='1.0' encoding='utf8'?>
-<report-database><cells><cell><name>dcim_top</name></cell></cells><categories></categories><items></items></report-database>
-```
