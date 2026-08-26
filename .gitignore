@@ -34,4 +34,4 @@ scripts/
 .venv/
 
 # -- Files to keep
-!scripts/
+!reports/*
