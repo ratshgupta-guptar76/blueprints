@@ -8,7 +8,7 @@ from cocotb.triggers import ClockCycles, ReadOnly, ReadWrite, RisingEdge, Timer
 from golden_model import ACC_WIDTH, DW, N_WEIGHTS, ROWS
 
 
-def _drive_control(dut, *, a_bit=0, w_bit=0, start=0, cont=0, p_minus1=DW - 1):
+def _drive_control(dut, *, a_bit=0, w_bit=0, start=0, cont=0, p_minus1=DW - 1) -> None:
     dut.a_bit.value = a_bit
     dut.w_bit.value = w_bit
     dut.start.value = start
@@ -16,7 +16,7 @@ def _drive_control(dut, *, a_bit=0, w_bit=0, start=0, cont=0, p_minus1=DW - 1):
     dut.P_minus1.value = p_minus1
 
 
-async def _drive_and_edge(dut, **kwargs):
+async def _drive_and_edge(dut, **kwargs) -> None:
     """Drive control signals, wait for the clock edge that captures them, then
     settle into the ReadWrite (reactive) phase before returning.
 

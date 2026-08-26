@@ -104,7 +104,7 @@ async def test_reset(dut) -> None:
     dut.c_en.value = 0
     dut.a_b.value = 0
 
-    # async: reset clears without an edge
+    # async: reset clears without an edge 
     dut.rst_n.value = 0
     await Timer(1, "ns")
     assert int(dut.act_bp.value) == 0, "async reset: act_bp not cleared"

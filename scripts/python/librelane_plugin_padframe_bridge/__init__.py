@@ -1,18 +1,3 @@
-"""
-librelane_plugin_padframe_bridge
-----------------------------------
-Registers Odb.AddPadframePowerBridge (bridges our core PDN ring out to the
-padframe template's real VSS/VDD pin locations at the true die edge -- see
-odbpy_script.py for the full story) and a Classic-derived flow that runs it
-right after OpenROAD.GeneratePDN, so `make librelane-core` produces a
-self-contained, pad-connected GDS in one invocation.
-
-Discovered automatically by LibreLane's plugin loader (librelane.plugins),
-which scans sys.path for top-level modules/packages named
-`librelane_plugin_*` -- this package needs its PARENT directory (this
-project's librelane/) on PYTHONPATH, set by the Makefile's librelane-core*
-targets.
-"""
 import os
 
 from librelane.flows.classic import Classic

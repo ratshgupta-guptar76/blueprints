@@ -83,7 +83,7 @@ def _y_bit(dut):
     return int(_internal(dut, "i_chip_core.y_bit").value)
 
 
-async def _start_up(dut):
+async def _start_up(dut) -> None:
     dut.input_PAD.value = 0
     _drive_control(dut)
 
@@ -95,7 +95,7 @@ async def _start_up(dut):
     await ClockCycles(dut.clk_PAD, 2)
 
 
-async def _pulse_start(dut, p_minus1):
+async def _pulse_start(dut, p_minus1) -> None:
     """IDLE -> WRITE_W is unregistered (gated only on `start`), so the very next
     edge after the start pulse already has WRITE_W's w_bit capture active."""
     _drive_control(dut, start=1, p_minus1=p_minus1)
@@ -103,7 +103,7 @@ async def _pulse_start(dut, p_minus1):
     _drive_control(dut, p_minus1=p_minus1)
 
 
-async def _load_weights(dut, W, p_minus1):
+async def _load_weights(dut, W, p_minus1) -> None:
     """WRITE_W: ROWS*COLS bits (COLS = N_WEIGHTS*DW). Column c holds bit (c % DW)
     of weight (c // DW) -- weight 0 first, LSB-first within each weight -- because
     weight_load.sv's shifter enters new bits at the MSB and the bit sent first ends
@@ -127,7 +127,7 @@ def _activation_bits(a):
     return bits
 
 
-async def _load_activations(dut, a, p_minus1, skip_first=False):
+async def _load_activations(dut, a, p_minus1, skip_first=False) -> None:
     """WRITE_A: DW*ROWS bits. act_shift_chain.sv is ROWS shift_reg cells daisy-
     chained head-to-tail (row 0 = head, nearest a_bit). Because the whole chain
     keeps shifting toward the tail every cycle, the row sent *last* travels the
@@ -171,7 +171,7 @@ async def _start_weights(dut, W, p_minus1):
 
 async def _compute_and_drain(
     dut, a, p_minus1, cont, first=False, skip_first_bit=False, next_a=None, next_p_minus1=None
-):
+) -> list[int]:
     """WRITE_A -> COMPUTE -> DONE -> SHIFT_OUT for one activation vector, and
     return the N_WEIGHTS signed accumulator lanes (two's-complement, ACC_WIDTH
     bits each). `cont` is held through the whole drain (control_fsm samples it
