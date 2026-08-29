@@ -53,7 +53,7 @@ SLANG_ARGUMENTS: ['--keep-hierarchy']
 
 # Slightly smaller file sizes
 PRIMARY_GDSII_STREAMOUT_TOOL: klayout
-RUN_MAGIC_STREAMOUT: False
+# RUN_MAGIC_STREAMOUT: False
 
 # Power / ground nets
 VDD_NETS:

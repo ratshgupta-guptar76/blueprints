@@ -21,32 +21,37 @@ flattens the wrapper + dcim_top's internal hierarchy into one module), so no
 port-adapter shim is needed either way, and every test below runs in both
 RTL and GL mode.
 
-Coverage, vs. chip_top_tb.py's single-fixed-seed pattern:
-  - Reset/start smoke test.
-  - Full-precision matvec, multiple random seeds (not one fixed draw).
-  - Reduced-precision matvec, multiple seeds x multiple P values.
-  - Full precision sweep P=1..DW against one seed (kept from chip_top_tb.py
-    -- exercises the P=1 boundary specifically).
-  - Sign/magnitude edge cases: all-zero, max-positive, max-negative
-    (-128, the asymmetric two's-complement corner), alternating min/max.
-  - Weight-stationary (`cont`) reuse: multiple seeds, AND varying P
-    across passes within one cont run (chip_top_tb.py only ever used
-    fixed P=DW-1 for its cont test -- this is new coverage).
-  - Back-to-back FRESH weight loads (start->run->IDLE->start again,
-    loading a DIFFERENT weight matrix the second time) with NO hard
-    reset in between. This is the scenario weight_load.sv's own
-    wload_cnt has no state-based reset for -- only `en`=wshift_en,
-    which control_fsm.sv asserts for one cycle longer than the 1024
-    (ROWS*COLS) shifts actually needed (the row_cnt==ROWS-1 && wfull
-    transition-triggering cycle is still WRITE_W). That extra shift
-    permanently offsets wload_cnt's phase for the *next* WRITE_W entry
-    unless wload_cnt is hard-reset in between -- a real, physically
-    signed-off RTL property, not a testbench artifact (traced
-    cycle-by-cycle against the current weight_load.sv/control_fsm.sv
-    before writing this test). Any real host loading more than one
-    weight matrix per power-up needs this path to work.
-  - Blackbox top-level interface check against A07_A.def.
-  - Constrained-random regression over randomized operation sequences.
+Coverage mirrors chip_top_tb.py test-for-test (both files now carry: reset/
+start smoke test; blackbox top-level interface check; full-precision matvec
+and reduced-precision matvec, each single-seed and multi-seed; full precision
+sweep P=1..DW against one seed, exercising the P=1 boundary specifically;
+sign/magnitude edge cases -- all-zero, max-positive, max-negative (-128, the
+asymmetric two's-complement corner), alternating min/max; weight-stationary
+(`cont`) reuse with fixed P and with P varying across passes within one cont
+run, both single-seed and multi-seed; the back-to-back-fresh-weight-load
+regression below; and a constrained-random regression). The interface check
+here is against A07_A.def; chip_top_tb.py's equivalent checks chip_top's
+padframe ports against src/slot_defines.svh's per-SLOT widths instead.
+
+The one thing chip_top_tb.py's GL mode structurally cannot mirror: every test
+here except the smoke test and the interface check runs in BOTH RTL and GL
+mode (GL reads config_core.yaml's actual synthesized output,
+final/nl/A07_dcim_top.nl.v, whose top module is A07_dcim_top itself), whereas
+chip_top_tb.py's GL mode only runs its smoke test and interface check -- y_bit
+has no working path through the real padring's switch-level PAD cells in GL
+(optimized/renamed away in synthesis; see chip_top_helpers.py's _y_bit).
+
+Back-to-back FRESH weight loads (start->run->IDLE->start again, loading a
+DIFFERENT weight matrix the second time) with NO hard reset in between is the
+scenario weight_load.sv's own wload_cnt has no state-based reset for -- only
+`en`=wshift_en, which control_fsm.sv asserts for one cycle longer than the
+1024 (ROWS*COLS) shifts actually needed (the row_cnt==ROWS-1 && wfull
+transition-triggering cycle is still WRITE_W). That extra shift permanently
+offsets wload_cnt's phase for the *next* WRITE_W entry unless wload_cnt is
+hard-reset in between -- a real, physically signed-off RTL property, not a
+testbench artifact (traced cycle-by-cycle against the current
+weight_load.sv/control_fsm.sv before writing this test). Any real host
+loading more than one weight matrix per power-up needs this path to work.
 """
 import os
 from pathlib import Path

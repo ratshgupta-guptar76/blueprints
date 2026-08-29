@@ -319,4 +319,16 @@ librelane-core-openroad: ## Open the last core run in OpenROAD
 librelane-core-klayout: ## Open the last core run in KLayout
 	PYTHONPATH="$(MAKEFILE_DIR)/scripts/python:$$PYTHONPATH" librelane librelane/config_core.yaml --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --last-run --flow OpenInKLayout
 .PHONY: librelane-core-klayout
+
+# quadrant_workshop.yaml is passed *after* config.yaml (reverse of the
+# slot-based targets above) so its MACROS block -- which fully replaces
+# config.yaml's MACROS key, LibreLane config merges are a shallow top-level
+# replace, not a deep merge -- wins. It lives in librelane/ (not
+# librelane/slots/) so being the last file on the command line doesn't
+# move LibreLane's `design_dir` away from librelane/, which would break
+# config.yaml's `dir::../src/...` paths. See that file's own header for
+# the full floorplan rationale.
+librelane-quadrant: ## Run LibreLane flow for chip_top (workshop-slot die), DCIM core confined to a 1110x1110 top-left quadrant
+	STD_CELL_LIBRARY=${SCL} librelane librelane/config.yaml librelane/quadrant_workshop.yaml --save-views-to $(MAKEFILE_DIR)/final --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk
+.PHONY: librelane-quadrant
 endif
