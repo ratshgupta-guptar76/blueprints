@@ -169,6 +169,17 @@ version of the flow.
   `reports/summary.md` for the STA overview and `reports/metrics.csv`
   for the full metric dump (42 309 instances, 0 lint errors, 0 setup
   violations across all corners as of the last signed-off run).
+- **LVS report / device declaration**: `reports/lvs.netgen.rpt`
+  (Netgen; machine-readable form in `reports/lvs.netgen.json`).
+  `Final result: Circuits match uniquely` — extracted directly from
+  the committed `gds/A07_dcim_top.gds` (verified byte-identical to
+  the LVS run's own GDS output) against the post-PnR netlist
+  `verilog/A07_dcim_top.pnl.v`. Devices used: standard cells from the
+  open-source `gf180mcu_as_sc_mcu7t3v3` library, plus `nfet_03v3` /
+  `pfet_03v3` primitives inside the `sram_32x8_9T` macro (see
+  `ip/sram_32x8_9T/spice/sram_32x8_9T.spice`, extracted from GDS via
+  Magic) — all open-source GF180MCU model names, no custom/renamed
+  devices.
 - **Bitcell-level**: the 9T bitcell's read-disturb margin is
   characterized via ngspice in `analog/characterization/9t/` (plots in
   `docs/analog_sim/`).
