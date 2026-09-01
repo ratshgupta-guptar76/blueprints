@@ -94,11 +94,11 @@ def clip_x1_to_avoid(x0, x1, y0, y1, obstruction_boxes, clearance):
     return x1
 
 
-def pick_target_finger(segments, fingers, margin_um=3):
+def pick_target_finger(segments, fingers, margin_um=1.25):
     """Pick a real padframe pin finger that's fully contained (with margin)
     in one continuous ring segment, so the bridge both reaches the actual
     pad location AND stays connected to our own ring with no gap."""
-    margin = margin_um * DBU_PER_UM
+    margin = round(margin_um * DBU_PER_UM)
     for lo, hi in fingers:
         want_lo, want_hi = lo - margin, hi + margin
         for seg_lo, seg_hi in segments:
