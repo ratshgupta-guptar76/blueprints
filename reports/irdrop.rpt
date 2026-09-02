@@ -1,4 +1,4 @@
-+ analyze_power_grid -net VDD -voltage_file /home/ratishgupta/vlsi/blueprints/librelane/runs/RUN_2026-09-01_17-32-35/57-openroad-irdropreport/net-VDD.csv
++ analyze_power_grid -net VDD -voltage_file /home/ratishgupta/vlsi/blueprints/librelane/runs/RUN_2026-09-01_23-24-21/57-openroad-irdropreport/net-VDD.csv
 [INFO PSM-0040] All shapes on net VDD are connected.
 ########## IR report #################
 Net              : VDD
@@ -8,10 +8,10 @@ Supply voltage   : 3.30e+00 V
 Worstcase voltage: 3.30e+00 V
 Average voltage  : 3.30e+00 V
 Average IR drop  : 1.93e-05 V
-Worstcase IR drop: 1.42e-04 V
+Worstcase IR drop: 1.41e-04 V
 Percentage drop  : 0.00 %
 ######################################
-+ analyze_power_grid -net VSS -voltage_file /home/ratishgupta/vlsi/blueprints/librelane/runs/RUN_2026-09-01_17-32-35/57-openroad-irdropreport/net-VSS.csv
++ analyze_power_grid -net VSS -voltage_file /home/ratishgupta/vlsi/blueprints/librelane/runs/RUN_2026-09-01_23-24-21/57-openroad-irdropreport/net-VSS.csv
 [INFO PSM-0040] All shapes on net VSS are connected.
 ########## IR report #################
 Net              : VSS

@@ -21,6 +21,19 @@ VSS_BRIDGE_X = (0, 144000)  # die edge (x=0) out past the ring's inner edge
 VDD_STUB_Y = (2030000, 2220000)  # ring's inner edge up to the die edge (y=1110um)
 VDD_VIA_Y_OFFSETS = (10000, 35000)  # two via rows, relative to the stub's y0
 
+# Width of the tie-bar that shorts all of a pad's fingers together. Kept narrow
+# deliberately: at ~3.8mA total supply current this is far more metal than the
+# current needs, so the only thing extra width would buy is capacitance.
+SPINE_WIDTH = 6000  # 3um
+
+# Each strap overhangs its finger by this much. It has to clear two opposing
+# constraints: large enough that any step it forms against the ring edge stays
+# over the 0.28um min width (an exact-width strap left an 0.08um step), but
+# small enough to stay out of the neighbouring finger -- the smallest gap
+# between fingers is 1.6um, and the original 3um overhang punched 0.1um into
+# the neighbour, which is what caused the M2.1 errors.
+STRAP_OVERHANG = 2000  # 1um
+
 # A07_A.def's real VSS/VDD pin finger positions (the actual padframe pad
 # geometry, in that file's own DBU scale: UNITS DISTANCE MICRONS 200).
 # THIS design's DBU scale is 2000/um, so *10 converts template DBU to ours.
@@ -131,39 +144,77 @@ def add_padframe_power_bridge(reader):
     # --- VSS: west ring, vary Y, fixed X ---
     vss_segments = find_ring_segments(vss, "Metal2", "x", VSS_RING_X_CENTER, RING_HALF_WIDTH)
     print(f"VSS west ring segments (DBU): {vss_segments}")
-    y0, y1, clean_fit = pick_target_finger(vss_segments, VSS_PAD_FINGERS)
-    print(f"VSS bridge window (on a real pad finger): y=[{y0},{y1}] clean_fit={clean_fit}")
+    _, _, clean_fit = pick_target_finger(vss_segments, VSS_PAD_FINGERS)
+    print(f"VSS ring coverage: at least one finger fits a ring segment={clean_fit}")
     if not clean_fit:
         print("WARNING: no VSS pad finger fully fit inside one continuous ring "
               "segment -- used the best partial overlap instead.")
 
-    vss_x0, vss_x1 = VSS_BRIDGE_X
+    vss_x0, _ = VSS_BRIDGE_X
     vdd_m2_boxes = other_net_boxes(vdd, "Metal2")
-    vss_x1 = clip_x1_to_avoid(vss_x0, vss_x1, y0, y1, vdd_m2_boxes, clearance=5000)
-    print(f"VSS bridge x-extent after clipping clear of VDD's own Metal2: [{vss_x0},{vss_x1}]")
 
     vss_swire = odb.dbSWire.create(vss, "ROUTED")
-    odb.dbSBox.create(vss_swire, m2, vss_x0, y0, vss_x1, y1, "STRIPE")
+
+    # One strap per finger. Fingers whose y-range falls inside a ring segment
+    # get their own independent path to the ring; the rest still reach it via
+    # the tie-bar below, so every finger ends up connected either way.
+    for i, (f_lo, f_hi) in enumerate(VSS_PAD_FINGERS):
+        s_lo, s_hi = f_lo - STRAP_OVERHANG, f_hi + STRAP_OVERHANG
+        s_x1 = clip_x1_to_avoid(vss_x0, VSS_BRIDGE_X[1], s_lo, s_hi, vdd_m2_boxes, clearance=5000)
+        odb.dbSBox.create(vss_swire, m2, vss_x0, s_lo, s_x1, s_hi, "STRIPE")
+        on_ring = any(seg_lo <= s_lo and s_hi <= seg_hi for seg_lo, seg_hi in vss_segments)
+        print(f"VSS strap {i}: x=[{vss_x0},{s_x1}] y=[{s_lo},{s_hi}] reaches_ring={on_ring}")
+
+    # Tie-bar: one narrow strip running perpendicular to the pad's fingers,
+    # hugging the die edge so it crosses every finger. The bridge above already
+    # ties one finger to our ring, so this puts all of them in parallel for a
+    # fraction of the metal (and capacitance) of one bridge per finger.
+    vss_spine_lo = min(lo for lo, _ in VSS_PAD_FINGERS)
+    vss_spine_hi = max(hi for _, hi in VSS_PAD_FINGERS)
+    odb.dbSBox.create(
+        vss_swire, m2, vss_x0, vss_spine_lo, vss_x0 + SPINE_WIDTH, vss_spine_hi, "STRIPE"
+    )
+    print(f"VSS finger tie-bar: x=[{vss_x0},{vss_x0 + SPINE_WIDTH}] "
+          f"y=[{vss_spine_lo},{vss_spine_hi}] ({len(VSS_PAD_FINGERS)} fingers tied)")
 
     # --- VDD: north ring, vary X, fixed Y ---
     vdd_segments = find_ring_segments(vdd, "Metal3", "y", VDD_RING_Y_CENTER, RING_HALF_WIDTH)
     print(f"VDD north ring segments (DBU): {vdd_segments}")
-    x0, x1, clean_fit = pick_target_finger(vdd_segments, VDD_PAD_FINGERS)
-    print(f"VDD bridge window (on a real pad finger): x=[{x0},{x1}] clean_fit={clean_fit}")
+    _, _, clean_fit = pick_target_finger(vdd_segments, VDD_PAD_FINGERS)
+    print(f"VDD ring coverage: at least one finger fits a ring segment={clean_fit}")
     if not clean_fit:
         print("WARNING: no VDD pad finger fully fit inside one continuous ring "
               "segment -- used the best partial overlap instead.")
 
     vdd_swire = odb.dbSWire.create(vdd, "ROUTED")
-    odb.dbSBox.create(vdd_swire, m2, x0, VDD_STUB_Y[0], x1, VDD_STUB_Y[1], "STRIPE")
 
-    via_x_center = (x0 + x1) // 2
-    half_width = (x1 - x0) // 2
-    via_offset = max(0, half_width - 3000)  # keep >=1.5um clear of the stub's own edges
-    for dy in VDD_VIA_Y_OFFSETS:
-        vy = VDD_STUB_Y[0] + dy
-        odb.dbSBox.create(vdd_swire, via, via_x_center - via_offset, vy, "STRIPE")
-        odb.dbSBox.create(vdd_swire, via, via_x_center + via_offset, vy, "STRIPE")
+    for i, (f_lo, f_hi) in enumerate(VDD_PAD_FINGERS):
+        s_lo, s_hi = f_lo - STRAP_OVERHANG, f_hi + STRAP_OVERHANG
+        odb.dbSBox.create(vdd_swire, m2, s_lo, VDD_STUB_Y[0], s_hi, VDD_STUB_Y[1], "STRIPE")
+        on_ring = any(seg_lo <= s_lo and s_hi <= seg_hi for seg_lo, seg_hi in vdd_segments)
+        print(f"VDD strap {i}: x=[{s_lo},{s_hi}] y=[{VDD_STUB_Y[0]},{VDD_STUB_Y[1]}] reaches_ring={on_ring}")
+
+    # Same tie-bar on the north side: fingers run vertically here, so the strip
+    # runs horizontally along the die edge.
+    vdd_spine_lo = min(lo for lo, _ in VDD_PAD_FINGERS)
+    vdd_spine_hi = max(hi for _, hi in VDD_PAD_FINGERS)
+    odb.dbSBox.create(
+        vdd_swire, m2, vdd_spine_lo, VDD_STUB_Y[1] - SPINE_WIDTH, vdd_spine_hi, VDD_STUB_Y[1], "STRIPE"
+    )
+    print(f"VDD finger tie-bar: x=[{vdd_spine_lo},{vdd_spine_hi}] "
+          f"y=[{VDD_STUB_Y[1] - SPINE_WIDTH},{VDD_STUB_Y[1]}] ({len(VDD_PAD_FINGERS)} fingers tied)")
+
+    # The straps are Metal2 but this ring is Metal3, so each strap needs its own
+    # vias -- without them only the strap that happens to sit under a via would
+    # actually be tied to the ring.
+    for i, (f_lo, f_hi) in enumerate(VDD_PAD_FINGERS):
+        via_x_center = (f_lo + f_hi) // 2
+        half_width = (f_hi - f_lo) // 2
+        via_offset = max(0, half_width - 3000)  # keep >=1.5um clear of the strap's own edges
+        for dy in VDD_VIA_Y_OFFSETS:
+            vy = VDD_STUB_Y[0] + dy
+            odb.dbSBox.create(vdd_swire, via, via_x_center - via_offset, vy, "STRIPE")
+            odb.dbSBox.create(vdd_swire, via, via_x_center + via_offset, vy, "STRIPE")
 
     # Final sanity check: confirm neither bridge actually shorts VDD to VSS.
     for layer in ("Metal1", "Metal2", "Metal3", "Metal4", "Metal5"):
