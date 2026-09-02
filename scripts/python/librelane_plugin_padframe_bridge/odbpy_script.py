@@ -34,6 +34,20 @@ SPINE_WIDTH = 6000  # 3um
 # the neighbour, which is what caused the M2.1 errors.
 STRAP_OVERHANG = 2000  # 1um
 
+# Extra crossbars laid perpendicular to the straps, in addition to the tie-bar
+# at the die edge, turning the comb into a mesh. Fractions of the straps' own
+# length, so they stay inside whatever extent the straps actually reached.
+GRID_CROSSBAR_FRACTIONS = (0.35, 0.60, 0.85)
+
+# The PDK's DRC checks every vertex against a 0.005um grid (`ongrid(0.005)` in
+# geom.drc), which is 10 DBU here. Anything computed rather than taken straight
+# from the finger table has to be snapped or it trips *_OFFGRID.
+MFG_GRID = 10
+
+
+def snap(v):
+    return int(round(v / MFG_GRID)) * MFG_GRID
+
 # A07_A.def's real VSS/VDD pin finger positions (the actual padframe pad
 # geometry, in that file's own DBU scale: UNITS DISTANCE MICRONS 200).
 # THIS design's DBU scale is 2000/um, so *10 converts template DBU to ours.
@@ -158,24 +172,29 @@ def add_padframe_power_bridge(reader):
     # One strap per finger. Fingers whose y-range falls inside a ring segment
     # get their own independent path to the ring; the rest still reach it via
     # the tie-bar below, so every finger ends up connected either way.
+    vss_strap_x1s = []
     for i, (f_lo, f_hi) in enumerate(VSS_PAD_FINGERS):
         s_lo, s_hi = f_lo - STRAP_OVERHANG, f_hi + STRAP_OVERHANG
         s_x1 = clip_x1_to_avoid(vss_x0, VSS_BRIDGE_X[1], s_lo, s_hi, vdd_m2_boxes, clearance=5000)
         odb.dbSBox.create(vss_swire, m2, vss_x0, s_lo, s_x1, s_hi, "STRIPE")
+        vss_strap_x1s.append(s_x1)
         on_ring = any(seg_lo <= s_lo and s_hi <= seg_hi for seg_lo, seg_hi in vss_segments)
         print(f"VSS strap {i}: x=[{vss_x0},{s_x1}] y=[{s_lo},{s_hi}] reaches_ring={on_ring}")
 
-    # Tie-bar: one narrow strip running perpendicular to the pad's fingers,
-    # hugging the die edge so it crosses every finger. The bridge above already
-    # ties one finger to our ring, so this puts all of them in parallel for a
-    # fraction of the metal (and capacitance) of one bridge per finger.
-    vss_spine_lo = min(lo for lo, _ in VSS_PAD_FINGERS)
-    vss_spine_hi = max(hi for _, hi in VSS_PAD_FINGERS)
-    odb.dbSBox.create(
-        vss_swire, m2, vss_x0, vss_spine_lo, vss_x0 + SPINE_WIDTH, vss_spine_hi, "STRIPE"
-    )
-    print(f"VSS finger tie-bar: x=[{vss_x0},{vss_x0 + SPINE_WIDTH}] "
-          f"y=[{vss_spine_lo},{vss_spine_hi}] ({len(VSS_PAD_FINGERS)} fingers tied)")
+    # Crossbars perpendicular to the straps, turning the comb into a mesh. The
+    # first hugs the die edge; the rest are spaced along the straps' shared
+    # length, so every crossbar lands on every strap.
+    vss_spine_lo = min(lo for lo, _ in VSS_PAD_FINGERS) - STRAP_OVERHANG
+    vss_spine_hi = max(hi for _, hi in VSS_PAD_FINGERS) + STRAP_OVERHANG
+    vss_reach = min(vss_strap_x1s)
+    vss_bar_x = [vss_x0] + [
+        snap(vss_x0 + f * (vss_reach - vss_x0 - SPINE_WIDTH))
+        for f in GRID_CROSSBAR_FRACTIONS
+    ]
+    for bx in vss_bar_x:
+        odb.dbSBox.create(vss_swire, m2, bx, vss_spine_lo, bx + SPINE_WIDTH, vss_spine_hi, "STRIPE")
+    print(f"VSS crossbars at x={vss_bar_x} y=[{vss_spine_lo},{vss_spine_hi}] "
+          f"({len(vss_bar_x)} bars x {len(VSS_PAD_FINGERS)} straps)")
 
     # --- VDD: north ring, vary X, fixed Y ---
     vdd_segments = find_ring_segments(vdd, "Metal3", "y", VDD_RING_Y_CENTER, RING_HALF_WIDTH)
@@ -194,15 +213,20 @@ def add_padframe_power_bridge(reader):
         on_ring = any(seg_lo <= s_lo and s_hi <= seg_hi for seg_lo, seg_hi in vdd_segments)
         print(f"VDD strap {i}: x=[{s_lo},{s_hi}] y=[{VDD_STUB_Y[0]},{VDD_STUB_Y[1]}] reaches_ring={on_ring}")
 
-    # Same tie-bar on the north side: fingers run vertically here, so the strip
-    # runs horizontally along the die edge.
-    vdd_spine_lo = min(lo for lo, _ in VDD_PAD_FINGERS)
-    vdd_spine_hi = max(hi for _, hi in VDD_PAD_FINGERS)
-    odb.dbSBox.create(
-        vdd_swire, m2, vdd_spine_lo, VDD_STUB_Y[1] - SPINE_WIDTH, vdd_spine_hi, VDD_STUB_Y[1], "STRIPE"
-    )
-    print(f"VDD finger tie-bar: x=[{vdd_spine_lo},{vdd_spine_hi}] "
-          f"y=[{VDD_STUB_Y[1] - SPINE_WIDTH},{VDD_STUB_Y[1]}] ({len(VDD_PAD_FINGERS)} fingers tied)")
+    # Same mesh on the north side: fingers run vertically here, so the crossbars
+    # run horizontally. The first hugs the die edge, the rest step down the
+    # straps' length.
+    vdd_spine_lo = min(lo for lo, _ in VDD_PAD_FINGERS) - STRAP_OVERHANG
+    vdd_spine_hi = max(hi for _, hi in VDD_PAD_FINGERS) + STRAP_OVERHANG
+    vdd_span = VDD_STUB_Y[1] - VDD_STUB_Y[0]
+    vdd_bar_y = [VDD_STUB_Y[1] - SPINE_WIDTH] + [
+        snap(VDD_STUB_Y[1] - SPINE_WIDTH - f * (vdd_span - SPINE_WIDTH))
+        for f in GRID_CROSSBAR_FRACTIONS
+    ]
+    for by in vdd_bar_y:
+        odb.dbSBox.create(vdd_swire, m2, vdd_spine_lo, by, vdd_spine_hi, by + SPINE_WIDTH, "STRIPE")
+    print(f"VDD crossbars at y={vdd_bar_y} x=[{vdd_spine_lo},{vdd_spine_hi}] "
+          f"({len(vdd_bar_y)} bars x {len(VDD_PAD_FINGERS)} straps)")
 
     # The straps are Metal2 but this ring is Metal3, so each strap needs its own
     # vias -- without them only the strap that happens to sit under a via would
