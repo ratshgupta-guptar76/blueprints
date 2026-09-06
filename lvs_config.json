@@ -21,7 +21,7 @@
 		""
 	],
 	"LVS_SPICE_FILES": [
-		"$UPRJ_ROOT/ip/sram_32x8_9T/spice/sram_32x8_9T.lvs.spice"
+		"$UPRJ_ROOT/ip/sram_32x8_9T/lvs/sram_32x8_9T.lvs.spice"
 	],
 	"LVS_VERILOG_FILES": [
 		"$UPRJ_ROOT/verilog/A07_dcim_top.pnl.v"
