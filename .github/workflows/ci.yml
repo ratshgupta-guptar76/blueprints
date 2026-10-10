@@ -28,7 +28,40 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' || !(startsWith(github.ref_name, 'version-') || github.ref_name == 'main' || github.ref_name == 'dev') }}
 
 jobs:
+  # Fast checks: RTL lint + module-level cocotb tests.
+  # Runs on every push and PR. Needs no PDK and no LibreLane run.
+  fast:
+    runs-on: ubuntu-24.04
+    name: Lint and Functional Tests
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Nix
+        uses: ./.github/actions/setup_nix
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          nix_cache_domain: ${{ vars.NIX_CACHE }}
+          nix_public_key: ${{ vars.NIX_PUBLIC_KEY }}
+      - name: Lint RTL
+        run: |
+          nix develop --accept-flake-config --command make lint
+      - name: Run functional tests
+        # Still run when lint fails, so both results are reported
+        if: success() || failure()
+        run: |
+          nix develop --accept-flake-config --command make func-all
+          # func-all exits non-zero on a failing module; also check the
+          # result files in case a run reports success with failures
+          ls cocotb/results/*.xml
+          ! grep -lE '<(failure|error)' cocotb/results/*.xml
+      - name: Upload test results
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: functional_results
+          path: cocotb/results/*.xml
+  # Full chip build: only on pushes to v2-dev and main, plus manual dispatch.
   pre:
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref_name == 'v2-dev' || github.ref_name == 'main')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Define the Matrix
@@ -45,6 +78,7 @@ jobs:
   chip:
     runs-on: ubuntu-24.04
     name: Build the Chip
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref_name == 'v2-dev' || github.ref_name == 'main')) }}
     needs:
       - pre
     strategy:
