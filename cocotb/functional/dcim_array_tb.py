@@ -312,7 +312,9 @@ async def test_random(dut) -> None:
         assert pp == exp, f"mismatch act={act:#x} after writing row {row}"
  
  
-@cocotb.test(skip=(os.environ.get("SIM") != "icarus"))
+# stage=-1: must run before any test writes the array. The macro has no reset,
+# so storage written by an earlier test stays defined for the rest of the sim.
+@cocotb.test(stage=-1, skip=(os.environ.get("SIM") != "icarus"))
 async def test_x_prop_unwritten(dut) -> None:
     """4-state only: an unwritten row must NOT read as a clean 0.
  
