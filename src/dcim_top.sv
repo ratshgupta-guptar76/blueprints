@@ -62,7 +62,9 @@ act_shift_chain #(
     .c_en(comp_en),
 
     .act_bp(act_bp),
+    /* verilator lint_off PINCONNECTEMPTY */
     .tail_out()     // Modify Code to remove this signal safely.
+    /* verilator lint_on PINCONNECTEMPTY */
 );
 
 // adder_tree.sv

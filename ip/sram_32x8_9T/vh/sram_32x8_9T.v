@@ -15,7 +15,9 @@ module sram_32x8_9T (
     input  wire [31:0]  WL,
     input  wire [31:0]  A,
     input  wire [7:0]   WBL,
+    /* verilator lint_off UNUSEDSIGNAL */
     input  wire [7:0]   WBLB,
+    /* verilator lint_on UNUSEDSIGNAL */
     output wire [255:0] RBL
 );
 
