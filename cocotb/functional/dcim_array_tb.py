@@ -108,6 +108,7 @@
 # Date        | Engineer      | Version  | Description
 # ------------+---------------+----------+----------------------------------------------
 # Aug-13-2026 | R. Gupta      | * v2.0   | Rewritten for SRAM macro (was behavioural flops)
+# Oct-10-2026 | Claude        | * v2.1   | Add the 1,024-position column-mapping walk (v2 build step 1)
 # ======================================================================================
  
 import os
@@ -245,6 +246,42 @@ async def test_column_mapping(dut) -> None:
         got = (pp[0] >> (w * dw)) & ((1 << dw) - 1)
         assert got == weights[w], \
             f"weight {w} in wrong column group: got {got:#010b}, expected {weights[w]:#010b}"
+
+ 
+@cocotb.test()
+async def test_column_mapping_walk(dut) -> None:
+    """Every one of the ROWS x COLS positions maps to its own pp index.
+
+    Contracts 3 and 4: bit c of w_buf, written to row r, must appear at
+    pp[r][c] and at no other position. A single 1 is walked through all 1,024
+    positions with every row activated, and the whole pp bus is compared each
+    time, so a swapped, duplicated or dropped position cannot hide.
+
+    Written before the generate-loop refactor of dcim_array (design guide 5.1)
+    and meant to pass unchanged after it.
+    """
+    rows, cols, dw = _params(dut)
+    all_rows = (1 << rows) - 1
+
+    await write_all(dut, rows, lambda r: 0)
+
+    checked = 0
+    for r in range(rows):
+        for c in range(cols):
+            await write_row(dut, r, 1 << c)
+            pp = await drive(dut, 0, 0, 0, all_rows)
+            exp = [0] * rows
+            exp[r] = 1 << c
+            if pp != exp:
+                seen = [(i, b) for i in range(rows) for b in range(cols) if (pp[i] >> b) & 1]
+                assert False, (f"a 1 written at row {r}, column {c} (weight {c // dw}, bit {c % dw}) "
+                               f"appeared at (row, column) {seen}")
+            checked += 1
+        await write_row(dut, r, 0)              # leave the row clear for the next one
+
+    # An exhaustive test must prove it was exhaustive. The array is 32 x 32 in
+    # v1 and v2, so the literal is deliberate: a wrong loop bound cannot pass.
+    assert checked == rows * cols == 1024, f"walked {checked} positions, expected 1024"
  
  
 @cocotb.test()

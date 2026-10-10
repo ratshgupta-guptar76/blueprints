@@ -867,6 +867,19 @@ For one image alone both chips are dominated by weight reloads, which cost them 
 
 Four-bit activations cost more than 4-bit weights. As the design stands neither saves time: a 4-bit pass is 71 cycles against 75 (7.3), and the array stores 8-bit weights either way. An earlier run of the second row gave 78.9% held-out against 80.3% here, which is where the 1.5-point caution in 7.2 comes from. With 100 photographs the web column cannot separate these rows.
 
+The two demo networks were then trained at lower precision on Imagenette (pixels and activations at the stated width, weights at 8 bits, mean of three training runs, "independent" as in 7.2):
+
+| Network | Bits | Validation | Independent | Cycles per pass as designed | If the load took only the bits in use |
+|---|---|---|---|---|---|
+| Convolution | 8 | 81.2% | 71.7% | 75 | 75 |
+| Convolution | 6 | 80.7% | 70.5% | 73 | 57 |
+| Convolution | 4 | 77.7% | 69.4% | 71 | 39 |
+| Attention | 8 | 82.0% | 70.8% | 75 | 75 |
+| Attention | 6 | 81.2% | 70.9% | 73 | 57 |
+| Attention | 4 | 78.5% | 68.4% | 71 | 39 |
+
+Six bits costs under a point, and four bits about 3.5 points on the validation photographs. Two ways to turn that into speed were considered and **not adopted (Karan, 2026-10-10): the design stays at 8 bits with the two load modes of 5.4.** One was a load of P bits per row for every P (about 224 multiplexers in place of 32). The other was to make 6 bits the maximum activation width (6 flops per row, 19-bit accumulators). Either would give 57 cycles per pass at 6 bits. The figures are kept here in case the question returns.
+
 **Self-attention (decided: the demo's headline network uses it).** Running self-attention is a goal for this chip. The model has an attention layer (`attn:16` in `model/ml_model/arch.py`, the math in `network.py`). It needs no change to the chip:
 
 - Queries, keys, and values are three ordinary layers with fixed weights.
