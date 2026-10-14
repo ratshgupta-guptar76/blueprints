@@ -8,7 +8,9 @@ package dcim_pkg;
     localparam int COLS       =  N_WEIGHTS*DW;
 
     localparam bit W_SIGN = 1;
+    /* verilator lint_off UNUSEDPARAM */
     localparam int W_BITS = DW;
+    /* verilator lint_on UNUSEDPARAM */
 
     localparam bit A_SIGN      =  0;
     localparam int A_MAX_BITS  =  DW;

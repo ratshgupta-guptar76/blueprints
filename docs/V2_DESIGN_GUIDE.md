@@ -245,17 +245,18 @@ Short definitions of terms the rest of the guide uses.
 
 They are in dependency order: each one can be built and tested on top of the ones before it. Each uses the same headings.
 
-### 5.1 Generate-loop the macro array
+### 5.1 The macro array: indices from the package
 
-**Status: Decided.**
+**Status: Done** (2026-10-12, Karan's decision on the form). The first plan was a generate loop over the macros. It was built, it broke the flow, and the final change is much smaller.
 
-- **Today.** `dcim_array.sv` instantiates the four macros by hand, with literal slices (`w_buf[7:0]`, `[15:8]`, and so on), a literal `rbl [3:0]`, and literal loop bounds of 4 and 8.
-- **Change.** One generate loop over N_WEIGHTS, with slices computed from the loop index and DW.
-- **How it works.** Macro w takes `w_buf[w*DW +: DW]`. Its read output maps as `pp[r][w*DW + c] = rbl[w][r*DW + c]`, exactly as now.
-- **Cost.** None in gates. It is a pure refactor.
-- **Touches.** `dcim_array.sv`. Contracts 3 and 4 must hold unchanged.
-- **How to check.** A column-mapping test written before the refactor and unchanged after it: write a single 1 into each of the 1,024 positions in turn and confirm it appears at the same `pp` index. Assert that the test ran 1,024 iterations.
-- **Why first.** Sections 5.2 and 5.13 both add logic at the macro boundary. Doing that on top of hand-copied instances is where index bugs come from.
+- **Before.** `dcim_array.sv` instantiated the four macros by hand, with literal slices (`w_buf[7:0]`, `[15:8]`, and so on), a literal `rbl [3:0]`, and literal loop bounds of 4 and 8 in the read mapping.
+- **Now.** The four instances stay hand-written, with their literal slices: hardcoded on purpose. The read mapping and the `rbl` declaration take their sizes straight from the package: the loop bounds are `dcim_pkg::N_WEIGHTS` and `dcim_pkg::DW`, and the mapping is `pp[r][w*dcim_pkg::DW + c] = rbl[w][r*dcim_pkg::DW + c]`, the same mapping as before. Four lines of `dcim_array.sv` changed.
+- **Why not a generate loop over the instances.** A loop names the instances `MACRO[0].u_sram_32x8_9T` and so on. The flow addresses the macros by name in five files (macro placement and power connections in `config_core.yaml`, `config.yaml`, and `quadrant_workshop.yaml`; the macro power grid in `pdn_cfg.tcl` and `pdn_core_cfg.tcl`). With the new names, synthesis and macro placement passed, but power-grid generation could not find the instances under any of three spellings of the brackets (**Measured**). This applies to hard macros only: standard cells built in generate loops are not addressed by name. A text macro that stamps the instances with the v1 names was also tried and works, but was judged error prone.
+- **A side effect.** Referring to `dcim_pkg::` inside a module body makes Verilator report the package's unused parameter `W_BITS`, which it had never reported while the package was used only for parameter defaults. `dcim_pkg.sv` now waives that one warning on that one line, with a comment-only pragma pair.
+- **Cost.** None. The synthesized netlist of the whole core is identical to v1's, line for line, apart from source-line attributes (**Measured**, 42,332 lines).
+- **Touches.** `dcim_array.sv` (four lines), `dcim_pkg.sv` (the pragma pair). Contracts 3 and 4 hold unchanged.
+- **How it was checked.** `test_column_mapping_walk`, written before the change and passing unchanged after it: a single 1 in each of the 1,024 positions must appear at the same `pp` index and nowhere else, and the test asserts it ran 1,024 iterations. Nine mutations of the wiring are all caught, by that test alone as well as by the suite. Lint is clean, the 69 module tests and the 9 core-level tests pass.
+- **What still guards the hardcoded instances.** The walk test and the mutation table. They are the reason the instances can safely stay hand-written while 5.2 and 5.13 add logic at the macro boundary.
 
 ### 5.2 Gate the activations at the macro boundary
 
@@ -687,7 +688,7 @@ The two share their first seven layers (down to the 8 x 8 map). From there the r
 | 14 | Final layer | 10 scores | 32 | 3 | 3 |
 | | **Total** | | | **131, and 76 per image** | **35,907** |
 
-Three things the attention network asks of the FPGA that the reference does not: a signed limit on keys and values (they become weights), adding the block's input back after mixing, and adding the two partial sums of the mixing step on the 8 x 8 map (64 inputs, 4,096 adds per image). On-chip requantize (5.9) therefore covers the convolution layers and the queries; the other attention steps use the raw drain.
+Four things the attention network asks of the FPGA that the reference does not: a bias that differs for every position on queries and keys (the position term), a signed limit on keys and values (they become weights), adding the block's input back after mixing, and adding the two partial sums of the mixing step on the 8 x 8 map (64 inputs, 4,096 adds per image). On-chip requantize (5.9) has one bias per output, held for the whole batch, so it covers the convolution layers and the attention score step (which has a single bias); the query, key, value, and mixing steps use the raw drain. At P = 8 a raw drain costs no cycles (7.3).
 
 The rest of this section is the wider set of networks that was measured on the way. The wide and full-resolution networks were not chosen: their gain on the validation photographs does not show on independent ones.
 
@@ -946,7 +947,7 @@ Datapath first, interfaces last. Every step can be tested by a cocotb testbench 
 
 | Step | Build | Depends on | Golden model work |
 |---|---|---|---|
-| 1 | Column-mapping test, then the `dcim_array` generate loop (5.1) | nothing | none |
+| 1 | Column-mapping test, then the `dcim_array` indices taken from `dcim_pkg` (5.1). **Done.** | nothing | none |
 | 2 | Activation gating (5.2) | 1 | none: results are unchanged |
 | 3 | Four sub-chains and the 1-bit load mode (5.3, 5.4) | nothing | new load order |
 | 4 | Split control into load, compute, drain stages (5.5, 5.6) | 3 | stage hand-off, overrun |
@@ -1002,7 +1003,7 @@ The first nine were proposals in the first draft of this guide. All ten are now 
 | 5 | The SPI crossing rules in 5.11 (**Proposed**): whole words cross, SCLK never faster than CLK, CS_N resets the bit counter, one dummy byte on reads. And the highest SCLK the pads and board allow. | The SPI driver, and the weight reload cost: 1,024 core cycles only if SCLK reaches the core clock rate. |
 | 6 | SPI mode (clock polarity and phase), and how the clock-domain crossings are bounded in timing analysis. | The SPI driver; `librelane/chip_core.sdc`. |
 | 7 | Whether to check the two v1 write-path questions before the December submission (flow audit section 4). | Whether `v1.0` moves. |
-| 8 | Resolved (Karan, 2026-10-09): the demo runs two networks on the same chip, the attention network as the headline and the one-pass convolution network as the reference (7.2), both at 8 bits. | Time per image is about 0.12 s and 0.10 s (**Estimate**). The attention network needs the raw drain for its key, value, and mixing steps, and rewrites 76 weight sets per image. |
+| 8 | Resolved (Karan, 2026-10-09): the demo runs two networks on the same chip, the attention network as the headline and the one-pass convolution network as the reference (7.2), both at 8 bits. | Time per image is about 0.12 s and 0.10 s (**Estimate**). The attention network needs the raw drain for its query, key, value, and mixing steps, and rewrites 76 weight sets per image. |
 | 9 | Should a row-count setting skip padded rows at P = 8? | In the photograph demo a depthwise pass uses 27 of the 32 rows and the first 1 x 1 layer uses 16; the rest load zeros. Not proposed here; noted as a possible later gain. |
 | 10 | Does the photonic module pass data through unchanged when it is not computing the first layer? | Later-layer activations (8-bit, from the FPGA) must reach the chip over the link for the 75-cycle figure to hold with that module plugged in. In the photograph demo that is nearly all the traffic. If the module cannot pass them, they go over SPI, which is far slower. Two ways to pass them: an electrical bypass on the module board, or a pass-through bank in the optics. |
 | 11 | What are the v2 slot's area and pad count? | If the pad count rises, the first extra pads go to supply. If the area shrinks, the room for new logic has to be rechecked: v1 places about 278,000 um^2 of cells in an 823,516 um^2 core, and the rationale defers adder tree sharing only while area is not tight. |

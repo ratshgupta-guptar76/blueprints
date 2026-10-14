@@ -33,7 +33,7 @@ These are the items from this audit that change the design or need action. Every
 | F9 | **IR drop was analyzed without source locations.** The flow warned that `VSRC_LOC_FILES` was not set. The reported worst drop of 0.14 mV is therefore not meaningful. | Measured | Low concern for the core itself: the tool's power estimate is 12.6 mW, about 3.8 mA at 3.3 V, so even a poor 5 ohm supply path would drop under 20 mV. The real supply concern is bounce from the output pads (R6), which is a different effect and which this analysis cannot see. |
 | F10 | **`reports/summary.md` is from an older run.** It shows a worst setup slack of 22.30 ns; `reports/metrics.json` shows 20.52 ns. | Measured | The two committed reports disagree. `metrics.json` matches the final run. |
 
-F1 and F2 apply to v1 as submitted, not only to v2. Section 4 says what can be checked before the December submission.
+F1 and F2 apply to v1 as it stands (not yet submitted), not only to v2. Section 4 says what can be checked before the December submission.
 
 ---
 

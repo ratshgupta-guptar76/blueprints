@@ -108,7 +108,7 @@
 # Date        | Engineer      | Version  | Description
 # ------------+---------------+----------+----------------------------------------------
 # Aug-13-2026 | R. Gupta      | * v2.0   | Rewritten for SRAM macro (was behavioural flops)
-# Oct-10-2026 | Claude        | * v2.1   | Add the 1,024-position column-mapping walk (v2 build step 1)
+# Oct-10-2026 | R. Gupta      | * v2.1   | Add the 1,024-position column-mapping walk (v2 build step 1)
 # ======================================================================================
  
 import os

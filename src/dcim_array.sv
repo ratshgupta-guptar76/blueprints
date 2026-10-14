@@ -46,7 +46,7 @@ module dcim_array #(
     );
 
 
-    logic [255:0] rbl [3:0];  
+    logic [ROWS*dcim_pkg::DW-1:0] rbl [dcim_pkg::N_WEIGHTS-1:0];
 
     sram_32x8_9T u_sram_32x8_9T_0 (
         .WL   (wl),
@@ -81,10 +81,10 @@ module dcim_array #(
     );
     genvar w, r, c;
     generate
-        for (w = 0; w < 4; w++) begin : WMAP
+        for (w = 0; w < dcim_pkg::N_WEIGHTS; w++) begin : WMAP
             for (r = 0; r < ROWS; r++) begin : RMAP
-                for (c = 0; c < 8; c++) begin : CMAP
-                    assign pp[r][w*8 + c] = rbl[w][r*8 + c];
+                for (c = 0; c < dcim_pkg::DW; c++) begin : CMAP
+                    assign pp[r][w*dcim_pkg::DW + c] = rbl[w][r*dcim_pkg::DW + c];
                 end
             end
         end

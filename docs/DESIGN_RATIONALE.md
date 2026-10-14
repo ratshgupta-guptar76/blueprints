@@ -28,7 +28,7 @@ This framing has a direct consequence for the DCIM: it must be measurable on its
 
 ## Why v1 is frozen and v2 lives on a branch
 
-v1 is the design submitted for fabrication. Its value as a baseline depends entirely on our ability to point at exactly what was submitted and reproduce it. If v1's source drifts after submission, every "v2 versus v1" comparison becomes questionable, because nobody can be sure which v1 is being compared. So v1 is tagged as `v1.0` and that tag is protected against moving or deletion.
+v1 is the frozen baseline design (as of 2026-10-13 it has not been taped out: the shuttle deadline was extended to 2026-12-14 because of fab issues, and v2 is planned for that submission). Its value as a baseline depends entirely on our ability to point at exactly what was submitted and reproduce it. If v1's source drifts after submission, every "v2 versus v1" comparison becomes questionable, because nobody can be sure which v1 is being compared. So v1 is tagged as `v1.0` and that tag is protected against moving or deletion.
 
 v2 is developed on a separate `v2-dev` branch in the same public repository, with feature work on short-lived branches merged by pull request. `main` stays at v1 until v2 passes all of its merge gates. We considered putting v2 in a private repository, because of a possible conflict of interest, and concluded it was not needed. The repository is Apache-2.0, which permits a public derivative as long as the license, notice, and per-file license headers are kept.
 
@@ -354,7 +354,7 @@ Several directions were considered and rejected, and it is worth recording why s
 
 ## How the plan contains risk
 
-The project is structured so that each risky piece can fail without taking down anything beneath it. v1, frozen and submitted for fabrication, is the foundation, and its silicon measurements become the baseline once it returns. v2 adds architectural improvements but is functionally usable over SPI alone, and over JTAG alone, so a failure in any one new interface still leaves a working chip. The one shared point is the register file in the core clock domain, which both fallbacks depend on. The interconnect experiments work with copper and wires, so the photonic chip is never required. If the photonic die is late or does not work, commercial optical parts can stand in for it in the same module, and the photonic chip's own measured data still supports the scaling analysis. A decision date, set a couple of months before the capstone demonstration, forces a clean switch to the fallback rather than a last-minute scramble.
+The project is structured so that each risky piece can fail without taking down anything beneath it. v1, frozen for submission, is the foundation, and its silicon measurements become the baseline once it returns. v2 adds architectural improvements but is functionally usable over SPI alone, and over JTAG alone, so a failure in any one new interface still leaves a working chip. The one shared point is the register file in the core clock domain, which both fallbacks depend on. The interconnect experiments work with copper and wires, so the photonic chip is never required. If the photonic die is late or does not work, commercial optical parts can stand in for it in the same module, and the photonic chip's own measured data still supports the scaling analysis. A decision date, set a couple of months before the capstone demonstration, forces a clean switch to the fallback rather than a last-minute scramble.
 
 ## What success looks like
 
@@ -383,7 +383,7 @@ Still to be decided:
 Stated here but not verified from this repository:
 
 - The cycle estimates for v2. Their assumptions are listed with the tables. The v1 figures are measured.
-- Any v1 silicon result. v1 is submitted for fabrication; nothing here is a silicon measurement until it returns.
+- Any v1 silicon result. Nothing has been taped out (the shuttle deadline was extended to 2026-12-14); nothing here is a silicon measurement until it is fabricated and returns.
 - Everything in the photonics sections about device behavior, fabrication runs, and what is commercially deployed. None of it can be checked from this repository.
 - The limits the board and the link module place on the lane rate.
 - The accuracy figures for the demo network. They come from the system model in `model/`, one training run each, so differences under about a point are not meaningful.

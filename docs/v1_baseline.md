@@ -40,6 +40,8 @@ This is the reference that v2 is compared against for merge gate 1: "all golden-
 
 The tests skipped on Verilator are the X-propagation tests. Verilator is a two-state simulator, so they run on Icarus only.
 
+**Core level.** `cocotb/A07_dcim_top_tb.py` drives the whole core (`A07_dcim_top`) in RTL mode: 9 tests, all pass, about 100 seconds on Icarus (`cd cocotb && python3 A07_dcim_top_tb.py`). They cover the pin list against the padframe, start and busy, matrix-vector results over several seeds and precisions, edge cases, weight-stationary reuse, a second weight load without reset, and a constrained-random regression. Measured on 2026-10-12 with the `dcim_array` of design guide 5.1, whose synthesized netlist is identical to v1's.
+
 ## 3. Coverage
 
 `make func-all SIM=verilator`, which builds with `--coverage-line --coverage-user`. This is **line coverage** plus any user coverage points, per module testbench. It is not toggle, branch, or expression coverage.
@@ -85,7 +87,7 @@ Both depend on compile-time parameters, and v1 is built with `W_SIGN = 1` and `A
 | **Total** | **92** | **0** | **1** |
 
 - **The one not applied** is `control_fsm`, "SHIFT_OUT exit inverted": its pattern no longer matches the RTL text, so the mutation was never made. The table entry is stale and should be rewritten.
-- **`dcim_array` had no mutation table before 2026-10-10.** Its seven mutations are index mistakes in the macro wiring (a slice not updated, two macros crossed, an index reversed or off by one). `test_column_mapping_walk` catches all seven on its own. The older `test_column_mapping` misses one of them: a bit order that is wrong only in rows 16 to 31, because it looks at row 0 only.
+- **`dcim_array` had no mutation table before 2026-10-10.** The table was rewritten on 2026-10-12 for the module as it is after design guide 5.1 and now has nine mutations, all caught. The seven counted above were written against the v1 text: index mistakes in the macro wiring (a slice not updated, two macros crossed, an index reversed or off by one). `test_column_mapping_walk` catches all seven on its own. The older `test_column_mapping` misses one of them: a bit order that is wrong only in rows 16 to 31, because it looks at row 0 only.
 
 ## 5. Cycle counts
 
@@ -103,7 +105,7 @@ The last v1 flow run is tabulated in `docs/V2_FLOW_AUDIT.md` section 2 and is no
 
 ## 7. What this baseline does not cover
 
-- **No top-level test.** `dcim_top_tb.py` is not in the repository, so everything above is per module. The cycle counts in section 5 come from a separate top-level probe.
+- **The coverage and mutation figures are per module.** The core-level tests of section 2 are not part of `make func-all` and are not in the coverage figures.
 - **Line coverage only.** A line can be executed without its values being checked. The mutation tests are what show the checks are meaningful.
 - **X-propagation on Icarus only.**
 - **Gate-level simulation has no timing,** so it cannot show a glitch or a clock-domain crossing fault.
