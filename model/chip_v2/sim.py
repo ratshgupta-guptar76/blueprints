@@ -43,6 +43,14 @@ class Sim:
     def run_for(self, dt: int) -> None:
         self.run_until(self.t + dt)
 
+    def advance(self, t: int) -> None:
+        """For a caller that supplies the edges itself (a trace replay, or a
+        simulator through cocotb): close the current instant and move to t."""
+        assert t >= self.t, "cannot go back in time"
+        for fn in self._publish:
+            fn()
+        self.t = t
+
 
 class Clock:
     """A free-running clock. on_rise and on_fall are called at its edges."""

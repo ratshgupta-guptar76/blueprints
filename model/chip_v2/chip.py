@@ -43,6 +43,7 @@ M_LINK_EN, M_ACT_SPI, M_GATE_OFF, M_TX_SILENCE, M_REQUANT = 1, 2, 4, 8, 16
 FREE, LOADING, LOADED, COMPUTING = range(4)                             # activation chain
 HUNT, HDR1, HDR2, PAYLOAD, CRC1, CRC2, SKIP, RECOVER = range(8)         # link receiver
 B_RUN, B_PASS, B_FAIL, B_ABORT = range(4)                               # self-test result
+L_DOWN, L_UP, L_CLOSING = range(3)                                      # the core's view of the link
 
 # JTAG TAP states and the standard transition table: NEXT[state][tms]
 (TLR, RTI, SEL_DR, CAP_DR, SH_DR, EX1_DR, PAU_DR, EX2_DR, UPD_DR,
@@ -108,7 +109,8 @@ class ChipV2:
         # model-only: injected cell faults and what the simulation observed
         self.stuck: dict[tuple[int, int], int] = {}             # (row, column) -> stuck value
         self.coupled: dict[tuple[int, int], tuple[int, int]] = {}   # writing a 1 here also sets that cell
-        self.obs = {"fifo_max": 0, "wc_collisions": 0, "x_reads": 0, "gate_leaks": 0, "act_overrun": 0}
+        self.obs = {"fifo_max": 0, "wc_collisions": 0, "x_reads": 0, "gate_leaks": 0, "act_overrun": 0,
+                    "fifo_stale": 0, "read_during_write": 0}
         self.cbist_expect = cbist_signature()
         self._reset()
 
@@ -120,6 +122,7 @@ class ChipV2:
         # link domain
         self.wptr = 0
         self.fifo = [0] * FIFO_DEPTH
+        self.fifo_fresh = [False] * FIFO_DEPTH      # model-only: written by the link and not yet read
         self.l_en_s1 = self.l_en_s2 = 0
         self.rp_s1 = self.rp_s2 = 0
         self.ovf_t = 0
@@ -130,11 +133,13 @@ class ChipV2:
         self.ovf_s1 = self.ovf_s2 = self.ovf_s3 = 0
         self.lr_s1 = self.lr_s2 = 0
         self.cs_s1 = self.cs_s2 = 1
-        self.wload = False                  # an SPI weight burst is in progress
+        self.burst = False                  # an SPI WEIGHTS or ACT burst is in progress
         self.rptr = 0
+        self.lnk = L_DOWN
         # core: receiver
         self.rx = HUNT
         self.rx_hdr = self.rx_crc = self.rx_left = self.rx_idle = self.rx_hi = 0
+        self.rx_started = False             # a frame's first payload symbol was accepted on this edge
         # core: chain, datapath, pipeline
         self.rows = [0] * ROWS              # activation cells, 8 bits each
         self.chain = FREE
@@ -162,6 +167,8 @@ class ChipV2:
         self.err_busy = self.fifo_ovf = False
         self.row_sel = 0
         self.row_data = 0
+        self.row_data_x = False             # model-only: ROW_DATA was read from a row never written
+        self.row_rd = False                 # a row read is waiting for the write port
         # core: SPI and JTAG decoders
         self.s_cmd = None
         self.s_n = self.s_acc = 0
@@ -199,9 +206,12 @@ class ChipV2:
         self.jreq_t = 0
         self.ja_s1 = self.ja_s2 = 0
         self.link_tx = self.status = self.miso = self.tdo = 0
-        for name in ("wptr_gray", "rptr_gray", "spi_tgl", "jt_tgl", "jt_ack", "ovf_tgl", "link_en", "link_rdy"):
+        # Every register a crossing reads is reset too, the held words included: after
+        # reset the chip must be indistinguishable from one that has just powered up.
+        for name in ("wptr_gray", "rptr_gray", "spi_tgl", "jt_tgl", "jt_ack", "ovf_tgl", "link_go", "link_rdy",
+                     "spi_word", "rd_hold", "jt_req", "jt_resp"):
             self.x.put(name, 0)
-        self.x.put("cs_n", 1)
+        self.x.put("cs_n", self.cs_n)
 
     def set_rst_n(self, v: int) -> None:
         self.rst_n = v
@@ -214,9 +224,10 @@ class ChipV2:
             return
         x = self.x
         released = self.l_en_s2
-        self.l_en_s2, self.l_en_s1 = self.l_en_s1, x.get("link_en")
+        self.l_en_s2, self.l_en_s1 = self.l_en_s1, x.get("link_go")
         if not released:                    # held in reset while the link is disabled (section 2)
             self.wptr = 0
+            self.rp_s1 = self.rp_s2 = 0
             x.put("wptr_gray", 0)
             x.put("link_rdy", 0)
             return
@@ -228,6 +239,7 @@ class ChipV2:
             x.put("ovf_tgl", self.ovf_t)
             return
         self.fifo[self.wptr & 7] = self.link_d
+        self.fifo_fresh[self.wptr & 7] = True
         self.wptr = (self.wptr + 1) & 15
         x.put("wptr_gray", bin2gray(self.wptr))
 
@@ -312,8 +324,8 @@ class ChipV2:
 
     # ============================================================ core domain
     def _busy(self) -> bool:
-        return (self.chain != FREE or self.acc_valid or self.bist is not None or self.wload
-                or self.wc != 0 or self.wc_pending is not None or self.act_cnt > 0)
+        return (self.chain != FREE or self.acc_valid or self.bist is not None or self.burst
+                or self.wc != 0 or self.wc_pending is not None or self.act_cnt > 0 or self.row_rd)
 
     def _lanes(self, plane: list[int]) -> list[int]:
         """Column sums of one bit plane, combined per weight (contracts 3, 10)."""
@@ -343,8 +355,8 @@ class ChipV2:
 
     def _read_row(self, row: int) -> int:
         """One-hot activation: the 32 column sums are that row's bits (design guide 5.13)."""
-        if not self.w_valid[row]:
-            self.obs["x_reads"] += 1
+        if self.wc != 0:
+            self.obs["read_during_write"] += 1          # the activation gate must be closed (section 8.2)
         return sum(int(b) << c for c, b in enumerate(self.wbits[row]))
 
     def _shift_lanes(self, sym: int, one_bit: bool) -> None:
@@ -380,8 +392,9 @@ class ChipV2:
         chain_old, acc_valid_old, tx_cnt_old = self.chain, self.acc_valid, self.tx_cnt
         acc_old = list(self.acc)
         busy_old = self._busy()
-        wc_old = self.wc
+        wc_old, wc_idle_old = self.wc, self.wc == 0 and self.wc_pending is None
         self.done_pulse = False
+        self.rx_started = False
 
         # ---- synchronizers
         wp_seen = gray2bin(self.wp_s2)
@@ -393,22 +406,40 @@ class ChipV2:
         if self.ovf_s2 != self.ovf_s3:
             self.fifo_ovf = True
         self.ovf_s3, self.ovf_s2, self.ovf_s1 = self.ovf_s2, self.ovf_s1, x.get("ovf_tgl")
+        lr_old = self.lr_s2
         self.lr_s2, self.lr_s1 = self.lr_s1, x.get("link_rdy")
-        if self.cs_s2:                      # chip select is high: any weight burst is over
-            self.wload = False
+        if self.cs_s2:                      # chip select is high: any burst is over
+            self.burst = False
         self.cs_s2, self.cs_s1 = self.cs_s1, x.get("cs_n", 1)
 
         # ---- link FIFO read (crossing X1) and the receiver (section 4)
-        if not self.mode & M_LINK_EN:
-            self.rptr = 0
-            x.put("rptr_gray", 0)
+        # The two sides of the FIFO are reset together, by handshake (section 2): the core
+        # stops reading and holds the link's enable low until the link says it is in reset.
+        en = bool(self.mode & M_LINK_EN)
+        if self.lnk == L_DOWN:
+            self.rptr = wp_seen             # follow the write pointer: the FIFO is empty when the link comes up
+            x.put("rptr_gray", bin2gray(self.rptr))
+            self.rx = HUNT
+            if en and lr_old:
+                self.lnk = L_UP
+        elif self.lnk == L_CLOSING:
+            self.rx = HUNT
+            if not lr_old:
+                self.lnk = L_DOWN
+        elif not en:
+            self.lnk = L_CLOSING
             self.rx = HUNT
         elif self.rptr != wp_seen:
             self.obs["fifo_max"] = max(self.obs["fifo_max"], (wp_seen - self.rptr) & 15)
             sym = self.fifo[self.rptr & 7]
+            if not self.fifo_fresh[self.rptr & 7]:
+                self.obs["fifo_stale"] += 1             # an entry read twice, or never written
+            self.fifo_fresh[self.rptr & 7] = False
             self.rptr = (self.rptr + 1) & 15
             x.put("rptr_gray", bin2gray(self.rptr))
-            if not self.mode & M_ACT_SPI:
+            if self.mode & M_ACT_SPI:
+                self.rx = HUNT                          # link frames are ignored (section 8)
+            else:
                 self._receive(sym, chain_old)
 
         # ---- pipeline (section 5)
@@ -429,7 +460,7 @@ class ChipV2:
                 self.acc_valid = True
                 self.acc_seq, self.acc_p = self.chain_seq, self.chain_p
                 self.done_pulse = True
-        elif chain_old == LOADED and self.chain == LOADED and (not acc_valid_old or capture):
+        elif chain_old == LOADED and self.chain == LOADED and (not acc_valid_old or capture) and wc_idle_old:
             self.acc = [0] * NW             # start: clear, then P compute edges
             self.chain = COMPUTING
             self.plane = 0
@@ -455,6 +486,8 @@ class ChipV2:
             self._store(self.wc_row, self.wc_data)      # wordline enable is high for this cycle
             self.wc = 2
         elif wc_old == 2:
+            self.wc = 3                                 # hold: address and data stay
+        elif wc_old == 3:
             self.wc = 0
         if self.wc == 0 and self.wc_pending is not None:
             self.wc_row, self.wc_data = self.wc_pending
@@ -462,6 +495,10 @@ class ChipV2:
             self.wc = 1
         if self.wc != 0 and chain_old == COMPUTING and not self.mode & M_GATE_OFF:
             self.obs["gate_leaks"] += 1                 # a write while the activation gate is open
+        if self.row_rd and self.wc == 0 and wc_old == 0:
+            self.row_rd = False                         # the row read that had to wait for the write port
+            self.row_data = self._read_row(self.row_sel)
+            self.row_data_x = not self.w_valid[self.row_sel]
 
         # ---- activations arriving by SPI or JTAG: one bit per cycle into the joined chain
         if self.act_cnt:
@@ -469,11 +506,12 @@ class ChipV2:
             self._shift_joined((self.act_sr >> self.act_cnt) & 1, self.p_reg == 1)
 
         # ---- SPI bytes (X2), then JTAG requests (X4). SPI wins a tie (section 10).
+        busy_w = busy_old or self.rx_started            # a frame that began loading on this edge counts
         if spi_evt:
             word = x.held("spi_word", settle=self.clk_period)
-            self._spi_byte(word >> 8, word & 0xFF, busy_old)
+            self._spi_byte(word >> 8, word & 0xFF, busy_w)
         if jt_evt:
-            self._jtag_request(x.held("jt_req", settle=self.clk_period), busy_old, spi_evt)
+            self._jtag_request(x.held("jt_req", settle=self.clk_period), busy_w, spi_evt)
 
         # ---- self-test
         if self.bist is not None:
@@ -491,7 +529,7 @@ class ChipV2:
             self.status = (self.cyc >> 15) & 1
         else:
             self.status = 1
-        x.put("link_en", self.mode & M_LINK_EN)
+        x.put("link_go", int(bool(self.mode & M_LINK_EN) and self.lnk != L_CLOSING))
 
     # ------------------------------------------------------------ receiver
     def _receive(self, sym: int, chain_old: int) -> None:
@@ -514,11 +552,12 @@ class ChipV2:
         elif st == PAYLOAD:
             if self.rx_left == 0:                       # first payload symbol: is the chain free?
                 n = 8 if self.p_reg == 1 else 64
-                if chain_old != FREE or self.bist is not None or self.wload:
+                if chain_old != FREE or self.bist is not None or self.burst:
                     self.cnt_ovr = min(self.cnt_ovr + 1, 255)
                     self.rx, self.rx_left = SKIP, n + 1     # the rest of the payload, then the CRC
                     return
                 self.chain = LOADING
+                self.rx_started = True
                 self.chain_p = self.p_reg               # P travels with the vector
                 self.rx_left = n
             self._shift_lanes(sym, self.chain_p == 1)
@@ -597,15 +636,22 @@ class ChipV2:
         if addr == A_ROW_SEL:
             return self.row_sel
         if addr == A_ROW_DATA:
+            if self.row_data_x:
+                self.obs["x_reads"] += 1
             return self.row_data
         return 0
 
-    def _allowed(self, addr: int, busy: bool) -> bool:
-        """The busy rule of section 5. A write during self-test aborts it and goes ahead."""
+    def _command(self) -> bool:
+        """A write command has arrived. A running self-test stops here (section 9).
+        Returns True if one was stopped."""
         self.touched = True
         if self.bist is not None:
             self._abort_bist()
             return True
+        return False
+
+    def _guard(self, addr: int, busy: bool) -> bool:
+        """The busy rule of section 5, applied on the edge that carries the write out."""
         if addr in GUARDED and busy:
             self.err_busy = True
             return False
@@ -629,22 +675,32 @@ class ChipV2:
                 self.cnt_crc = self.cnt_ovr = self.cnt_bad = 0
             if v & 2:
                 self.err_busy = self.fifo_ovf = False
+            if v & 4 and self.chain == LOADING:         # abandon a vector the link never finished
+                self.chain = FREE
+                self.rx, self.rx_idle = RECOVER, 0
         elif addr == A_BIST_CTRL and v & 3:
             self.bist = self._run_tests(bool(v & 1), bool(v & 2))
         elif addr == A_ROW_SEL:
             self.row_sel = v & 31
-            self.row_data = self._read_row(self.row_sel)    # one cycle through the compute port
+            if self.wc != 0 or self.wc_pending is not None:
+                self.row_rd = True                          # wait for the write port (section 8.2)
+            else:
+                self.row_data = self._read_row(self.row_sel)    # one cycle through the compute port
+                self.row_data_x = not self.w_valid[self.row_sel]
 
     def _spi_byte(self, first: int, byte: int, busy: bool) -> None:
         if first:
             self.s_cmd, self.s_n, self.s_acc = byte, 0, 0
             addr = byte & 0x7F
             if byte >> 7:
-                self.s_ok = self._allowed(addr, busy)
-                if addr == A_ACT and not self.mode & M_ACT_SPI:
-                    self.s_ok, self.err_busy = False, True      # ACT needs act_spi (section 8)
+                stopped = self._command()
+                self.s_ok = True
                 self.wrow = 0
-                self.wload = self.s_ok and addr == A_WEIGHTS
+                if addr in (A_WEIGHTS, A_ACT):          # a burst is checked here and then holds the chip busy
+                    self.s_ok = self._guard(addr, busy and not stopped)
+                    if addr == A_ACT and not self.mode & M_ACT_SPI:
+                        self.s_ok, self.err_busy = False, True      # ACT needs act_spi (section 8)
+                    self.burst = self.s_ok
             else:                                       # a read: snapshot the whole register now
                 n = REG_BYTES.get(addr, 1)
                 v = self._reg_read(addr)
@@ -676,8 +732,8 @@ class ChipV2:
         else:
             self.s_acc = (self.s_acc << 8) | byte
             self.s_n += 1
-            if self.s_n == REG_BYTES.get(addr, 1):
-                self._reg_write(addr, self.s_acc)
+            if self.s_n == REG_BYTES.get(addr, 1) and self._guard(addr, busy):
+                self._reg_write(addr, self.s_acc)       # any other register: checked now, as it is written
 
     def _write_row(self, row: int, data: int) -> None:
         if self.wc_pending is not None:
@@ -693,21 +749,25 @@ class ChipV2:
         elif kind == J_DEBUG:
             if spi_evt and self.s_cmd is not None and self.s_cmd >> 7:
                 self.err_busy = True                    # SPI is writing in this same cycle
-            elif self._allowed(addr, busy):
-                if addr == A_WEIGHTS:
-                    self._write_row(self.row_sel, data)
-                    self.row_sel = (self.row_sel + 1) & 31
-                elif addr == A_ACT:
-                    self.act_sr, self.act_cnt = data, 32
-                else:
-                    self._reg_write(addr, data)
+            else:
+                stopped = self._command()
+                if addr == A_ACT and not self.mode & M_ACT_SPI:
+                    self.err_busy = True                # ACT needs act_spi here too (section 8)
+                elif self._guard(addr, busy and not stopped):
+                    if addr == A_WEIGHTS:
+                        self._write_row(self.row_sel, data)
+                        self.row_sel = (self.row_sel + 1) & 31
+                    elif addr == A_ACT:
+                        self.act_sr, self.act_cnt = data, 32
+                    else:
+                        self._reg_write(addr, data)
         elif kind == J_MBIST:
             resp = (self.mb_row << 3) | self.mb_state
-            if data & 1 and self._allowed(A_BIST_CTRL, busy):
+            if data & 1 and self._guard(A_BIST_CTRL, busy and not self._command()):
                 self._reg_write(A_BIST_CTRL, 1)
         elif kind == J_CBIST:
             resp = (self.cb_sig << 2) | self.cb_state
-            if data & 1 and self._allowed(A_BIST_CTRL, busy):
+            if data & 1 and self._guard(A_BIST_CTRL, busy and not self._command()):
                 self._reg_write(A_BIST_CTRL, 2)
         self.x.put("jt_resp", resp)
         self.jt_ack ^= 1
@@ -761,6 +821,14 @@ class ChipV2:
         yield
         yield
 
+    def _rd(self, row: int):
+        """A row read: one cycle, once the write controller is idle."""
+        while self.wc != 0 or self.wc_pending is not None:
+            yield
+        data = self._read_row(row)
+        yield
+        return data
+
     def _mbist(self):
         result = B_PASS
         for d in (0x00000000, 0x55555555):
@@ -769,14 +837,12 @@ class ChipV2:
                 yield from self._wr(r, d)
             for order, rd, wr in ((1, d, nd), (1, nd, d), (-1, d, nd), (-1, nd, d)):
                 for r in (range(ROWS) if order > 0 else range(ROWS - 1, -1, -1)):
-                    if self._read_row(r) != rd and result == B_PASS:
+                    if (yield from self._rd(r)) != rd and result == B_PASS:
                         result, self.mb_row = B_FAIL, r
-                    yield
                     yield from self._wr(r, wr)
             for r in range(ROWS):
-                if self._read_row(r) != d and result == B_PASS:
+                if (yield from self._rd(r)) != d and result == B_PASS:
                     result, self.mb_row = B_FAIL, r
-                yield
         return result
 
     def _cbist(self):
